@@ -11,10 +11,14 @@ public class Player : MonoBehaviour
     private Vector3 desiredDirection;
     public float speed = 5f;
     public float faceRotationSpeed = 5f;
+    private float playerScanSize;
 
     //Skeleton Possession
     private Transform currentSkeletonPile;
     private int playerChildCount;
+    private bool bpossessSkel = false;
+    public float skelSpeed = 3f;
+    public float skelfaceRotationSpeed = 4f;
 
     private void OnEnable()
     {
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
     {
         cController = GetComponent<CharacterController>();
         playerChildCount = transform.childCount;
+        playerScanSize = GetComponent<SphereCollider>().radius;
     }
 
     void Update()
@@ -42,36 +47,47 @@ public class Player : MonoBehaviour
     {
         desiredDirection.x = pActions.PlayerActions.Movement.ReadValue<Vector2>().x;
         desiredDirection.z = pActions.PlayerActions.Movement.ReadValue<Vector2>().y;
-        cController.Move(desiredDirection * Time.deltaTime * speed);
-
-        if (desiredDirection.x != 0 || desiredDirection.z != 0)
+        if(!bpossessSkel)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(desiredDirection.x, 0, desiredDirection.z)), Time.deltaTime * faceRotationSpeed);
+            cController.Move(desiredDirection * Time.deltaTime * speed);
+
+            if (desiredDirection.x != 0 || desiredDirection.z != 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(desiredDirection.x, 0, desiredDirection.z)), Time.deltaTime * faceRotationSpeed);
+            }
         }
-        
+        else if(bpossessSkel)
+        {
+            cController.Move(desiredDirection * Time.deltaTime * skelSpeed);
+
+            if (desiredDirection.x != 0 || desiredDirection.z != 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(desiredDirection.x, 0, desiredDirection.z)), Time.deltaTime * skelfaceRotationSpeed);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Get Skeleton Parts
-        if(other.CompareTag("SkeletonPile"))
+        if(!bpossessSkel)
         {
-            Debug.Log("TouchPile");
-            currentSkeletonPile = other.transform;
-            pActions.PlayerActions.Possess.performed += Possess;   
+            if (other.CompareTag("SkeletonPile"))
+            {
+                currentSkeletonPile = other.transform;
+                pActions.PlayerActions.Possess.performed += Possess;
+            }
         }
 
-        if(other.CompareTag("Skeleton"))
-        {
-            Debug.Log("TouchSkeleton");
-        }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Skeleton"))
+        if(!bpossessSkel)
         {
-            Debug.Log("untouch");
-            pActions.PlayerActions.Possess.performed -= Possess;
+            if (other.CompareTag("SkeletonPile"))
+            {
+                pActions.PlayerActions.Possess.performed -= Possess;
+            }
         }
     }
 
@@ -81,22 +97,37 @@ public class Player : MonoBehaviour
         if(transform.childCount == playerChildCount)
         {
             //Sets pile with character until player unpossesses
+            transform.position = currentSkeletonPile.GetChild(0).position;
             currentSkeletonPile.parent = transform;
             currentSkeletonPile.GetComponent<Collider>().enabled = false;
             currentSkeletonPile.GetComponent<MeshRenderer>().enabled = false;
 
             //Player becomes Skeleton
-            
+            bpossessSkel = true;
+            transform.GetComponent<MeshRenderer>().enabled = false;
+            transform.GetComponent<SphereCollider>().radius = 0.1f;
+            //Make sure it is the actual skeleton for gameobject child index
+            currentSkeletonPile.GetChild(0).gameObject.SetActive(true);
 
         }
         else
         {
             currentSkeletonPile.GetComponent<Collider>().enabled = true;
             currentSkeletonPile.GetComponent<MeshRenderer>().enabled = true;
-            //Debug.Log("No longer Skeleton");
+                                //Make sure it is the actual skeleton for gameobject child index
+            currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
+
+            //Player control back
+            transform.GetComponent<SphereCollider>().radius = playerScanSize;
+            bpossessSkel = false;
+            transform.GetComponent<Collider>().enabled = true;
+            transform.GetComponent<MeshRenderer>().enabled = true;
+            transform.GetComponent<Player>().enabled = true;
             currentSkeletonPile.parent = null;
             pActions.PlayerActions.Possess.performed -= Possess;
         }
         
     }
+
+
 }
