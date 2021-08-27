@@ -53,10 +53,17 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Skeleton"))
+        //Get Skeleton Parts
+        if(other.CompareTag("SkeletonPile"))
         {
+            Debug.Log("TouchPile");
             currentSkeletonPile = other.transform;
             pActions.PlayerActions.Possess.performed += Possess;   
+        }
+
+        if(other.CompareTag("Skeleton"))
+        {
+            Debug.Log("TouchSkeleton");
         }
     }
     private void OnTriggerExit(Collider other)
