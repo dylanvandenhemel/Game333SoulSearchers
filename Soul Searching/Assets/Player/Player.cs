@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private Vector3 desiredDirection;
     public float speed = 5f;
     public float faceRotationSpeed = 5f;
-    private float playerScanSize;
 
     //Skeleton Possession
     private Transform currentSkeletonPile;
@@ -19,6 +18,10 @@ public class Player : MonoBehaviour
     private bool bpossessSkel = false;
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
+
+    //Levers
+    private Transform currentLever;
+
 
     private void OnEnable()
     {
@@ -35,7 +38,6 @@ public class Player : MonoBehaviour
     {
         cController = GetComponent<CharacterController>();
         playerChildCount = transform.childCount;
-        playerScanSize = GetComponent<SphereCollider>().radius;
     }
 
     void Update()
@@ -79,6 +81,13 @@ public class Player : MonoBehaviour
             }
         }
 
+        if(other.CompareTag("Lever"))
+        {
+            currentLever = other.transform;
+            //Doesn't Work if not possessed anyway
+            pActions.PlayerActions.Interact.performed += LeverPull;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -88,6 +97,11 @@ public class Player : MonoBehaviour
             {
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
+        }
+
+        if (other.CompareTag("Lever"))
+        {
+            pActions.PlayerActions.Interact.performed -= LeverPull;
         }
     }
 
@@ -105,7 +119,8 @@ public class Player : MonoBehaviour
             //Player becomes Skeleton
             bpossessSkel = true;
             transform.GetComponent<MeshRenderer>().enabled = false;
-            transform.GetComponent<SphereCollider>().radius = 0.1f;
+                                                                //This is just to get the player collider out of the way
+            transform.GetComponent<SphereCollider>().center = new Vector3(0, 5, 0);
             //Make sure it is the actual skeleton for gameobject child index
             currentSkeletonPile.GetChild(0).gameObject.SetActive(true);
 
@@ -118,7 +133,7 @@ public class Player : MonoBehaviour
             currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
 
             //Player control back
-            transform.GetComponent<SphereCollider>().radius = playerScanSize;
+            transform.GetComponent<SphereCollider>().center = Vector3.zero;
             bpossessSkel = false;
             transform.GetComponent<Collider>().enabled = true;
             transform.GetComponent<MeshRenderer>().enabled = true;
@@ -128,6 +143,18 @@ public class Player : MonoBehaviour
         }
         
     }
+
+    //SKELETON ONLY
+    public void LeverPull(InputAction.CallbackContext c)
+    {
+        //Must be possesed to work
+        if(bpossessSkel)
+        {
+            currentLever.GetComponent<Activator>().Trigger();
+
+        }
+    }
+
 
 
 }
