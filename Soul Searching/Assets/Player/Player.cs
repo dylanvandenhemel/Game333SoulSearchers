@@ -15,18 +15,9 @@ public class Player : MonoBehaviour
     //Skeleton Possession
     private Transform currentSkeletonPile;
     private int playerChildCount;
-    private bool bpossessSkel = false;
+    public bool bpossessSkel = false;
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
-
-    //Levers
-    private Transform currentLever;
-
-    //Doors with keys
-    private bool collectedBronzeKey = false;
-    private bool collectedSilverKey = false;
-    private bool collectedGoldKey = false;
-
 
     private void OnEnable()
     {
@@ -86,30 +77,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        //Activate Lever mut be possesed to work
-        if(other.CompareTag("Lever"))
-        {
-            currentLever = other.transform;
-            pActions.PlayerActions.Interact.performed += LeverPull;
-        }
-
-        //Opens Door with correct key
-        if(other.CompareTag("DoorBronze") && collectedBronzeKey)
-        {
-            Debug.Log("Bronze Door Unlocked");
-            collectedBronzeKey = false;
-        }
-        else if (other.CompareTag("DoorSilver") && collectedSilverKey)
-        {
-            Debug.Log("Silver Door Unlocked");
-            collectedSilverKey = false;
-        }
-        else if (other.CompareTag("DoorGold") && collectedGoldKey)
-        {
-            Debug.Log("Gold Door Unlocked");
-            collectedGoldKey = false;
-        }
-
     }
     private void OnTriggerExit(Collider other)
     {
@@ -121,10 +88,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Lever"))
-        {
-            pActions.PlayerActions.Interact.performed -= LeverPull;
-        }
     }
 
     private void Possess(InputAction.CallbackContext c)
@@ -165,35 +128,5 @@ public class Player : MonoBehaviour
         }
         
     }
-
-    //SKELETON ONLY
-    public void LeverPull(InputAction.CallbackContext c)
-    {
-        //Must be possesed to work
-        if(bpossessSkel)
-        {
-            currentLever.GetComponent<Activator>().Trigger();
-
-        }
-    }
-
-    //Spirit and Skeleton
-    public void KeyCollected(Transform currentDoor)
-    {
-        if (currentDoor.CompareTag("DoorBronze"))
-        {
-            collectedBronzeKey = true;
-        }
-        else if (currentDoor.CompareTag("DoorSilver"))
-        {
-            collectedSilverKey = true;
-        }
-        else if (currentDoor.CompareTag("DoorGold"))
-        {
-            collectedGoldKey = true;
-        }
-    }
-
-
 
 }
