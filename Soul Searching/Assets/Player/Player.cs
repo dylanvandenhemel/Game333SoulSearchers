@@ -22,6 +22,11 @@ public class Player : MonoBehaviour
     //Levers
     private Transform currentLever;
 
+    //Doors with keys
+    private bool collectedBronzeKey = false;
+    private bool collectedSilverKey = false;
+    private bool collectedGoldKey = false;
+
 
     private void OnEnable()
     {
@@ -81,11 +86,28 @@ public class Player : MonoBehaviour
             }
         }
 
+        //Activate Lever mut be possesed to work
         if(other.CompareTag("Lever"))
         {
             currentLever = other.transform;
-            //Doesn't Work if not possessed anyway
             pActions.PlayerActions.Interact.performed += LeverPull;
+        }
+
+        //Opens Door with correct key
+        if(other.CompareTag("DoorBronze") && collectedBronzeKey)
+        {
+            Debug.Log("Bronze Door Unlocked");
+            collectedBronzeKey = false;
+        }
+        else if (other.CompareTag("DoorSilver") && collectedSilverKey)
+        {
+            Debug.Log("Silver Door Unlocked");
+            collectedSilverKey = false;
+        }
+        else if (other.CompareTag("DoorGold") && collectedGoldKey)
+        {
+            Debug.Log("Gold Door Unlocked");
+            collectedGoldKey = false;
         }
 
     }
@@ -152,6 +174,23 @@ public class Player : MonoBehaviour
         {
             currentLever.GetComponent<Activator>().Trigger();
 
+        }
+    }
+
+    //Spirit and Skeleton
+    public void KeyCollected(Transform currentDoor)
+    {
+        if (currentDoor.CompareTag("DoorBronze"))
+        {
+            collectedBronzeKey = true;
+        }
+        else if (currentDoor.CompareTag("DoorSilver"))
+        {
+            collectedSilverKey = true;
+        }
+        else if (currentDoor.CompareTag("DoorGold"))
+        {
+            collectedGoldKey = true;
         }
     }
 
