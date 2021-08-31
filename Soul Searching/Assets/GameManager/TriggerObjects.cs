@@ -7,37 +7,55 @@ using UnityEngine;
 public class TriggerObjects : MonoBehaviour
 {
     private bool bTrap = false;
+    private bool bDoor = false;
+    private bool bPlatform = false;
 
+    //Detects Object to Trigger
     private void Start()
     {
         if (transform.CompareTag("Trap"))
         {
             bTrap = true;
         }
+        else if (transform.CompareTag("Door"))
+        {
+            bDoor = true;
+        }
+        else if (transform.CompareTag("Platform"))
+        {
+            bPlatform = true;
+        }
     }
 
-    //Detects Object to Trigger
     public void Trigger()
     {
-        if(transform.CompareTag("Trap"))
+        if(bTrap)
         {
             ActiveTrap();
         }
-        else if(transform.CompareTag("Door"))
+        else if(bDoor)
         {
             ActiveDoor();
-        }        
+        }
+        else if(bPlatform)
+        {
+            ActivePlatform();
+        }
     }
 
     public void StopTrigger()
     {
-        if (transform.CompareTag("Trap"))
+        if (bTrap)
         {
             StopTrap();
         }
-        else if (transform.CompareTag("Door"))
+        else if (bDoor)
         {
             StopDoor();
+        }
+        else if (bPlatform)
+        {
+            StopPlatform();
         }
     }
 
@@ -68,5 +86,15 @@ public class TriggerObjects : MonoBehaviour
     private void StopDoor()
     {
         Debug.Log("Door Stopped");
+    }
+
+    //Platform Only
+    private void ActivePlatform()
+    {
+        transform.GetComponent<MovingPlatform>().MovePlatform();
+    }
+    private void StopPlatform()
+    {
+        transform.GetComponent<MovingPlatform>().ReturnPlatform();
     }
 }

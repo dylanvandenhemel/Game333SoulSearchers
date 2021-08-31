@@ -109,6 +109,9 @@ public class Player : MonoBehaviour
             //Make sure it is the actual skeleton for gameobject child index
             currentSkeletonPile.GetChild(0).gameObject.SetActive(true);
 
+            //Makes player not be able to move through gates
+            gameObject.layer = LayerMask.NameToLayer("Physical");
+
         }
         else
         {
@@ -125,6 +128,9 @@ public class Player : MonoBehaviour
             transform.GetComponent<Player>().enabled = true;
             currentSkeletonPile.parent = null;
             pActions.PlayerActions.Possess.performed -= Possess;
+
+            //allows player to pass trough walls again
+            gameObject.layer = LayerMask.NameToLayer("Phase");
         }
         
     }
