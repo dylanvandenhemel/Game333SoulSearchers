@@ -105,7 +105,6 @@ public class Player : MonoBehaviour
             bpossessSkel = true;
             transform.GetComponent<MeshRenderer>().enabled = false;
                                                                 //This is just to get the player collider out of the way
-            transform.GetComponent<SphereCollider>().center = new Vector3(0, 5, 0);
             //Make sure it is the actual skeleton for gameobject child index
             currentSkeletonPile.GetChild(0).gameObject.SetActive(true);
 

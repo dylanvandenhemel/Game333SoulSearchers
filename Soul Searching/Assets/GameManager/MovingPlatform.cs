@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    public Transform startingPosition;
     public Transform targetLocation;
-    private Vector3 startingPosition;
 
     private bool btriggeredPlatform = false;
 
@@ -15,9 +15,8 @@ public class MovingPlatform : MonoBehaviour
 
     private void Start()
     {
+        startingPosition.GetComponent<MeshRenderer>().enabled = false;
         targetLocation.GetComponent<MeshRenderer>().enabled = false;
-
-        startingPosition = transform.position;
 
         //This is to make sure the platform moves at an even level
         targetLocation.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
@@ -35,8 +34,8 @@ public class MovingPlatform : MonoBehaviour
         }
         else if(bAutoPlatform && targetReached)
         {
-            transform.position = Vector3.MoveTowards(transform.position, startingPosition, platformSpeed * Time.deltaTime);
-            if (transform.position == startingPosition)
+            transform.position = Vector3.MoveTowards(transform.position, startingPosition.position, platformSpeed * Time.deltaTime);
+            if (transform.position == startingPosition.position)
             {
                 targetReached = false;
             }
@@ -48,7 +47,7 @@ public class MovingPlatform : MonoBehaviour
         }
         else if(!bAutoPlatform)
         {
-            transform.position = Vector3.MoveTowards(transform.position, startingPosition, platformSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, startingPosition.position, platformSpeed * Time.deltaTime);
         }
 
     }
@@ -63,22 +62,31 @@ public class MovingPlatform : MonoBehaviour
         btriggeredPlatform = false;
     }
 
-    //TO DO: ATTEMT TO MAKE PHYSICAL/BONES(EXCLUSIVE) CHILD OF PLATFORM SO IT MOVES WITH IT
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)"))
+        if (other.transform.name == "Targetposition(Start)")
         {
-            Debug.Log("Become Platform");
-            other.transform.parent = transform;
+            Debug.Log("Start");
+            //transform.GetChild()
+        }
+        
+        if(other.transform.name == "Targetposition(Finish)")
+        {
+            Debug.Log("Finish");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)"))
+        if (other.transform.name == "Targetposition(Start)")
         {
-            Debug.Log("No more Platform");
-            other.transform.parent = null;
+            Debug.Log("Start Leave");
+        }
+
+        if (other.transform.name == "Targetposition(Finish)")
+        {
+            Debug.Log("Finish Leave");
         }
     }
+
 }
