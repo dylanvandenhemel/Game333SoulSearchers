@@ -123,63 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &34515045
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.548031
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.577124
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.9043574
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
-      propertyPath: m_Name
-      value: Lever
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1a485c03ddaf41c4dad52422846049fd, type: 3}
 --- !u!1 &52913112
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +218,7 @@ Transform:
   m_LocalScale: {x: 3.5074, y: 0.36408, z: 3.1503}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &52913117
 Rigidbody:
@@ -422,7 +365,7 @@ Transform:
   - {fileID: 1000288869}
   - {fileID: 670658116}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &119482958
 MonoBehaviour:
@@ -558,7 +501,7 @@ Transform:
   m_LocalScale: {x: 0.54750013, y: 2.4692004, z: 1.9683003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &274132452
 GameObject:
@@ -666,7 +609,7 @@ Transform:
   m_LocalScale: {x: 0.48766002, y: 0.48766, z: 0.48766005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &621914165
 GameObject:
@@ -949,11 +892,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   m_RootOrder: 3
 =======
   m_RootOrder: 1
 >>>>>>> Stashed changes
+=======
+  m_RootOrder: 2
+>>>>>>> parent of 2e78eed (Added Lever Model)
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &716295947
 GameObject:
@@ -1061,7 +1008,7 @@ Transform:
   m_LocalScale: {x: 0.54750013, y: 2.4692001, z: 1.9683003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &796885776
 GameObject:
@@ -1157,7 +1104,7 @@ Transform:
   m_LocalScale: {x: 0.5475, y: 2.4692, z: 1.9683}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &796885781
 MonoBehaviour:
@@ -1202,7 +1149,7 @@ Transform:
   m_LocalScale: {x: 1.364984, y: 1.364984, z: 1.364984}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &806585058
 BoxCollider:
@@ -1360,7 +1307,7 @@ Transform:
   m_LocalScale: {x: 0.48766002, y: 0.48766, z: 0.48766005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &824878411
 MonoBehaviour:
@@ -1468,7 +1415,7 @@ Transform:
   m_LocalScale: {x: 0.48766002, y: 0.48766, z: 0.48766005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &840179903
 MonoBehaviour:
@@ -1893,10 +1840,17 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 119482957}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &997388421
+=======
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &951267355
+>>>>>>> parent of 2e78eed (Added Lever Model)
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2159,7 +2113,7 @@ Transform:
   m_LocalScale: {x: 0.5475, y: 2.4692, z: 1.9683}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251331896
 GameObject:
@@ -2267,7 +2221,7 @@ Transform:
   m_LocalScale: {x: 0.54750013, y: 2.4692001, z: 1.9683003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1383434335
 GameObject:
@@ -2371,7 +2325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1383434340
 MonoBehaviour:
@@ -2556,7 +2510,7 @@ Transform:
   m_LocalScale: {x: 0.4733, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1557769237
 GameObject:
@@ -2653,7 +2607,7 @@ Transform:
   m_LocalScale: {x: 1.9866, y: 0.30832034, z: 1.9866}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1557769242
 Rigidbody:
@@ -2873,7 +2827,7 @@ Transform:
   m_LocalScale: {x: 0.48766002, y: 0.48766, z: 0.48766005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1566804335
 MonoBehaviour:
@@ -2997,7 +2951,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> Stashed changes
@@ -3096,7 +3050,7 @@ Transform:
   m_LocalScale: {x: 0.4733, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1931586902
 Rigidbody:
@@ -3220,11 +3174,15 @@ Transform:
   m_LocalScale: {x: 24.207304, y: 1, z: 23.957302}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   m_RootOrder: 4
 =======
   m_RootOrder: 2
 >>>>>>> Stashed changes
+=======
+  m_RootOrder: 3
+>>>>>>> parent of 2e78eed (Added Lever Model)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031118088
 GameObject:
@@ -3321,7 +3279,7 @@ Transform:
   m_Children:
   - {fileID: 1725404108}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2031118093
 Rigidbody:
