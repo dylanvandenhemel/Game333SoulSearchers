@@ -7,6 +7,12 @@ public class MovingPlatform : MonoBehaviour
     public Transform startingPosition;
     public Transform targetLocation;
 
+    //Platform Wall Mechanics
+    public Transform platWallLeft;
+    public Transform platWallRight;
+    public Transform platWallUp;
+    public Transform platWallDown;
+
     private bool btriggeredPlatform = false;
 
     public bool bAutoPlatform = false;
@@ -20,6 +26,7 @@ public class MovingPlatform : MonoBehaviour
 
         //This is to make sure the platform moves at an even level
         targetLocation.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
+
     }
 
     private void FixedUpdate()
@@ -64,28 +71,47 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "Targetposition(Start)")
+        if (other.transform.name == "PlatformPort(Left)")
         {
-            Debug.Log("Start");
-            //transform.GetChild()
+            platWallLeft.GetComponent<Collider>().enabled = false;
         }
-        
-        if(other.transform.name == "Targetposition(Finish)")
+
+        if(other.transform.name == "PlatformPort(Right)")
         {
-            Debug.Log("Finish");
+            platWallRight.GetComponent<Collider>().enabled = false;
+        }
+
+        if (other.transform.name == "PlatformPort(Up)")
+        {
+            platWallUp.GetComponent<Collider>().enabled = false;
+        }
+
+        if (other.transform.name == "PlatformPort(Down)")
+        {
+            platWallDown.GetComponent<Collider>().enabled = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.name == "Targetposition(Start)")
+        if (other.transform.name == "TargetPosition(Start)")
         {
-            Debug.Log("Start Leave");
+            platWallLeft.GetComponent<Collider>().enabled = true;
         }
 
-        if (other.transform.name == "Targetposition(Finish)")
+        if (other.transform.name == "PlatformPort(Right)")
         {
-            Debug.Log("Finish Leave");
+            platWallRight.GetComponent<Collider>().enabled = true;
+        }
+
+        if (other.transform.name == "PlatformPort(Up)")
+        {
+            platWallUp.GetComponent<Collider>().enabled = true;
+        }
+
+        if (other.transform.name == "PlatformPort(Down)")
+        {
+            platWallDown.GetComponent<Collider>().enabled = true;
         }
     }
 

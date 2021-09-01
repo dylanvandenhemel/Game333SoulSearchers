@@ -10,28 +10,13 @@ public class AccessPlatform : MonoBehaviour
         {
             transform.parent = other.transform;
         }
-        else if(other.CompareTag("Map"))
+
+        if(other.CompareTag("Map"))
         {
             transform.parent = null;
         }
         
         
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Platform"))
-        {
-            Debug.Log("ggggg");
-        }
-
-    }
-
-
-
-
-
-
-
 
 }

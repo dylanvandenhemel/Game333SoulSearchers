@@ -120,11 +120,8 @@ public class Player : MonoBehaviour
             currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
 
             //Player control back
-            transform.GetComponent<SphereCollider>().center = Vector3.zero;
             bpossessSkel = false;
-            transform.GetComponent<Collider>().enabled = true;
             transform.GetComponent<MeshRenderer>().enabled = true;
-            transform.GetComponent<Player>().enabled = true;
             currentSkeletonPile.parent = null;
             pActions.PlayerActions.Possess.performed -= Possess;
 
