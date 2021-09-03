@@ -8,7 +8,6 @@ public class AccessPlatform : MonoBehaviour
     {
         if(other.CompareTag("Platform"))
         {
-            Debug.Log("Platform");
             transform.parent = other.transform;
         }
 
