@@ -4,18 +4,46 @@ using UnityEngine;
 
 public class EyeTower : MonoBehaviour
 {
-    private RaycastHit hit;
+    private Vector3 fwd;
+
+    private int detectorLimit = 0;
+
+    private void Start()
+    {
+        fwd = transform.TransformDirection(Vector3.forward);
+    }
 
     private void FixedUpdate()
     {
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 6 /*layerMask*/))
+        int LayerMask = 1;
+
+        LayerMask = ~LayerMask;
+
+        if(Physics.Raycast(transform.position, fwd, Mathf.Infinity, LayerMask))
         {
-            Debug.Log("Touch");
+            if(detectorLimit == 1)
+            {
+                Trigger();
+                detectorLimit = 0;
+            }
+        }
+        else
+        {
+            if(detectorLimit == 0)
+            {
+                StopTrigger();
+                detectorLimit = 1;
+            }
         }
     }
 
     public void Trigger()
     {
-        Debug.Log("Seen");
+        transform.GetComponent<Activator>().Trigger();
+    }
+
+    public void StopTrigger()
+    {
+        transform.GetComponent<Activator>().StopTrigger();
     }
 }

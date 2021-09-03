@@ -24,6 +24,12 @@ public class MovingPlatform : MonoBehaviour
         startingPosition.GetComponent<MeshRenderer>().enabled = false;
         targetLocation.GetComponent<MeshRenderer>().enabled = false;
 
+        //platWallLeft.GetComponent<MeshRenderer>().enabled = false;
+        //platWallRight.GetComponent<MeshRenderer>().enabled = false;
+        //platWallUp.GetComponent<MeshRenderer>().enabled = false;
+        //platWallDown.GetComponent<MeshRenderer>().enabled = false;
+        
+
         //This is to make sure the platform moves at an even level
         targetLocation.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
 
