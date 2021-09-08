@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class EyeTower : MonoBehaviour
 {
-    private bool bTracker;
+    //private float debugtimer = 10;
+
+    private bool bTracker = false;
+    private Vector3 orgin;
+    //private Vector3 fwd;
+    private Quaternion targetLook;
+
 
     public LayerMask Mask;
-    private Vector3 fwd;
-
     private Transform target;
 
     //private int detectorLimit = 0;
 
     private void Start()
     {
-        fwd = transform.TransformDirection(Vector3.forward);
+        orgin = transform.position;
+        //fwd = transform.TransformDirection(Vector3.forward);
     }
 
-    /*
+    
     private void FixedUpdate()
     {
-        
+        //Debug.DrawRay(orgin, fwd * 10, Color.red);
+        /*
         if(Physics.Raycast(transform.position, fwd, Mathf.Infinity, Mask))
         {
             if(detectorLimit == 1)
@@ -38,33 +44,46 @@ public class EyeTower : MonoBehaviour
                 detectorLimit = 1;
             }
         }
-    }*/
+        */
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (bTracker) return;
-        bTracker = true;        
-        target = other.transform;
-        StartCoroutine(nameof(Tracker));
+        if(other.CompareTag("Player"))
+        {
+            bTracker = true;
+
+            target = other.transform;
+            StartCoroutine(nameof(Tracker));
+        }
+
+        
         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //StopCoroutine(nameof(Tracker));
-        bTracker = false;
+        if (other.CompareTag("Player"))
+        {
+            StopCoroutine(nameof(Tracker));
+        }
+            
     }
 
     IEnumerator Tracker()
     {
-        while(bTracker)
+        RaycastHit hit;
+        while (bTracker)
         {
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
+            {
+                transform.LookAt(target);
+                Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.red, 1);
+
+            }
+
+
             yield return new WaitForEndOfFrame();
-
-            
-
-
-
         }
     }
 
