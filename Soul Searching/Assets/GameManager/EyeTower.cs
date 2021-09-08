@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class EyeTower : MonoBehaviour
 {
+    private bool bTracker;
+
+    public LayerMask Mask;
     private Vector3 fwd;
 
-    private int detectorLimit = 0;
+    private Transform target;
+
+    //private int detectorLimit = 0;
 
     private void Start()
     {
         fwd = transform.TransformDirection(Vector3.forward);
     }
 
+    /*
     private void FixedUpdate()
     {
-        int LayerMask = 1;
-
-        LayerMask = ~LayerMask;
-
-        if(Physics.Raycast(transform.position, fwd, Mathf.Infinity, LayerMask))
+        
+        if(Physics.Raycast(transform.position, fwd, Mathf.Infinity, Mask))
         {
             if(detectorLimit == 1)
             {
@@ -34,6 +37,34 @@ public class EyeTower : MonoBehaviour
                 StopTrigger();
                 detectorLimit = 1;
             }
+        }
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (bTracker) return;
+        bTracker = true;        
+        target = other.transform;
+        StartCoroutine(nameof(Tracker));
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //StopCoroutine(nameof(Tracker));
+        bTracker = false;
+    }
+
+    IEnumerator Tracker()
+    {
+        while(bTracker)
+        {
+            yield return new WaitForEndOfFrame();
+
+            
+
+
+
         }
     }
 
