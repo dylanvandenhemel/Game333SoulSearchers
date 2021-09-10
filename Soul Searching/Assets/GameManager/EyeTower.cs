@@ -9,8 +9,6 @@ public class EyeTower : MonoBehaviour
 
     private bool bTracker = false;
     private Vector3 orgin;
-    //private Vector3 fwd;
-    private Quaternion targetLook;
 
     RaycastHit hit;
     public LayerMask Mask;
@@ -34,15 +32,32 @@ public class EyeTower : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            target = other.transform;
-            transform.LookAt(target);
+            if (other.CompareTag("Player"))
+            {
+                target = other.transform;
+                transform.LookAt(target);
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
+                {
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Wall))
+                    {
+                        
+                        StopTrigger();
+                        
+                    }
+                    else if (bTracker == true)
+                    {
+                        transform.LookAt(target);
+                        Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
+                        Trigger();
+                    }
+                    bTracker = true;
+                }
 
-            bTracker = true;
-            StartCoroutine(nameof(Tracker));
+            }
 
         }
 
@@ -54,41 +69,12 @@ public class EyeTower : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StopCoroutine(nameof(Tracker));
             StopTrigger();
             bTracker = false;
         }
             
     }
 
-    IEnumerator Tracker()
-    {
-        bool calledTrigger = false;
-        while (bTracker)
-        {
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
-            {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Wall))
-                {
-                    StopTrigger();
-                    bTracker = false;
-                }
-                else
-                {
-                    transform.LookAt(target);
-                    Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.red, 1);
-                    if(calledTrigger == false)
-                    {
-                        Trigger();
-                        calledTrigger = true;
-                    }
-                }
-            }
-
-
-            yield return new WaitForEndOfFrame();
-        }
-    }
 
     public void Trigger()
     {
