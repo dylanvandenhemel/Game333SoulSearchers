@@ -10,7 +10,8 @@ public class Activator : MonoBehaviour
     private bool bPressPlate = false;
 
     private bool bLever = false;
-    private bool bLeverActive = false;
+    private bool bActiveLever = false;
+    private bool bLeverinRange = false;
 
     //Lever Input
     PlayerControls pActions;
@@ -55,7 +56,12 @@ public class Activator : MonoBehaviour
         //Must to be possesed to work
         if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
-            pActions.PlayerActions.Interact.performed += LeverPull;
+            //double enter bug fix
+            if (!bLeverinRange)
+            {
+                pActions.PlayerActions.Interact.performed += LeverPull;
+                bLeverinRange = true;
+            }
         }
     }
 
@@ -68,22 +74,22 @@ public class Activator : MonoBehaviour
 
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
+            bLeverinRange = false;
             pActions.PlayerActions.Interact.performed -= LeverPull;
         }
     }
 
     private void LeverPull(InputAction.CallbackContext c)
     {
-        if(!bLeverActive)
+        if(!bActiveLever)
         {
             Trigger();
-            bLeverActive = true;
+            bActiveLever = true;
         }
         else
         {
             StopTrigger();
-            bLeverActive = false;
+            bActiveLever = false;
         }
-
     }
 }

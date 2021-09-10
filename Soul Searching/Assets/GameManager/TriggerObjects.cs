@@ -8,6 +8,7 @@ public class TriggerObjects : MonoBehaviour
 {
     private bool bTrap = false;
     private bool bDoor = false;
+
     private bool bPlatform = false;
 
     //Detects Object to Trigger
@@ -87,6 +88,7 @@ public class TriggerObjects : MonoBehaviour
     {
         Debug.Log("Door Stopped");
     }
+
 
     //Platform Only
     private void ActivePlatform()
