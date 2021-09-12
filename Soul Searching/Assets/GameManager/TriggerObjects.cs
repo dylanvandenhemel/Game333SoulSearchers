@@ -8,8 +8,13 @@ public class TriggerObjects : MonoBehaviour
 {
     private bool bTrap = false;
     private bool bDoor = false;
-
     private bool bPlatform = false;
+
+    //On off system
+    private bool bTrapActive = false;
+    private bool bDoorActive = false;
+    private bool bPlatformActive = false;
+
 
     //Detects Object to Trigger
     private void Start()
@@ -64,13 +69,20 @@ public class TriggerObjects : MonoBehaviour
     //Trap Only
     private void ActiveTrap()
     {
-        Debug.Log("Trap Triggered");
+        if(!bTrapActive)
+        {
+            Debug.Log("Trap Triggered");
+            bTrapActive = true;
+        }
     }
     private void StopTrap()
     {
-        Debug.Log("Trap Stopped");
+        if (bTrapActive)
+        {
+            Debug.Log("Trap Stopped");
+            bTrapActive = false;
+        }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
@@ -82,21 +94,37 @@ public class TriggerObjects : MonoBehaviour
     //Door Only
     private void ActiveDoor()
     {
-        Debug.Log("Door Triggered");
+        if(!bDoorActive)
+        {
+            Debug.Log("Door Triggered");
+            bDoorActive = true;
+        }
     }
     private void StopDoor()
     {
-        Debug.Log("Door Stopped");
+        if (bDoorActive)
+        {
+            Debug.Log("Door Stop");
+            bDoorActive = false;
+        }
     }
 
 
     //Platform Only
     private void ActivePlatform()
     {
-        transform.GetComponent<MovingPlatform>().MovePlatform();
+        if(!bPlatformActive)
+        {
+            transform.GetComponent<MovingPlatform>().MovePlatform();
+            bPlatformActive = true;
+        }
     }
     private void StopPlatform()
     {
-        transform.GetComponent<MovingPlatform>().ReturnPlatform();
+        if(bPlatformActive)
+        {
+            transform.GetComponent<MovingPlatform>().ReturnPlatform();
+            bPlatformActive = false;
+        }
     }
 }

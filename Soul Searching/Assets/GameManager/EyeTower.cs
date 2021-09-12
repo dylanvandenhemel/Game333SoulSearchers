@@ -40,6 +40,7 @@ public class EyeTower : MonoBehaviour
             {
                 target = other.transform;
                 transform.LookAt(target);
+
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
                 {
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Wall))
