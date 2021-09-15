@@ -11,6 +11,7 @@ public class EyeTower : MonoBehaviour
     public LayerMask Mask;
     public LayerMask Wall;
     private Transform target;
+    private float playerDistance = 10;
 
     //wether it pans 180 or 360 degrees
     public bool bPanningOn = false;
@@ -50,9 +51,14 @@ public class EyeTower : MonoBehaviour
         {
             Pan360Degrees();
         }
+        else if (!bTracker && !bselect180 && !bselect360)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, startRotation, viewReternSpeed * Time.deltaTime);
+        }
 
     }
 
+    //Connected to the Inspector Selection
     public void Selected180()
     {
         bselect180 = true;
@@ -108,7 +114,9 @@ public class EyeTower : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
                 {
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Wall))
+                    //TODO: update distance of ray
+                    playerDistance = hit.distance;
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                     {
                         
                         StopTrigger();
@@ -128,18 +136,17 @@ public class EyeTower : MonoBehaviour
         }
 
     }
+    
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            StopTrigger();
             bTracker = false;
+            StopTrigger();
         }
             
     }
-
-
     public void Trigger()
     {
         transform.GetComponent<Activator>().Trigger();
