@@ -69,7 +69,6 @@ public class TriggerObjects : MonoBehaviour
     //Trap Only
     private void ActiveTrap()
     {
-        //--TODO-- Let trap activate more than once
         if(!bTrapActive)
         {
             Debug.Log("Trap Triggered");
@@ -89,6 +88,14 @@ public class TriggerObjects : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
         {
             ActiveTrap();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
+        {
+            StopTrap();
         }
     }
 

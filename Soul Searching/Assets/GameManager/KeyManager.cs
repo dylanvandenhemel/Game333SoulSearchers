@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyManager : MonoBehaviour
 {
     private Transform ghostKey;
+    private float ghostKeyDrop;
 
     public bool collectedBronzeKey = false;
     public bool collectedSilverKey = false;
@@ -31,18 +32,30 @@ public class KeyManager : MonoBehaviour
         }
         else if (currentKey.CompareTag("KeyGhost") && !transform.GetComponent<Player>().bpossessSkel)
         {
-            //--TODO-- Finish if collected 
             ghostKey = currentKey;
+            ghostKeyDrop = ghostKey.position.y;
             collectedGhostKey = true;
-            
         }
+    }
+
+    public void UsedGhostKey()
+    {
+        ghostKey.gameObject.SetActive(false);
     }
 
     public void Update()
     {
-        if(collectedGhostKey && !transform.GetComponent<Player>().bpossessSkel)
+        if(collectedGhostKey)
         {
-            ghostKey.position = transform.position;
+            if(!transform.GetComponent<Player>().bpossessSkel)
+            {
+                ghostKey.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            }
+            else
+            {
+                ghostKey.position = new Vector3(ghostKey.position.x, ghostKeyDrop, ghostKey.position.z);
+                collectedGhostKey = false;
+            }
         }
     }
 }

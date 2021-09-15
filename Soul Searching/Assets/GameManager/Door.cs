@@ -36,6 +36,7 @@ public class Door : MonoBehaviour
             {
                 Debug.Log("Ghost Door Open");
                 other.GetComponent<KeyManager>().collectedGhostKey = false;
+                other.GetComponent<KeyManager>().UsedGhostKey();
             }
         }
     }
