@@ -13,26 +13,25 @@ public class KeyManager : MonoBehaviour
     public bool collectedGhostKey = false;
     public void KeyCollected(Transform currentKey)
     {
+        //Disable Key instead of mesh because of prefab
         if (currentKey.CompareTag("KeyBronze"))
         {
             collectedBronzeKey = true;
-            currentKey.GetComponent<MeshRenderer>().enabled = false;
-            currentKey.GetComponent<Collider>().enabled = false;
+            currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeySilver"))
         {
             collectedSilverKey = true;
-            currentKey.GetComponent<MeshRenderer>().enabled = false;
-            currentKey.GetComponent<Collider>().enabled = false;
+            currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeyGold"))
         {
             collectedGoldKey = true;
-            currentKey.GetComponent<MeshRenderer>().enabled = false;
-            currentKey.GetComponent<Collider>().enabled = false;
+            currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeyGhost") && !transform.GetComponent<Player>().bpossessSkel)
         {
+            //--TODO-- Finish if collected 
             ghostKey = currentKey;
             collectedGhostKey = true;
             

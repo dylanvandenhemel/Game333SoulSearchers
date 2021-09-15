@@ -69,6 +69,7 @@ public class TriggerObjects : MonoBehaviour
     //Trap Only
     private void ActiveTrap()
     {
+        //--TODO-- Let trap activate more than once
         if(!bTrapActive)
         {
             Debug.Log("Trap Triggered");
