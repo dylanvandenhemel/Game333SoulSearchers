@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    public Transform pointA;
-    public Transform pointB;
+    private Transform startPosition;
+    public Transform targetPosition;
 
     private bool bTracker = false;
     private Vector3 orgin;
@@ -17,14 +17,14 @@ public class Zombie : MonoBehaviour
 
     private void Start()
     {
-        orgin = transform.position;
-        pointA.GetComponent<MeshRenderer>().enabled = false;
-        pointB.GetComponent<MeshRenderer>().enabled = false;
+        startPosition.position = transform.position;
+        //targetPosition.GetComponent<MeshRenderer>().enabled = false;
     }
 
 
     private void FixedUpdate()
     {
+        orgin = transform.position;
         if (!bTracker)
         {
             //Return Zombie to position
