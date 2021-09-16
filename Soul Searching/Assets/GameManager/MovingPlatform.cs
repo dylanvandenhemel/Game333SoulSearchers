@@ -75,7 +75,7 @@ public class MovingPlatform : MonoBehaviour
         btriggeredPlatform = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.transform.name == "PlatformPort(Left)")
         {

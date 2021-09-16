@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128317692462232029}
-  - component: {fileID: 6721386027071498705}
+  - component: {fileID: 5049050877304368300}
   m_Layer: 0
   m_Name: EyeT
   m_TagString: Untagged
@@ -33,8 +33,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6721386027071498705
-CapsuleCollider:
+--- !u!65 &5049050877304368300
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -43,10 +43,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.96640605
-  m_Height: 6.2945814
-  m_Direction: 1
-  m_Center: {x: -0.03498715, y: 2.009923, z: 0.030019045}
+  serializedVersion: 2
+  m_Size: {x: 1.6776897, y: 6.059611, z: 1.790514}
+  m_Center: {x: -0.019432856, y: 2.529804, z: 0.056293104}
 --- !u!1 &5882679326576569181
 GameObject:
   m_ObjectHideFlags: 0
