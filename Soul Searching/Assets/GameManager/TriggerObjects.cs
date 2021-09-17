@@ -11,7 +11,7 @@ public class TriggerObjects : MonoBehaviour
     private bool bPlatform = false;
 
     //On off system
-    private bool bTrapActive = false;
+    public bool bTrapActive = false;
     private bool bDoorActive = false;
     private bool bPlatformActive = false;
 
@@ -83,12 +83,18 @@ public class TriggerObjects : MonoBehaviour
             bTrapActive = false;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
         {
+            if(other.CompareTag("Player"))
+            {
+                other.GetComponent<Player>().KillSkeleton();
+            }
             ActiveTrap();
         }
+        
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -105,6 +111,7 @@ public class TriggerObjects : MonoBehaviour
         if(!bDoorActive)
         {
             Debug.Log("Door Triggered");
+            gameObject.SetActive(false);
             bDoorActive = true;
         }
     }
@@ -113,6 +120,7 @@ public class TriggerObjects : MonoBehaviour
         if (bDoorActive)
         {
             Debug.Log("Door Stop");
+            gameObject.SetActive(true);
             bDoorActive = false;
         }
     }

@@ -28,6 +28,16 @@ public class EyeTower : MonoBehaviour
     private bool bTracker = false;
     private Vector3 orgin;
 
+    private void OnEnable()
+    {
+        ResetDelegate.Reset += ActiveReset;
+    }
+
+    private void OnDisable()
+    {
+        ResetDelegate.Reset -= ActiveReset;
+    }
+
     private void Start()
     {
         startRotation = transform.rotation;
@@ -154,6 +164,12 @@ public class EyeTower : MonoBehaviour
     public void StopTrigger()
     {
         transform.GetComponent<Activator>().StopTrigger();
+    }
+
+    public void ActiveReset()
+    {
+        bTracker = false;
+        StopTrigger();
     }
 }
 

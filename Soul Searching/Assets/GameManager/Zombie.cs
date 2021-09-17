@@ -19,6 +19,17 @@ public class Zombie : MonoBehaviour
     public LayerMask Wall;
     private Transform target;
 
+    private void OnEnable()
+    {
+        ResetDelegate.Reset += ActiveReset;
+    }
+
+    private void OnDisable()
+    {
+        ResetDelegate.Reset -= ActiveReset;
+    }
+
+
     private void Start()
     {
         zombieStartSpeed = zombieRoamSpeed + 1;
@@ -45,6 +56,10 @@ public class Zombie : MonoBehaviour
         }
         else if (!bTracker && targetReached)
         {
+            //resets zombie speed
+            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, zombieStartSpeed, 10);
+            zombieRoamSpeed -= 1f;
+
             transform.position = Vector3.MoveTowards(transform.position, startingPosition.position, zombieRoamSpeed * Time.deltaTime);
             transform.LookAt(startingPosition);
             if (transform.position == startingPosition.position)
@@ -62,14 +77,20 @@ public class Zombie : MonoBehaviour
             }
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
-            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 5.2f);
-            zombieRoamSpeed += 0.15f;
+            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 5.2f - 2);
+            zombieRoamSpeed += 0.12f;
         }
         
     }
 
     public void OnTriggerStay(Collider other)
     {
+        if(other.CompareTag("Trap") && other.GetComponent<TriggerObjects>().bTrapActive == true)
+        {
+            KillZombie();
+        }
+
+
 
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel == false)
         {
@@ -101,6 +122,27 @@ public class Zombie : MonoBehaviour
         {
             bTracker = false;
         }
+    }
+
+    private void KillZombie()
+    {
+        //--TODO-- Make it better
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
+        bTracker = false;
+    }
+
+    public void ActiveReset()
+    {
+        //--TODO-- Make it better
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<Collider>().enabled = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.position = startingPosition.position;
+        bTracker = false;
     }
 
 }

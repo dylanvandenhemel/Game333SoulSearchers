@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     //player
+    private Vector3 resetLocation;
+    private bool bresetPlayer = false;
     PlayerControls pActions;
     private CharacterController cController;
     private Vector3 desiredDirection;
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        resetLocation = transform.position;
         cController = GetComponent<CharacterController>();
         playerChildCount = transform.childCount;
     }
@@ -39,6 +42,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
+        ResetPlayer();
     }
     
     private void Movement()
@@ -65,7 +69,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         //Get Skeleton Parts
         if(!bpossessSkel)
@@ -75,6 +79,14 @@ public class Player : MonoBehaviour
                 currentSkeletonPile = other.transform;
                 pActions.PlayerActions.Possess.performed += Possess;
             }
+        }
+
+        if(other.CompareTag("DeathBox") && !bpossessSkel)
+        {
+            //player holds reset manager
+            bresetPlayer = true;
+            GetComponent<ResetDelegate>().bcallReset = true;
+            
         }
 
     }
@@ -104,8 +116,8 @@ public class Player : MonoBehaviour
             //Player becomes Skeleton
             bpossessSkel = true;
             transform.GetComponent<MeshRenderer>().enabled = false;
-                                                                //This is just to get the player collider out of the way
-            //Make sure it is the actual skeleton for gameobject child index
+                                                                
+                                //Make sure it is the actual skeleton for gameobject child index
             currentSkeletonPile.GetChild(0).gameObject.SetActive(true);
 
             //Makes player not be able to move through gates
@@ -129,6 +141,37 @@ public class Player : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Phase");
         }
         
+    }
+
+    public void KillSkeleton()
+    {
+        currentSkeletonPile.GetComponent<Collider>().enabled = true;
+        currentSkeletonPile.GetComponent<MeshRenderer>().enabled = true;
+        //Make sure it is the actual skeleton for gameobject child index
+        currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
+
+        //Player control back
+        bpossessSkel = false;
+        transform.GetComponent<MeshRenderer>().enabled = true;
+        currentSkeletonPile.parent = null;
+        pActions.PlayerActions.Possess.performed -= Possess;
+
+        //allows player to pass trough walls again
+        gameObject.layer = LayerMask.NameToLayer("Phase");
+    }
+
+    private void ResetPlayer()
+    {
+        if(bresetPlayer)
+        {
+            cController.enabled = false;
+            cController.transform.position = resetLocation;
+            if(cController.transform.position == resetLocation)
+            {
+                cController.enabled = true;
+                bresetPlayer = false;
+            }
+        }
     }
 
 }
