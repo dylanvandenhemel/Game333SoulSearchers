@@ -122,8 +122,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2774536904149814658}
+  - component: {fileID: 1443716752364007906}
   m_Layer: 0
-  m_Name: LW
+  m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,6 +145,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1443716752364007906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760001884975584517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22173691, y: 2.3765595, z: 3.1029377}
+  m_Center: {x: 1.4548831, y: 0.6882796, z: -0.026694536}
 --- !u!1 &8949281391883946965
 GameObject:
   m_ObjectHideFlags: 0
