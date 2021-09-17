@@ -126,7 +126,6 @@ public class EyeTower : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
                 {
-                    //TODO: update distance of ray
                     playerDistance = hit.distance;
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                     {

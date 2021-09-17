@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    //Stop Running through walls
-
-
     public bool bpatrol = false;
     public Transform startingPosition;
     public Transform targetLocation;
@@ -15,6 +12,7 @@ public class Zombie : MonoBehaviour
     private float zombieStartSpeed;
 
     private Transform player;
+    private float playerDistance = 10f;
     private bool bTracker = false;
     private Vector3 orgin;
     private Quaternion startRotation;
@@ -78,7 +76,6 @@ public class Zombie : MonoBehaviour
         {
             if(player.GetComponent<Player>().bpossessSkel == true)
             {
-                transform.rotation = startRotation;
                 bTracker = false;
             }
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
@@ -102,20 +99,20 @@ public class Zombie : MonoBehaviour
         {
             player = other.transform;
             
-            target = other.transform;
-            transform.LookAt(target);
+            transform.LookAt(player);
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
             {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Wall))
+                playerDistance = hit.distance;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                 {
                     bTracker = false;
                 }
-                else if (bTracker == true)
+                else
                 {
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
+                    bTracker = true;
                 }
-                bTracker = true;
             
             }
             
