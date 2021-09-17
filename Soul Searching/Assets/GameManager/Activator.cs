@@ -9,6 +9,7 @@ public class Activator : MonoBehaviour
 
     private bool bPressPlate = false;
     private bool bPressedPlate;
+    private bool bstartPPState;
 
     private bool bLever = false;
     private bool bActiveLever = false;
@@ -18,18 +19,21 @@ public class Activator : MonoBehaviour
     PlayerControls pActions;
     private void OnEnable()
     {
+        ResetDelegate.Reset += OnReset;
         pActions = new PlayerControls();
         pActions.Enable();
     }
     private void OnDisable()
     {
+        ResetDelegate.Reset -= OnReset;
         pActions.Disable();
     }
 
     private void Start()
     {
+        bstartPPState = bPressedPlate;
         //Only to allow the on trigger for pressplate
-        if(transform.CompareTag("PressPlate"))
+        if (transform.CompareTag("PressPlate"))
         {
             bPressPlate = true;
         }
@@ -46,18 +50,19 @@ public class Activator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //For PressPlate
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
             if(!bPressedPlate)
             {
+                Debug.Log("PressedPlate");
                 Trigger();
                 bPressedPlate = true;
             }
         }
-        //Must to be possesed to work
+        //For Lever: Must to be possesed to work
         if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
-            //double enter bug fix
             if (!bLeverinRange)
             {
                 pActions.PlayerActions.Interact.performed += LeverPull;
@@ -68,15 +73,17 @@ public class Activator : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //For PressPlate
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
             if (bPressedPlate)
             {
+                Debug.Log("NOPlate");
                 Trigger();
                 bPressedPlate = false;
             }
         }
-
+        //For Lever: Must to be possesed to work
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
             bLeverinRange = false;
@@ -95,6 +102,15 @@ public class Activator : MonoBehaviour
         {
             Trigger();
             bActiveLever = false;
+        }
+    }
+
+    public void OnReset()
+    {
+        //Fixes On/Off
+        if(bPressedPlate != bstartPPState)
+        {
+            Trigger();
         }
     }
 }

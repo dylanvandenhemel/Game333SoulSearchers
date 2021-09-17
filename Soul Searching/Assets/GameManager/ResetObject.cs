@@ -23,7 +23,6 @@ public class ResetObject : MonoBehaviour
 
     private void ActiveReset()
     {
-        Debug.Log("Reset");
         transform.position = resetPosition;
     }
 }

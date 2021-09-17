@@ -36,6 +36,14 @@ public class Zombie : MonoBehaviour
     {
         zombieStartSpeed = zombieRoamSpeed + 1;
         startRotation = transform.rotation;
+
+        //Hides debug cubes
+        startingPosition.GetComponent<MeshRenderer>().enabled = false;
+        targetLocation.GetComponent<MeshRenderer>().enabled = false;
+
+        //This is to make sure the zombie moves at an even level
+        startingPosition.position = new Vector3(startingPosition.position.x, transform.position.y, startingPosition.position.z);
+        targetLocation.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
     }
 
     private void FixedUpdate()
