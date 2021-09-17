@@ -42,10 +42,6 @@ public class Activator : MonoBehaviour
     {
         TriggerObject.GetComponent<TriggerObjects>().Trigger();
     }
-    public void StopTrigger()
-    {
-        TriggerObject.GetComponent<TriggerObjects>().StopTrigger();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -69,7 +65,7 @@ public class Activator : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            StopTrigger();
+            Trigger();
         }
 
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
@@ -88,7 +84,7 @@ public class Activator : MonoBehaviour
         }
         else
         {
-            StopTrigger();
+            Trigger();
             bActiveLever = false;
         }
     }

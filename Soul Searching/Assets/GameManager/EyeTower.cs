@@ -163,7 +163,7 @@ public class EyeTower : MonoBehaviour
     }
     public void StopTrigger()
     {
-        transform.GetComponent<Activator>().StopTrigger();
+        transform.GetComponent<Activator>().Trigger();
     }
 
     public void ActiveReset()

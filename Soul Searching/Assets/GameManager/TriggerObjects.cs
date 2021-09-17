@@ -12,7 +12,7 @@ public class TriggerObjects : MonoBehaviour
 
     //On off system
     public bool bTrapActive = false;
-    private bool bDoorActive = false;
+    public bool bDoorActive = false;
     private bool bPlatformActive = false;
 
 
@@ -49,22 +49,6 @@ public class TriggerObjects : MonoBehaviour
         }
     }
 
-    public void StopTrigger()
-    {
-        if (bTrap)
-        {
-            StopTrap();
-        }
-        else if (bDoor)
-        {
-            StopDoor();
-        }
-        else if (bPlatform)
-        {
-            StopPlatform();
-        }
-    }
-
 
     //Trap Only
     private void ActiveTrap()
@@ -74,10 +58,7 @@ public class TriggerObjects : MonoBehaviour
             Debug.Log("Trap Triggered");
             bTrapActive = true;
         }
-    }
-    private void StopTrap()
-    {
-        if (bTrapActive)
+        else if(bTrapActive)
         {
             Debug.Log("Trap Stopped");
             bTrapActive = false;
@@ -101,7 +82,7 @@ public class TriggerObjects : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
         {
-            StopTrap();
+            ActiveTrap();
         }
     }
 
@@ -114,10 +95,7 @@ public class TriggerObjects : MonoBehaviour
             gameObject.SetActive(false);
             bDoorActive = true;
         }
-    }
-    private void StopDoor()
-    {
-        if (bDoorActive)
+        else if(bDoorActive)
         {
             Debug.Log("Door Stop");
             gameObject.SetActive(true);
@@ -134,10 +112,7 @@ public class TriggerObjects : MonoBehaviour
             transform.GetComponent<MovingPlatform>().MovePlatform();
             bPlatformActive = true;
         }
-    }
-    private void StopPlatform()
-    {
-        if(bPlatformActive)
+        else if (bPlatformActive)
         {
             transform.GetComponent<MovingPlatform>().ReturnPlatform();
             bPlatformActive = false;
