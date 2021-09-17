@@ -25,6 +25,7 @@ public class EyeTower : MonoBehaviour
     private Quaternion startRotation;
     private float viewReternSpeed = 50f;
 
+    private bool btriggerActivated;
     private bool bTracker = false;
     private Vector3 orgin;
 
@@ -128,15 +129,22 @@ public class EyeTower : MonoBehaviour
                     playerDistance = hit.distance;
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                     {
-                        
-                        StopTrigger();
+                        if(btriggerActivated)
+                        {
+                            Trigger();
+                            btriggerActivated = false;
+                        }
                         
                     }
                     else if (bTracker == true)
                     {
                         transform.LookAt(target);
                         Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
-                        Trigger();
+                        if(!btriggerActivated)
+                        {
+                            Trigger();
+                            btriggerActivated = true;
+                        }
                     }
                     bTracker = true;
                 }
@@ -153,7 +161,8 @@ public class EyeTower : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             bTracker = false;
-            StopTrigger();
+            btriggerActivated = false;
+            Trigger();
         }
             
     }
@@ -161,15 +170,11 @@ public class EyeTower : MonoBehaviour
     {
         transform.GetComponent<Activator>().Trigger();
     }
-    public void StopTrigger()
-    {
-        transform.GetComponent<Activator>().Trigger();
-    }
 
     public void ActiveReset()
     {
         bTracker = false;
-        StopTrigger();
+        Trigger();
     }
 }
 
@@ -179,7 +184,7 @@ public class EyeTower : MonoBehaviour
 [CustomEditor(typeof(EyeTower))]
 public class EyeTowerCI : Editor
 {
-    public bool b180Rotation = false;
+    public bool b180Rotation = true;
     public bool b360Rotation = false;
     enum eyeRotations {b180Rotation, b360Rotation};
     public override void OnInspectorGUI()

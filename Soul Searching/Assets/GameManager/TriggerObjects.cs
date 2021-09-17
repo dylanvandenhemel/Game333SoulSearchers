@@ -22,10 +22,12 @@ public class TriggerObjects : MonoBehaviour
         if (transform.CompareTag("Trap"))
         {
             bTrap = true;
+            Trigger();
         }
         else if (transform.CompareTag("Door"))
         {
             bDoor = true;
+            Trigger();
         }
         else if (transform.CompareTag("Platform"))
         {
