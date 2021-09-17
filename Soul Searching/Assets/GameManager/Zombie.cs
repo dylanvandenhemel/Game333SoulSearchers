@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
+    //Stop Running through walls
+
+
     public bool bpatrol = false;
     public Transform startingPosition;
     public Transform targetLocation;

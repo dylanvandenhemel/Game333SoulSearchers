@@ -7,9 +7,6 @@ using UnityEditor;
 
 public class EyeTower : MonoBehaviour
 {
-    //FIX INSPECTER 180 ONLY GLITCH
-
-
     RaycastHit hit;
     public LayerMask Mask;
     public LayerMask Wall;
@@ -18,8 +15,8 @@ public class EyeTower : MonoBehaviour
 
     //wether it pans 180 or 360 degrees
     public bool bPanningOn = true;
-    private bool bselect180 = false;
-    private bool bselect360 = false;
+    public bool bselect180 = false;
+    public bool bselect360 = false;
     private float panRotationDegrees = 80f;
     private bool bPanned = false;
     private float panSpeed = 50f;
@@ -72,7 +69,7 @@ public class EyeTower : MonoBehaviour
 
     }
 
-    //Connected to the Inspector Selection
+    /*Connected to the Inspector Selection
     public void Selected180()
     {
         bselect180 = true;
@@ -81,6 +78,7 @@ public class EyeTower : MonoBehaviour
     {
         bselect360 = true;
     }
+    */
 
     public void Pan180Degrees()
     {
@@ -183,7 +181,7 @@ public class EyeTower : MonoBehaviour
 
 
 //Edits unity Inspector to show or hide options
-[ExecuteInEditMode]
+/*[ExecuteInEditMode]
 [CustomEditor(typeof(EyeTower))]
 public class EyeTowerCI : Editor
 {
@@ -214,5 +212,6 @@ public class EyeTowerCI : Editor
 
         
     }
-}
 
+}
+*/

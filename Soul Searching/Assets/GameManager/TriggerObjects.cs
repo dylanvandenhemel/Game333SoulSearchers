@@ -58,12 +58,12 @@ public class TriggerObjects : MonoBehaviour
     {
         if(!bTrapActive)
         {
-            Debug.Log("Trap Triggered");
+            //Debug.Log("Trap Triggered");
             bTrapActive = true;
         }
         else if(bTrapActive)
         {
-            Debug.Log("Trap Stopped");
+            //Debug.Log("Trap Stopped");
             bTrapActive = false;
         }
     }
@@ -71,7 +71,7 @@ public class TriggerObjects : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
         {
-            if(other.CompareTag("Player"))
+            if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
             {
                 other.GetComponent<Player>().KillSkeleton();
             }
@@ -94,13 +94,13 @@ public class TriggerObjects : MonoBehaviour
     {
         if(!bDoorActive)
         {
-            Debug.Log("Door Triggered");
+            //Debug.Log("Door Triggered");
             gameObject.SetActive(false);
             bDoorActive = true;
         }
         else if(bDoorActive)
         {
-            Debug.Log("Door Stop");
+            //Debug.Log("Door Stop");
             gameObject.SetActive(true);
             bDoorActive = false;
         }

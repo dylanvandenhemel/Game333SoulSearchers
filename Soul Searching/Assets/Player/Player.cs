@@ -149,8 +149,7 @@ public class Player : MonoBehaviour
     public void KillSkeleton()
     {
         currentSkeletonPile.GetComponent<Collider>().enabled = true;
-        currentSkeletonPile.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
-        //Make sure it is the actual skeleton for gameobject child index
+        currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
         currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
 
         //Player control back
