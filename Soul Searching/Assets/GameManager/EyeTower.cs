@@ -17,7 +17,7 @@ public class EyeTower : MonoBehaviour
     private float playerDistance = 10;
 
     //wether it pans 180 or 360 degrees
-    public bool bPanningOn = false;
+    public bool bPanningOn = true;
     private bool bselect180 = false;
     private bool bselect360 = false;
     private float panRotationDegrees = 80f;
