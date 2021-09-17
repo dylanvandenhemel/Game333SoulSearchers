@@ -8,6 +8,7 @@ public class Activator : MonoBehaviour
     public GameObject TriggerObject;
 
     private bool bPressPlate = false;
+    private bool bPressedPlate;
 
     private bool bLever = false;
     private bool bActiveLever = false;
@@ -47,7 +48,11 @@ public class Activator : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            Trigger();
+            if(!bPressedPlate)
+            {
+                Trigger();
+                bPressedPlate = true;
+            }
         }
         //Must to be possesed to work
         if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
@@ -65,7 +70,11 @@ public class Activator : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            Trigger();
+            if (bPressedPlate)
+            {
+                Trigger();
+                bPressedPlate = false;
+            }
         }
 
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)

@@ -32,6 +32,7 @@ public class TriggerObjects : MonoBehaviour
         else if (transform.CompareTag("Platform"))
         {
             bPlatform = true;
+            Trigger();
         }
     }
 

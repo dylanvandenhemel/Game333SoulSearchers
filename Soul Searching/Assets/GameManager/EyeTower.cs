@@ -7,6 +7,9 @@ using UnityEditor;
 
 public class EyeTower : MonoBehaviour
 {
+    //FIX INSPECTER 180 ONLY GLITCH
+
+
     RaycastHit hit;
     public LayerMask Mask;
     public LayerMask Wall;
