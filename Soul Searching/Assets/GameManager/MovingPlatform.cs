@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    //FIX PLAYER DISTORTION
+    //FIX GHOST KEY JANK
+
     public Transform startingPosition;
     public Transform targetLocation;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
+    public bool bpatrol = false;
     public Transform startingPosition;
     public Transform targetLocation;
     private bool targetReached = false;
@@ -13,6 +14,7 @@ public class Zombie : MonoBehaviour
     private Transform player;
     private bool bTracker = false;
     private Vector3 orgin;
+    private Quaternion startRotation;
 
     RaycastHit hit;
     public LayerMask Mask;
@@ -29,10 +31,10 @@ public class Zombie : MonoBehaviour
         ResetDelegate.Reset -= ActiveReset;
     }
 
-
     private void Start()
     {
         zombieStartSpeed = zombieRoamSpeed + 1;
+        startRotation = transform.rotation;
     }
 
     private void FixedUpdate()
@@ -41,7 +43,7 @@ public class Zombie : MonoBehaviour
         orgin = transform.position;
 
         //Patrol path
-        if (!bTracker && !targetReached)
+        if (!bTracker && !targetReached && bpatrol)
         {
             //resets zombie speed
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, zombieStartSpeed, 10);
@@ -54,7 +56,7 @@ public class Zombie : MonoBehaviour
                 targetReached = true;
             }
         }
-        else if (!bTracker && targetReached)
+        else if (!bTracker && targetReached && bpatrol)
         {
             //resets zombie speed
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, zombieStartSpeed, 10);
@@ -73,11 +75,12 @@ public class Zombie : MonoBehaviour
         {
             if(player.GetComponent<Player>().bpossessSkel == true)
             {
+                transform.rotation = startRotation;
                 bTracker = false;
             }
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
-            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 5.2f - 2);
+            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 5.2f);
             zombieRoamSpeed += 0.12f;
         }
         

@@ -108,14 +108,16 @@ public class Player : MonoBehaviour
         if(transform.childCount == playerChildCount)
         {
             //Sets pile with character until player unpossesses
-            transform.position = currentSkeletonPile.GetChild(0).position;
+            transform.position = currentSkeletonPile.position;
+            //currentSkeletonPile.rotation = transform.rotation;
             currentSkeletonPile.parent = transform;
             currentSkeletonPile.GetComponent<Collider>().enabled = false;
-            currentSkeletonPile.GetComponent<MeshRenderer>().enabled = false;
+            currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
             //Player becomes Skeleton
             bpossessSkel = true;
-            transform.GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+            currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
                                                                 
                                 //Make sure it is the actual skeleton for gameobject child index
             currentSkeletonPile.GetChild(0).gameObject.SetActive(true);
@@ -126,14 +128,15 @@ public class Player : MonoBehaviour
         }
         else
         {
-            currentSkeletonPile.GetComponent<Collider>().enabled = true;
-            currentSkeletonPile.GetComponent<MeshRenderer>().enabled = true;
+            //currentSkeletonPile.GetChild(1).GetComponent<Collider>().enabled = true;
+            currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
                                 //Make sure it is the actual skeleton for gameobject child index
             currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
 
             //Player control back
             bpossessSkel = false;
-            transform.GetComponent<MeshRenderer>().enabled = true;
+            currentSkeletonPile.GetComponent<Collider>().enabled = true;
+            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             currentSkeletonPile.parent = null;
             pActions.PlayerActions.Possess.performed -= Possess;
 
