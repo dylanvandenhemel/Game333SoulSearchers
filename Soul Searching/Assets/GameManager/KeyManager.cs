@@ -12,9 +12,19 @@ public class KeyManager : MonoBehaviour
     public bool collectedGoldKey = false;
 
     public bool collectedGhostKey = false;
+
+    private void OnEnable()
+    {
+        ResetDelegate.Reset += DropGhostKey;
+    }
+    private void OnDisable()
+    {
+        ResetDelegate.Reset -= DropGhostKey;
+    }
+
+
     public void KeyCollected(Transform currentKey)
     {
-        //Disable Key instead of mesh because of prefab
         if (currentKey.CompareTag("KeyBronze"))
         {
             collectedBronzeKey = true;
@@ -41,6 +51,10 @@ public class KeyManager : MonoBehaviour
     public void UsedGhostKey()
     {
         ghostKey.gameObject.SetActive(false);
+    }
+    private void DropGhostKey()
+    {
+        collectedGhostKey = false;
     }
 
     public void Update()

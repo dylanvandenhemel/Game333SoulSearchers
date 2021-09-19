@@ -111,6 +111,7 @@ public class Player : MonoBehaviour
             transform.position = currentSkeletonPile.position;
             //currentSkeletonPile.rotation = transform.rotation;
             currentSkeletonPile.parent = transform;
+
             currentSkeletonPile.GetComponent<Collider>().enabled = false;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
@@ -166,6 +167,7 @@ public class Player : MonoBehaviour
     {
         if(bresetPlayer)
         {
+            //CController is strict
             cController.enabled = false;
             cController.transform.position = resetLocation;
             if(cController.transform.position == resetLocation)
@@ -173,6 +175,7 @@ public class Player : MonoBehaviour
                 cController.enabled = true;
                 bresetPlayer = false;
             }
+            
         }
     }
 

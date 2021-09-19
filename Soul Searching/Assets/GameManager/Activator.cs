@@ -53,6 +53,7 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
+            Debug.Log(other.name);
             if(!bPressedPlate)
             {
                 Debug.Log("PressedPlate");
@@ -60,6 +61,7 @@ public class Activator : MonoBehaviour
                 bPressedPlate = true;
             }
         }
+
         //For Lever: Must to be possesed to work
         if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
@@ -76,6 +78,7 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
+            Debug.Log(other.name);
             if (bPressedPlate)
             {
                 Debug.Log("NOPlate");
@@ -83,6 +86,7 @@ public class Activator : MonoBehaviour
                 bPressedPlate = false;
             }
         }
+
         //For Lever: Must to be possesed to work
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
@@ -111,6 +115,7 @@ public class Activator : MonoBehaviour
         if(bPressedPlate != bstartPPState)
         {
             Trigger();
+            bPressedPlate = bstartPPState;
         }
     }
 }
