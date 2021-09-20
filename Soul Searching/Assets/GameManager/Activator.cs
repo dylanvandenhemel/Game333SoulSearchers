@@ -31,7 +31,8 @@ public class Activator : MonoBehaviour
 
     private void Start()
     {
-        bstartPPState = bPressedPlate;
+
+
         //Only to allow the on trigger for pressplate
         if (transform.CompareTag("PressPlate"))
         {
@@ -53,10 +54,8 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            Debug.Log(other.name);
             if(!bPressedPlate)
             {
-                Debug.Log("PressedPlate");
                 Trigger();
                 bPressedPlate = true;
             }
@@ -78,10 +77,8 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            Debug.Log(other.name);
             if (bPressedPlate)
             {
-                Debug.Log("NOPlate");
                 Trigger();
                 bPressedPlate = false;
             }
@@ -116,6 +113,12 @@ public class Activator : MonoBehaviour
         {
             Trigger();
             bPressedPlate = bstartPPState;
+        }
+
+        if (bActiveLever)
+        {
+            Trigger();
+            bActiveLever = false;
         }
     }
 }
