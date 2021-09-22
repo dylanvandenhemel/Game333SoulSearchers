@@ -39,7 +39,7 @@ public class Map : MonoBehaviour
     private void AutoMap()
     {
         //each call it resets for debug purposes
-        waitLoadOpens = 0;
+        //waitLoadOpens = 0;
         nOpen = false;
         eOpen = false;
         sOpen = false;
@@ -48,7 +48,6 @@ public class Map : MonoBehaviour
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
         {
             nOpen = true;
-            waitLoadOpens++;
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
         }
 
@@ -74,98 +73,98 @@ public class Map : MonoBehaviour
         }
 
 
-        if (waitLoadOpens == 3)
+        //if (waitLoadOpens == 3)
             if (nOpen && eOpen && wOpen) //north dead end
             {
-                PrefabUtility.InstantiatePrefab(NDeadEnd);
-                NDeadEnd.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject nde = PrefabUtility.InstantiatePrefab(NDeadEnd) as GameObject;
+                nde.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (nOpen && eOpen && sOpen) //east dead end
             {
-                PrefabUtility.InstantiatePrefab(EDeadEnd);
-                EDeadEnd.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject ede = PrefabUtility.InstantiatePrefab(EDeadEnd) as GameObject;
+                ede.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (eOpen && sOpen && wOpen) //south dead end
             {
-                PrefabUtility.InstantiatePrefab(SDeadEnd);
-                SDeadEnd.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject sde = PrefabUtility.InstantiatePrefab(SDeadEnd) as GameObject;
+                sde.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (nOpen && sOpen && wOpen) //west dead end
             {
-                PrefabUtility.InstantiatePrefab(WDeadEnd);
-                WDeadEnd.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject wde = PrefabUtility.InstantiatePrefab(WDeadEnd) as GameObject;
+                wde.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
 
 
-        if (waitLoadOpens == 2)
+        //if (waitLoadOpens == 2)
             //Corners
             if (sOpen && wOpen) //bottem left corner
             {
-                PrefabUtility.InstantiatePrefab(BLCorner);
-                BLCorner.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject blc = PrefabUtility.InstantiatePrefab(BLCorner) as GameObject;
+                blc.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (eOpen && sOpen) //bottem right corner
             {
-                PrefabUtility.InstantiatePrefab(BRCorner);
-                BRCorner.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject brc = PrefabUtility.InstantiatePrefab(BRCorner) as GameObject;
+                brc.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (nOpen && wOpen) //top left corner
             {
-                PrefabUtility.InstantiatePrefab(TLCorner);
-                TLCorner.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject tlc = PrefabUtility.InstantiatePrefab(TLCorner) as GameObject;
+                tlc.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (nOpen && eOpen) //top right corner
             {
-                PrefabUtility.InstantiatePrefab(TRCorner);
-                TRCorner.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject trc = PrefabUtility.InstantiatePrefab(TRCorner) as GameObject;
+                trc.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             //hallways
             else if (nOpen && sOpen) // Horizontal Hallway
             {
-                PrefabUtility.InstantiatePrefab(EWHallway);
-                EWHallway.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject ewh = PrefabUtility.InstantiatePrefab(EWHallway) as GameObject;
+                ewh.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (eOpen && wOpen) // Vertical hallway
             {
-                PrefabUtility.InstantiatePrefab(NSHallway);
-                NSHallway.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject nsh = PrefabUtility.InstantiatePrefab(NSHallway) as GameObject;
+                nsh.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
 
         //1 wall
-        if (waitLoadOpens == 1)
+        //if (waitLoadOpens == 1)
             if(nOpen)
             {
-                PrefabUtility.InstantiatePrefab(nWall);
-                nWall.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject nw = PrefabUtility.InstantiatePrefab(nWall) as GameObject;
+                nw.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if(eOpen)
             {
-                PrefabUtility.InstantiatePrefab(eWall);
-                eWall.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject ew = PrefabUtility.InstantiatePrefab(eWall) as GameObject;
+                ew.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (sOpen)
             {
-                PrefabUtility.InstantiatePrefab(sWall);
-                sWall.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject sw = PrefabUtility.InstantiatePrefab(sWall) as GameObject;
+                sw.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
             else if (wOpen)
             {
-                PrefabUtility.InstantiatePrefab(wWall);
-                wWall.transform.position = transform.position;
-                DestroyImmediate(gameObject);
+                GameObject ww = PrefabUtility.InstantiatePrefab(wWall) as GameObject;
+                ww.transform.position = transform.position;
+                //DestroyImmediate(gameObject);
             }
 
     }
