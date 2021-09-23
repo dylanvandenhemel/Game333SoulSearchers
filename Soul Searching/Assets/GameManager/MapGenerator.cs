@@ -7,15 +7,33 @@ using System;
 public class MapGenerator : MonoBehaviour
 {
     public bool mGenerate;
-    public static Action Generate = delegate { };
 
+    private int mapChildCount;
+    private int counter;
+    public List<GameObject> origTile;
 
     public void Update()
     {
         if(mGenerate)
         {
-            Generate();
             mGenerate = false;
+            mapChildCount = transform.childCount;
+            origTile.Clear();
+            for(counter = 0; counter < mapChildCount; counter++)
+            {
+                origTile.Add(transform.GetChild(counter).gameObject);
+            }
+            
+            for (counter = 0; counter < mapChildCount; counter++)
+            {
+                transform.GetChild(counter).GetComponent<Map>().AutoMap();
+            }
+            
+            for (counter = 0; counter < origTile.Count; counter++)
+            {
+                DestroyImmediate(origTile[counter]);
+            }
+            
         }
     }
 

@@ -123,6 +123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2774536904149814658}
   - component: {fileID: 1443716752364007906}
+  - component: {fileID: 671819800101321852}
+  - component: {fileID: 8009133586398196793}
   m_Layer: 9
   m_Name: EastWall
   m_TagString: Untagged
@@ -158,6 +160,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22173691, y: 2.3765595, z: 3.1029377}
   m_Center: {x: 1.4548831, y: 0.6882796, z: -0.026694536}
+--- !u!65 &671819800101321852
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760001884975584517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8009133586398196793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760001884975584517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d6570ca59bac24f8adad2b6bae9150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapTile: {fileID: 11400000, guid: 9f71ab30466b6e14b9d2b285279523a1, type: 2}
+  Wall:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8949281391883946965
 GameObject:
   m_ObjectHideFlags: 0

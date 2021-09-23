@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2078322941762046518}
   - component: {fileID: 8386539044768195057}
+  - component: {fileID: 3217104705215475251}
+  - component: {fileID: 164012958188338772}
   m_Layer: 9
   m_Name: WestWall
   m_TagString: Untagged
@@ -25,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2285248248799666411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.5, y: 0, z: -13.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9022171000658202040}
@@ -45,6 +47,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25074124, y: 2.4051754, z: 3.0167136}
   m_Center: {x: -1.4393691, y: 0.7025883, z: 0.00026917458}
+--- !u!65 &3217104705215475251
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285248248799666411}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &164012958188338772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285248248799666411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d6570ca59bac24f8adad2b6bae9150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapTile: {fileID: 11400000, guid: 9f71ab30466b6e14b9d2b285279523a1, type: 2}
+  Wall:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &7000733320010732617
 GameObject:
   m_ObjectHideFlags: 0

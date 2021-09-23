@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3569687880749314044}
   - component: {fileID: 3446421554894540519}
   - component: {fileID: 5264137178441374097}
+  - component: {fileID: 6896470958645966144}
+  - component: {fileID: 4767825613667322900}
   m_Layer: 9
   m_Name: NSHallway
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580646170953078975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 0, z: -10.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4849037494398484768}
@@ -59,6 +61,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.24190295, y: 2.3870182, z: 3.037251}
   m_Center: {x: 1.3907745, y: 0.6935084, z: 0.0005438328}
+--- !u!65 &6896470958645966144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580646170953078975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4767825613667322900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580646170953078975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d6570ca59bac24f8adad2b6bae9150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapTile: {fileID: 11400000, guid: 9f71ab30466b6e14b9d2b285279523a1, type: 2}
+  Wall:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &996040260245875625
 GameObject:
   m_ObjectHideFlags: 0

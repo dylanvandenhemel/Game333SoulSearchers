@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8870033931025859664}
   - component: {fileID: 6718009513374876472}
+  - component: {fileID: 6033308080896307617}
+  - component: {fileID: 158805946391497398}
   m_Layer: 9
   m_Name: NorthWall
   m_TagString: Untagged
@@ -25,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896272938833988842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 0, z: -13.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5049009692553566991}
@@ -45,6 +47,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.0255518, y: 2.3819017, z: 0.2193501}
   m_Center: {x: 0.013640404, y: 0.6909504, z: 1.3721031}
+--- !u!65 &6033308080896307617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896272938833988842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &158805946391497398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896272938833988842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d6570ca59bac24f8adad2b6bae9150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapTile: {fileID: 11400000, guid: 9f71ab30466b6e14b9d2b285279523a1, type: 2}
+  Wall:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &5206490413003200951
 GameObject:
   m_ObjectHideFlags: 0
