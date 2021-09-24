@@ -76,6 +76,8 @@ public class Player : MonoBehaviour
         {
             if (other.CompareTag("SkeletonPile"))
             {
+                GetComponent<UIElements>().PossessUIOn();
+
                 currentSkeletonPile = other.transform;
                 pActions.PlayerActions.Possess.performed += Possess;
             }
@@ -96,6 +98,8 @@ public class Player : MonoBehaviour
         {
             if (other.CompareTag("SkeletonPile"))
             {
+                GetComponent<UIElements>().PossessUIOff();
+
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
         }
@@ -109,6 +113,7 @@ public class Player : MonoBehaviour
         {
             //Sets pile with character until player unpossesses
             transform.position = currentSkeletonPile.position;
+            transform.rotation = currentSkeletonPile.rotation;
             //currentSkeletonPile.rotation = transform.rotation;
             currentSkeletonPile.parent = transform;
 
@@ -139,6 +144,9 @@ public class Player : MonoBehaviour
             currentSkeletonPile.GetComponent<Collider>().enabled = true;
             transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             currentSkeletonPile.parent = null;
+            //resets position and rotation
+            currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
+            currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.3f, currentSkeletonPile.position.z);
             pActions.PlayerActions.Possess.performed -= Possess;
 
             //allows player to pass trough walls again
