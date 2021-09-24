@@ -12,24 +12,24 @@ public class Map : MonoBehaviour
 
     private float maxDistance = 3;
     public LayerMask Wall;
-
+    RaycastHit hitInfo;
     public void AutoMap()
     {
+        
         nOpen = false;
         eOpen = false;
         sOpen = false;
         wOpen = false;
-
-        //each call it resets for debug purposes
-        //waitLoadOpens = 0;
+        
 
         //Detect Walls
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, out hitInfo, maxDistance, Wall))
         {
+            Debug.Log("look");
             nOpen = true;
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
         }
-
+        Debug.DrawRay(hitInfo.point, Vector3.up, Color.red, 4);
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, maxDistance, Wall))
         {
             eOpen = true;
@@ -153,10 +153,10 @@ public class Map : MonoBehaviour
         }
         else if(!nOpen && !eOpen && !sOpen && !wOpen)
         {           
+            Debug.Log("called");
             GameObject mapSpace = PrefabUtility.InstantiatePrefab(mapTile.space) as GameObject;
             mapSpace.transform.position = transform.position;
             mapSpace.transform.parent = transform.parent;
-           
         }
 
     }
