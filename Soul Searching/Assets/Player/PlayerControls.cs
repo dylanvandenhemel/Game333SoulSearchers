@@ -49,6 +49,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c96a1e44-7acb-40ae-8369-655aa92ad62c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -216,6 +224,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Whistle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9c71232-af32-4cff-acb2-27875a365735"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d685032-1add-4486-a850-d908800bfb2a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +281,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerActions_Possess = m_PlayerActions.FindAction("Possess", throwIfNotFound: true);
         m_PlayerActions_Whistle = m_PlayerActions.FindAction("Whistle", throwIfNotFound: true);
+        m_PlayerActions_Pause = m_PlayerActions.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +335,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActions_Interact;
     private readonly InputAction m_PlayerActions_Possess;
     private readonly InputAction m_PlayerActions_Whistle;
+    private readonly InputAction m_PlayerActions_Pause;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -312,6 +344,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
         public InputAction @Possess => m_Wrapper.m_PlayerActions_Possess;
         public InputAction @Whistle => m_Wrapper.m_PlayerActions_Whistle;
+        public InputAction @Pause => m_Wrapper.m_PlayerActions_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -333,6 +366,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Whistle.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWhistle;
                 @Whistle.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWhistle;
                 @Whistle.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWhistle;
+                @Pause.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -349,6 +385,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Whistle.started += instance.OnWhistle;
                 @Whistle.performed += instance.OnWhistle;
                 @Whistle.canceled += instance.OnWhistle;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -377,5 +416,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnPossess(InputAction.CallbackContext context);
         void OnWhistle(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

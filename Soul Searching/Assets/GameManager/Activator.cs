@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Activator : MonoBehaviour
 {
+    private GameObject player;
     public GameObject TriggerObject;
 
     private bool bPressPlate = false;
@@ -44,6 +45,11 @@ public class Activator : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void Trigger()
     {
         TriggerObject.GetComponent<TriggerObjects>().Trigger();
@@ -64,8 +70,10 @@ public class Activator : MonoBehaviour
         //For Lever: Must to be possesed to work
         if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
+            player = other.gameObject;
             if (!bLeverinRange)
             {
+                other.GetComponent<UIElements>().LeverUIOn();
                 pActions.PlayerActions.Interact.performed += LeverPull;
                 bLeverinRange = true;
             }
@@ -87,6 +95,7 @@ public class Activator : MonoBehaviour
         //For Lever: Must to be possesed to work
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
+            other.GetComponent<UIElements>().LeverUIOff();
             bLeverinRange = false;
             pActions.PlayerActions.Interact.performed -= LeverPull;
         }
@@ -94,15 +103,18 @@ public class Activator : MonoBehaviour
 
     private void LeverPull(InputAction.CallbackContext c)
     {
-        if(!bActiveLever)
+        if(player.GetComponent<Player>().bpossessSkel)
         {
-            Trigger();
-            bActiveLever = true;
-        }
-        else
-        {
-            Trigger();
-            bActiveLever = false;
+            if (!bActiveLever)
+            {
+                Trigger();
+                bActiveLever = true;
+            }
+            else
+            {
+                Trigger();
+                bActiveLever = false;
+            }
         }
     }
 

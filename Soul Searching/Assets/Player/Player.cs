@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
 
+    private bool bPauseed;
+
     private void OnEnable()
     {
         pActions = new PlayerControls();
@@ -169,6 +171,20 @@ public class Player : MonoBehaviour
 
         //allows player to pass trough walls again
         gameObject.layer = LayerMask.NameToLayer("Phase");
+    }
+
+    public void OnPause()
+    {
+        if(!bPauseed)
+        {
+            bPauseed = true;
+            pActions.PlayerActions.Possess.performed -= Possess;
+        }
+        else if(bPauseed)
+        {
+            bPauseed = false;
+            pActions.PlayerActions.Possess.performed += Possess;
+        }
     }
 
     private void ResetPlayer()
