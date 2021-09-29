@@ -88,7 +88,7 @@ public class Activator : MonoBehaviour
         }
 
         //For Lever: Must to be possesed to work
-        if (other.CompareTag("Player") || !other.GetComponent<Player>().bpossessSkel && bLever)
+        if (other.CompareTag("Player") && bLever)
         {
             other.GetComponent<UIElements>().LeverUIOff();
             bLeverinRange = false;

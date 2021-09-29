@@ -59,13 +59,23 @@ public class TriggerObjects : MonoBehaviour
         if(!bTrapActive)
         {
             //Debug.Log("Trap Triggered");
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
             bTrapActive = true;
         }
         else if(bTrapActive)
         {
             //Debug.Log("Trap Stopped");
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
             bTrapActive = false;
         }
+    }
+
+    IEnumerator TrapTimer()
+    {
+        yield return new WaitForSeconds(1);
+        ActiveTrap();
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -76,11 +86,12 @@ public class TriggerObjects : MonoBehaviour
                 Debug.Log("Zombie");
                 other.GetComponentInParent<Zombie>().KillEnemy();
             }
-            if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
+            if(other.CompareTag("Player"))
             {
                 other.GetComponent<Player>().KillSkeleton();
             }
             ActiveTrap();
+            StartCoroutine(TrapTimer());
         }
         
         

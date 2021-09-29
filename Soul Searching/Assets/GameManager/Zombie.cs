@@ -88,8 +88,8 @@ public class Zombie : MonoBehaviour
             }
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
-            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 5.2f);
-            zombieRoamSpeed += 0.18f;
+            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 8f);
+            zombieRoamSpeed += 0.1f;
         }
         
     }
@@ -101,7 +101,10 @@ public class Zombie : MonoBehaviour
         {
             player = other.transform;
             
-            transform.LookAt(player);
+            if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
+            {
+                transform.LookAt(player);
+            }
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
             {
