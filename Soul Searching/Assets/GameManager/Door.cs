@@ -10,7 +10,8 @@ public class Door : MonoBehaviour
         {
             if(other.GetComponent<KeyManager>().collectedBronzeKey)
             {
-                //Debug.Log("Bronze Door Open");
+                other.GetComponent<UIElements>().BronzeKeyUIOff();
+
                 other.GetComponent<KeyManager>().collectedBronzeKey = false;
 
                 gameObject.SetActive(false);
@@ -20,7 +21,8 @@ public class Door : MonoBehaviour
         {
             if (other.GetComponent<KeyManager>().collectedSilverKey)
             {
-                //Debug.Log("Silver Door Open");
+                other.GetComponent<UIElements>().SilverKeyUIOff();
+
                 other.GetComponent<KeyManager>().collectedSilverKey = false;
 
                 gameObject.SetActive(false);
@@ -30,7 +32,8 @@ public class Door : MonoBehaviour
         {
             if (other.GetComponent<KeyManager>().collectedGoldKey)
             {
-                //Debug.Log("Gold Door Open");
+                other.GetComponent<UIElements>().GoldKeyUIOff();
+
                 other.GetComponent<KeyManager>().collectedGoldKey = false;
 
                 gameObject.SetActive(false);
@@ -40,7 +43,6 @@ public class Door : MonoBehaviour
         {
             if (other.GetComponent<KeyManager>().collectedGhostKey)
             {
-                //Debug.Log("Ghost Door Open");
                 other.GetComponent<KeyManager>().collectedGhostKey = false;
                 other.GetComponent<KeyManager>().UsedGhostKey();
 
