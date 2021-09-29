@@ -71,6 +71,11 @@ public class TriggerObjects : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bTrap)
         {
+            if(other.CompareTag("Zombie"))
+            {
+                Debug.Log("Zombie");
+                other.GetComponentInParent<Zombie>().KillEnemy();
+            }
             if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
             {
                 other.GetComponent<Player>().KillSkeleton();

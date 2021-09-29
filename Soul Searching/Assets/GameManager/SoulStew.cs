@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoulStew : MonoBehaviour
 {
+    //weird bug where if player stands still and unpossesses they will not die until they move
 
     private Quaternion startRotation;
     private float viewReternSpeed = 100;
@@ -71,6 +72,8 @@ public class SoulStew : MonoBehaviour
     private void StewAttack()
     {
         Debug.Log("Attacked");
+        target.GetComponent<Player>().bresetPlayer = true;
+        target.GetComponent<ResetDelegate>().bcallReset = true;
     }
 }
 

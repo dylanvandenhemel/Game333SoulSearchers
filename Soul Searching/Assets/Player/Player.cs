@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     //player
     private Vector3 resetLocation;
-    private bool bresetPlayer = false;
+    public bool bresetPlayer = false;
     PlayerControls pActions;
     private CharacterController cController;
     private Vector3 desiredDirection;
@@ -85,12 +85,14 @@ public class Player : MonoBehaviour
             }
         }
 
+        //kill Player
         if(other.CompareTag("DeathBox") && !bpossessSkel)
         {
             //player holds reset manager
             bresetPlayer = true;
             GetComponent<ResetDelegate>().bcallReset = true;
-            
+            pActions.PlayerActions.Possess.performed -= Possess;
+
         }
 
     }
@@ -175,22 +177,30 @@ public class Player : MonoBehaviour
 
     public void OnPause()
     {
+        //Supposed to disable buttons but has wierd bug player can't possess in range
+        /*
         if(!bPauseed)
         {
-            bPauseed = true;
+            Debug.Log("Pause");
             pActions.PlayerActions.Possess.performed -= Possess;
+            bPauseed = true;
         }
         else if(bPauseed)
         {
-            bPauseed = false;
+            Debug.Log("UNPause");
             pActions.PlayerActions.Possess.performed += Possess;
+            bPauseed = false;
         }
+        */
+        
     }
 
     private void ResetPlayer()
     {
         if(bresetPlayer)
         {
+            pActions.PlayerActions.Possess.performed -= Possess;
+
             //CController is strict
             cController.enabled = false;
             cController.transform.position = resetLocation;

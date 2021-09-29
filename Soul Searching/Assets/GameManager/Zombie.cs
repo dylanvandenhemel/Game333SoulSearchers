@@ -89,19 +89,13 @@ public class Zombie : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 5.2f);
-            zombieRoamSpeed += 0.12f;
+            zombieRoamSpeed += 0.18f;
         }
         
     }
 
     public void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Trap") && other.GetComponent<TriggerObjects>().bTrapActive == true)
-        {
-            KillZombie();
-        }
-
-
 
         if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel == false)
         {
@@ -135,10 +129,9 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void KillZombie()
+    public void KillEnemy()
     {
-        //--TODO-- Make it better
-        GetComponent<MeshRenderer>().enabled = false;
+        //Kill zombie on trap
         GetComponent<Collider>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
@@ -147,8 +140,6 @@ public class Zombie : MonoBehaviour
 
     public void ActiveReset()
     {
-        //--TODO-- Make it better
-        GetComponent<MeshRenderer>().enabled = true;
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);

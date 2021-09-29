@@ -47,8 +47,9 @@ public class UIElements : MonoBehaviour
     {        
         if(!bPaused)
         {
+            pauseButton.PlayerActions.Whistle.performed += QuitGame;
+
             GetComponent<Player>().OnPause();
-            Debug.Log("Pause");
             uIElements.transform.GetChild(2).gameObject.SetActive(true);
             bPaused = true;
 
@@ -56,13 +57,20 @@ public class UIElements : MonoBehaviour
         }
         else if (bPaused)
         {
+            pauseButton.PlayerActions.Whistle.performed -= QuitGame;
+
             GetComponent<Player>().OnPause();
-            Debug.Log("UNPause");
             uIElements.transform.GetChild(2).gameObject.SetActive(false);
             bPaused = false;
 
             Time.timeScale = 1;
         }
+    }
+
+    private void QuitGame(InputAction.CallbackContext c)
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 
 
