@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Activator : MonoBehaviour
 {
     private GameObject player;
-    public GameObject TriggerObject;
+    public List<GameObject> TriggerObject;
 
     private bool bPressPlate = false;
     private bool bPressedPlate;
@@ -47,7 +47,11 @@ public class Activator : MonoBehaviour
 
     public void Trigger()
     {
-        TriggerObject.GetComponent<TriggerObjects>().Trigger();
+        for (int i = 0; i < TriggerObject.Count; i++)
+        {
+            //not correct vector type?
+            TriggerObject[i].GetComponent<TriggerObjects>().Trigger();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
