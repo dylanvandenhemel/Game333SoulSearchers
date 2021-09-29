@@ -48,6 +48,8 @@ public class Zombie : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //fixes the forces of the zombie to 0;
+        transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //keeps center at center of zombie
         orgin = transform.position;
 
@@ -82,10 +84,11 @@ public class Zombie : MonoBehaviour
         //Zombie sees ghost player
         if(bTracker)
         {
-            if(player.GetComponent<Player>().bpossessSkel == true)
+            if (player.GetComponent<Player>().bpossessSkel == true)
             {
                 bTracker = false;
             }
+
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 8f);
@@ -111,12 +114,10 @@ public class Zombie : MonoBehaviour
                 playerDistance = hit.distance;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                 {
-                    Debug.Log("Wall");
                     bTracker = false;
                 }
                 else
                 {
-                    Debug.Log("Player");
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
                     bTracker = true;
                 }
