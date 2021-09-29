@@ -101,6 +101,7 @@ public class Zombie : MonoBehaviour
         {
             player = other.transform;
             
+            transform.LookAt(player);
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
             {
@@ -112,7 +113,6 @@ public class Zombie : MonoBehaviour
                 }
                 else
                 {
-                    transform.LookAt(player);
                     Debug.Log("Player");
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
                     bTracker = true;
@@ -146,6 +146,7 @@ public class Zombie : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
         transform.position = startingPosition.position;
+        transform.rotation = startRotation;
         bTracker = false;
     }
 

@@ -92,9 +92,9 @@ GameObject:
   - component: {fileID: 585772744317122940}
   - component: {fileID: 7665891955981600569}
   - component: {fileID: 4159450318300189090}
-  - component: {fileID: 2627534346407189545}
   - component: {fileID: 7730270836185287317}
   - component: {fileID: 8900200693188512365}
+  - component: {fileID: 3660393028917331149}
   - component: {fileID: 6573723658650566982}
   - component: {fileID: 1116580540663344772}
   m_Layer: 7
@@ -143,23 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e039d924e5aa76c4ba2dbb1c96c786aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bresetPlayer: 0
   speed: 5
   faceRotationSpeed: 5
   bpossessSkel: 0
   skelSpeed: 3
   skelfaceRotationSpeed: 4
---- !u!114 &2627534346407189545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566180116732693177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592eb12bc4ecd644c980650b34d28743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7730270836185287317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +174,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c3b2d7615a73c4ca57130103da0dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3660393028917331149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566180116732693177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8071d1e9af14439113c2542b951c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedBronzeKey: 0
+  collectedSilverKey: 0
+  collectedGoldKey: 0
+  collectedGhostKey: 0
 --- !u!143 &6573723658650566982
 CharacterController:
   m_ObjectHideFlags: 0
