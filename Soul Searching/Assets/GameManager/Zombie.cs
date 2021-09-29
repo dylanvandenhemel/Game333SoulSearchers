@@ -108,10 +108,12 @@ public class Zombie : MonoBehaviour
                 playerDistance = hit.distance;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                 {
+                    Debug.Log("Wall");
                     bTracker = false;
                 }
                 else
                 {
+                    Debug.Log("Player");
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
                     bTracker = true;
                 }
