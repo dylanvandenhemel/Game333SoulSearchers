@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+#if UNITY_EDITOR
+using UnityEditor;
 [ExecuteInEditMode]
+
+
 public class MapGenerator : MonoBehaviour
 {
     public bool mGenerate;
@@ -31,7 +34,6 @@ public class MapGenerator : MonoBehaviour
             
             for (counter = 0; counter < origTile.Count; counter++)
             {
-                Debug.Log("Destroy");
                 DestroyImmediate(origTile[counter]);
             }
             
@@ -39,3 +41,4 @@ public class MapGenerator : MonoBehaviour
     }
 
 }
+#endif

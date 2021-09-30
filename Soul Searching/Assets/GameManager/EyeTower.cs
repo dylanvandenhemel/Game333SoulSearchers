@@ -19,11 +19,11 @@ public class EyeTower : MonoBehaviour
     public bool bselect360 = false;
     private float panRotationDegrees = 80f;
     private bool bPanned = false;
-    private float panSpeed = 50f;
+    public float panSpeed = 50f;
     private Quaternion panLeft;
     private Quaternion panRight;
     private Quaternion startRotation;
-    private float viewReternSpeed = 50f;
+    private float viewReternSpeed;
 
     private bool btriggerActivated;
     private bool bTracker = false;
@@ -41,6 +41,7 @@ public class EyeTower : MonoBehaviour
 
     private void Start()
     {
+        viewReternSpeed = panSpeed;
         startRotation = transform.rotation;
         orgin = transform.position;
 
@@ -117,41 +118,35 @@ public class EyeTower : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player"))
+        
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player"))
+            target = other.transform;
+            transform.LookAt(target);
+            playerDistance = hit.distance;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 6, Mask))
             {
-                target = other.transform;
-                transform.LookAt(target);
-
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
+                bTracker = true;
+                if (bTracker == true)
                 {
-                    playerDistance = hit.distance;
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
+                    transform.LookAt(target);
+                    Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
+                    if(!btriggerActivated)
                     {
-                        if(btriggerActivated)
-                        {
-                            Trigger();
-                            btriggerActivated = false;
-                        }
-                        
+                        Trigger();
+                        btriggerActivated = true;
                     }
-                    else if (bTracker == true)
-                    {
-                        transform.LookAt(target);
-                        Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
-                        if(!btriggerActivated)
-                        {
-                            Trigger();
-                            btriggerActivated = true;
-                        }
-                    }
-                    bTracker = true;
                 }
-
+            }
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
+            {
+                //Make not see through walls
+                Debug.Log("Wall");
+                bTracker = false;
             }
 
         }
+
 
     }
     

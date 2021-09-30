@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
 [ExecuteInEditMode]
+
 public class Map : MonoBehaviour
 {
     private bool nOpen, eOpen, sOpen, wOpen;
@@ -159,3 +160,4 @@ public class Map : MonoBehaviour
 
     }
 }
+#endif

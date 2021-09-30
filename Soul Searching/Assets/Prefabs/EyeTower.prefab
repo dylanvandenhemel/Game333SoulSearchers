@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5629801575555276042}
-  - component: {fileID: 975409240756942012}
   - component: {fileID: 2270229297794590515}
   - component: {fileID: 7077801662041926003}
+  - component: {fileID: 7564046321267960786}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -27,27 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125754456921743894}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.43, z: 0}
   m_LocalScale: {x: 1.02508, y: 0.82815, z: 1.01755}
   m_Children:
   - {fileID: 6999188876506551893}
   m_Father: {fileID: 7576047995310240302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &975409240756942012
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125754456921743894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2
-  m_Height: 5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 3}
 --- !u!114 &2270229297794590515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +67,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a55d354a4bcad040a75b03297618806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerObject: {fileID: 0}
+  TriggerObject:
+  - {fileID: 0}
+--- !u!65 &7564046321267960786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125754456921743894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6737945, y: 1, z: 5.471723}
+  m_Center: {x: 0.25639525, y: 0, z: 2.9977639}
 --- !u!1 &3779832609111708345
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3779832609111708345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.95996696, z: 3.0925999}
-  m_LocalScale: {x: 3.7470262, y: 0.82784027, z: 5.2267327}
+  m_LocalPosition: {x: 0.1639, y: -0.61, z: 3.1799}
+  m_LocalScale: {x: 2.95615, y: 0.82784027, z: 5.401028}
   m_Children: []
   m_Father: {fileID: 5629801575555276042}
   m_RootOrder: 0
@@ -188,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 5042503233838571450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 5629801575555276042}
   - {fileID: 3698219645622690902}
@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 3698219645622690902}
   - component: {fileID: 1396436989032254433}
   - component: {fileID: 6644753754608755473}
+  - component: {fileID: 8659263352472825893}
   m_Layer: 0
   m_Name: Eye_Tower
   m_TagString: Untagged
@@ -221,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6437768907662280201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.26, z: 0}
   m_LocalScale: {x: 0.52763, y: 0.52763, z: 0.52763}
   m_Children: []
   m_Father: {fileID: 7576047995310240302}
@@ -276,3 +277,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8659263352472825893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6437768907662280201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8156238, y: 9.301702, z: 2.1811213}
+  m_Center: {x: -0.049204137, y: -0.037036374, z: 0}
