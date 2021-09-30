@@ -31,6 +31,7 @@ public class MapGenerator : MonoBehaviour
             
             for (counter = 0; counter < origTile.Count; counter++)
             {
+                Debug.Log("Destroy");
                 DestroyImmediate(origTile[counter]);
             }
             

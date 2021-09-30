@@ -9,17 +9,22 @@ public class MainMenu : MonoBehaviour
 {
     PlayerControls menuButton;
     private Scene currentScene;
+
+    public GameObject settings;
+    private bool bsettingsOn;
     private void OnEnable()
     {
         menuButton = new PlayerControls();
         menuButton.Enable();
         menuButton.PlayerActions.Possess.performed += StartGame;
+        menuButton.PlayerActions.Interact.performed += Settings;
         menuButton.PlayerActions.Whistle.performed += QuitGame;
     }
     private void OnDisable()
     {
         menuButton.Disable();
         menuButton.PlayerActions.Possess.performed -= StartGame;
+        menuButton.PlayerActions.Interact.performed -= Settings;
         menuButton.PlayerActions.Whistle.performed -= QuitGame;
     }
 
@@ -32,6 +37,21 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Next Scene");
         SceneManager.LoadScene(currentScene.buildIndex + 1);
+    }
+
+    private void Settings(InputAction.CallbackContext c)
+    {
+        if(!bsettingsOn)
+        {
+            settings.SetActive(true);
+            bsettingsOn = true;
+        }
+        else if(bsettingsOn)
+        {
+            settings.SetActive(false);
+            bsettingsOn = false;
+
+        }
     }
 
 
