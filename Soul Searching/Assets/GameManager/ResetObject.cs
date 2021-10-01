@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResetObject : MonoBehaviour
 {
-    private Vector3 resetPosition;
+    public Vector3 resetPosition;
 
     private void Start()
     {
