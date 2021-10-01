@@ -3,29 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
-    PlayerControls menuButton;
+    PlayerControls menuButtons;
     private Scene currentScene;
 
-    public GameObject settings;
-    private bool bsettingsOn;
+    //only 4 buttons at the moment
+    private int menuSelection = 4;
+
+    public Text StartGame;
+
+    public Text levelSelection;
+    //public GameObject levelSelectionMenu;
+
+    public GameObject settingsMenu;
+        public Text settings;
+        public Text settingBack;
+        private bool bsettingsOn;
+        private int settingSelection;
+
+    public Text quit;
+    //private bool bsettingsOn;
     private void OnEnable()
     {
-        menuButton = new PlayerControls();
-        menuButton.Enable();
-        menuButton.PlayerActions.Possess.performed += StartGame;
-        menuButton.PlayerActions.Interact.performed += Settings;
-        menuButton.PlayerActions.Whistle.performed += QuitGame;
+        menuButtons = new PlayerControls();
+        menuButtons.Enable();
+        menuButtons.PlayerActions.Possess.performed += SelectUI;
+        menuButtons.PlayerActions.Movement.performed += CurrentSelection;
     }
     private void OnDisable()
     {
-        menuButton.Disable();
-        menuButton.PlayerActions.Possess.performed -= StartGame;
-        menuButton.PlayerActions.Interact.performed -= Settings;
-        menuButton.PlayerActions.Whistle.performed -= QuitGame;
+        menuButtons.Disable();
+        menuButtons.PlayerActions.Possess.performed -= SelectUI;
+        menuButtons.PlayerActions.Movement.performed -= CurrentSelection;
     }
 
     private void Start()
@@ -33,33 +46,129 @@ public class MainMenu : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
     }
 
-    private void StartGame(InputAction.CallbackContext c)
+    private void SelectUI(InputAction.CallbackContext c)
     {
-        Debug.Log("Next Scene");
-        SceneManager.LoadScene(currentScene.buildIndex + 1);
+        //triggers correct button
+        //Start
+        if(menuSelection == 3)
+        {
+            Debug.Log("Start");
+        }
+        //LevelSelect
+        else if(menuSelection == 2)
+        {
+            Debug.Log("Level");
+        }
+        //Settings
+        else if(menuSelection == 1)
+        {
+            menuButtons.PlayerActions.Movement.performed -= CurrentSelection;
+            bsettingsOn = true;          
+            Debug.Log("sett" + bsettingsOn);
+            settingsMenu.SetActive(true);
+        }
+        //Quit
+        else if(menuSelection == 0)
+        {
+            Debug.Log("quit");
+            Application.Quit();
+        }
     }
+
+    private void CurrentSelection(InputAction.CallbackContext c)
+    {
+        Debug.Log(bsettingsOn);
+        if (!bsettingsOn)
+        {
+            //Sets value
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
+            {
+                //only 4 buttons at the moment
+                if (menuSelection < 3)
+                {
+                    //Debug.Log("Up");
+                    menuSelection++;
+                }
+            }
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
+            {
+                if (menuSelection > 0)
+                {
+                    //Debug.Log("Down");
+                    menuSelection--;
+                }
+            }
+
+            //Updates button selected to color
+            if (menuSelection == 3)
+            {
+                StartGame.color = Color.blue;
+            }
+            else
+            {
+                StartGame.color = Color.black;
+            }
+
+            if (menuSelection == 2)
+            {
+                levelSelection.color = Color.blue;
+            }
+            else
+            {
+                levelSelection.color = Color.black;
+            }
+
+            if (menuSelection == 1)
+            {
+                settings.color = Color.blue;
+            }
+            else
+            {
+                settings.color = Color.black;
+            }
+
+            if (menuSelection == 0)
+            {
+                quit.color = Color.blue;
+            }
+            else
+            {
+                quit.color = Color.black;
+            }
+
+        }
+    }
+
+
 
     private void Settings(InputAction.CallbackContext c)
     {
-        if(!bsettingsOn)
+        //settingsMenu.SetActive(false);
+
+        //menuButtons.PlayerActions.Interact.performed -= Settings;
+        //menuButtons.PlayerActions.Possess.performed += CurrentSelection;
+
+        /*
+        //Sets value
+        if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
         {
-            settings.SetActive(true);
-            bsettingsOn = true;
+            //only -- buttons at the moment
+            if (settingSelection < --)
+            {
+                //Debug.Log("Left");
+                settingSelection++;
+            }
         }
-        else if(bsettingsOn)
+        else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
         {
-            settings.SetActive(false);
-            bsettingsOn = false;
-
+            if (settingSelection > --)
+            {
+                //Debug.Log("Right");
+                settingSelection--;
+            }
         }
+        */
+
     }
-
-
-    private void QuitGame(InputAction.CallbackContext c)
-    {
-        Debug.Log("Quit");
-        Application.Quit();
-    }
-
 
 }
