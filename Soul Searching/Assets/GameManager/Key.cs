@@ -12,6 +12,7 @@ public class Key : MonoBehaviour
         {
             bghostKey = true;
         }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
