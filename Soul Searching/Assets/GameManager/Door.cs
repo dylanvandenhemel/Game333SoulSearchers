@@ -48,6 +48,10 @@ public class Door : MonoBehaviour
 
                 gameObject.SetActive(false);
             }
+            else
+            {
+                Debug.Log("Door");
+            }
         }
     }
 }
