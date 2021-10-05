@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 8900200693188512365}
   - component: {fileID: 3660393028917331149}
   - component: {fileID: 6573723658650566982}
-  - component: {fileID: 1116580540663344772}
   m_Layer: 7
   m_Name: GhostPlayer
   m_TagString: Player
@@ -174,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c3b2d7615a73c4ca57130103da0dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &3660393028917331149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,16 +208,3 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1116580540663344772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566180116732693177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 400384b3b1071b045978b7d158621e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uIElements: {fileID: 0}

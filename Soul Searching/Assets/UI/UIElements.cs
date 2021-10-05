@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class UIElements : MonoBehaviour
@@ -9,10 +11,13 @@ public class UIElements : MonoBehaviour
     //Children Order is VERY important
     //Pause screen is always at the end
 
-    public Canvas uIElements;
+    public Text start;
+    public Text mainMenu;
+    public Text quit;
 
     PlayerControls pauseButton;
     private bool bPaused;
+    private int pauseSelection = 3;
 
     private void OnEnable()
     {
@@ -30,49 +35,49 @@ public class UIElements : MonoBehaviour
     //Possession
     public void PossessUIOn()
     {
-        uIElements.transform.GetChild(0).gameObject.SetActive(true);        
+        transform.GetChild(0).gameObject.SetActive(true);        
     }
 
     public void PossessUIOff()
     {
-        uIElements.transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     //Lever
     public void LeverUIOn()
     {
-        uIElements.transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public void LeverUIOff()
     {
-        uIElements.transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 
     //Keys
     public void BronzeKeyUIOn()
     {
-        uIElements.transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
     }
     public void BronzeKeyUIOff()
     {
-        uIElements.transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
     }
     public void SilverKeyUIOn()
     {
-        uIElements.transform.GetChild(3).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(true);
     }
     public void SilverKeyUIOff()
     {
-        uIElements.transform.GetChild(3).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
     }
     public void GoldKeyUIOn()
     {
-        uIElements.transform.GetChild(4).gameObject.SetActive(true);
+        transform.GetChild(4).gameObject.SetActive(true);
     }
     public void GoldKeyUIOff()
     {
-        uIElements.transform.GetChild(4).gameObject.SetActive(false);
+        transform.GetChild(4).gameObject.SetActive(false);
     }
 
 
@@ -83,33 +88,94 @@ public class UIElements : MonoBehaviour
     {        
         if(!bPaused)
         {
-            pauseButton.PlayerActions.Whistle.performed += QuitGame;
+            pauseButton.PlayerActions.MainMenu.started += CurrentSelection;
+            pauseButton.PlayerActions.Possess.performed += SelectUI;
 
-            GetComponent<Player>().OnPause();
-            uIElements.transform.GetChild(uIElements.transform.childCount - 1).gameObject.SetActive(true);
+            transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
             bPaused = true;
 
             Time.timeScale = 0;
         }
-        else if (bPaused)
+    }
+
+    private void SelectUI(InputAction.CallbackContext c)
+    {
+        //start
+        if(pauseSelection == 2)
         {
-            pauseButton.PlayerActions.Whistle.performed -= QuitGame;
+            Debug.Log("Start");
+            if (bPaused)
+            {
+                pauseButton.PlayerActions.MainMenu.started -= CurrentSelection;
+                pauseButton.PlayerActions.Possess.performed -= SelectUI;
 
-            GetComponent<Player>().OnPause();
-            uIElements.transform.GetChild(uIElements.transform.childCount - 1).gameObject.SetActive(false);
-            bPaused = false;
+                transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
+                bPaused = false;
+            }
+        }
+        //main menu
+        else if(pauseSelection == 1)
+        {
+            Debug.Log("Main Menu");
+            SceneManager.LoadScene("MainMenu");
+        }
+        //Quit
+        else if (pauseSelection == 0)
+        {
+            Debug.Log("quit");
+            Application.Quit();
+        }
 
-            Time.timeScale = 1;
+        Time.timeScale = 1;
+    }
+
+    private void CurrentSelection(InputAction.CallbackContext c)
+    {
+        if (pauseButton.PlayerActions.MainMenu.ReadValue<Vector2>().y >= 1)
+        {
+            //only 4 buttons at the moment
+            if (pauseSelection < 2)
+            {
+                Debug.Log("Up");
+                pauseSelection++;
+            }
+        }
+        else if (pauseButton.PlayerActions.MainMenu.ReadValue<Vector2>().y <= -1)
+        {
+            if (pauseSelection > 0)
+            {
+                Debug.Log("Down");
+                pauseSelection--;
+            }
+        }
+
+        //Updates button selected to color
+        if (pauseSelection == 2)
+        {
+            start.color = Color.blue;
+        }
+        else
+        {
+            start.color = Color.black;
+        }
+
+        if (pauseSelection == 1)
+        {
+            mainMenu.color = Color.blue;
+        }
+        else
+        {
+            mainMenu.color = Color.black;
+        }
+
+        if (pauseSelection == 0)
+        {
+            quit.color = Color.blue;
+        }
+        else
+        {
+            quit.color = Color.black;
         }
     }
-
-    private void QuitGame(InputAction.CallbackContext c)
-    {
-        Debug.Log("Quit");
-        Application.Quit();
-    }
-
-
-
 
 }

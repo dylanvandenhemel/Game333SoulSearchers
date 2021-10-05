@@ -9,71 +9,100 @@ using UnityEngine.UIElements;
 public class MainMenu : MonoBehaviour
 {
     PlayerControls menuButtons;
-    private Scene currentScene;
 
     //only 4 buttons at the moment
-    private int menuSelection = 5;
+    private int mainMenuSelection = 5;
 
+    private static bool bDoneTutorial;
     public Text StartGame;
 
+    //Level menu
     public GameObject levelMenu;
         public Text levelSelection;
         private bool blevelOn;
         private int levelMenuSelection;
-
+    //Levels in menu
+        public Text tutorial;
+      
+    //Controller menu
     public GameObject controlMenu;
         public Text controlSelection;
+        private bool bcontrolsOn;
 
+    //Settings menu
     public GameObject settingsMenu;
         public Text settings;
         private bool bsettingsOn;
         private int settingSelection;
 
     public Text quit;
-    //private bool bsettingsOn;
+
+    private void Awake()
+    {
+        
+    }
+
     private void OnEnable()
     {
         menuButtons = new PlayerControls();
         menuButtons.Enable();
         menuButtons.PlayerActions.Possess.performed += SelectUI;
-        //menuButtons.PlayerActions.Interact.performed += Return;
         menuButtons.PlayerActions.MainMenu.started += CurrentSelection;
     }
     private void OnDisable()
     {
         menuButtons.Disable();
         menuButtons.PlayerActions.Possess.performed -= SelectUI;
-        //menuButtons.PlayerActions.Interact.performed -= Return;
         menuButtons.PlayerActions.MainMenu.started -= CurrentSelection;
-    }
-
-    private void Start()
-    {
-        currentScene = SceneManager.GetActiveScene();
     }
 
     private void SelectUI(InputAction.CallbackContext c)
     {
         //triggers correct button
         //Start
-        if (menuSelection == 4)
+        if (mainMenuSelection == 4)
         {
             Debug.Log("Start");
+            if(!bDoneTutorial)
+            {
+                bDoneTutorial = true;
+                SceneManager.LoadScene("Tutorial");
+            }
+            else if(bDoneTutorial)
+            {
+                SceneManager.LoadScene("Level1");
+            }
         }
         //LevelSelect
-        else if (menuSelection == 3)
+        else if (mainMenuSelection == 3)
         {
             blevelOn = true;
             levelMenu.SetActive(true);
 
             menuButtons.PlayerActions.Interact.performed += Return;
+
+            //sends player to level selected
+            if(blevelOn)
+            {
+                //tutorial
+                if(levelMenuSelection == 1)
+                {
+                    Debug.Log("load tutorial");
+                    levelMenuSelection = 0;
+                    SceneManager.LoadScene("Tutorial");
+                }
+            }
         }
-        else if(menuSelection == 2)
+        //Controlls
+        else if(mainMenuSelection == 2)
         {
-            Debug.Log("Contrlls");
+            bcontrolsOn = true;
+            controlMenu.SetActive(true);
+
+            menuButtons.PlayerActions.Interact.performed += Return;
         }
         //Settings
-        else if(menuSelection == 1)
+        else if(mainMenuSelection == 1)
         {
             bsettingsOn = true;          
             settingsMenu.SetActive(true);
@@ -81,7 +110,7 @@ public class MainMenu : MonoBehaviour
             menuButtons.PlayerActions.Interact.performed += Return;
         }
         //Quit
-        else if(menuSelection == 0)
+        else if(mainMenuSelection == 0)
         {
             Debug.Log("quit");
             Application.Quit();
@@ -90,29 +119,29 @@ public class MainMenu : MonoBehaviour
 
     private void CurrentSelection(InputAction.CallbackContext c)
     {
-        if (!bsettingsOn && !blevelOn)
+        if (!bsettingsOn && !blevelOn && !bcontrolsOn)
         {
             //Sets value
             if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().y >= 1)
             {
                 //only 4 buttons at the moment
-                if (menuSelection < 4)
+                if (mainMenuSelection < 4)
                 {
                     //Debug.Log("Up");
-                    menuSelection++;
+                    mainMenuSelection++;
                 }
             }
             else if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().y <= -1)
             {
-                if (menuSelection > 0)
+                if (mainMenuSelection > 0)
                 {
                     //Debug.Log("Down");
-                    menuSelection--;
+                    mainMenuSelection--;
                 }
             }
 
             //Updates button selected to color
-            if (menuSelection == 4)
+            if (mainMenuSelection == 4)
             {
                 StartGame.color = Color.blue;
             }
@@ -121,7 +150,7 @@ public class MainMenu : MonoBehaviour
                 StartGame.color = Color.black;
             }
 
-            if (menuSelection == 3)
+            if (mainMenuSelection == 3)
             {
                 levelSelection.color = Color.blue;
             }
@@ -130,7 +159,7 @@ public class MainMenu : MonoBehaviour
                 levelSelection.color = Color.black;
             }
 
-            if (menuSelection == 2)
+            if (mainMenuSelection == 2)
             {
                 controlSelection.color = Color.blue;
             }
@@ -139,7 +168,7 @@ public class MainMenu : MonoBehaviour
                 controlSelection.color = Color.black;
             }
 
-            if (menuSelection == 1)
+            if (mainMenuSelection == 1)
             {
                 settings.color = Color.blue;
             }
@@ -148,7 +177,7 @@ public class MainMenu : MonoBehaviour
                 settings.color = Color.black;
             }
 
-            if (menuSelection == 0)
+            if (mainMenuSelection == 0)
             {
                 quit.color = Color.blue;
             }
@@ -158,7 +187,42 @@ public class MainMenu : MonoBehaviour
             }
 
         }
-        else if(bsettingsOn)
+        else if (blevelOn)
+        {
+            //Sets value
+            if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x >= 1)
+            {
+                if (levelMenuSelection < 1)
+                {
+                    Debug.Log("Right");
+                    levelMenuSelection++;
+                }
+            }
+            else if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x <= -1)
+            {
+                if (levelMenuSelection > 0)
+                {
+                    Debug.Log("Left");
+                    levelMenuSelection--;
+                }
+            }
+
+            //Updates button selections color
+            if (levelMenuSelection == 1)
+            {
+                tutorial.color = Color.blue;
+            }
+            else
+            {
+                tutorial.color = Color.black;
+            }
+
+        }
+        else if (bcontrolsOn)
+        {
+            //Someday add custom bindings
+        }
+        else if (bsettingsOn)
         {
             /*Sets value
             if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x >= 1)
@@ -180,28 +244,6 @@ public class MainMenu : MonoBehaviour
             }
             */
         }
-        else if (blevelOn)
-        {
-            /*Sets value
-            if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x >= 1)
-            {
-                //only -- buttons at the moment
-                if (levelMenuSelection < 1)
-                {
-                    //Debug.Log("Left");
-                    levelMenuSelection++;
-                }
-            }
-            else if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x <= -1)
-            {
-                if (levelMenuSelection > 0)
-                {
-                    //Debug.Log("Right");
-                    levelMenuSelection--;
-                }
-            }
-            */
-        }
     }
 
 
@@ -218,6 +260,12 @@ public class MainMenu : MonoBehaviour
         {
             levelMenu.SetActive(false);
             blevelOn = false;
+        }
+
+        if(bcontrolsOn)
+        {
+            bcontrolsOn = false;
+            controlMenu.SetActive(false);
         }
 
 
