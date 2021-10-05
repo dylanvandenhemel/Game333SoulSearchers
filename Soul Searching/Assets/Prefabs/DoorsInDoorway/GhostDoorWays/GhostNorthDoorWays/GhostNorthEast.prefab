@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2944014896190508832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4621282909068690869}
+  m_Layer: 0
+  m_Name: GhostNorthEast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4621282909068690869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944014896190508832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1683834103204257732}
+  - {fileID: 2535115518129969053}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2939682597455218734
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4621282909068690869}
+    m_Modifications:
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.388
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301899411967834724, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+      propertyPath: m_Name
+      value: GhostDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+--- !u!4 &2535115518129969053 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 857183244821520307, guid: 8241fb68c1849a94b989fa264f2b723a, type: 3}
+  m_PrefabInstance: {fileID: 2939682597455218734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8411117585799705677
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4621282909068690869}
+    m_Modifications:
+    - target: {fileID: 508126305698490227, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_Name
+      value: NDoorwayEWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+--- !u!4 &1683834103204257732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7197988963314592649, guid: d7a043adce71a9d4999ee244910fde9a, type: 3}
+  m_PrefabInstance: {fileID: 8411117585799705677}
+  m_PrefabAsset: {fileID: 0}
