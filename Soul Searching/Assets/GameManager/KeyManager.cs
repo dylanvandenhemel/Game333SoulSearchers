@@ -27,21 +27,21 @@ public class KeyManager : MonoBehaviour
     {
         if (currentKey.CompareTag("KeyBronze"))
         {
-            GetComponent<UIElements>().BronzeKeyUIOn();
+            GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().BronzeKeyUIOn();
 
             collectedBronzeKey = true;
             currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeySilver"))
         {
-            GetComponent<UIElements>().SilverKeyUIOn();
+            GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().SilverKeyUIOn();
 
             collectedSilverKey = true;
             currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeyGold"))
         {
-            GetComponent<UIElements>().GoldKeyUIOn();
+            GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().GoldKeyUIOn();
 
             collectedGoldKey = true;
             currentKey.gameObject.SetActive(false);
