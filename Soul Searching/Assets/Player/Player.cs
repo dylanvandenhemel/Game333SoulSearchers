@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    //PauseMenu
+    public GameObject pauseMenu;
+
+
     //player
     private Vector3 resetLocation;
     public bool bresetPlayer = false;
@@ -76,7 +80,7 @@ public class Player : MonoBehaviour
         {
             if (other.CompareTag("SkeletonPile"))
             {
-                GetComponent<UIElements>().PossessUIOn();
+                pauseMenu.GetComponent<UIElements>().PossessUIOn();
 
                 currentSkeletonPile = other.transform;
                 pActions.PlayerActions.Possess.performed += Possess;
@@ -88,7 +92,7 @@ public class Player : MonoBehaviour
         {
             //player holds reset manager
             bresetPlayer = true;
-            GetComponent<ResetDelegate>().bcallReset = true;
+            pauseMenu.GetComponent<ResetDelegate>().bcallReset = true;
             pActions.PlayerActions.Possess.performed -= Possess;
 
         }
@@ -100,7 +104,7 @@ public class Player : MonoBehaviour
         {
             if (other.CompareTag("SkeletonPile"))
             {
-                GetComponent<UIElements>().PossessUIOff();
+                pauseMenu.GetComponent<UIElements>().PossessUIOff();
 
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
