@@ -72,7 +72,7 @@ public class Activator : MonoBehaviour
             player = other.gameObject;
             if (!bLeverinRange)
             {
-                other.GetComponent<UIElements>().LeverUIOn();
+                other.GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().LeverUIOn();
                 pActions.PlayerActions.Interact.performed += LeverPull;
                 bLeverinRange = true;
             }
@@ -94,7 +94,7 @@ public class Activator : MonoBehaviour
         //For Lever: Must to be possesed to work
         if (other.CompareTag("Player") && bLever)
         {
-            other.GetComponent<UIElements>().LeverUIOff();
+            other.GetComponent<Player>().pauseMenu.transform.GetComponent<UIElements>().LeverUIOff();
             bLeverinRange = false;
             pActions.PlayerActions.Interact.performed -= LeverPull;
         }
