@@ -25,19 +25,23 @@ public class Player : MonoBehaviour
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
 
+    public LayerMask doggyLayer;
+    RaycastHit hit;
+    public bool bwhistling;
+
     private void OnEnable()
     {
         pActions = new PlayerControls();
         pActions.Enable();
 
-        pActions.PlayerActions.Whistle.started += Wistle;
+        pActions.PlayerActions.Whistle.started += Whistle;
     }
 
     private void OnDisable()
     {
         pActions.Disable();
 
-        pActions.PlayerActions.Whistle.started -= Wistle;
+        pActions.PlayerActions.Whistle.started -= Whistle;
     }
 
     private void Start()
@@ -184,14 +188,16 @@ public class Player : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Phase");
     }
 
-    private void Wistle(InputAction.CallbackContext c)
+    private void Whistle(InputAction.CallbackContext c)
     {
-        //LayerMask doggy;
-        Debug.Log("Wistle");
-        //if (Physics.SphereCast(transform.position, 5, Vector3.forward, out hit, 5, ))
-        //{
+        StartCoroutine(WhistleCoolDown());
+    }
 
-        //}
+    IEnumerator WhistleCoolDown()
+    {
+        bwhistling = true;
+        yield return new WaitForSeconds(0.3f);
+        bwhistling = false;
     }
 
     private void ResetPlayer()
