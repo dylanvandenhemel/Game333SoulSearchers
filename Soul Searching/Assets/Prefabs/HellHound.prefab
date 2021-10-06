@@ -91,9 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5942194629759617432}
   - component: {fileID: 1841049612046412570}
-  m_Layer: 0
+  - component: {fileID: 5915607758031945905}
+  m_Layer: 11
   m_Name: HellHound
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1451e272d9c30a4bbfe4a8e43d6e63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &5915607758031945905
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657074956226824970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5534958
+  m_Height: 1.1069916
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.29870468, z: -0.053495824}

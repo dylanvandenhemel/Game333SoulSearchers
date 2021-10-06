@@ -29,11 +29,15 @@ public class Player : MonoBehaviour
     {
         pActions = new PlayerControls();
         pActions.Enable();
+
+        pActions.PlayerActions.Whistle.started += Wistle;
     }
 
     private void OnDisable()
     {
         pActions.Disable();
+
+        pActions.PlayerActions.Whistle.started -= Wistle;
     }
 
     private void Start()
@@ -178,6 +182,16 @@ public class Player : MonoBehaviour
 
         //allows player to pass trough walls again
         gameObject.layer = LayerMask.NameToLayer("Phase");
+    }
+
+    private void Wistle(InputAction.CallbackContext c)
+    {
+        //LayerMask doggy;
+        Debug.Log("Wistle");
+        //if (Physics.SphereCast(transform.position, 5, Vector3.forward, out hit, 5, ))
+        //{
+
+        //}
     }
 
     private void ResetPlayer()
