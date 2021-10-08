@@ -21,6 +21,13 @@ public class HellHound : MonoBehaviour
             Debug.Log("Bark");
             bHeard = true;
         }
+        else if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
+        {
+            player = other.transform;
+            Debug.Log("Bark bones!");
+            bHeard = true;
+        }
+
     }
 
     private void Update()
@@ -28,15 +35,12 @@ public class HellHound : MonoBehaviour
         if(bHeard)
         {
             localMap.SetDestination(player.position);
-            bHeard = false;
+            if(!player.GetComponent<Player>().bpossessSkel)
+            {
+                bHeard = false;
+
+            }
         }
     }
-
-
-
-
-
-
-
 
 }

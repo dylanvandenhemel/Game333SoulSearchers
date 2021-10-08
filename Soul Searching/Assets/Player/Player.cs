@@ -106,6 +106,15 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //hell hound knocks player out of bones
+        if (other.CompareTag("HellHound") && bpossessSkel)
+        {
+            KillSkeleton();
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if(!bpossessSkel)
@@ -179,7 +188,7 @@ public class Player : MonoBehaviour
         bpossessSkel = false;
         transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
         //moves pile back a bit after a trap
-        currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y, currentSkeletonPile.localPosition.z - 1);
+        currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y - 0.5f, currentSkeletonPile.localPosition.z - 1);
 
         currentSkeletonPile.parent = null;
         pActions.PlayerActions.Possess.performed -= Possess;
