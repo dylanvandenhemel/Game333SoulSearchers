@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResetObject : MonoBehaviour
 {
     public Vector3 resetPosition;
+    public bool bUponReset;
 
     private void Start()
     {
@@ -24,5 +25,13 @@ public class ResetObject : MonoBehaviour
     private void ActiveReset()
     {
         transform.position = resetPosition;
+        bUponReset = true;
+        StartCoroutine(resetTimer());
+    }
+
+    IEnumerator resetTimer()
+    {
+        yield return new WaitForSeconds(1);
+        bUponReset = false;
     }
 }

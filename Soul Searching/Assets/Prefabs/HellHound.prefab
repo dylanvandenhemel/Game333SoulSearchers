@@ -104,9 +104,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942194629759617432}
-  - component: {fileID: 1841049612046412570}
   - component: {fileID: 3426654706483209645}
   - component: {fileID: 2982347966444133262}
+  - component: {fileID: 5682588597728985619}
+  - component: {fileID: 1841049612046412570}
+  - component: {fileID: 3380160464017054422}
   m_Layer: 0
   m_Name: HellHound
   m_TagString: Enemy
@@ -130,18 +132,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1841049612046412570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5657074956226824970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1451e272d9c30a4bbfe4a8e43d6e63f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &3426654706483209645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,6 +161,54 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 11
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &5682588597728985619
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657074956226824970}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1841049612046412570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657074956226824970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1451e272d9c30a4bbfe4a8e43d6e63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3380160464017054422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657074956226824970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c3b2d7615a73c4ca57130103da0dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetPosition: {x: 0, y: 0, z: 0}
+  bUponReset: 0
 --- !u!1 &6820446136603870083
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8646568886283315582}
   - component: {fileID: 6242370704383747033}
+  - component: {fileID: 2079517501740771903}
   m_Layer: 0
   m_Name: SkeletonKillBox
   m_TagString: HellHound
@@ -215,3 +254,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6471516, y: 1.6956985, z: 1.3163036}
   m_Center: {x: 0.000000026512163, y: 0.81673235, z: 0.06999972}
+--- !u!114 &2079517501740771903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820446136603870083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c9e8c5ad1ff5345a8e13309819c54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -114,6 +114,17 @@ public class Player : MonoBehaviour
         {
             KillSkeleton();
         }
+
+        if(other.CompareTag("WardenAttack"))
+        {
+            if(bpossessSkel)
+            {
+                KillSkeleton();
+            }
+            bresetPlayer = true;
+            ResetPlayer();
+            GetComponent<ResetDelegate>().bcallReset = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
