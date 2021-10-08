@@ -27,8 +27,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 961769865547675506}
   - {fileID: 7369389665935593720}
+  - {fileID: 961769865547675506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43,9 +43,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: SDoorwayEWall
       objectReference: {fileID: 0}
+    - target: {fileID: 4851467968909837937, guid: 8520a3f49999e7848bc1c4fa3fe1f57a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8143117330688985872, guid: 8520a3f49999e7848bc1c4fa3fe1f57a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8143117330688985872, guid: 8520a3f49999e7848bc1c4fa3fe1f57a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103,7 +107,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
       propertyPath: m_LocalPosition.x
