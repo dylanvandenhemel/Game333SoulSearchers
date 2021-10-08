@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         {
             //player holds reset manager
             bresetPlayer = true;
-            pauseMenu.GetComponent<ResetDelegate>().bcallReset = true;
+            GetComponent<ResetDelegate>().bcallReset = true;
             pActions.PlayerActions.Possess.performed -= Possess;
 
         }
