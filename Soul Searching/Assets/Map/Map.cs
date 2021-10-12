@@ -24,28 +24,28 @@ public class Map : MonoBehaviour
         
 
         //Detect Walls
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, out hitInfo, maxDistance, Wall))
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
         {
             nOpen = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
         }
 
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, maxDistance, Wall))
         {
             eOpen = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, Color.red, 1);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, Color.red, 1);
         }
 
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, maxDistance, Wall))
         {
             sOpen = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, Color.red, 1);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, Color.red, 1);
         }
 
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, maxDistance, Wall))
         {
             wOpen = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, Color.red, 1);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, Color.red, 1);
         }
 
 
@@ -123,41 +123,68 @@ public class Map : MonoBehaviour
             
         }
              //1 wall
-        else if(nOpen && !eOpen && !sOpen && !wOpen)
+        else if(nOpen && !eOpen && !sOpen && !wOpen) // north wall
         {
             GameObject nw = PrefabUtility.InstantiatePrefab(mapTile.nWall) as GameObject;
             nw.transform.position = transform.position;
             nw.transform.parent = transform.parent;
-            ;
         }
-        else if(!nOpen && eOpen && !sOpen && !wOpen)
+        else if(!nOpen && eOpen && !sOpen && !wOpen) // east wall
         {
             GameObject ew = PrefabUtility.InstantiatePrefab(mapTile.eWall) as GameObject;
             ew.transform.position = transform.position;
             ew.transform.parent = transform.parent;
             
         }
-        else if (!nOpen && !eOpen && sOpen && !wOpen)
+        else if (!nOpen && !eOpen && sOpen && !wOpen) // south wall
         {
             GameObject sw = PrefabUtility.InstantiatePrefab(mapTile.sWall) as GameObject;
             sw.transform.position = transform.position;
             sw.transform.parent = transform.parent;
            
         }
-        else if (!nOpen && !eOpen && !sOpen && wOpen)
+        else if (!nOpen && !eOpen && !sOpen && wOpen) //west wall
         {
             GameObject ww = PrefabUtility.InstantiatePrefab(mapTile.wWall) as GameObject;
             ww.transform.position = transform.position;
             ww.transform.parent = transform.parent;
             
         }
-        else if(!nOpen && !eOpen && !sOpen && !wOpen)
+        else if(!nOpen && !eOpen && !sOpen && !wOpen) //space tile
         {           
             GameObject mapSpace = PrefabUtility.InstantiatePrefab(mapTile.space) as GameObject;
             mapSpace.transform.position = transform.position;
             mapSpace.transform.parent = transform.parent;
         }
 
+    }
+
+    //places pillers in corners
+    public void AutoPiller()
+    {
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
+        {
+            Debug.Log("no north");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
+        }
+
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, maxDistance, Wall))
+        {
+            Debug.Log("no east");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, Color.red, 1);
+        }
+
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, maxDistance, Wall))
+        {
+            Debug.Log("no south");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, Color.red, 1);
+        }
+
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, maxDistance, Wall))
+        {
+            Debug.Log("no west");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, Color.red, 1);
+        }
     }
 }
 #endif

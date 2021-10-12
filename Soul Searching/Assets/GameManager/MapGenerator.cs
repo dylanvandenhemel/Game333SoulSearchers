@@ -36,7 +36,12 @@ public class MapGenerator : MonoBehaviour
             {
                 DestroyImmediate(origTile[counter]);
             }
-            
+
+            for (counter = 0; counter < mapChildCount; counter++)
+            {
+                transform.GetChild(counter).GetComponent<Map>().AutoPiller();
+            }
+
         }
     }
 
