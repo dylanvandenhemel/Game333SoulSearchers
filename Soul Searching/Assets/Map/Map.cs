@@ -160,8 +160,9 @@ public class Map : MonoBehaviour
     }
 
     //places pillers in corners
-    public void AutoPiller()
+    public void AutoPillar()
     {
+        Debug.Log("Called");
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
         {
             Debug.Log("no north");

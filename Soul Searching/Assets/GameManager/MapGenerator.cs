@@ -14,7 +14,7 @@ public class MapGenerator : MonoBehaviour
     private int mapChildCount;
     private int counter;
     public List<GameObject> origTile;
-
+    public bool bAutoPillar;
     public void Update()
     {
         if(mGenerate)
@@ -26,22 +26,29 @@ public class MapGenerator : MonoBehaviour
             {
                 origTile.Add(transform.GetChild(counter).gameObject);
             }
-            
+
             for (counter = 0; counter < mapChildCount; counter++)
             {
                 transform.GetChild(counter).GetComponent<Map>().AutoMap();
-            }
-            
+            }          
+
             for (counter = 0; counter < origTile.Count; counter++)
             {
                 DestroyImmediate(origTile[counter]);
             }
-
+            bAutoPillar = true;
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        if(bAutoPillar)
+        {
             for (counter = 0; counter < mapChildCount; counter++)
             {
-                transform.GetChild(counter).GetComponent<Map>().AutoPiller();
+                transform.GetChild(counter).GetComponent<Map>().AutoPillar();
             }
-
+            bAutoPillar = false;
+            
         }
     }
 
