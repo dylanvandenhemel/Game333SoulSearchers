@@ -162,28 +162,27 @@ public class Map : MonoBehaviour
     //places pillers in corners
     public void AutoPillar()
     {
-        Debug.Log("Called");
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log("no north");
+            Debug.Log(hitInfo.transform.name);
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
         }
 
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, maxDistance, Wall))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log("no east");
+            Debug.Log(hitInfo.transform.name);
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, Color.red, 1);
         }
 
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, maxDistance, Wall))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log("no south");
+            Debug.Log(hitInfo.transform.name);
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, Color.red, 1);
         }
 
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, maxDistance, Wall))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log("no west");
+            Debug.Log(hitInfo.transform.name);
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, Color.red, 1);
         }
     }

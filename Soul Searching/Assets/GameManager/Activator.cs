@@ -107,11 +107,13 @@ public class Activator : MonoBehaviour
             if (!bActiveLever)
             {
                 Trigger();
+                GetComponent<AudioSource>().Play();
                 bActiveLever = true;
             }
             else
             {
                 Trigger();
+                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 bActiveLever = false;
             }
         }

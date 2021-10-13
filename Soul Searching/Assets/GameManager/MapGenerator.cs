@@ -36,7 +36,6 @@ public class MapGenerator : MonoBehaviour
             {
                 DestroyImmediate(origTile[counter]);
             }
-            bAutoPillar = true;
         }
     }
     private void OnDrawGizmos()
