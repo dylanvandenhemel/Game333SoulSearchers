@@ -37,10 +37,6 @@ public class MainMenu : MonoBehaviour
 
     public Text quit;
 
-    private void Awake()
-    {
-        
-    }
 
     private void OnEnable()
     {
@@ -179,7 +175,7 @@ public class MainMenu : MonoBehaviour
 
             if (mainMenuSelection == 0)
             {
-                quit.color = Color.blue;
+                quit.color = Color.red;
             }
             else
             {
@@ -246,9 +242,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-
-
-    private void Return(InputAction.CallbackContext c)
+    public void Return(InputAction.CallbackContext c)
     {
         if(bsettingsOn)
         {
@@ -272,5 +266,45 @@ public class MainMenu : MonoBehaviour
 
         menuButtons.PlayerActions.Interact.performed -= Return;
     }
+
+    /* if using mouse
+
+    public void ClickedStart()
+    {
+        if (!bDoneTutorial)
+        {
+            bDoneTutorial = true;
+            SceneManager.LoadScene("Tutorial");
+        }
+        else if (bDoneTutorial)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+    }
+
+    public void ClickedLevelSelect()
+    {
+        blevelOn = true;
+        levelMenu.SetActive(true);
+
+        menuButtons.PlayerActions.Interact.performed += Return;
+    }
+
+    public void ClickedControls()
+    {
+        bcontrolsOn = true;
+        controlMenu.SetActive(true);
+
+        menuButtons.PlayerActions.Interact.performed += Return;
+    }
+
+    public void ClickedSettings()
+    {
+        bsettingsOn = true;
+        settingsMenu.SetActive(true);
+
+        menuButtons.PlayerActions.Interact.performed += Return;
+    }
+    */
 
 }
