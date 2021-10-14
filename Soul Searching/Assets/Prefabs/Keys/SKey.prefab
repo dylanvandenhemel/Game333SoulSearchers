@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6846510105854973156}
   - component: {fileID: 3024861602221662527}
   - component: {fileID: 2206585376045708223}
+  - component: {fileID: 4874138962186719372}
   m_Layer: 0
   m_Name: pCube3
   m_TagString: Untagged
@@ -112,6 +113,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &4874138962186719372
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781632094199592286}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df14412f1dca0344cb8938deef0f92a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7332612843997016044
 GameObject:
   m_ObjectHideFlags: 0
