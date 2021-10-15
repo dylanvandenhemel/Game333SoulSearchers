@@ -38,6 +38,12 @@ public class MainMenu : MonoBehaviour
     public Text quit;
 
 
+    private void Awake()
+    {
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.visible = false;
+    }
+    //private static bool visible;
     private void OnEnable()
     {
         menuButtons = new PlayerControls();
