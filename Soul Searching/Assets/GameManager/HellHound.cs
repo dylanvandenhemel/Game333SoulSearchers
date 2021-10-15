@@ -60,6 +60,7 @@ public class HellHound : MonoBehaviour
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
+        localMap.ResetPath();
     }
 
 }
