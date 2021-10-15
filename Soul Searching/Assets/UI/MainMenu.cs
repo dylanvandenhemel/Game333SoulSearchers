@@ -43,13 +43,13 @@ public class MainMenu : MonoBehaviour
         menuButtons = new PlayerControls();
         menuButtons.Enable();
         menuButtons.PlayerActions.Possess.performed += SelectUI;
-        menuButtons.PlayerActions.MainMenu.started += CurrentSelection;
+        menuButtons.PlayerActions.Movement.started += CurrentSelection;
     }
     private void OnDisable()
     {
         menuButtons.Disable();
         menuButtons.PlayerActions.Possess.performed -= SelectUI;
-        menuButtons.PlayerActions.MainMenu.started -= CurrentSelection;
+        menuButtons.PlayerActions.Movement.started -= CurrentSelection;
     }
 
     private void SelectUI(InputAction.CallbackContext c)
@@ -62,6 +62,8 @@ public class MainMenu : MonoBehaviour
             if(!bDoneTutorial)
             {
                 bDoneTutorial = true;
+                //menuButtons.PlayerActions.Possess.performed -= SelectUI;
+                //menuButtons.PlayerActions.MainMenu.started -= CurrentSelection;
                 SceneManager.LoadScene("Tutorial");
             }
             else if(bDoneTutorial)
@@ -118,7 +120,7 @@ public class MainMenu : MonoBehaviour
         if (!bsettingsOn && !blevelOn && !bcontrolsOn)
         {
             //Sets value
-            if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().y >= 1)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y >= 1)
             {
                 //only 4 buttons at the moment
                 if (mainMenuSelection < 4)
@@ -127,7 +129,7 @@ public class MainMenu : MonoBehaviour
                     mainMenuSelection++;
                 }
             }
-            else if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().y <= -1)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y <= -1)
             {
                 if (mainMenuSelection > 0)
                 {
@@ -186,7 +188,7 @@ public class MainMenu : MonoBehaviour
         else if (blevelOn)
         {
             //Sets value
-            if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x >= 1)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x >= 1)
             {
                 if (levelMenuSelection < 1)
                 {
@@ -194,7 +196,7 @@ public class MainMenu : MonoBehaviour
                     levelMenuSelection++;
                 }
             }
-            else if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x <= -1)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x <= -1)
             {
                 if (levelMenuSelection > 0)
                 {

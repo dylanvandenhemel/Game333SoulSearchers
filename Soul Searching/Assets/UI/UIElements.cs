@@ -88,7 +88,7 @@ public class UIElements : MonoBehaviour
     {        
         if(!bPaused)
         {
-            pauseButton.PlayerActions.MainMenu.started += CurrentSelection;
+            pauseButton.PlayerActions.Movement.started += CurrentSelection;
             pauseButton.PlayerActions.Possess.performed += SelectUI;
 
             transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
@@ -106,7 +106,7 @@ public class UIElements : MonoBehaviour
             Debug.Log("Start");
             if (bPaused)
             {
-                pauseButton.PlayerActions.MainMenu.started -= CurrentSelection;
+                pauseButton.PlayerActions.Movement.started -= CurrentSelection;
                 pauseButton.PlayerActions.Possess.performed -= SelectUI;
 
                 transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
@@ -131,7 +131,7 @@ public class UIElements : MonoBehaviour
 
     private void CurrentSelection(InputAction.CallbackContext c)
     {
-        if (pauseButton.PlayerActions.MainMenu.ReadValue<Vector2>().y >= 1)
+        if (pauseButton.PlayerActions.Movement.ReadValue<Vector2>().y >= 1)
         {
             //only 4 buttons at the moment
             if (pauseSelection < 2)
@@ -140,7 +140,7 @@ public class UIElements : MonoBehaviour
                 pauseSelection++;
             }
         }
-        else if (pauseButton.PlayerActions.MainMenu.ReadValue<Vector2>().y <= -1)
+        else if (pauseButton.PlayerActions.Movement.ReadValue<Vector2>().y <= -1)
         {
             if (pauseSelection > 0)
             {
