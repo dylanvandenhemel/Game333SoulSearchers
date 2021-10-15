@@ -29,14 +29,29 @@ public class Guide : MonoBehaviour
             transform.LookAt(other.transform);
             canvas.GetChild(1).gameObject.SetActive(true);
         }
+
+        if (other.CompareTag("Player") && guideInfoNumber == 2)
+        {
+            transform.LookAt(other.transform);
+            canvas.GetChild(2).gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && guideInfoNumber == 0)
         {
             canvas.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Player") && guideInfoNumber == 1)
+        {
             canvas.GetChild(1).gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Player") && guideInfoNumber == 2)
+        {
+            canvas.GetChild(2).gameObject.SetActive(false);
         }
     }
 }

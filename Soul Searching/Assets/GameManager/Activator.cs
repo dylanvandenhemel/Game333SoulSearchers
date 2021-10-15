@@ -61,6 +61,7 @@ public class Activator : MonoBehaviour
         {
             if(!bPressedPlate)
             {
+                GetComponent<AudioSource>().Play();
                 Trigger();
                 bPressedPlate = true;
             }
@@ -86,6 +87,7 @@ public class Activator : MonoBehaviour
         {
             if (bPressedPlate)
             {
+                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
                 bPressedPlate = false;
             }

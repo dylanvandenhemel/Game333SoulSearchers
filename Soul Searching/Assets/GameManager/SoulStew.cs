@@ -39,9 +39,9 @@ public class SoulStew : MonoBehaviour
         {
             target = other.transform;
             transform.LookAt(target);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Mask))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3, Mask))
             {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, Wall))
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3, Wall))
                 {
                     bTracker = false;
                 }

@@ -29,6 +29,13 @@ public class Player : MonoBehaviour
     RaycastHit hit;
     public bool bwhistling;
 
+    //whistling
+    public AudioSource wistle1;
+    public AudioSource wistle2;
+    public AudioSource wistle3;
+    public AudioSource wistle4;
+    public AudioSource wistle5;
+
     private void OnEnable()
     {
         pActions = new PlayerControls();
@@ -151,6 +158,7 @@ public class Player : MonoBehaviour
             //currentSkeletonPile.rotation = transform.rotation;
             currentSkeletonPile.parent = transform;
 
+            currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
             currentSkeletonPile.GetComponent<Collider>().enabled = false;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
@@ -180,7 +188,7 @@ public class Player : MonoBehaviour
             currentSkeletonPile.parent = null;
             //resets position and rotation
             currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
-            currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.3f, currentSkeletonPile.position.z);
+            currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
             pActions.PlayerActions.Possess.performed -= Possess;
 
             //allows player to pass trough walls again
@@ -210,13 +218,41 @@ public class Player : MonoBehaviour
 
     private void Whistle(InputAction.CallbackContext c)
     {
-        StartCoroutine(WhistleCoolDown());
+        if(!bwhistling)
+        {
+            StartCoroutine(WhistleCoolDown(Random.Range(1, 6)));
+        }
     }
 
-    IEnumerator WhistleCoolDown()
+    IEnumerator WhistleCoolDown(int soundVal)
     {
         bwhistling = true;
-        yield return new WaitForSeconds(0.3f);
+        Debug.Log(soundVal);
+        if(soundVal == 1)
+        {
+            wistle1.Play();
+        }
+        else if (soundVal == 2)
+        {
+            wistle2.Play();
+        }
+        else if (soundVal == 3)
+        {
+            wistle3.Play();
+        }
+        else if (soundVal == 4)
+        {
+            wistle4.Play();
+        }
+        else if (soundVal == 5)
+        {
+            wistle5.Play();
+        }
+
+
+
+
+        yield return new WaitForSeconds(1f);
         bwhistling = false;
     }
 
