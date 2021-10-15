@@ -13,6 +13,8 @@ public class KeyManager : MonoBehaviour
 
     public bool collectedGhostKey = false;
 
+    public AudioSource keySound;
+
     private void OnEnable()
     {
         ResetDelegate.Reset += DropGhostKey;
@@ -29,13 +31,16 @@ public class KeyManager : MonoBehaviour
         {
             GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().BronzeKeyUIOn();
 
+            keySound.Play();
             collectedBronzeKey = true;
             currentKey.gameObject.SetActive(false);
+
         }
         else if (currentKey.CompareTag("KeySilver"))
         {
             GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().SilverKeyUIOn();
 
+            keySound.Play();
             collectedSilverKey = true;
             currentKey.gameObject.SetActive(false);
         }
@@ -43,12 +48,14 @@ public class KeyManager : MonoBehaviour
         {
             GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().GoldKeyUIOn();
 
+            keySound.Play();
             collectedGoldKey = true;
             currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeyGhost") && !transform.GetComponent<Player>().bpossessSkel)
         {
             ghostKey = currentKey;
+            keySound.Play();
             ghostKeyDrop = ghostKey.position.y;
             collectedGhostKey = true;
         }

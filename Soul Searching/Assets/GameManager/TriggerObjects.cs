@@ -15,13 +15,14 @@ public class TriggerObjects : MonoBehaviour
     public bool bDoorActive = false;
     private bool bPlatformActive = false;
 
-
+    private AudioSource trapSound;
     //Detects Object to Trigger
     private void Start()
     {
         if (transform.CompareTag("Trap"))
         {
             bTrap = true;
+            trapSound = GetComponentInChildren<AudioSource>();
             Trigger();
         }
         else if (transform.CompareTag("Door"))
@@ -90,6 +91,7 @@ public class TriggerObjects : MonoBehaviour
             {
                 other.GetComponent<Player>().KillSkeleton();
             }
+            trapSound.Play();
             ActiveTrap();
             StartCoroutine(TrapTimer());
         }
