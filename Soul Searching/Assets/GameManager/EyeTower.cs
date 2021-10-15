@@ -29,6 +29,7 @@ public class EyeTower : MonoBehaviour
     private bool bTracker = false;
     private Vector3 orgin;
 
+    private bool beyeSoundPlayed;
     private void OnEnable()
     {
         ResetDelegate.Reset += ActiveReset;
@@ -163,6 +164,15 @@ public class EyeTower : MonoBehaviour
     }
     public void Trigger()
     {
+        if(!beyeSoundPlayed)
+        {
+            GetComponent<AudioSource>().Play();
+            beyeSoundPlayed = true;
+        }
+        else
+        {
+            beyeSoundPlayed = false;
+        }
         transform.GetComponent<Activator>().Trigger();
     }
 
