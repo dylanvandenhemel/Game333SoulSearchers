@@ -25,6 +25,7 @@ public class HellHound : MonoBehaviour
     {
         if (bHeard)
         {
+            GetComponent<HellHoundSounds>().DogGrowl();
             localMap.SetDestination(player.position);
             if (!player.GetComponent<Player>().bpossessSkel)
             {
@@ -42,6 +43,7 @@ public class HellHound : MonoBehaviour
         }
         else if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
         {
+            GetComponent<HellHoundSounds>().DogGrowl();
             player = other.transform;
             bHeard = true;
         }

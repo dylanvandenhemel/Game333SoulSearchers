@@ -29,13 +29,6 @@ public class Player : MonoBehaviour
     RaycastHit hit;
     public bool bwhistling;
 
-    //whistling
-    public AudioSource wistle1;
-    public AudioSource wistle2;
-    public AudioSource wistle3;
-    public AudioSource wistle4;
-    public AudioSource wistle5;
-
     private void OnEnable()
     {
         pActions = new PlayerControls();
@@ -173,6 +166,8 @@ public class Player : MonoBehaviour
             //Makes player not be able to move through gates
             gameObject.layer = LayerMask.NameToLayer("Physical");
 
+            GetComponent<PlayerSound>().PossessBonesSound();
+
         }
         else
         {
@@ -193,6 +188,8 @@ public class Player : MonoBehaviour
 
             //allows player to pass trough walls again
             gameObject.layer = LayerMask.NameToLayer("Phase");
+
+            GetComponent<PlayerSound>().DropBonesSound();
         }
         
     }
@@ -227,31 +224,7 @@ public class Player : MonoBehaviour
     IEnumerator WhistleCoolDown(int soundVal)
     {
         bwhistling = true;
-        Debug.Log(soundVal);
-        if(soundVal == 1)
-        {
-            wistle1.Play();
-        }
-        else if (soundVal == 2)
-        {
-            wistle2.Play();
-        }
-        else if (soundVal == 3)
-        {
-            wistle3.Play();
-        }
-        else if (soundVal == 4)
-        {
-            wistle4.Play();
-        }
-        else if (soundVal == 5)
-        {
-            wistle5.Play();
-        }
-
-
-
-
+        GetComponent<PlayerSound>().PlayerWistle();
         yield return new WaitForSeconds(1f);
         bwhistling = false;
     }

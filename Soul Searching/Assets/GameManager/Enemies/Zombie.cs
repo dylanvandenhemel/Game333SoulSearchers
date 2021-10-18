@@ -120,6 +120,7 @@ public class Zombie : MonoBehaviour
                 {
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
                     bTracker = true;
+                    GetComponent<ZombieSound>().ZombieSeesSound();
                 }
             
             }
@@ -142,6 +143,8 @@ public class Zombie : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
         bTracker = false;
+
+        GetComponent<ZombieSound>().ZombieDiesSound();
     }
 
     public void ActiveReset()
