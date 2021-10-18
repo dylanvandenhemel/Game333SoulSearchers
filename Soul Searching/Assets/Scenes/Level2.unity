@@ -18681,6 +18681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieTemp
       objectReference: {fileID: 0}
+    - target: {fileID: 8076514503634595223, guid: a6d22b347664dfc47afed87164ce1035, type: 3}
+      propertyPath: zombieDies
+      value: 
+      objectReference: {fileID: 2066603963}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d22b347664dfc47afed87164ce1035, type: 3}
 --- !u!1001 &1659418952
@@ -22915,6 +22919,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3523999692121883387, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
   m_PrefabInstance: {fileID: 180529593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2066603963 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3561630279598421010, guid: 3b3ec1c38e6bbb144bf24f474cb0a5ba, type: 3}
+  m_PrefabInstance: {fileID: 96595831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2072088673
 PrefabInstance:
