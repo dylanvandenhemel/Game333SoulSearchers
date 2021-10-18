@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     //PauseMenu
     public GameObject pauseMenu;
 
-
     //player
     private Vector3 resetLocation;
     public bool bresetPlayer = false;
@@ -28,6 +27,8 @@ public class Player : MonoBehaviour
     public LayerMask doggyLayer;
     RaycastHit hit;
     public bool bwhistling;
+
+    public int collectablesCount;
 
     private void OnEnable()
     {
