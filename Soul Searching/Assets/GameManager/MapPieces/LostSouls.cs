@@ -14,7 +14,6 @@ public class LostSouls : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             player = other.transform;
-            Debug.Log("touched");
             bCollected = true;
         }
     }
@@ -23,7 +22,7 @@ public class LostSouls : MonoBehaviour
     {
         if(bCollected)
         {
-            GetComponent<NavMeshAgent>().SetDestination(new Vector3(player.position.x, player.position.y, player.position.z - 0.5f));
+            GetComponent<NavMeshAgent>().SetDestination(player.position);
         }
     }
 }
