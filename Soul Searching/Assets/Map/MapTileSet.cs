@@ -8,7 +8,7 @@ public class MapTileSet : ScriptableObject
 {
     public GameObject space;
 
-    public GameObject piller;
+    public GameObject cornerPiece;
     //If only one wall is open
     public GameObject NDeadEnd, EDeadEnd, SDeadEnd, WDeadEnd;
 

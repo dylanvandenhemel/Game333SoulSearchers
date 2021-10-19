@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public bool bwhistling;
 
     public int collectablesCount;
+    public static int savedCollection;
 
     private void OnEnable()
     {

@@ -9,6 +9,8 @@ public class Map : MonoBehaviour
 {
     private bool nOpen, eOpen, sOpen, wOpen;
 
+    private Transform nTile, eTile, sTile, wTile;
+
     public MapTileSet mapTile;    
 
     private float maxDistance = 3;
@@ -16,13 +18,11 @@ public class Map : MonoBehaviour
     RaycastHit hitInfo;
     public void AutoMap()
     {
-        
         nOpen = false;
         eOpen = false;
         sOpen = false;
         wOpen = false;
         
-
         //Detect Walls
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, maxDistance, Wall))
         {
@@ -162,29 +162,164 @@ public class Map : MonoBehaviour
     //places pillers in corners
     public void AutoPillar()
     {
+        nTile = null;
+        eTile = null;
+        sTile = null;
+        wTile = null;
+
+
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log(hitInfo.transform.name);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * maxDistance, Color.red, 1);
+            nTile = hitInfo.transform;            
         }
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log(hitInfo.transform.name);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * maxDistance, Color.red, 1);
+            eTile = hitInfo.transform;
         }
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log(hitInfo.transform.name);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * maxDistance, Color.red, 1);
+            sTile = hitInfo.transform;
         }
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, out hitInfo, maxDistance, Wall))
         {
-            Debug.Log(hitInfo.transform.name);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * maxDistance, Color.red, 1);
+            wTile = hitInfo.transform;
         }
+
+
+        //SINGLE CORNER
+        //north east corner
+        if(nTile != null && eTile != null && sTile == null && wTile == null)
+        {
+            if(nTile.name == "EastWall" || nTile.name == "NDeadEnd" || nTile.name == "TopRightCorner" || nTile.name == "NSHallway" && eTile.name == "NorthWall" || eTile.name == "EDeadEnd" || eTile.name == "TopRightCorner" || eTile.name == "EWHallway")
+            {
+                Debug.Log("Piller north east");
+                GameObject NECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                NECorner.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1, transform.position.z + 1.5f);
+                NECorner.transform.rotation = Quaternion.Euler(0, 0, 0);
+                NECorner.transform.parent = transform.parent;
+            }
+        }
+
+        //north west corner
+        if (nTile != null && eTile == null && sTile == null && wTile != null)
+        {
+            if (nTile.name == "WestWall" || nTile.name == "NDeadEnd" || nTile.name == "TopLeftCorner" || nTile.name == "NSHallway" && wTile.name == "NorthWall" || wTile.name == "WDeadEnd" || wTile.name == "TopLeftCorner" || wTile.name == "EWHallway")
+            {
+                Debug.Log("Piller north west");
+                GameObject NWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                NWCorner.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z + 1.5f);
+                NWCorner.transform.rotation = Quaternion.Euler(0, -90, 0);
+                NWCorner.transform.parent = transform.parent;
+            }
+        }
+
+        // south east corner
+        if (nTile == null && eTile != null && sTile != null && wTile == null)
+        {
+            if (sTile.name == "EWall" || sTile.name == "SDeadEnd" || sTile.name == "BottomRightCorner" || sTile.name == "NSHallway" && eTile.name == "SouthWall" || eTile.name == "EDeadEnd" || eTile.name == "BottomRightCorner" || eTile.name == "EWHallway")
+            {
+                Debug.Log("Piller south east");
+                GameObject SECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                SECorner.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1, transform.position.z - 1.5f);
+                SECorner.transform.rotation = Quaternion.Euler(0, 90, 0);
+                SECorner.transform.parent = transform.parent;
+            }
+        }
+
+        // south west corner
+        if (nTile == null && eTile == null && sTile != null && wTile != null)
+        {
+            Debug.Log(wTile.transform.name);
+            Debug.Log(sTile.transform.name);
+            if (sTile.name == "WestWall" || sTile.name == "SDeadEnd" || sTile.name == "BottomLeftCorner" || sTile.name == "NSHallway" && wTile.name == "SouthWall" || wTile.name == "WDeadEnd" || wTile.name == "BottemLeftCorner" || wTile.name == "EWHallway")
+            {
+                Debug.Log("Piller south west");
+                GameObject SWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                SWCorner.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z - 1.5f);
+                SWCorner.transform.rotation = Quaternion.Euler(0, 180, 0);
+                SWCorner.transform.parent = transform.parent;
+            }
+        }
+
+        //DOUBLE CORNERS
+        //north 2 corners
+        if (nTile != null && eTile != null && sTile == null && wTile != null)
+        {
+            if (nTile.name == "NSHallway" || nTile.name == "NDeadEnd" && eTile.name == "NorthWall" || eTile.name == "EDeadEnd" || eTile.name == "TopRightCorner" || eTile.name == "EWHallway" && wTile.name == "NorthWall" || wTile.name == "WDeadEnd"|| wTile.name == "TopLeftCorner" || wTile.name == "EWHallway")
+            {
+                Debug.Log("north corners");
+                GameObject NECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                NECorner.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1, transform.position.z + 1.5f);
+                NECorner.transform.rotation = Quaternion.Euler(0, 0, 0);
+                NECorner.transform.parent = transform.parent;
+
+                GameObject NWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                NWCorner.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z + 1.5f);
+                NWCorner.transform.rotation = Quaternion.Euler(0, -90, 0);
+                NWCorner.transform.parent = transform.parent;
+            }
+        }
+
+        //east 2 corners
+        if (nTile != null && eTile != null && sTile != null && wTile == null)
+        {
+            if (nTile.name == "EastWall" || nTile.name == "NDeadEnd" || nTile.name == "TopRightCorner" || nTile.name == "NSHallway" && eTile.name == "EDeadEnd" || eTile.name == "EWHallway" && wTile.name == "SouthWall" || wTile.name == "WDeadEnd" || wTile.name == "BottemLeftCorner" || wTile.name == "EWHallway")
+            {
+                Debug.Log("east corners");
+                GameObject NECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                NECorner.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1, transform.position.z + 1.5f);
+                NECorner.transform.rotation = Quaternion.Euler(0, 0, 0);
+                NECorner.transform.parent = transform.parent;
+
+                GameObject SECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                SECorner.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1, transform.position.z - 1.5f);
+                SECorner.transform.rotation = Quaternion.Euler(0, 90, 0);
+                SECorner.transform.parent = transform.parent;
+            }
+        }
+
+        //south 2 corners
+        if (nTile == null && eTile != null && sTile != null && wTile != null)
+        {
+            if (eTile.name == "SouthWall" || eTile.name == "EDeadEnd" || eTile.name == "BottomRightCorner" || eTile.name == "EWHallway" && sTile.name == "SDeadEnd" || sTile.name == "NSHallway" && wTile.name == "SouthWall" || wTile.name == "WDeadEnd" || wTile.name == "BottemLeftCorner" || wTile.name == "EWHallway")
+            {
+                Debug.Log("south corners");
+
+                GameObject SECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                SECorner.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1, transform.position.z - 1.5f);
+                SECorner.transform.rotation = Quaternion.Euler(0, 90, 0);
+                SECorner.transform.parent = transform.parent;
+
+                GameObject SWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                SWCorner.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z - 1.5f);
+                SWCorner.transform.rotation = Quaternion.Euler(0, 180, 0);
+                SWCorner.transform.parent = transform.parent;
+            }
+        }
+
+
+        //west 2 corners
+        if (nTile != null && eTile == null && sTile != null && wTile != null)
+        {
+            if (nTile.name == "WestWall" || nTile.name == "NDeadEnd" || nTile.name == "TopLeftCorner" || nTile.name == "NSHallway" && sTile.name == "WestWall" || sTile.name == "SDeadEnd" || sTile.name == "BottomLeftCorner" || sTile.name == "NSHallway" && wTile.name == "WDeadEnd" || wTile.name == "EWHallway")
+            {
+                Debug.Log("west corners");
+                GameObject NWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                NWCorner.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z + 1.5f);
+                NWCorner.transform.rotation = Quaternion.Euler(0, -90, 0);
+                NWCorner.transform.parent = transform.parent;
+
+                GameObject SWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
+                SWCorner.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z - 1.5f);
+                SWCorner.transform.rotation = Quaternion.Euler(0, 180, 0);
+                SWCorner.transform.parent = transform.parent;
+            }
+        }
+
+
     }
 }
 #endif
