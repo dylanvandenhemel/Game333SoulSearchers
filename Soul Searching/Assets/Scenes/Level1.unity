@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 615742475}
-  m_IndirectSpecularColor: {r: 0.30334842, g: 0.17792499, b: 0.22991672, a: 1}
+  m_IndirectSpecularColor: {r: 0.30334863, g: 0.17792487, b: 0.2299164, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6476,6 +6476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97dea30c71964cc49920b64fbece49d7, type: 3}
+--- !u!224 &1204339983 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3005914893100074005, guid: 97dea30c71964cc49920b64fbece49d7, type: 3}
+  m_PrefabInstance: {fileID: 1204339982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1206791087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6596,6 +6601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EEndStairs
       objectReference: {fileID: 0}
+    - target: {fileID: 7577543080387629372, guid: b867e9ce927a1c346b2e09158f0eb856, type: 3}
+      propertyPath: fade
+      value: 
+      objectReference: {fileID: 1204339983}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b867e9ce927a1c346b2e09158f0eb856, type: 3}
 --- !u!1001 &1234507771

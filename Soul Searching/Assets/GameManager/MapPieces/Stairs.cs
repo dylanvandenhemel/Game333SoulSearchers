@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Stairs : MonoBehaviour
 {
-    //Loading Screen someday----> then next scene
-
-
     private Scene currentScene;
+    public Transform fade;
     private void Start()
     {
+        //last child
+        fade.GetChild(fade.childCount - 1).GetComponent<Animator>().SetTrigger("fadeIn");
         currentScene = SceneManager.GetActiveScene();
     }
 
@@ -18,8 +18,17 @@ public class Stairs : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Next Scene");
-            SceneManager.LoadScene(currentScene.buildIndex + 1);
+            fade.GetChild(fade.childCount - 1).GetComponent<Animator>().SetTrigger("fadeOut");
+            other.GetComponent<CharacterController>().enabled = false;
+
+            StartCoroutine(fadeWait());
         }
+    }
+
+    IEnumerator fadeWait()
+    {
+        yield return new WaitForSeconds(1);
+        Debug.Log("Next Scene");
+        SceneManager.LoadScene(currentScene.buildIndex + 1);
     }
 }
