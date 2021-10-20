@@ -9,6 +9,6 @@ public class GhostKeyCheckPoint : MonoBehaviour
     {
         ghostkeyReSpawn = GameObject.FindGameObjectsWithTag("KeyGhost");
         GetComponent<MeshRenderer>().enabled = false;
-        transform.position = new Vector3(transform.position.x, ghostkeyReSpawn[0].transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, ghostkeyReSpawn[0].transform.position.y + 0.5f, transform.position.z);
     }
 }
