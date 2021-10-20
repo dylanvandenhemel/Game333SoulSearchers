@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class Activator : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Activator : MonoBehaviour
     private bool bLever = false;
     private bool bActiveLever = false;
     private bool bLeverinRange = false;
+
+
 
     //Lever Input
     PlayerControls pActions;
@@ -32,8 +35,6 @@ public class Activator : MonoBehaviour
 
     private void Start()
     {
-
-
         //Only to allow the on trigger for pressplate
         if (transform.CompareTag("PressPlate"))
         {
@@ -110,12 +111,13 @@ public class Activator : MonoBehaviour
             {
                 Trigger();
                 GetComponent<AudioSource>().Play();
+                transform.GetChild(transform.childCount - 1).GetComponent<VisualEffect>().Play();
                 bActiveLever = true;
             }
             else
             {
                 Trigger();
-                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
+                transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().Play();
                 bActiveLever = false;
             }
         }
