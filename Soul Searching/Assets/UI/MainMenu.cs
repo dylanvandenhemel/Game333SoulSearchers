@@ -20,9 +20,13 @@ public class MainMenu : MonoBehaviour
     public GameObject levelMenu;
         public Text levelSelection;
         private bool blevelOn;
-        private int levelMenuSelection;
+        private int levelMenuSelectionX;
+        private int levelMenuSelectionY;
     //Levels in menu
         public Text tutorial;
+        public Text level1;
+        public Text level2;
+        public Text level3;
       
     //Controller menu
     public GameObject controlMenu;
@@ -89,11 +93,32 @@ public class MainMenu : MonoBehaviour
             if(blevelOn)
             {
                 //tutorial
-                if(levelMenuSelection == 1)
+                if(levelMenuSelectionX == 1)
                 {
                     Debug.Log("load tutorial");
-                    levelMenuSelection = 0;
+                    levelMenuSelectionX = 0;
                     SceneManager.LoadScene("Tutorial");
+                }
+                //Level 1
+                else if (levelMenuSelectionX == 2)
+                {
+                    Debug.Log("load level 1");
+                    levelMenuSelectionX = 0;
+                    //SceneManager.LoadScene("Tutorial");
+                }
+                //Level 2
+                else if (levelMenuSelectionX == 3)
+                {
+                    Debug.Log("load level 2");
+                    levelMenuSelectionX = 0;
+                    //SceneManager.LoadScene("Tutorial");
+                }
+                //Level 3
+                else if (levelMenuSelectionX == 4)
+                {
+                    Debug.Log("load level 3");
+                    levelMenuSelectionX = 0;
+                    //SceneManager.LoadScene("Tutorial");
                 }
             }
         }
@@ -196,23 +221,40 @@ public class MainMenu : MonoBehaviour
             //Sets value
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x >= 1)
             {
-                if (levelMenuSelection < 1)
+                if (levelMenuSelectionX < 5)
                 {
                     Debug.Log("Right");
-                    levelMenuSelection++;
+                    levelMenuSelectionX++;
                 }
             }
             else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x <= -1)
             {
-                if (levelMenuSelection > 0)
+                if (levelMenuSelectionX > 0)
                 {
                     Debug.Log("Left");
-                    levelMenuSelection--;
+                    levelMenuSelectionX--;
+                }
+            }
+
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y >= 1)
+            {
+                if (levelMenuSelectionX < 5)
+                {
+                    Debug.Log("Right");
+                    levelMenuSelectionX++;
+                }
+            }
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y <= -1)
+            {
+                if (levelMenuSelectionX > 0)
+                {
+                    Debug.Log("Left");
+                    levelMenuSelectionX--;
                 }
             }
 
             //Updates button selections color
-            if (levelMenuSelection == 1)
+            if (levelMenuSelectionX == 1)
             {
                 tutorial.color = Color.blue;
             }
@@ -220,6 +262,34 @@ public class MainMenu : MonoBehaviour
             {
                 tutorial.color = Color.black;
             }
+
+            if (levelMenuSelectionX == 2)
+            {
+                level1.color = Color.blue;
+            }
+            else
+            {
+                level1.color = Color.black;
+            }
+
+            if (levelMenuSelectionX == 3)
+            {
+                level2.color = Color.blue;
+            }
+            else
+            {
+                level2.color = Color.black;
+            }
+
+            if (levelMenuSelectionX == 4)
+            {
+                level3.color = Color.blue;
+            }
+            else
+            {
+                level3.color = Color.black;
+            }
+
 
         }
         else if (bcontrolsOn)

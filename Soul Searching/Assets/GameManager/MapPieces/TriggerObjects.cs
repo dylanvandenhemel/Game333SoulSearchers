@@ -13,6 +13,7 @@ public class TriggerObjects : MonoBehaviour
     //On off system
     public bool bTrapActive = false;
     public bool bDoorActive = false;
+    private bool bDoorStart;
     private bool bPlatformActive = false;
 
     private AudioSource trapSound;
@@ -27,6 +28,8 @@ public class TriggerObjects : MonoBehaviour
         }
         else if (transform.CompareTag("Door"))
         {
+            bDoorStart = bDoorActive;
+
             bDoor = true;
             Trigger();
         }
@@ -116,7 +119,7 @@ public class TriggerObjects : MonoBehaviour
             gameObject.SetActive(false);
             bDoorActive = true;
         }
-        else if(bDoorActive)
+        else
         {
             //Debug.Log("Door Stop");
             gameObject.SetActive(true);

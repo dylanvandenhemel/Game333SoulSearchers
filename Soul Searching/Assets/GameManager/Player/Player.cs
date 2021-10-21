@@ -46,6 +46,12 @@ public class Player : MonoBehaviour
         pActions.PlayerActions.Whistle.started -= Whistle;
     }
 
+    private void Awake()
+    {
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.visible = false;
+    }
+
     private void Start()
     {
         resetLocation = transform.position;

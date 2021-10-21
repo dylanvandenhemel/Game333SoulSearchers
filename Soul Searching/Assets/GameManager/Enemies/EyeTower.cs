@@ -159,6 +159,7 @@ public class EyeTower : MonoBehaviour
             bTracker = false;
             btriggerActivated = false;
             Trigger();
+            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
         }
             
     }
@@ -179,7 +180,7 @@ public class EyeTower : MonoBehaviour
     public void ActiveReset()
     {
         bTracker = false;
-        Trigger();
+        //Trigger();
     }
 }
 
