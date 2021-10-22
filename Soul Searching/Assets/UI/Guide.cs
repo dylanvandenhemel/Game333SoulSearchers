@@ -35,6 +35,12 @@ public class Guide : MonoBehaviour
             transform.LookAt(other.transform);
             canvas.GetChild(2).gameObject.SetActive(true);
         }
+
+        if (other.CompareTag("Player") && guideInfoNumber == 3)
+        {
+            transform.LookAt(other.transform);
+            canvas.GetChild(3).gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -52,6 +58,12 @@ public class Guide : MonoBehaviour
         if (other.CompareTag("Player") && guideInfoNumber == 2)
         {
             canvas.GetChild(2).gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Player") && guideInfoNumber == 3)
+        {
+            transform.LookAt(other.transform);
+            canvas.GetChild(3).gameObject.SetActive(false);
         }
     }
 }
