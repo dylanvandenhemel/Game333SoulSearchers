@@ -134,6 +134,7 @@ public class EyeTower : MonoBehaviour
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
                     if(!btriggerActivated)
                     {
+                        Debug.Log("bruh");
                         Trigger();
                         btriggerActivated = true;
                     }
@@ -182,6 +183,7 @@ public class EyeTower : MonoBehaviour
         if(bTracker)
         {
             Trigger();
+            btriggerActivated = false;
         }
         bTracker = false;
     }
