@@ -17,6 +17,15 @@ public class MainMenu : MonoBehaviour
     private static bool bDoneTutorial;
     public Text StartGame;
 
+    //animations
+    private int animVal;
+        Quaternion mainRotation;
+            Vector3 mainPosition;
+        Quaternion levelRotation;
+        Vector3 controlsPosition;
+        Quaternion settingRotation;
+            Vector3 settingPosition;
+
     //Level menu
     public GameObject levelMenu;
         public Text levelSelection;
@@ -63,6 +72,38 @@ public class MainMenu : MonoBehaviour
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
     }
 
+    private void Start()
+    {
+        mainRotation = transform.rotation;
+        mainPosition = transform.position;
+        levelRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
+        controlsPosition = new Vector3(transform.position.x - 1.8f, transform.position.y, transform.position.z);
+        settingRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y -90, 0);
+        settingPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.8f);
+    }
+
+    private void Update()
+    {
+        if(animVal == 0)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, mainRotation, 50 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, mainPosition, 1 * Time.deltaTime);
+        }
+        else if(animVal == 1)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, levelRotation, 50 * Time.deltaTime);
+        }
+        else if(animVal == 2)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, controlsPosition, 1 * Time.deltaTime);
+        }
+        else if(animVal == 3)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, settingRotation, 50 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, settingPosition, 1 * Time.deltaTime);
+        }
+    }
+
     private void SelectUI(InputAction.CallbackContext c)
     {
         //triggers correct button
@@ -86,10 +127,8 @@ public class MainMenu : MonoBehaviour
         else if (mainMenuSelection == 3)
         {
             blevelOn = true;
-            levelMenu.SetActive(true);
             mainMenu.SetActive(false);
-
-            menuButtons.PlayerActions.Interact.performed += Return;
+            StartCoroutine(cameraAnimation(1));
 
             //sends player to level selected
             if(blevelOn)
@@ -128,19 +167,15 @@ public class MainMenu : MonoBehaviour
         else if(mainMenuSelection == 2)
         {
             bcontrolsOn = true;
-            controlMenu.SetActive(true);
             mainMenu.SetActive(false);
-
-            menuButtons.PlayerActions.Interact.performed += Return;
+            StartCoroutine(cameraAnimation(2));
         }
         //Settings
         else if(mainMenuSelection == 1)
         {
             bsettingsOn = true;          
-            settingsMenu.SetActive(true);
             mainMenu.SetActive(false);
-
-            menuButtons.PlayerActions.Interact.performed += Return;
+            StartCoroutine(cameraAnimation(3));
         }
         //Quit
         else if(mainMenuSelection == 0)
@@ -350,25 +385,29 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator cameraAnimation(int newMenuVal)
     {
-        if(newMenuVal == 0)
+        menuButtons.PlayerActions.Possess.performed -= SelectUI;
+        menuButtons.PlayerActions.Interact.performed -= Return;
+
+
+        if (newMenuVal == 0)
         {
-            //animate camera to mainmenu
+            animVal = 0;
         }
         else if (newMenuVal == 1)
         {
-            //animate camera to level slection
+            animVal = 1;
         }
         else if (newMenuVal == 2)
         {
-            //animate camera to controls
+            animVal = 2;
         }
         else if (newMenuVal == 3)
         {
-            //animate camera to settings
+            animVal = 3;
         }
 
 
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(2);
         if(newMenuVal == 0)
         {
             mainMenu.SetActive(true);
@@ -386,7 +425,8 @@ public class MainMenu : MonoBehaviour
             settingsMenu.SetActive(true);
         }
 
-
+        menuButtons.PlayerActions.Possess.performed += SelectUI;
+        menuButtons.PlayerActions.Interact.performed += Return;
 
     }
 
