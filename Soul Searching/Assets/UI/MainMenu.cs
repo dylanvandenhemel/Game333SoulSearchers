@@ -370,6 +370,7 @@ public class MainMenu : MonoBehaviour
         if(blevelOn)
         {
             levelMenu.SetActive(false);
+            levelMenuSelectionX = 0;
             blevelOn = false;
         }
 
