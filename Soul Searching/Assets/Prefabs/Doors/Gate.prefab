@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7290232964285416806}
   - component: {fileID: 5945815647213341379}
   - component: {fileID: 8459783879565032969}
-  - component: {fileID: 4140553830137565026}
+  - component: {fileID: 60032662713339405}
+  - component: {fileID: 1558778017034012622}
+  - component: {fileID: 8232702282598698466}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Door
@@ -27,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7955552589022699484}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.9901948, z: 3.6359845e-14}
+  m_LocalPosition: {x: 0.774, y: 0.9901948, z: 3.6359845e-14}
   m_LocalScale: {x: 0.015333277, y: 0.01741526, z: 0.00074847037}
   m_Children: []
   m_Father: {fileID: 7649927385640797182}
@@ -82,7 +84,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &4140553830137565026
+--- !u!95 &60032662713339405
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955552589022699484}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6dc2103e3c8479145989a540eef0e074, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!208 &1558778017034012622
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,8 +117,21 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -50.000004, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &8232702282598698466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955552589022699484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100.000015, z: 100.00012}
+  m_Center: {x: -50, y: 0.000005722046, z: -0.000061035156}
 --- !u!1 &8970704291958535615
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +141,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7649927385640797182}
-  - component: {fileID: 1433203507443495111}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Door
@@ -130,16 +163,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1433203507443495111
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970704291958535615}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6055498, y: 1.861973, z: 0.34520352}
-  m_Center: {x: -0.021266103, y: 0.97208166, z: 0.013774373}
