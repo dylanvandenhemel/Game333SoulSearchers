@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2674183960787245472}
   - component: {fileID: 1347499541477873157}
   - component: {fileID: 3843735388243534543}
-  - component: {fileID: 918235403177791955}
-  - component: {fileID: 4553536065434618709}
+  - component: {fileID: 2032538487667709931}
+  - component: {fileID: 8944357129447030825}
+  - component: {fileID: 3749463311704249231}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3339221797000512282}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.9883513, z: 0}
+  m_LocalPosition: {x: 0.76, y: 0.9883513, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 3967251086782365149}
@@ -83,7 +84,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &918235403177791955
+--- !u!95 &2032538487667709931
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339221797000512282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6dc2103e3c8479145989a540eef0e074, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &8944357129447030825
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +114,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 153.22525, y: 174.10434, z: 38.485744}
-  m_Center: {x: 0, y: 0, z: 0.6455824}
---- !u!208 &4553536065434618709
+  m_Size: {x: 153.22525, y: 174.10434, z: 7.7777786}
+  m_Center: {x: -76.691055, y: 0, z: 0}
+--- !u!208 &3749463311704249231
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +130,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -76.691, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!1 &8978221694182808251
 GameObject:
