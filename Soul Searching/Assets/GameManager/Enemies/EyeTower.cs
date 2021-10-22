@@ -159,7 +159,7 @@ public class EyeTower : MonoBehaviour
             bTracker = false;
             btriggerActivated = false;
             Trigger();
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0);
+            transform.rotation = Quaternion.Euler(0, transform.rotation.y, transform.rotation.z);
         }
             
     }
@@ -179,44 +179,10 @@ public class EyeTower : MonoBehaviour
 
     public void ActiveReset()
     {
-        bTracker = false;
-        //Trigger();
-    }
-}
-
-
-//Edits unity Inspector to show or hide options
-/*[ExecuteInEditMode]
-[CustomEditor(typeof(EyeTower))]
-public class EyeTowerCI : Editor
-{
-    public bool b180Rotation = true;
-    public bool b360Rotation = false;
-    enum eyeRotations {b180Rotation, b360Rotation};
-    public override void OnInspectorGUI()
-    {
-        var myScript = (target as EyeTower);
-        base.OnInspectorGUI();
-        if(myScript.bPanningOn)
+        if(bTracker)
         {
-            EditorGUILayout.LabelField("Choose Rotation");
-            b180Rotation = GUILayout.Toggle(b180Rotation, "180 Rotation");
-            b360Rotation = GUILayout.Toggle(b360Rotation, "360 Rotation");
-
-            if (b180Rotation)
-            {
-                myScript.Selected180();
-
-            }
-            else if (b360Rotation)
-            {
-                myScript.Selected360();
-
-            }
+            Trigger();
         }
-
-        
+        bTracker = false;
     }
-
 }
-*/

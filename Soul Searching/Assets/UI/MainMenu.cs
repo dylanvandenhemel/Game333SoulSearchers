@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     PlayerControls menuButtons;
 
     //only 4 buttons at the moment
+    public GameObject mainMenu;
     private int mainMenuSelection = 5;
 
     private static bool bDoneTutorial;
@@ -86,6 +87,7 @@ public class MainMenu : MonoBehaviour
         {
             blevelOn = true;
             levelMenu.SetActive(true);
+            mainMenu.SetActive(false);
 
             menuButtons.PlayerActions.Interact.performed += Return;
 
@@ -93,7 +95,7 @@ public class MainMenu : MonoBehaviour
             if(blevelOn)
             {
                 //tutorial
-                if(levelMenuSelectionX == 1)
+                if (levelMenuSelectionX == 1)
                 {
                     Debug.Log("load tutorial");
                     levelMenuSelectionX = 0;
@@ -127,6 +129,7 @@ public class MainMenu : MonoBehaviour
         {
             bcontrolsOn = true;
             controlMenu.SetActive(true);
+            mainMenu.SetActive(false);
 
             menuButtons.PlayerActions.Interact.performed += Return;
         }
@@ -135,6 +138,7 @@ public class MainMenu : MonoBehaviour
         {
             bsettingsOn = true;          
             settingsMenu.SetActive(true);
+            mainMenu.SetActive(false);
 
             menuButtons.PlayerActions.Interact.performed += Return;
         }
@@ -341,7 +345,7 @@ public class MainMenu : MonoBehaviour
         }
 
 
-
+        mainMenu.SetActive(true);
         menuButtons.PlayerActions.Interact.performed -= Return;
     }
 
