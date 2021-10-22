@@ -109,6 +109,7 @@ public class Activator : MonoBehaviour
         {
             if (!bActiveLever)
             {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y -90, transform.rotation.z);
                 Trigger();
                 GetComponent<AudioSource>().Play();
                 transform.GetChild(transform.childCount - 1).GetComponent<VisualEffect>().Play();
@@ -116,6 +117,7 @@ public class Activator : MonoBehaviour
             }
             else
             {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
                 Trigger();
                 transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().Play();
                 bActiveLever = false;
