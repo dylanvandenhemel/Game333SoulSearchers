@@ -344,49 +344,50 @@ public class MainMenu : MonoBehaviour
             controlMenu.SetActive(false);
         }
 
-
-        mainMenu.SetActive(true);
+        StartCoroutine(cameraAnimation(0));
         menuButtons.PlayerActions.Interact.performed -= Return;
     }
 
-    /* if using mouse
-
-    public void ClickedStart()
+    IEnumerator cameraAnimation(int newMenuVal)
     {
-        if (!bDoneTutorial)
+        if(newMenuVal == 0)
         {
-            bDoneTutorial = true;
-            SceneManager.LoadScene("Tutorial");
+            //animate camera to mainmenu
         }
-        else if (bDoneTutorial)
+        else if (newMenuVal == 1)
         {
-            SceneManager.LoadScene("Level1");
+            //animate camera to level slection
         }
+        else if (newMenuVal == 2)
+        {
+            //animate camera to controls
+        }
+        else if (newMenuVal == 3)
+        {
+            //animate camera to settings
+        }
+
+
+        yield return new WaitForSeconds(0);
+        if(newMenuVal == 0)
+        {
+            mainMenu.SetActive(true);
+        }
+        else if (newMenuVal == 1)
+        {
+            levelMenu.SetActive(true);
+        }
+        else if (newMenuVal == 2)
+        {
+            controlMenu.SetActive(true);
+        }
+        else if (newMenuVal == 3)
+        {
+            settingsMenu.SetActive(true);
+        }
+
+
+
     }
-
-    public void ClickedLevelSelect()
-    {
-        blevelOn = true;
-        levelMenu.SetActive(true);
-
-        menuButtons.PlayerActions.Interact.performed += Return;
-    }
-
-    public void ClickedControls()
-    {
-        bcontrolsOn = true;
-        controlMenu.SetActive(true);
-
-        menuButtons.PlayerActions.Interact.performed += Return;
-    }
-
-    public void ClickedSettings()
-    {
-        bsettingsOn = true;
-        settingsMenu.SetActive(true);
-
-        menuButtons.PlayerActions.Interact.performed += Return;
-    }
-    */
 
 }

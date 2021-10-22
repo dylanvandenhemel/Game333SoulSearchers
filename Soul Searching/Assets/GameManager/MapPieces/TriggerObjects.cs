@@ -115,14 +115,14 @@ public class TriggerObjects : MonoBehaviour
     {
         if(!bDoorActive)
         {
-            //Debug.Log("Door Triggered");
-            gameObject.SetActive(false);
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
+            //gameObject.SetActive(false);
             bDoorActive = true;
         }
         else
         {
-            //Debug.Log("Door Stop");
-            gameObject.SetActive(true);
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
+            //gameObject.SetActive(true);
             bDoorActive = false;
         }
     }
