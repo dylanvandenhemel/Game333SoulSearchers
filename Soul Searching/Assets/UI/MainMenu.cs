@@ -224,7 +224,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                levelSelection.color = new Vector4(141, 0, 255, 255);
+                levelSelection.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (mainMenuSelection == 2)
@@ -233,7 +233,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                controlSelection.color = new Vector4(141, 0, 255, 255);
+                controlSelection.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (mainMenuSelection == 1)
@@ -242,7 +242,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                settings.color = new Vector4(141, 0, 255, 255);
+                settings.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (mainMenuSelection == 0)
@@ -251,7 +251,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                quit.color = new Vector4(141, 0, 255, 255);
+                quit.color = new Vector4(0.55f, 0, 1, 1);
             }
 
         }
@@ -299,7 +299,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                tutorial.color = new Vector4(141, 0, 255, 255);
+                tutorial.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (levelMenuSelectionX == 2)
@@ -308,7 +308,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                level1.color = new Vector4(141, 0, 255, 255);
+                level1.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (levelMenuSelectionX == 3)
@@ -317,7 +317,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                level2.color = new Vector4(141, 0, 255, 255);
+                level2.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (levelMenuSelectionX == 4)
@@ -326,7 +326,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                level3.color = new Vector4(141, 0, 255, 255);
+                level3.color = new Vector4(0.55f, 0, 1, 1);
             }
 
 
