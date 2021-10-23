@@ -80,6 +80,16 @@ public class Player : MonoBehaviour
         }
         else if(bpossessSkel)
         {
+            //skeliton animation
+            if(currentSkeletonPile != null && (pActions.PlayerActions.Movement.ReadValue<Vector2>().x != 0 || pActions.PlayerActions.Movement.ReadValue<Vector2>().y != 0))
+            {
+                currentSkeletonPile.GetChild(0).GetComponent<Animator>().SetBool("bSkelWalk", true);
+            }
+            else if(currentSkeletonPile != null && (pActions.PlayerActions.Movement.ReadValue<Vector2>().x == 0 || pActions.PlayerActions.Movement.ReadValue<Vector2>().y == 0))
+            {
+                currentSkeletonPile.GetChild(0).GetComponent<Animator>().SetBool("bSkelWalk", false);
+            }
+
             cController.Move(desiredDirection * Time.deltaTime * skelSpeed);
 
             if (desiredDirection.x != 0 || desiredDirection.z != 0)
