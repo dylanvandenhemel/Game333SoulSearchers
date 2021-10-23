@@ -14,7 +14,8 @@ public class Door : MonoBehaviour
 
                 other.GetComponent<KeyManager>().collectedBronzeKey = false;
 
-                gameObject.SetActive(false);
+                GetComponent<AudioSource>().Play();
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         else if (other.CompareTag("Player") && transform.CompareTag("DoorSilver"))
@@ -25,7 +26,8 @@ public class Door : MonoBehaviour
 
                 other.GetComponent<KeyManager>().collectedSilverKey = false;
 
-                gameObject.SetActive(false);
+                GetComponent<AudioSource>().Play();
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         else if (other.CompareTag("Player") && transform.CompareTag("DoorGold"))
@@ -36,7 +38,8 @@ public class Door : MonoBehaviour
 
                 other.GetComponent<KeyManager>().collectedGoldKey = false;
 
-                gameObject.SetActive(false);
+                GetComponent<AudioSource>().Play();
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         else if(other.CompareTag("Player") && transform.CompareTag("DoorGhost"))
@@ -46,7 +49,8 @@ public class Door : MonoBehaviour
                 other.GetComponent<KeyManager>().collectedGhostKey = false;
                 other.GetComponent<KeyManager>().UsedGhostKey();
 
-                gameObject.SetActive(false);
+                GetComponent<AudioSource>().Play();
+                transform.GetChild(0).gameObject.SetActive(false);
             }
             else
             {
