@@ -215,7 +215,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                StartGame.color = new Vector4(273, 100, 100, 100);
+                StartGame.color = new Vector4(0.55f, 0, 1, 1);
             }
 
             if (mainMenuSelection == 3)
