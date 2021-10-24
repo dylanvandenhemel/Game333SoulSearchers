@@ -51,7 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public Text quit;
 
-
+    public GameObject[] collectablesButton;
     private void Awake()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
@@ -211,38 +211,38 @@ public class MainMenu : MonoBehaviour
             //Updates button selected to color
             if (mainMenuSelection == 4)
             {
-                StartGame.color = Color.blue;
+                StartGame.color = Color.green;
             }
             else
             {
-                StartGame.color = new Vector4(0.55f, 0, 1, 1);
+                StartGame.color = Color.cyan;
             }
 
             if (mainMenuSelection == 3)
             {
-                levelSelection.color = Color.blue;
+                levelSelection.color = Color.green;
             }
             else
             {
-                levelSelection.color = new Vector4(0.55f, 0, 1, 1);
+                levelSelection.color = Color.cyan;
             }
 
             if (mainMenuSelection == 2)
             {
-                controlSelection.color = Color.blue;
+                controlSelection.color = Color.green;
             }
             else
             {
-                controlSelection.color = new Vector4(0.55f, 0, 1, 1);
+                controlSelection.color = Color.cyan;
             }
 
             if (mainMenuSelection == 1)
             {
-                settings.color = Color.blue;
+                settings.color = Color.green;
             }
             else
             {
-                settings.color = new Vector4(0.55f, 0, 1, 1);
+                settings.color = Color.cyan;
             }
 
             if (mainMenuSelection == 0)
@@ -251,7 +251,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                quit.color = new Vector4(0.55f, 0, 1, 1);
+                quit.color = Color.cyan;
             }
 
         }
@@ -295,38 +295,38 @@ public class MainMenu : MonoBehaviour
             //Updates button selections color
             if (levelMenuSelectionX == 1)
             {
-                tutorial.color = Color.blue;
+                tutorial.color = Color.green;
             }
             else
             {
-                tutorial.color = new Vector4(0.55f, 0, 1, 1);
+                tutorial.color = Color.white;
             }
 
             if (levelMenuSelectionX == 2)
             {
-                level1.color = Color.blue;
+                level1.color = Color.green;
             }
             else
             {
-                level1.color = new Vector4(0.55f, 0, 1, 1);
+                level1.color = Color.white;
             }
 
             if (levelMenuSelectionX == 3)
             {
-                level2.color = Color.blue;
+                level2.color = Color.green;
             }
             else
             {
-                level2.color = new Vector4(0.55f, 0, 1, 1);
+                level2.color = Color.white;
             }
 
             if (levelMenuSelectionX == 4)
             {
-                level3.color = Color.blue;
+                level3.color = Color.green;
             }
             else
             {
-                level3.color = new Vector4(0.55f, 0, 1, 1);
+                level3.color = Color.white;
             }
 
 
