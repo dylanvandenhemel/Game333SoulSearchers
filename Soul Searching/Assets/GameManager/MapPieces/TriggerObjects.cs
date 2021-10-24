@@ -31,7 +31,7 @@ public class TriggerObjects : MonoBehaviour
             bDoorStart = bDoorActive;
 
             bDoor = true;
-            Trigger();
+            //Trigger();
         }
         else if (transform.CompareTag("Platform"))
         {
