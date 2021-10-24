@@ -138,14 +138,14 @@ public class MainMenu : MonoBehaviour
                 {
                     Debug.Log("load tutorial");
                     levelMenuSelectionX = 0;
-                    SceneManager.LoadScene("Tutorial");
+                    SceneManager.LoadScene(1);
                 }
                 //Level 1
                 else if (levelMenuSelectionX == 2)
                 {
                     Debug.Log("load level 1");
                     levelMenuSelectionX = 0;
-                    //SceneManager.LoadScene("Tutorial");
+                    SceneManager.LoadScene(2);
                 }
                 //Level 2
                 else if (levelMenuSelectionX == 3)
