@@ -91,7 +91,7 @@ public class UIElements : MonoBehaviour
             pauseButton.PlayerActions.Movement.started += CurrentSelection;
             pauseButton.PlayerActions.Possess.performed += SelectUI;
 
-            transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
+            transform.GetChild(transform.childCount - 2).gameObject.SetActive(true);
             bPaused = true;
 
             Time.timeScale = 0;
@@ -109,7 +109,7 @@ public class UIElements : MonoBehaviour
                 pauseButton.PlayerActions.Movement.started -= CurrentSelection;
                 pauseButton.PlayerActions.Possess.performed -= SelectUI;
 
-                transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
+                transform.GetChild(transform.childCount - 2).gameObject.SetActive(false);
                 bPaused = false;
             }
         }
@@ -117,7 +117,7 @@ public class UIElements : MonoBehaviour
         else if(pauseSelection == 1)
         {
             Debug.Log("Main Menu");
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(0);
         }
         //Quit
         else if (pauseSelection == 0)
