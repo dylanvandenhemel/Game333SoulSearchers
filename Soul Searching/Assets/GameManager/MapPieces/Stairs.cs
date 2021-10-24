@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Stairs : MonoBehaviour
 {
+    public bool bIsLastLevel;
+
     private Scene currentScene;
     public Transform fade;
     private void Start()
@@ -29,6 +31,13 @@ public class Stairs : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Debug.Log("Next Scene");
-        SceneManager.LoadScene(currentScene.buildIndex + 1);
+        if (bIsLastLevel)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene.buildIndex + 1);
+        }
     }
 }

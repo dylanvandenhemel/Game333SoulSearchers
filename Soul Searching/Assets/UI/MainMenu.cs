@@ -116,11 +116,11 @@ public class MainMenu : MonoBehaviour
                 bDoneTutorial = true;
                 //menuButtons.PlayerActions.Possess.performed -= SelectUI;
                 //menuButtons.PlayerActions.MainMenu.started -= CurrentSelection;
-                SceneManager.LoadScene("Tutorial");
+                SceneManager.LoadScene(1);
             }
             else if(bDoneTutorial)
             {
-                SceneManager.LoadScene("Level1");
+                SceneManager.LoadScene(2);
             }
         }
         //LevelSelect
