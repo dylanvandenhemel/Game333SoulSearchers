@@ -190,7 +190,7 @@ public class MainMenu : MonoBehaviour
         if (!bsettingsOn && !blevelOn && !bcontrolsOn)
         {
             //Sets value
-            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y >= 1)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
             {
                 //only 4 buttons at the moment
                 if (mainMenuSelection < 4)
@@ -199,7 +199,7 @@ public class MainMenu : MonoBehaviour
                     mainMenuSelection++;
                 }
             }
-            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y <= -1)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
             {
                 if (mainMenuSelection > 0)
                 {
@@ -258,7 +258,7 @@ public class MainMenu : MonoBehaviour
         else if (blevelOn)
         {
             //Sets value
-            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x >= 1)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
                 if (levelMenuSelectionX < 5)
                 {
@@ -266,7 +266,7 @@ public class MainMenu : MonoBehaviour
                     levelMenuSelectionX++;
                 }
             }
-            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x <= -1)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
             {
                 if (levelMenuSelectionX > 0)
                 {
@@ -275,7 +275,7 @@ public class MainMenu : MonoBehaviour
                 }
             }
 
-            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y >= 1)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
             {
                 if (levelMenuSelectionX < 5)
                 {
@@ -283,7 +283,7 @@ public class MainMenu : MonoBehaviour
                     levelMenuSelectionX++;
                 }
             }
-            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y <= -1)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
             {
                 if (levelMenuSelectionX > 0)
                 {
