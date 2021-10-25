@@ -4021,6 +4021,7 @@ GameObject:
   - component: {fileID: 1073665606}
   - component: {fileID: 1073665610}
   - component: {fileID: 1073665611}
+  - component: {fileID: 1073665612}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4255,6 +4256,18 @@ MonoBehaviour:
   sFXVolText: {fileID: 944846935}
   quit: {fileID: 1441152969}
   collectablesButton: []
+--- !u!114 &1073665612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073665605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92447a44d2b792348abd1454c0321ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1083799953
 PrefabInstance:
   m_ObjectHideFlags: 0

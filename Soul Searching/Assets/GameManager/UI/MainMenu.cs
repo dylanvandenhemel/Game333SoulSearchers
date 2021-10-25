@@ -113,10 +113,9 @@ public class MainMenu : MonoBehaviour
 
         //update slider volume levels into game
 
-
-
-
-
+        Settings.masterVolumeSet = masterVol.GetComponent<UnityEngine.UI.Slider>().value;
+        Settings.musicVolumeSet = musicVol.GetComponent<UnityEngine.UI.Slider>().value;
+        Settings.sFXVolumeSet = sFXVol.GetComponent<UnityEngine.UI.Slider>().value;
 
 
     }
