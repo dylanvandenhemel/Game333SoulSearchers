@@ -37,6 +37,8 @@ public class MainMenu : MonoBehaviour
         public Text level1;
         public Text level2;
         public Text level3;
+        public Text level4;
+        public Text level5;
       
     //Controller menu
     public GameObject controlMenu;
@@ -152,14 +154,26 @@ public class MainMenu : MonoBehaviour
                 {
                     Debug.Log("load level 2");
                     levelMenuSelectionX = 0;
-                    //SceneManager.LoadScene("Tutorial");
+                    SceneManager.LoadScene(3);
                 }
                 //Level 3
                 else if (levelMenuSelectionX == 4)
                 {
                     Debug.Log("load level 3");
                     levelMenuSelectionX = 0;
-                    //SceneManager.LoadScene("Tutorial");
+                    SceneManager.LoadScene(4);
+                }
+                else if (levelMenuSelectionX == 5)
+                {
+                    Debug.Log("load level 5");
+                    levelMenuSelectionX = 0;
+                    SceneManager.LoadScene(5);
+                }
+                else if (levelMenuSelectionX == 6)
+                {
+                    Debug.Log("load level 5");
+                    levelMenuSelectionX = 0;
+                    SceneManager.LoadScene(6);
                 }
             }
         }
@@ -260,7 +274,7 @@ public class MainMenu : MonoBehaviour
             //Sets value
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
-                if (levelMenuSelectionX < 5)
+                if (levelMenuSelectionX < 6)
                 {
                     Debug.Log("Right");
                     levelMenuSelectionX++;
@@ -327,6 +341,24 @@ public class MainMenu : MonoBehaviour
             else
             {
                 level3.color = Color.white;
+            }
+
+            if (levelMenuSelectionX == 5)
+            {
+                level4.color = Color.green;
+            }
+            else
+            {
+                level4.color = Color.white;
+            }
+
+            if (levelMenuSelectionX == 6)
+            {
+                level5.color = Color.green;
+            }
+            else
+            {
+                level5.color = Color.white;
             }
 
 

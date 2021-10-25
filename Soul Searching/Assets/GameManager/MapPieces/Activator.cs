@@ -17,7 +17,7 @@ public class Activator : MonoBehaviour
     private bool bActiveLever = false;
     private bool bLeverinRange = false;
 
-
+    private bool delayTimer;
 
     //Lever Input
     PlayerControls pActions;
@@ -105,24 +105,35 @@ public class Activator : MonoBehaviour
 
     private void LeverPull(InputAction.CallbackContext c)
     {
-        if(player.GetComponent<Player>().bpossessSkel)
+        if(!delayTimer)
         {
-            if (!bActiveLever)
+            if (player.GetComponent<Player>().bpossessSkel)
             {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y -90, transform.rotation.z);
-                Trigger();
-                GetComponent<AudioSource>().Play();
-                transform.GetChild(transform.childCount - 1).GetComponent<VisualEffect>().Play();
-                bActiveLever = true;
+                if (!bActiveLever)
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y - 90, transform.rotation.z);
+                    Trigger();
+                    GetComponent<AudioSource>().Play();
+                    transform.GetChild(transform.childCount - 1).GetComponent<VisualEffect>().Play();
+                    bActiveLever = true;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
+                    Trigger();
+                    transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().Play();
+                    bActiveLever = false;
+                }
             }
-            else
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
-                Trigger();
-                transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().Play();
-                bActiveLever = false;
-            }
+            delayTimer = true;
+            StartCoroutine(leverWait());
         }
+    }
+
+    IEnumerator leverWait()
+    {
+        yield return new WaitForSeconds(1);
+        delayTimer = false;
     }
 
     public void OnReset()
