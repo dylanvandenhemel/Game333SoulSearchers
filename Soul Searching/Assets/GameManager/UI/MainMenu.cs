@@ -50,6 +50,12 @@ public class MainMenu : MonoBehaviour
         public Text settings;
         private bool bsettingsOn;
         private int settingSelection;
+            public GameObject masterVol;
+                public Text masterVolText;
+            public GameObject musicVol;
+                public Text musicVolText;
+            public GameObject sFXVol;
+            public Text sFXVolText;
 
     public Text quit;
 
@@ -104,6 +110,15 @@ public class MainMenu : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, settingRotation, 50 * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, settingPosition, 1 * Time.deltaTime);
         }
+
+        //update slider volume levels into game
+
+
+
+
+
+
+
     }
 
     private void SelectUI(InputAction.CallbackContext c)
@@ -369,25 +384,74 @@ public class MainMenu : MonoBehaviour
         }
         else if (bsettingsOn)
         {
-            /*Sets value
-            if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x >= 1)
+            //Sets value
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
             {
                 //only -- buttons at the moment
-                if (settingSelection < 1)
+                if (settingSelection < 3)
                 {
-                    //Debug.Log("Left");
                     settingSelection++;
                 }
             }
-            else if (menuButtons.PlayerActions.MainMenu.ReadValue<Vector2>().x <= -1)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
             {
                 if (settingSelection > 0)
                 {
-                    //Debug.Log("Right");
                     settingSelection--;
                 }
             }
-            */
+
+            //Updates button selections color
+            if (settingSelection == 1)
+            {
+                masterVolText.color = Color.green;
+                if(menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
+                {
+                    masterVol.GetComponent<UnityEngine.UI.Slider>().value += 0.2f;
+                }
+                else if(menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
+                {
+                    masterVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
+                }
+            }
+            else
+            {
+                masterVolText.color = Color.magenta;
+            }
+
+            if (settingSelection == 2)
+            {
+                musicVolText.color = Color.green;
+                if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
+                {
+                    musicVol.GetComponent<UnityEngine.UI.Slider>().value += 0.2f;
+                }
+                else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
+                {
+                    musicVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
+                }
+            }
+            else
+            {
+                musicVolText.color = Color.magenta;
+            }
+
+            if (settingSelection == 3)
+            {
+                sFXVolText.color = Color.green;
+                if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
+                {
+                    sFXVol.GetComponent<UnityEngine.UI.Slider>().value += 0.2f;
+                }
+                else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
+                {
+                    sFXVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
+                }
+            }
+            else
+            {
+                sFXVolText.color = Color.magenta;
+            }
         }
     }
 
