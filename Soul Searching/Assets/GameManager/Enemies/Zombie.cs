@@ -36,6 +36,10 @@ public class Zombie : MonoBehaviour
     {
         zombieStartSpeed = zombieRoamSpeed + 1;
         startRotation = transform.rotation;
+        if(bpatrol)
+        {
+            GetComponent<Animator>().SetBool("isPatrol", true);
+        }
 
         //Hides debug cubes
         startingPosition.GetComponent<MeshRenderer>().enabled = false;
@@ -66,6 +70,7 @@ public class Zombie : MonoBehaviour
             {
                 targetReached = true;
             }
+            GetComponent<Animator>().SetBool("isChase", false);
         }
         else if (!bTracker && targetReached && bpatrol)
         {
@@ -79,6 +84,7 @@ public class Zombie : MonoBehaviour
             {
                 targetReached = false;
             }
+            GetComponent<Animator>().SetBool("isChase", false);
         }
 
         //Zombie sees ghost player
@@ -93,6 +99,7 @@ public class Zombie : MonoBehaviour
             //increases zombie speed in increments
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 8f);
             zombieRoamSpeed += 0.1f;
+            GetComponent<Animator>().SetBool("isChase", true);
         }
         
     }
