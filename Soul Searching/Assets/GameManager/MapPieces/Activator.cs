@@ -12,11 +12,11 @@ public class Activator : MonoBehaviour
     private bool bPressPlate = false;
     private bool bPressedPlate;
     private bool bstartPPState;
+    private int yesBones;
 
     private bool bLever = false;
     private bool bActiveLever = false;
     private bool bLeverinRange = false;
-
     private bool delayTimer;
 
     //Lever Input
@@ -50,7 +50,6 @@ public class Activator : MonoBehaviour
     {
         for (int i = 0; i < TriggerObject.Count; i++)
         {
-            //not correct vector type?
             TriggerObject[i].GetComponent<TriggerObjects>().Trigger();
         }
     }
@@ -67,6 +66,7 @@ public class Activator : MonoBehaviour
                 Trigger();
                 bPressedPlate = true;
             }
+            yesBones++;
         }
 
         //For Lever: Must to be possesed to work
@@ -85,10 +85,12 @@ public class Activator : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //For PressPlate
-        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Physical"))
         {
-            if (bPressedPlate)
+            yesBones--;
+            if (bPressedPlate && yesBones <= 0)
             {
+                yesBones = 0;
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();

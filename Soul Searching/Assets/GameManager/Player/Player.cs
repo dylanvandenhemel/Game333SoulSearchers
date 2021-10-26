@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public bool bpossessSkel = false;
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
+    private bool bOnePile;
 
     public LayerMask doggyLayer;
     RaycastHit hit;
@@ -143,6 +144,14 @@ public class Player : MonoBehaviour
             ResetPlayer();
             GetComponent<ResetDelegate>().bcallReset = true;
         }
+
+        if (bpossessSkel)
+        {
+            if (other.CompareTag("SkeletonPile"))
+            {
+                pActions.PlayerActions.Possess.performed -= Possess;
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -155,6 +164,13 @@ public class Player : MonoBehaviour
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
         }
+        if (bpossessSkel)
+        {
+            if (other.CompareTag("SkeletonPile"))
+            {
+                pActions.PlayerActions.Possess.performed += Possess;
+            }
+        }
 
     }
 
@@ -164,12 +180,12 @@ public class Player : MonoBehaviour
         if(transform.childCount == playerChildCount)
         {
             //Sets pile with character until player unpossesses
-            transform.position = currentSkeletonPile.position;
+            transform.position = new Vector3(currentSkeletonPile.position.x, transform.position.y, currentSkeletonPile.position.z);
             transform.rotation = currentSkeletonPile.rotation;
             //currentSkeletonPile.rotation = transform.rotation;
             currentSkeletonPile.parent = transform;
 
-            currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
+            //currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
             currentSkeletonPile.GetComponent<Collider>().enabled = false;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
@@ -201,7 +217,7 @@ public class Player : MonoBehaviour
             currentSkeletonPile.parent = null;
             //resets position and rotation
             currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
-            currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
+            //currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
             pActions.PlayerActions.Possess.performed -= Possess;
 
             //allows player to pass trough walls again
@@ -222,7 +238,7 @@ public class Player : MonoBehaviour
         bpossessSkel = false;
         transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
         //moves pile back a bit after a trap
-        currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y - 0.5f, currentSkeletonPile.localPosition.z - 1);
+        //currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y - 0.5f, currentSkeletonPile.localPosition.z - 1);
 
         currentSkeletonPile.parent = null;
         pActions.PlayerActions.Possess.performed -= Possess;

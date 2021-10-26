@@ -162,7 +162,7 @@ public class EyeTower : MonoBehaviour
             bTracker = false;
             btriggerActivated = false;
             Trigger();
-            transform.rotation = Quaternion.Euler(0, transform.rotation.y, transform.rotation.z);
+            //transform.rotation = Quaternion.Euler(transform.rotation.y, transform.rotation.y, transform.rotation.z);
         }
             
     }
