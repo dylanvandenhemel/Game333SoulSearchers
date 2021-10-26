@@ -96,7 +96,7 @@ public class MainMenu : MonoBehaviour
         savedMusicVol = Settings.masterVolumeSet;
         savedSFXVol = Settings.masterVolumeSet;
 
-        if(Settings.masterVolumeSet != 0)
+        if(Settings.masterVolumeSet != 0 && Settings.musicVolumeSet != 0 && Settings.sFXVolumeSet != 0)
         {
             masterVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.masterVolumeSet;
             sFXVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.sFXVolumeSet;
