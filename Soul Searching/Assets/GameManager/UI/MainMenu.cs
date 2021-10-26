@@ -56,6 +56,9 @@ public class MainMenu : MonoBehaviour
                 public Text musicVolText;
             public GameObject sFXVol;
             public Text sFXVolText;
+    private static float savedMasterVol;
+    private static float savedMusicVol;
+    private static float savedSFXVol;
 
     public Text quit;
 
@@ -88,6 +91,17 @@ public class MainMenu : MonoBehaviour
         controlsPosition = new Vector3(transform.position.x - 1.8f, transform.position.y, transform.position.z);
         settingRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y -90, 0);
         settingPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.8f);
+
+        savedMasterVol = Settings.masterVolumeSet;
+        savedMusicVol = Settings.masterVolumeSet;
+        savedSFXVol = Settings.masterVolumeSet;
+
+        if(Settings.masterVolumeSet != 0)
+        {
+            masterVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.masterVolumeSet;
+            sFXVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.sFXVolumeSet;
+            musicVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.musicVolumeSet;
+        }
     }
 
     private void Update()
