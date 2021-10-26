@@ -15,6 +15,17 @@ public class ZombieSound : MonoBehaviour
 
     private bool bSoundWait;
     private bool bSeesWait;
+
+    public void Start()
+    {
+        zombieIdle1.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        zombieIdle2.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        zombieIdle3.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+
+        zombieSees.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        zombieDies.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+    }
+
     void Update()
     {
         if(zombieSoundOFFSET > 3 || zombieSoundOFFSET < -3)

@@ -14,6 +14,19 @@ public class PlayerSound : MonoBehaviour
     public AudioSource pickUpBones;
     public AudioSource dropBones;
 
+    public void Start()
+    {
+        wistle1.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        wistle2.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        wistle3.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        wistle4.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        wistle5.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+
+        pickUpBones.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        dropBones.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+    }
+
+
     public void PlayerWistle()
     {
         StartCoroutine(WhistleCoolDown(Random.Range(1, 6)));

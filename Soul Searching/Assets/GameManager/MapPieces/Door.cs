@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public void Start()
+    {
+        GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && transform.CompareTag("DoorBronze"))

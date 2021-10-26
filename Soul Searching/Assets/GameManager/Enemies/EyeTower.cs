@@ -51,6 +51,8 @@ public class EyeTower : MonoBehaviour
             panLeft = Quaternion.Euler(0, transform.rotation.eulerAngles.y + panRotationDegrees, 0);
             panRight = Quaternion.Euler(0, transform.rotation.eulerAngles.y - panRotationDegrees, 0);
         }
+
+        GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
     }
 
     
