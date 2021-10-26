@@ -12,6 +12,7 @@ public class HellHoundSounds : MonoBehaviour
     {
         if(!bgrowling)
         {
+            growlSound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
             growlSound.Play();
             bgrowling = true;
 

@@ -24,6 +24,11 @@ public class KeyManager : MonoBehaviour
         ResetDelegate.Reset -= DropGhostKey;
     }
 
+    public void Start()
+    {
+        keySound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+    }
+
 
     public void KeyCollected(Transform currentKey)
     {

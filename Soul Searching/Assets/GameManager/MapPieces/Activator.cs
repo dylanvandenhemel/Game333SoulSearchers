@@ -62,6 +62,7 @@ public class Activator : MonoBehaviour
         {
             if(!bPressedPlate)
             {
+                GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 GetComponent<AudioSource>().Play();
                 Trigger();
                 bPressedPlate = true;
@@ -88,6 +89,7 @@ public class Activator : MonoBehaviour
         {
             if (bPressedPlate)
             {
+                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
                 bPressedPlate = false;
@@ -113,6 +115,7 @@ public class Activator : MonoBehaviour
                 {
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y - 90, transform.rotation.z);
                     Trigger();
+                    GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                     GetComponent<AudioSource>().Play();
                     transform.GetChild(transform.childCount - 1).GetComponent<VisualEffect>().Play();
                     bActiveLever = true;
@@ -121,6 +124,7 @@ public class Activator : MonoBehaviour
                 {
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
                     Trigger();
+                    transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                     transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().Play();
                     bActiveLever = false;
                 }

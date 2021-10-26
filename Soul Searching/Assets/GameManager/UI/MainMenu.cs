@@ -130,8 +130,6 @@ public class MainMenu : MonoBehaviour
             if(!bDoneTutorial)
             {
                 bDoneTutorial = true;
-                //menuButtons.PlayerActions.Possess.performed -= SelectUI;
-                //menuButtons.PlayerActions.MainMenu.started -= CurrentSelection;
                 SceneManager.LoadScene(1);
             }
             else if(bDoneTutorial)
@@ -441,11 +439,14 @@ public class MainMenu : MonoBehaviour
                 if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
                 {
                     sFXVol.GetComponent<UnityEngine.UI.Slider>().value += 0.2f;
+                    sFXVol.GetComponent<AudioSource>().Play();
                 }
                 else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
                 {
                     sFXVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
+                    sFXVol.GetComponent<AudioSource>().Play();
                 }
+                sFXVol.GetComponent<AudioSource>().volume = sFXVol.GetComponent<UnityEngine.UI.Slider>().value;
             }
             else
             {

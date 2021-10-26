@@ -24,6 +24,7 @@ public class TriggerObjects : MonoBehaviour
         {
             bTrap = true;
             trapSound = GetComponentInChildren<AudioSource>();
+            trapSound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
             Trigger();
         }
         else if (transform.CompareTag("Door"))
