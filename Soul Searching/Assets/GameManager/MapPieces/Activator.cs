@@ -61,6 +61,7 @@ public class Activator : MonoBehaviour
         {
             if(!bPressedPlate)
             {
+                transform.GetChild(0).gameObject.SetActive(false);
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 GetComponent<AudioSource>().Play();
                 Trigger();
@@ -91,6 +92,7 @@ public class Activator : MonoBehaviour
             if (bPressedPlate && yesBones <= 0)
             {
                 yesBones = 0;
+                transform.GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
