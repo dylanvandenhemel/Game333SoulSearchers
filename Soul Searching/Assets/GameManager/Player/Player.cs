@@ -152,6 +152,11 @@ public class Player : MonoBehaviour
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
         }
+
+        if(other.CompareTag("Trap"))
+        {
+            pActions.PlayerActions.Possess.performed -= Possess;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -172,6 +177,10 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (other.CompareTag("Trap") && !bpossessSkel)
+        {
+            pActions.PlayerActions.Possess.performed -= Possess;
+        }
     }
 
     private void Possess(InputAction.CallbackContext c)
