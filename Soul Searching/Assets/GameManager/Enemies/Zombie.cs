@@ -102,6 +102,11 @@ public class Zombie : MonoBehaviour
             zombieRoamSpeed += 0.1f;
             GetComponent<Animator>().SetBool("isChase", true);
         }
+
+        if(!bTracker && !bpatrol)
+        {
+            GetComponent<Animator>().SetBool("isChase", false);
+        }
         
     }
 
@@ -123,6 +128,7 @@ public class Zombie : MonoBehaviour
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                 {
                     bTracker = false;
+                    GetComponent<Animator>().SetBool("isChase", false);
                 }
                 else
                 {
