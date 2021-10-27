@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Trap") || other.CompareTag("Gate"))
+        if (other.CompareTag("Trap") || other.CompareTag("Door"))
         {
             pActions.PlayerActions.Possess.performed -= Possess;
         }
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if ((other.CompareTag("Trap") || other.CompareTag("Gate")) && !bpossessSkel)
+        if ((other.CompareTag("Trap") || other.CompareTag("Door")) && !bpossessSkel)
         {
             pActions.PlayerActions.Possess.performed -= Possess;
         }
