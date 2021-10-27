@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30334842, g: 0.17792499, b: 0.22991672, a: 1}
+  m_Sun: {fileID: 1306229112}
+  m_IndirectSpecularColor: {r: 0.30334863, g: 0.17792487, b: 0.2299164, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: dd3d613809c10bb4e9a3cd6cfe3e931a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4209,7 +4209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081951127272878956, guid: 81884c86d79fc004e94cfe9cd98886c1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8081951127272878957, guid: 81884c86d79fc004e94cfe9cd98886c1, type: 3}
       propertyPath: m_Enabled
@@ -4217,6 +4217,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81884c86d79fc004e94cfe9cd98886c1, type: 3}
+--- !u!108 &1306229112 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 8081951127272878957, guid: 81884c86d79fc004e94cfe9cd98886c1, type: 3}
+  m_PrefabInstance: {fileID: 1306229111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1313509958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2261561977759928408, guid: 75d5bd8d2ad2ada4b8204fe56105b6e2, type: 3}
