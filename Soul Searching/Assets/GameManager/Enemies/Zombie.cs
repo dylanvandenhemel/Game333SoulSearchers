@@ -93,6 +93,7 @@ public class Zombie : MonoBehaviour
             if (player.GetComponent<Player>().bpossessSkel == true)
             {
                 bTracker = false;
+                GetComponent<Animator>().SetBool("isChase", false);
             }
 
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
@@ -100,6 +101,11 @@ public class Zombie : MonoBehaviour
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 8f);
             zombieRoamSpeed += 0.1f;
             GetComponent<Animator>().SetBool("isChase", true);
+        }
+
+        if(!bTracker && !bpatrol)
+        {
+            GetComponent<Animator>().SetBool("isChase", false);
         }
         
     }
@@ -122,6 +128,7 @@ public class Zombie : MonoBehaviour
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                 {
                     bTracker = false;
+                    GetComponent<Animator>().SetBool("isChase", false);
                 }
                 else
                 {
@@ -156,6 +163,7 @@ public class Zombie : MonoBehaviour
 
     public void ActiveReset()
     {
+        GetComponent<Animator>().SetBool("isChase", false);
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
