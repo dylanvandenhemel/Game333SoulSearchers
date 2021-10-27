@@ -62,6 +62,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(transform.position.y != resetLocation.y)
+        {
+            cController.enabled = false;
+            transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
+        }
+        else
+        {
+            cController.enabled = true;
+        }
+
+
         Movement();
         ResetPlayer();
     }
