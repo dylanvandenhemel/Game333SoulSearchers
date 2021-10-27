@@ -1083,6 +1083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40070b607430d9c4b83e0f8af6e89cdd, type: 3}
+--- !u!82 &113416529 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8194020474081176522, guid: a6d22b347664dfc47afed87164ce1035, type: 3}
+  m_PrefabInstance: {fileID: 1654630640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &120202507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2569,8 +2574,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3660393028917331149, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
-      propertyPath: collectedBronzeKey
+      propertyPath: collectedGoldKey
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660393028917331149, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
+      propertyPath: collectedBronzeKey
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4159450318300189090, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
       propertyPath: pauseMenu
@@ -20501,7 +20510,7 @@ PrefabInstance:
     - target: {fileID: 8076514503634595223, guid: a6d22b347664dfc47afed87164ce1035, type: 3}
       propertyPath: zombieDies
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 113416529}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d22b347664dfc47afed87164ce1035, type: 3}
 --- !u!1001 &1659418952
