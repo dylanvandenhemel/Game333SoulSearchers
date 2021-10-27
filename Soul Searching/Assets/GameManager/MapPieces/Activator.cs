@@ -18,6 +18,7 @@ public class Activator : MonoBehaviour
     private bool bActiveLever = false;
     private bool bLeverinRange = false;
     private bool delayTimer;
+    public bool bDoesNotReset;
 
     //Lever Input
     PlayerControls pActions;
@@ -146,17 +147,20 @@ public class Activator : MonoBehaviour
 
     public void OnReset()
     {
-        //Fixes On/Off
-        if(bPressedPlate != bstartPPState)
+        if(!bDoesNotReset)
         {
-            Trigger();
-            bPressedPlate = bstartPPState;
-        }
+            //Fixes On/Off
+            if (bPressedPlate != bstartPPState)
+            {
+                Trigger();
+                bPressedPlate = bstartPPState;
+            }
 
-        if (bActiveLever)
-        {
-            Trigger();
-            bActiveLever = false;
+            if (bActiveLever)
+            {
+                Trigger();
+                bActiveLever = false;
+            }
         }
     }
 }
