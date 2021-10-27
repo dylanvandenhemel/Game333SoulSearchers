@@ -73,16 +73,6 @@ public class EyeTower : MonoBehaviour
 
     }
 
-    /*Connected to the Inspector Selection
-    public void Selected180()
-    {
-        bselect180 = true;
-    }
-    public void Selected360()
-    {
-        bselect360 = true;
-    }
-    */
 
     public void Pan180Degrees()
     {
@@ -136,8 +126,8 @@ public class EyeTower : MonoBehaviour
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
                     if(!btriggerActivated)
                     {
-                        Debug.Log("bruh");
-                        Trigger();
+                        StartCoroutine(triggerWait());
+                        //Trigger();
                         btriggerActivated = true;
                     }
                 }
@@ -161,10 +151,16 @@ public class EyeTower : MonoBehaviour
         {
             bTracker = false;
             btriggerActivated = false;
-            Trigger();
-            //transform.rotation = Quaternion.Euler(transform.rotation.y, transform.rotation.y, transform.rotation.z);
+            StartCoroutine(triggerWait());
+            //Trigger();
         }
             
+    }
+
+    IEnumerator triggerWait()
+    {
+        yield return new WaitForEndOfFrame();
+        Trigger();
     }
     public void Trigger()
     {
