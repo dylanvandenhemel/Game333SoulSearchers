@@ -124,6 +124,11 @@ public class Player : MonoBehaviour
 
         }
 
+        if (other.CompareTag("Trap") || other.CompareTag("Door") && bpossessSkel)
+        {
+            pActions.PlayerActions.Possess.performed -= Possess;
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -153,7 +158,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Trap") || other.CompareTag("Door"))
+        if(other.CompareTag("Door") && !bpossessSkel)
         {
             pActions.PlayerActions.Possess.performed -= Possess;
         }
@@ -177,9 +182,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        if ((other.CompareTag("Trap") || other.CompareTag("Door")) && !bpossessSkel)
+        if ((other.CompareTag("Trap") || other.CompareTag("Door")) && bpossessSkel)
         {
-            pActions.PlayerActions.Possess.performed -= Possess;
+            pActions.PlayerActions.Possess.performed += Possess;
         }
     }
 
