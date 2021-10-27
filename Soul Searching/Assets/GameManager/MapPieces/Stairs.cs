@@ -22,7 +22,6 @@ public class Stairs : MonoBehaviour
         {
             fade.GetChild(fade.childCount - 1).GetComponent<Animator>().SetTrigger("fadeOut");
             other.GetComponent<CharacterController>().enabled = false;
-
             StartCoroutine(fadeWait());
         }
     }

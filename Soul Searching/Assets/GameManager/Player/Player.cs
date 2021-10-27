@@ -62,14 +62,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.y != resetLocation.y)
+        if(transform.position.y > resetLocation.y)
         {
-            cController.enabled = false;
-            transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
+            cController.Move(new Vector3(0, -0.1f, 0));
+            //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
         }
         else
         {
-            cController.enabled = true;
+            //cController.enabled = true;
         }
 
 
