@@ -13,6 +13,8 @@ public class Activator : MonoBehaviour
     private bool bPressedPlate;
     private bool bstartPPState;
     private int yesBones;
+    private bool bHasBones;
+    private bool bFixPress;
 
     private bool bLever = false;
     private bool bActiveLever = false;
@@ -60,7 +62,11 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            if(!bPressedPlate)
+            if(yesBones < 1)
+            {
+                yesBones++;
+            }
+            if (!bPressedPlate)
             {
                 transform.GetChild(0).gameObject.SetActive(false);
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
@@ -68,7 +74,6 @@ public class Activator : MonoBehaviour
                 Trigger();
                 bPressedPlate = true;
             }
-            yesBones++;
         }
 
         //For Lever: Must to be possesed to work
@@ -90,14 +95,14 @@ public class Activator : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical"))
         {
             yesBones--;
-            if (bPressedPlate && yesBones <= 0)
+            if (bPressedPlate && yesBones == 0)
             {
-                yesBones = 0;
                 transform.GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
                 bPressedPlate = false;
+                yesBones = 0;
             }
         }
 
