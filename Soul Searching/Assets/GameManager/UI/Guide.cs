@@ -9,12 +9,30 @@ public class Guide : MonoBehaviour
     public int guideInfoNumber;
     public Transform canvas;
 
+    private void OnEnable()
+    {
+        ResetDelegate.Reset += ActiveReset;
+    }
+
+    private void OnDisable()
+    {
+        ResetDelegate.Reset -= ActiveReset;
+    }
+
     private void Start()
     {
         if(guideInfoNumber > 3 || guideInfoNumber < 0)
         {
             Debug.Log("Guide Info Number must be between 0 - 3");
         }
+    }
+
+    public void ActiveReset()
+    {
+        canvas.GetChild(0).gameObject.SetActive(false);
+        canvas.GetChild(1).gameObject.SetActive(false);
+        canvas.GetChild(2).gameObject.SetActive(false);
+        canvas.GetChild(3).gameObject.SetActive(false);
     }
     private void OnTriggerStay(Collider other)
     {

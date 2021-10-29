@@ -68,7 +68,13 @@ public class Player : MonoBehaviour
             //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
         }
 
-        if(bSkelPileCollider && currentSkeletonPile.parent == transform)
+        if (transform.position.y < resetLocation.y)
+        {
+            cController.Move(new Vector3(0, 0.1f, 0));
+            //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
+        }
+
+        if (bSkelPileCollider && currentSkeletonPile.parent == transform)
         {
             //currentSkeletonPile.GetComponent<SphereCollider>().center = Vector3.MoveTowards(Vector3.zero, new Vector3(0, 10, 0), 1 * Time.deltaTime);
             currentSkeletonPile.position = Vector3.MoveTowards(currentSkeletonPile.position, new Vector3(transform.position.x, currentSkeletonPile.position.y, transform.position.z), 10 * Time.deltaTime);
