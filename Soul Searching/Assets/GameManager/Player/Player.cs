@@ -207,7 +207,6 @@ public class Player : MonoBehaviour
         if(transform.childCount == playerChildCount)
         {
             //Sets pile with character until player unpossesses
-            //transform.position = new Vector3(currentSkeletonPile.position.x, transform.position.y, currentSkeletonPile.position.z);
             transform.rotation = currentSkeletonPile.rotation;
             currentSkeletonPile.parent = transform;
             bSkelPileCollider = true;
@@ -226,14 +225,15 @@ public class Player : MonoBehaviour
             //Makes player not be able to move through gates
             gameObject.layer = LayerMask.NameToLayer("Physical");
 
-            //currentSkeletonPile.GetComponent<SphereCollider>().enabled = false;
             StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().PossessBonesSound();
+            pActions.PlayerActions.Possess.performed -= Possess;
 
         }
         else
         {
             bSkelPileCollider = false;
+            currentSkeletonPile.parent = null;
             //currentSkeletonPile.GetChild(1).GetComponent<Collider>().enabled = true;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
                                 //Make sure it is the actual skeleton for gameobject child index
@@ -242,31 +242,22 @@ public class Player : MonoBehaviour
             //Player control back
             bpossessSkel = false;
             transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
-            currentSkeletonPile.parent = null;
             //resets position and rotation
             currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
-            //currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
-            pActions.PlayerActions.Possess.performed -= Possess;
-
+            pauseMenu.GetComponent<UIElements>().PossessUIOff();
             //allows player to pass trough walls again
             gameObject.layer = LayerMask.NameToLayer("Phase");
             StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().DropBonesSound();
+            pActions.PlayerActions.Possess.performed -= Possess;
         }
         
     }
 
     IEnumerator possessCoolDown()
     {
-        yield return new WaitForSeconds(0.5f);
-        if(bpossessSkel)
-        {
-            currentSkeletonPile.GetComponent<SphereCollider>().enabled = false;
-        }
-        else
-        {
-            currentSkeletonPile.GetComponent<SphereCollider>().enabled = true; 
-        }
+        yield return new WaitForSeconds(0.2f);
+        pActions.PlayerActions.Possess.performed += Possess;
     }
 
     public void KillSkeleton()

@@ -62,10 +62,7 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
         {
-            if(yesBones < 1)
-            {
-                yesBones++;
-            }
+            yesBones++;
             if (!bPressedPlate)
             {
                 transform.GetChild(0).gameObject.SetActive(false);
@@ -94,7 +91,10 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if (other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.CompareTag("SkeletonPile"))
         {
-            yesBones--;
+            if(yesBones >= 1)
+            {
+                yesBones--;
+            }
             if (bPressedPlate && yesBones == 0)
             {
                 transform.GetChild(0).gameObject.SetActive(true);
