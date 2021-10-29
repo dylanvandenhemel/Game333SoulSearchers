@@ -92,7 +92,7 @@ public class Activator : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //For PressPlate
-        if (other.gameObject.layer == LayerMask.NameToLayer("Physical"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.CompareTag("SkeletonPile"))
         {
             yesBones--;
             if (bPressedPlate && yesBones == 0)

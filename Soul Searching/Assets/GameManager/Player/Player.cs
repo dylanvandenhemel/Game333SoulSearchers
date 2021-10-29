@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public bool bpossessSkel = false;
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
-    private bool bOnePile;
+    private bool bSkelPileCollider;
 
     public LayerMask doggyLayer;
     RaycastHit hit;
@@ -67,12 +67,12 @@ public class Player : MonoBehaviour
             cController.Move(new Vector3(0, -0.1f, 0));
             //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
         }
-        else
+
+        if(bSkelPileCollider && currentSkeletonPile.parent == transform)
         {
-            //cController.enabled = true;
+            //currentSkeletonPile.GetComponent<SphereCollider>().center = Vector3.MoveTowards(Vector3.zero, new Vector3(0, 10, 0), 1 * Time.deltaTime);
+            currentSkeletonPile.position = Vector3.MoveTowards(currentSkeletonPile.position, new Vector3(transform.position.x, currentSkeletonPile.position.y, transform.position.z), 10 * Time.deltaTime);
         }
-
-
         Movement();
         ResetPlayer();
     }
@@ -163,10 +163,12 @@ public class Player : MonoBehaviour
 
         if (bpossessSkel)
         {
+            /*
             if (other.CompareTag("SkeletonPile"))
             {
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
+            */
         }
 
         if((other.CompareTag("Trap") || other.CompareTag("Door")) && !bpossessSkel)
@@ -205,13 +207,12 @@ public class Player : MonoBehaviour
         if(transform.childCount == playerChildCount)
         {
             //Sets pile with character until player unpossesses
-            transform.position = new Vector3(currentSkeletonPile.position.x, transform.position.y, currentSkeletonPile.position.z);
+            //transform.position = new Vector3(currentSkeletonPile.position.x, transform.position.y, currentSkeletonPile.position.z);
             transform.rotation = currentSkeletonPile.rotation;
-            //currentSkeletonPile.rotation = transform.rotation;
             currentSkeletonPile.parent = transform;
+            bSkelPileCollider = true;
+            //currentSkeletonPile.rotation = transform.rotation;
 
-            //currentSkeletonPile.position = new Vector3(currentSkeletonPile.position.x, currentSkeletonPile.position.y - 0.5f, currentSkeletonPile.position.z);
-            currentSkeletonPile.GetComponent<Collider>().enabled = false;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
             //Player becomes Skeleton
@@ -225,11 +226,14 @@ public class Player : MonoBehaviour
             //Makes player not be able to move through gates
             gameObject.layer = LayerMask.NameToLayer("Physical");
 
+            //currentSkeletonPile.GetComponent<SphereCollider>().enabled = false;
+            StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().PossessBonesSound();
 
         }
         else
         {
+            bSkelPileCollider = false;
             //currentSkeletonPile.GetChild(1).GetComponent<Collider>().enabled = true;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
                                 //Make sure it is the actual skeleton for gameobject child index
@@ -237,7 +241,6 @@ public class Player : MonoBehaviour
 
             //Player control back
             bpossessSkel = false;
-            currentSkeletonPile.GetComponent<Collider>().enabled = true;
             transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             currentSkeletonPile.parent = null;
             //resets position and rotation
@@ -247,10 +250,23 @@ public class Player : MonoBehaviour
 
             //allows player to pass trough walls again
             gameObject.layer = LayerMask.NameToLayer("Phase");
-
+            StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().DropBonesSound();
         }
         
+    }
+
+    IEnumerator possessCoolDown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(bpossessSkel)
+        {
+            currentSkeletonPile.GetComponent<SphereCollider>().enabled = false;
+        }
+        else
+        {
+            currentSkeletonPile.GetComponent<SphereCollider>().enabled = true; 
+        }
     }
 
     public void KillSkeleton()
