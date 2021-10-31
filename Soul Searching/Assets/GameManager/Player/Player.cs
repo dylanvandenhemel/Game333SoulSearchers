@@ -141,11 +141,6 @@ public class Player : MonoBehaviour
 
         }
 
-        if (other.CompareTag("Trap") || other.CompareTag("Door") && bpossessSkel)
-        {
-            pActions.PlayerActions.Possess.performed -= Possess;
-        }
-
     }
 
     private void OnTriggerStay(Collider other)
