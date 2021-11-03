@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
             //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
         }
 
-        if (bSkelPileCollider && currentSkeletonPile.parent == transform)
+        if ((bSkelPileCollider && currentSkeletonPile.parent == transform) && (currentSkeletonPile.position.x != transform.position.x && currentSkeletonPile.position.z != transform.position.z))
         {
             //currentSkeletonPile.GetComponent<SphereCollider>().center = Vector3.MoveTowards(Vector3.zero, new Vector3(0, 10, 0), 1 * Time.deltaTime);
             currentSkeletonPile.position = Vector3.MoveTowards(currentSkeletonPile.position, new Vector3(transform.position.x, currentSkeletonPile.position.y, transform.position.z), 10 * Time.deltaTime);
@@ -161,18 +161,18 @@ public class Player : MonoBehaviour
             ResetPlayer();
             GetComponent<ResetDelegate>().bcallReset = true;
         }
-
+        /*
         if (bpossessSkel)
         {
-            /*
+            
             if (other.CompareTag("SkeletonPile"))
             {
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
-            */
+            
         }
-
-        if((other.CompareTag("Trap") || other.CompareTag("Door")) && !bpossessSkel)
+        */
+        if ((other.CompareTag("Trap") || other.CompareTag("Door")) && !bpossessSkel)
         {
             pActions.PlayerActions.Possess.performed -= Possess;
         }
@@ -188,6 +188,7 @@ public class Player : MonoBehaviour
                 pActions.PlayerActions.Possess.performed -= Possess;
             }
         }
+        /*
         if (bpossessSkel)
         {
             if (other.CompareTag("SkeletonPile"))
@@ -195,11 +196,14 @@ public class Player : MonoBehaviour
                 pActions.PlayerActions.Possess.performed += Possess;
             }
         }
+        
+        
 
-        if ((other.CompareTag("Trap") || other.CompareTag("Door")) && bpossessSkel)
+        if ((other.CompareTag("Trap") || other.CompareTag("Door")) && !bpossessSkel)
         {
             pActions.PlayerActions.Possess.performed += Possess;
         }
+        */
     }
 
     private void Possess(InputAction.CallbackContext c)
@@ -207,16 +211,15 @@ public class Player : MonoBehaviour
         
         if(transform.childCount == playerChildCount)
         {
+            bSkelPileCollider = true;
             //Sets pile with character until player unpossesses
             transform.rotation = currentSkeletonPile.rotation;
             currentSkeletonPile.parent = transform;
-            bSkelPileCollider = true;
             //currentSkeletonPile.rotation = transform.rotation;
 
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
             //Player becomes Skeleton
-            bpossessSkel = true;
             transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
                                                                 
@@ -228,10 +231,10 @@ public class Player : MonoBehaviour
 
             StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().PossessBonesSound();
-            pActions.PlayerActions.Possess.performed -= Possess;
+            bpossessSkel = true;
 
         }
-        else
+        else if(bpossessSkel)
         {
             bSkelPileCollider = false;
             currentSkeletonPile.parent = null;
@@ -241,24 +244,29 @@ public class Player : MonoBehaviour
             currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
 
             //Player control back
-            bpossessSkel = false;
             transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             //resets position and rotation
             currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
-            pauseMenu.GetComponent<UIElements>().PossessUIOff();
             //allows player to pass trough walls again
             gameObject.layer = LayerMask.NameToLayer("Phase");
+            pauseMenu.GetComponent<UIElements>().PossessUIOff();
+
             StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().DropBonesSound();
-            pActions.PlayerActions.Possess.performed -= Possess;
+            bpossessSkel = false;
+
         }
         
     }
 
     IEnumerator possessCoolDown()
     {
+        pActions.PlayerActions.Possess.performed -= Possess;
         yield return new WaitForSeconds(0.2f);
-        pActions.PlayerActions.Possess.performed += Possess;
+        if(bpossessSkel)
+        {
+            pActions.PlayerActions.Possess.performed += Possess;
+        }
     }
 
     public void KillSkeleton()
