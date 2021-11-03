@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
 
             //Player becomes Skeleton
-            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
             currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
                                                                 
                                 //Make sure it is the actual skeleton for gameobject child index
@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
             currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
 
             //Player control back
-            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
+            transform.GetChild(0).gameObject.SetActive(true);
             //resets position and rotation
             currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
             //allows player to pass trough walls again
