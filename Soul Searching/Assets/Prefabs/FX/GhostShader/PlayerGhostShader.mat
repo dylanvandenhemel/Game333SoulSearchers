@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7330995956650337820
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -31,11 +44,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - FresnelPower_: 1
     - Vector1_2fee2878be42409aabeba37554efe78f: 10
     - Vector1_466dc064ca9f43feb8954dda40fca658: 2
     - Vector1_a9ead8e968ba46aeac41d2968ac376ab: 3
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
     - FresnelColor_: {r: 0, g: 3.2490096, b: 3.0196679, a: 0}
     - v3_: {r: 0.01, g: 0, b: 0, a: 0}
