@@ -6,12 +6,11 @@ using UnityEditor;
 
 public class MapWindow : EditorWindow
 {
-    /*
-    private bool bToggle;
-    private int mapCounter;
-    private float mapFlaot;
-    private string mapWindowText;
-    private Transform mapGenerator;
+    private bool bGenerate;
+    //private int mapCounter;
+    //private float mapFlaot;
+    //private string mapWindowText;
+    private Transform mapTiles;
     [MenuItem("Map Generator/Generator")]
 
 
@@ -22,13 +21,22 @@ public class MapWindow : EditorWindow
 
     private void OnGUI()
     {
-        bToggle = EditorGUILayout.Toggle("boolean", bToggle);
-        mapCounter = EditorGUILayout.IntField("mapInteger", mapCounter);
-        mapFlaot = EditorGUILayout.FloatField("mapFloat", mapFlaot);
-        mapWindowText = EditorGUILayout.TextField("mapText", mapWindowText);
-        mapGenerator = EditorGUILayout.ObjectField("mapTransform", mapGenerator, typeof(Transform), true)as Transform;
+        bGenerate = EditorGUILayout.Toggle("GenerateMap", bGenerate);
+        //mapCounter = EditorGUILayout.IntField("mapInteger", mapCounter);
+        //mapFlaot = EditorGUILayout.FloatField("mapFloat", mapFlaot);
+        //mapWindowText = EditorGUILayout.TextField("mapText", mapWindowText);
+        mapTiles = EditorGUILayout.ObjectField("mapTransform", mapTiles, typeof(Transform), true)as Transform;
     }
-    */
+
+    private void Update()
+    {
+        if(bGenerate)
+        {
+            mapTiles.GetComponent<MapGenerator>().mGenerate = true;
+            bGenerate = false;
+        }
+    }
+
 
 
 
