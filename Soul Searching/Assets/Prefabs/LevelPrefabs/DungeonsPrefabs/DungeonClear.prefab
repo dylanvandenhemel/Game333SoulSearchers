@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 3941121579979941167}
   - component: {fileID: 80632304738478730}
   - component: {fileID: 2808700179023879744}
+  - component: {fileID: 1643242176434514384}
+  - component: {fileID: 2620784513869399367}
   m_Layer: 0
   m_Name: DungeonDoorway
   m_TagString: Untagged
@@ -115,3 +117,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1643242176434514384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4466020101101256597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 79.259964, y: 227.32188, z: 40.6548}
+  m_Center: {x: -113.23937, y: -0.000035762787, z: -129.73904}
+--- !u!65 &2620784513869399367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4466020101101256597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 72.53586, y: 227.32188, z: 40.6548}
+  m_Center: {x: 113.38742, y: -0.000035762787, z: -129.73904}
