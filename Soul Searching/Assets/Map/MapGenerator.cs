@@ -7,57 +7,45 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class MapGenerator : MonoBehaviour
 {
-    public bool mGenerate;
-
     private int mapChildCount;
     private int counter;
     public List<GameObject> origTile;
-    public bool bAutoPillar;
 
-    public void Update()
+    public void Generate()
     {
-        if(mGenerate)
+        //fills array with current tiles
+        mapChildCount = transform.childCount;
+        origTile.Clear();
+        for (counter = 0; counter < mapChildCount; counter++)
         {
-            mGenerate = false;
-
-            //fills array with current tiles
-            mapChildCount = transform.childCount;
-            origTile.Clear();
-            for(counter = 0; counter < mapChildCount; counter++)
-            {
-                origTile.Add(transform.GetChild(counter).gameObject);
-            }
-
-            //Activates each tiles map piece
-            for (counter = 0; counter < mapChildCount; counter++)
-            {
-                if (transform.GetChild(counter).GetComponent<Map>() != null)
-                {
-                    transform.GetChild(counter).GetComponent<Map>().AutoMap();
-                }
-            }    
-            
-            //Deletes old tiles
-            for (counter = 0; counter < origTile.Count; counter++)
-            {
-                if (transform.GetChild(counter).GetComponent<Map>() != null)
-                {
-                    DestroyImmediate(origTile[counter]);
-                }
-
-            }
-            
+            origTile.Add(transform.GetChild(counter).gameObject);
         }
 
-        //places pillers in needed corners
-        if (bAutoPillar)
+        //Activates each tiles map piece
+        for (counter = 0; counter < mapChildCount; counter++)
         {
-            for (counter = 0; counter < mapChildCount; counter++)
+            if (transform.GetChild(counter).GetComponent<Map>() != null)
             {
-                transform.GetChild(counter).GetComponent<Map>().AutoPillar();
+                transform.GetChild(counter).GetComponent<Map>().AutoMap();
             }
-            bAutoPillar = false;
+        }
 
+        //Deletes old tiles
+        for (counter = 0; counter < origTile.Count; counter++)
+        {
+            if (transform.GetChild(counter).GetComponent<Map>() != null)
+            {
+                DestroyImmediate(origTile[counter]);
+            }
+
+        }
+    }
+
+    public void AutoCorner()
+    {
+        for (counter = 0; counter < mapChildCount; counter++)
+        {
+            transform.GetChild(counter).GetComponent<Map>().AutoPillar();
         }
     }
 }
