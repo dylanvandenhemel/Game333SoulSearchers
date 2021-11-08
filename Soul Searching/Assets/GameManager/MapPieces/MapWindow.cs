@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEditor;
 
+[ExecuteInEditMode]
 public class MapWindow : EditorWindow
 {
     private bool bGenerate;

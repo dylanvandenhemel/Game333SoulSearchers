@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 69316244}
   - component: {fileID: 69316246}
   - component: {fileID: 69316245}
+  - component: {fileID: 69316247}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -243,6 +244,32 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &69316247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69316243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ffcf6838ee7e54687819ed68c58fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mGenerate: 0
+  origTile:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bAutoPillar: 0
 --- !u!1 &354316772
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,10 +379,10 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451038032}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 3, y: 3, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
-  m_CellSwizzle: 0
+  m_CellSwizzle: 1
 --- !u!4 &451038034
 Transform:
   m_ObjectHideFlags: 0

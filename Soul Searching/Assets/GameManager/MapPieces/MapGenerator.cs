@@ -26,9 +26,8 @@ public class MapGenerator : MonoBehaviour
             for(counter = 0; counter < mapChildCount; counter++)
             {
                 origTile.Add(transform.GetChild(counter).gameObject);
-                
             }
-      
+
             //Activates each tiles map piece
             for (counter = 0; counter < mapChildCount; counter++)
             {
@@ -36,7 +35,8 @@ public class MapGenerator : MonoBehaviour
                 {
                     transform.GetChild(counter).GetComponent<Map>().AutoMap();
                 }
-            }          
+            }    
+            
             //Deletes old tiles
             for (counter = 0; counter < origTile.Count; counter++)
             {
@@ -46,6 +46,7 @@ public class MapGenerator : MonoBehaviour
                 }
 
             }
+            
         }
 
         //places pillers in needed corners
