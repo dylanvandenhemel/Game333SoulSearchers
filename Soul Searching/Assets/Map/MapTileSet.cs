@@ -13,7 +13,7 @@ public class MapTileSet : ScriptableObject
     public GameObject NDeadEnd, EDeadEnd, SDeadEnd, WDeadEnd;
 
     //If corner
-    public GameObject BLCorner, BRCorner, TLCorner, TRCorner;
+    public GameObject SWCorner, SECorner, NECorner, NWCorner;
 
     //if hallway
     public GameObject NSHallway, EWHallway;

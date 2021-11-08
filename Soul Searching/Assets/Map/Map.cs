@@ -84,28 +84,28 @@ public class Map : MonoBehaviour
                   //Corners
         else if (!nOpen && !eOpen && sOpen && wOpen) //bottem left corner
         {
-            GameObject blc = PrefabUtility.InstantiatePrefab(mapTile.BLCorner) as GameObject;
+            GameObject blc = PrefabUtility.InstantiatePrefab(mapTile.SWCorner) as GameObject;
             blc.transform.position = transform.position;
             blc.transform.parent = transform.parent;
             
         }
         else if (!nOpen && eOpen && sOpen && !wOpen) //bottem right corner
         {
-            GameObject brc = PrefabUtility.InstantiatePrefab(mapTile.BRCorner) as GameObject;
+            GameObject brc = PrefabUtility.InstantiatePrefab(mapTile.SECorner) as GameObject;
             brc.transform.position = transform.position;
             brc.transform.parent = transform.parent;
             
         }
         else if (nOpen && !eOpen && !sOpen && wOpen) //top left corner
         {
-            GameObject tlc = PrefabUtility.InstantiatePrefab(mapTile.TLCorner) as GameObject;
+            GameObject tlc = PrefabUtility.InstantiatePrefab(mapTile.NWCorner) as GameObject;
             tlc.transform.position = transform.position;
             tlc.transform.parent = transform.parent;
             
         }
         else if (nOpen && eOpen && !sOpen && !wOpen) //top right corner
         {
-            GameObject trc = PrefabUtility.InstantiatePrefab(mapTile.TRCorner) as GameObject;
+            GameObject trc = PrefabUtility.InstantiatePrefab(mapTile.NECorner) as GameObject;
             trc.transform.position = transform.position;
             trc.transform.parent = transform.parent;
             
