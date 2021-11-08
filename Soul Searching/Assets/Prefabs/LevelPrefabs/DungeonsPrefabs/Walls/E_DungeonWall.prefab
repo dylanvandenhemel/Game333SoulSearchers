@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5877367330395215213}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: E_DungeonWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 835210692847674123}
   - {fileID: 7276430387551721193}
@@ -39,9 +40,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5877367330395215213}
     m_Modifications:
+    - target: {fileID: 396433445854370113, guid: 0b5dcf9e830adfe47b2ea7e2c6a1bc12, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5952557403237040267, guid: 0b5dcf9e830adfe47b2ea7e2c6a1bc12, type: 3}
       propertyPath: m_Name
       value: DungeonWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952557403237040267, guid: 0b5dcf9e830adfe47b2ea7e2c6a1bc12, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8923611685364716695, guid: 0b5dcf9e830adfe47b2ea7e2c6a1bc12, type: 3}
       propertyPath: m_RootOrder
@@ -148,6 +157,10 @@ PrefabInstance:
     - target: {fileID: 3567800926843445196, guid: 961c12f49cef9804dbba8c889678c1d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844858544352210212, guid: 961c12f49cef9804dbba8c889678c1d8, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 961c12f49cef9804dbba8c889678c1d8, type: 3}
