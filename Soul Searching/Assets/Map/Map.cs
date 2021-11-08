@@ -222,7 +222,7 @@ public class Map : MonoBehaviour
         //north 2 corners
         else if (nTile != null && eTile != null && wTile != null)
         {
-            if ((nTile.name == "NSHallway" || nTile.name == "NDeadEnd") && (eTile.name == "NorthWall" || eTile.name == "EDeadEnd" || eTile.name == "TopRightCorner" || eTile.name == "EWHallway") && (wTile.name == "NorthWall" || wTile.name == "WDeadEnd" || wTile.name == "TopLeftCorner" || wTile.name == "EWHallway"))
+            if ((nTile.name == "NSHallway" || nTile.name == "NDeadEnd") && (eTile.name == "NorthWall" || eTile.name == "EDeadEnd" || eTile.name == "NECorner" || eTile.name == "EWHallway") && (wTile.name == "NorthWall" || wTile.name == "WDeadEnd" || wTile.name == "NWCorner" || wTile.name == "EWHallway"))
             {
                 Debug.Log("north corners");
                 GameObject NECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
@@ -242,7 +242,7 @@ public class Map : MonoBehaviour
         //east 2 corners
         else if (nTile != null && eTile != null && sTile != null)
         {
-            if ((nTile.name == "EastWall" || nTile.name == "NDeadEnd" || nTile.name == "TopRightCorner" || nTile.name == "NSHallway") && (eTile.name == "EDeadEnd" || eTile.name == "EWHallway") && (sTile.name == "EastWall" || sTile.name == "SDeadEnd" || sTile.name == "BottemRightCorner" || sTile.name == "NSHallway"))
+            if ((nTile.name == "EastWall" || nTile.name == "NDeadEnd" || nTile.name == "NECorner" || nTile.name == "NSHallway") && (eTile.name == "EDeadEnd" || eTile.name == "EWHallway") && (sTile.name == "EastWall" || sTile.name == "SDeadEnd" || sTile.name == "SECorner" || sTile.name == "NSHallway"))
             {
                 Debug.Log("east corners");
                 GameObject NECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
@@ -262,7 +262,7 @@ public class Map : MonoBehaviour
         //south 2 corners
         else if (eTile != null && sTile != null && wTile != null)
         {
-            if ((eTile.name == "SouthWall" || eTile.name == "EDeadEnd" || eTile.name == "BottomRightCorner" || eTile.name == "EWHallway") && (sTile.name == "SDeadEnd" || sTile.name == "NSHallway") && (wTile.name == "SouthWall" || wTile.name == "WDeadEnd" || wTile.name == "BottemLeftCorner" || wTile.name == "EWHallway"))
+            if ((eTile.name == "SouthWall" || eTile.name == "EDeadEnd" || eTile.name == "SECorner" || eTile.name == "EWHallway") && (sTile.name == "SDeadEnd" || sTile.name == "NSHallway") && (wTile.name == "SouthWall" || wTile.name == "WDeadEnd" || wTile.name == "SWCorner" || wTile.name == "EWHallway"))
             {
                 Debug.Log("south corners");
 
@@ -283,7 +283,7 @@ public class Map : MonoBehaviour
         //west 2 corners
         else if (nTile != null && sTile != null && wTile != null)
         {
-            if ((nTile.name == "WestWall" || nTile.name == "NDeadEnd" || nTile.name == "TopLeftCorner" || nTile.name == "NSHallway") && (sTile.name == "WestWall" || sTile.name == "SDeadEnd" || sTile.name == "BottomLeftCorner" || sTile.name == "NSHallway") && (wTile.name == "WDeadEnd" || wTile.name == "EWHallway"))
+            if ((nTile.name == "WestWall" || nTile.name == "NDeadEnd" || nTile.name == "NWCorner" || nTile.name == "NSHallway") && (sTile.name == "WestWall" || sTile.name == "SDeadEnd" || sTile.name == "BottomLeftCorner" || sTile.name == "NSHallway") && (wTile.name == "WDeadEnd" || wTile.name == "EWHallway"))
             {
                 Debug.Log("west corners");
                 GameObject NWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
@@ -304,7 +304,7 @@ public class Map : MonoBehaviour
         //north east corner
         if (nTile != null && eTile != null)
         {
-            if ((nTile.name == "EastWall" || nTile.name == "NDeadEnd" || nTile.name == "TopRightCorner" || nTile.name == "NSHallway") && (eTile.name == "NorthWall" || eTile.name == "EDeadEnd" || eTile.name == "TopRightCorner" || eTile.name == "EWHallway"))
+            if ((nTile.name == "EastWall" || nTile.name == "NDeadEnd" || nTile.name == "NECorner" || nTile.name == "NSHallway") && (eTile.name == "NorthWall" || eTile.name == "EDeadEnd" || eTile.name == "NECorner" || eTile.name == "EWHallway"))
             {
                 Debug.Log("Piller north east");
                 GameObject NECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
@@ -320,7 +320,7 @@ public class Map : MonoBehaviour
         //north west corner
         if (nTile != null && wTile != null)
         {
-            if ((nTile.name == "WestWall" || nTile.name == "NDeadEnd" || nTile.name == "TopLeftCorner" || nTile.name == "NSHallway") && (wTile.name == "NorthWall" || wTile.name == "WDeadEnd" || wTile.name == "TopLeftCorner" || wTile.name == "EWHallway"))
+            if ((nTile.name == "WestWall" || nTile.name == "NDeadEnd" || nTile.name == "NWCorner" || nTile.name == "NSHallway") && (wTile.name == "NorthWall" || wTile.name == "WDeadEnd" || wTile.name == "NWCorner" || wTile.name == "EWHallway"))
             {
                 Debug.Log("Piller north west");
                 GameObject NWCorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
@@ -335,7 +335,7 @@ public class Map : MonoBehaviour
         // south east corner
         if (eTile != null && sTile != null)
         {
-            if ((sTile.name == "EWall" || sTile.name == "SDeadEnd" || sTile.name == "BottomRightCorner" || sTile.name == "NSHallway") && (eTile.name == "SouthWall" || eTile.name == "EDeadEnd" || eTile.name == "BottomRightCorner" || eTile.name == "EWHallway"))
+            if ((sTile.name == "EWall" || sTile.name == "SDeadEnd" || sTile.name == "SECorner" || sTile.name == "NSHallway") && (eTile.name == "SouthWall" || eTile.name == "EDeadEnd" || eTile.name == "SECorner" || eTile.name == "EWHallway"))
             {
                 Debug.Log("Piller south east");
                 GameObject SECorner = PrefabUtility.InstantiatePrefab(mapTile.cornerPiece) as GameObject;
