@@ -25,7 +25,14 @@ public class MapWindow : EditorWindow
     {
         if(GUILayout.Button("Generator"))
         {
-            mapTiles.GetComponent<MapGenerator>().mGenerate = true;
+            //mapTiles.GetComponent<MapGenerator>().mGenerate = true;
+            mapTiles.GetComponent<MapGenerator>().Generate();
+        }
+
+        if (GUILayout.Button("AutoCorner"))
+        {
+            //mapTiles.GetComponent<MapGenerator>().mGenerate = true;
+            mapTiles.GetComponent<MapGenerator>().AutoCorner();
         }
         mapTiles = EditorGUILayout.ObjectField("mapTransform", mapTiles, typeof(Transform), true)as Transform;
         //bGenerate = EditorGUILayout.Toggle("GenerateMap", bGenerate);
