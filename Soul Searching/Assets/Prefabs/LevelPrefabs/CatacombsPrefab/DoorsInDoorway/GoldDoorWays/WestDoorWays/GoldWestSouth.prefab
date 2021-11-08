@@ -26,12 +26,75 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4652983917197707368}
-  - {fileID: 4865612985420954907}
+  - {fileID: 2591166235124350785}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4021528380333186195
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8790183901370760403}
+    m_Modifications:
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7927708063389483257, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+      propertyPath: m_Name
+      value: GoldDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+--- !u!4 &2591166235124350785 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
+  m_PrefabInstance: {fileID: 4021528380333186195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4807224422157124335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,66 +160,4 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 154258304115067527, guid: 55e2d87931e6a2a4286d4e63d7b37361, type: 3}
   m_PrefabInstance: {fileID: 4807224422157124335}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6322169922091802313
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8790183901370760403}
-    m_Modifications:
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.388
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7927708063389483257, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-      propertyPath: m_Name
-      value: GoldDoor
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
---- !u!4 &4865612985420954907 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1457755842433246162, guid: d92cb233aaff3dd4883a152a6d8cb6f5, type: 3}
-  m_PrefabInstance: {fileID: 6322169922091802313}
   m_PrefabAsset: {fileID: 0}
