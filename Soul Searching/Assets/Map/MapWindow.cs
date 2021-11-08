@@ -8,7 +8,7 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class MapWindow : EditorWindow
 {
-    private bool bGenerate;
+    //private bool bGenerate;
     //private int mapCounter;
     //private float mapFlaot;
     //private string mapWindowText;
@@ -23,24 +23,15 @@ public class MapWindow : EditorWindow
 
     private void OnGUI()
     {
-        bGenerate = EditorGUILayout.Toggle("GenerateMap", bGenerate);
+        if(GUILayout.Button("Generator"))
+        {
+            mapTiles.GetComponent<MapGenerator>().mGenerate = true;
+        }
+        mapTiles = EditorGUILayout.ObjectField("mapTransform", mapTiles, typeof(Transform), true)as Transform;
+        //bGenerate = EditorGUILayout.Toggle("GenerateMap", bGenerate);
         //mapCounter = EditorGUILayout.IntField("mapInteger", mapCounter);
         //mapFlaot = EditorGUILayout.FloatField("mapFloat", mapFlaot);
         //mapWindowText = EditorGUILayout.TextField("mapText", mapWindowText);
-        mapTiles = EditorGUILayout.ObjectField("mapTransform", mapTiles, typeof(Transform), true)as Transform;
     }
-
-    private void Update()
-    {
-        if(bGenerate)
-        {
-            mapTiles.GetComponent<MapGenerator>().mGenerate = true;
-            bGenerate = false;
-        }
-    }
-
-
-
-
 }
 #endif
