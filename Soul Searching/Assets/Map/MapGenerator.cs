@@ -41,6 +41,18 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    public void Clear()
+    {
+        for (counter = 0; counter < origTile.Count; counter++)
+        {
+            if(transform.childCount > 0)
+            {
+                Undo.DestroyObjectImmediate(transform.GetChild(0).gameObject);
+            }
+
+        }
+    }
+
     public void AutoCorner()
     {
         for (counter = 0; counter < mapChildCount; counter++)
