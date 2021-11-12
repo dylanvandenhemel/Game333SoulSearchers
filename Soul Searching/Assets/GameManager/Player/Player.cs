@@ -277,9 +277,9 @@ public class Player : MonoBehaviour
 
         //Player control back
         bpossessSkel = false;
-        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
+        transform.GetChild(0).gameObject.SetActive(true);
         //moves pile back a bit after a trap
-        currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y, currentSkeletonPile.localPosition.z - 1f);
+        //currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y, currentSkeletonPile.localPosition.z - 1f);
 
         currentSkeletonPile.parent = null;
         pActions.PlayerActions.Possess.performed -= Possess;
