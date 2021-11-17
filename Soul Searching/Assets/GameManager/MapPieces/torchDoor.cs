@@ -7,7 +7,7 @@ public class torchDoor : MonoBehaviour
     public GameObject fireEffect;
     private void Update()
     {
-        if(transform.parent != CompareTag("Door"))
+        if(transform.parent == CompareTag("Door"))
         {
             if(transform.parent.GetComponent<TriggerObjects>().bDoorActive)
             {
