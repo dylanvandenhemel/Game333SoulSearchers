@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1607605962}
-  m_IndirectSpecularColor: {r: 0.3282713, g: 0.34329984, b: 0.5291026, a: 1}
+  m_IndirectSpecularColor: {r: 0.32827145, g: 0.34329963, b: 0.5291019, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e823a4be20d550a42b07306934f178b8, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: dd3d613809c10bb4e9a3cd6cfe3e931a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -8091,9 +8091,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2051966682}
   - {fileID: 248793412}
-  - {fileID: 77399682}
   - {fileID: 1738559458}
   - {fileID: 328360885}
   - {fileID: 465660478}
@@ -8107,14 +8105,16 @@ Transform:
   - {fileID: 1757530092}
   - {fileID: 1434892816}
   - {fileID: 382171577}
+  - {fileID: 1019077742}
   - {fileID: 842239988}
+  - {fileID: 77399682}
   - {fileID: 357845682}
   - {fileID: 1385723846}
   - {fileID: 193389425}
   - {fileID: 355832398}
   - {fileID: 1212053487}
   - {fileID: 1602243650}
-  - {fileID: 1019077742}
+  - {fileID: 2051966682}
   - {fileID: 428023819}
   - {fileID: 941209069}
   - {fileID: 401175304}
