@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5629801575555276042}
   - component: {fileID: 2270229297794590515}
   - component: {fileID: 7077801662041926003}
-  - component: {fileID: 7564046321267960786}
   - component: {fileID: 5574172388310954778}
+  - component: {fileID: 4492124015723027839}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: -3.43, z: 0}
   m_LocalScale: {x: 1.02508, y: 0.82815, z: 1.01755}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6999188876506551893}
   - {fileID: 235786939563537141}
@@ -73,19 +74,6 @@ MonoBehaviour:
   TriggerObject:
   - {fileID: 0}
   bDoesNotReset: 0
---- !u!65 &7564046321267960786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125754456921743894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6737945, y: 1.6434028, z: 5.707894}
-  m_Center: {x: 0.25639525, y: 0.32170126, z: 3.1158495}
 --- !u!82 &5574172388310954778
 AudioSource:
   m_ObjectHideFlags: 0
@@ -182,6 +170,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &4492124015723027839
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125754456921743894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.4732412
+  m_Height: 7.067647
+  m_Direction: 2
+  m_Center: {x: 0.30594012, y: 0.4, z: 2.6151142}
 --- !u!1 &3779832609111708345
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +212,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1639, y: -0.61, z: 3.4195}
   m_LocalScale: {x: 2.95615, y: 0.82784027, z: 5.8801}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5629801575555276042}
   m_RootOrder: 0
@@ -233,6 +236,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -289,6 +293,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5629801575555276042}
   - {fileID: 6136408067273725066}
@@ -324,6 +329,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.9999962, z: -0, w: 0.0027646187}
   m_LocalPosition: {x: -0.27115, y: -3.56, z: -0.21}
   m_LocalScale: {x: 0.36262536, y: 0.36262536, z: 0.36262536}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7576047995310240302}
   m_RootOrder: 1
@@ -347,6 +353,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -400,6 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 235786939563537141}
   - component: {fileID: 1427077996327940074}
+  - component: {fileID: 3075041585450391414}
   m_Layer: 0
   m_Name: Area Light
   m_TagString: Untagged
@@ -417,6 +425,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.27409473, z: 0.9617027, w: 0}
   m_LocalPosition: {x: 0.22437273, y: 1.5399997, z: 0.58}
   m_LocalScale: {x: 1.2194167, y: 1.2284408, z: 1.5093886}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5629801575555276042}
   m_RootOrder: 1
@@ -483,3 +492,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3075041585450391414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061564103711473253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
