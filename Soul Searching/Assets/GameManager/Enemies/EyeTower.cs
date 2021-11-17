@@ -132,12 +132,6 @@ public class EyeTower : MonoBehaviour
                     }
                 }
             }
-            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
-            {
-                //Make not see through walls
-                Debug.Log("Wall");
-                bTracker = false;
-            }
 
         }
 
