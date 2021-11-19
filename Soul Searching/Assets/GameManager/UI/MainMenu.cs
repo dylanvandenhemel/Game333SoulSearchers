@@ -179,44 +179,44 @@ public class MainMenu : MonoBehaviour
                     SceneManager.LoadScene(2);
                 }
                 //Level 2
-                else if (levelMenuSelectionX == 3)
+                else if (levelMenuSelectionX == 3 && Settings.levelsUnlocked > 2)
                 {
                     Debug.Log("load level 2");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(3);
                 }
                 //Level 3
-                else if (levelMenuSelectionX == 4)
+                else if (levelMenuSelectionX == 4 && Settings.levelsUnlocked > 3)
                 {
                     Debug.Log("load level 3");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(4);
                 }
-                else if (levelMenuSelectionX == 5)
+                else if (levelMenuSelectionX == 5 && Settings.levelsUnlocked > 4)
                 {
                     Debug.Log("load level 4");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(5);
                 }
-                else if (levelMenuSelectionX == 6)
+                else if (levelMenuSelectionX == 6 && Settings.levelsUnlocked > 5)
                 {
                     Debug.Log("load level 5");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(6);
                 }
-                else if (levelMenuSelectionX == 7)
+                else if (levelMenuSelectionX == 7 && Settings.levelsUnlocked > 6)
                 {
                     Debug.Log("load level 6");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(7);
                 }
-                else if (levelMenuSelectionX == 8)
+                else if (levelMenuSelectionX == 8 && Settings.levelsUnlocked > 7)
                 {
                     Debug.Log("load level 7");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(8);
                 }
-                else if (levelMenuSelectionX == 9)
+                else if (levelMenuSelectionX == 9 && Settings.levelsUnlocked > 8)
                 {
                     Debug.Log("load level 8");
                     levelMenuSelectionX = 0;
