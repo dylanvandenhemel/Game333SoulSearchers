@@ -60,7 +60,7 @@ public class Activator : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //For PressPlate
-        if(other.gameObject.layer == LayerMask.NameToLayer("Physical") && bPressPlate)
+        if((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && bPressPlate)
         {
             yesBones++;
             if (!bPressedPlate)
@@ -89,7 +89,7 @@ public class Activator : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //For PressPlate
-        if (other.gameObject.layer == LayerMask.NameToLayer("Physical"))
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && bPressedPlate)
         {
             if (yesBones > 0)
             {
@@ -103,7 +103,7 @@ public class Activator : MonoBehaviour
                 Trigger();
                 bPressedPlate = false;
             }
-        }
+        }       
 
         //For Lever: Must to be possesed to work
         if (other.CompareTag("Player") && bLever)
