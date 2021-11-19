@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 5425555446282807554}
   - component: {fileID: 8691256826425646714}
   - component: {fileID: 5083008874253186252}
-  - component: {fileID: 477903961656110709}
   - component: {fileID: 7050124223960246547}
+  - component: {fileID: 2829705501334121424}
   m_Layer: 0
   m_Name: DoorBronze
   m_TagString: DoorBronze
@@ -147,19 +147,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &477903961656110709
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519894840991112106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7658278, y: 1.8770366, z: 0.8664957}
-  m_Center: {x: -0.027697742, y: 1.0043623, z: -0.042363524}
 --- !u!82 &7050124223960246547
 AudioSource:
   m_ObjectHideFlags: 0
@@ -256,6 +243,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &2829705501334121424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519894840991112106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8964545, y: 1.4814863, z: 0.81345606}
+  m_Center: {x: -0.060847938, y: 1.2289944, z: 1.3144524}
 --- !u!1 &4436770308571911558
 GameObject:
   m_ObjectHideFlags: 0

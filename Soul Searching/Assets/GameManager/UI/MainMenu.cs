@@ -39,6 +39,9 @@ public class MainMenu : MonoBehaviour
         public Text level3;
         public Text level4;
         public Text level5;
+        public Text level6;
+        public Text level7;
+        public Text level8;
       
     //Controller menu
     public GameObject controlMenu;
@@ -191,7 +194,7 @@ public class MainMenu : MonoBehaviour
                 }
                 else if (levelMenuSelectionX == 5)
                 {
-                    Debug.Log("load level 5");
+                    Debug.Log("load level 4");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(5);
                 }
@@ -200,6 +203,24 @@ public class MainMenu : MonoBehaviour
                     Debug.Log("load level 5");
                     levelMenuSelectionX = 0;
                     SceneManager.LoadScene(6);
+                }
+                else if (levelMenuSelectionX == 7)
+                {
+                    Debug.Log("load level 6");
+                    levelMenuSelectionX = 0;
+                    SceneManager.LoadScene(7);
+                }
+                else if (levelMenuSelectionX == 8)
+                {
+                    Debug.Log("load level 7");
+                    levelMenuSelectionX = 0;
+                    SceneManager.LoadScene(8);
+                }
+                else if (levelMenuSelectionX == 9)
+                {
+                    Debug.Log("load level 8");
+                    levelMenuSelectionX = 0;
+                    SceneManager.LoadScene(9);
                 }
             }
         }
@@ -300,7 +321,7 @@ public class MainMenu : MonoBehaviour
             //Sets value
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
-                if (levelMenuSelectionX < 6)
+                if (levelMenuSelectionX < 9)
                 {
                     Debug.Log("Right");
                     levelMenuSelectionX++;
@@ -315,15 +336,15 @@ public class MainMenu : MonoBehaviour
                 }
             }
 
-            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
             {
-                if (levelMenuSelectionX < 5)
+                if (levelMenuSelectionX < 9)
                 {
                     Debug.Log("Right");
                     levelMenuSelectionX++;
                 }
             }
-            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
             {
                 if (levelMenuSelectionX > 0)
                 {
@@ -385,6 +406,33 @@ public class MainMenu : MonoBehaviour
             else
             {
                 level5.color = Color.white;
+            }
+
+            if (levelMenuSelectionX == 7)
+            {
+                level6.color = Color.green;
+            }
+            else
+            {
+                level6.color = Color.white;
+            }
+
+            if (levelMenuSelectionX == 8)
+            {
+                level7.color = Color.green;
+            }
+            else
+            {
+                level7.color = Color.white;
+            }
+
+            if (levelMenuSelectionX == 9)
+            {
+                level8.color = Color.green;
+            }
+            else
+            {
+                level8.color = Color.white;
             }
 
 

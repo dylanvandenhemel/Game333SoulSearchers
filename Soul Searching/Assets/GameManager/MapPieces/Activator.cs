@@ -89,9 +89,9 @@ public class Activator : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //For PressPlate
-        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.CompareTag("SkeletonPile"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Physical"))
         {
-            if(yesBones >= 1)
+            if (yesBones > 0)
             {
                 yesBones--;
             }
@@ -102,7 +102,6 @@ public class Activator : MonoBehaviour
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
                 bPressedPlate = false;
-                yesBones = 0;
             }
         }
 
