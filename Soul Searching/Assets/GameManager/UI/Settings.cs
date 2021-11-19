@@ -10,7 +10,7 @@ public class Settings : MonoBehaviour
     public static float sFXVolumeSet;
 
     //for locked levels
-    public static float levelsUnlocked;
+    public static int levelsUnlocked;
 
     public void Start()
     {

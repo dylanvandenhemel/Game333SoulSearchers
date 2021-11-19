@@ -376,6 +376,10 @@ public class MainMenu : MonoBehaviour
             {
                 level2.color = Color.green;
             }
+            else if (Settings.levelsUnlocked < 3)
+            {
+                level2.color = Color.red;
+            }
             else
             {
                 level2.color = Color.white;
@@ -384,6 +388,10 @@ public class MainMenu : MonoBehaviour
             if (levelMenuSelectionX == 4)
             {
                 level3.color = Color.green;
+            }
+            else if(Settings.levelsUnlocked < 4)
+            {
+                level3.color = Color.red;
             }
             else
             {
@@ -394,6 +402,10 @@ public class MainMenu : MonoBehaviour
             {
                 level4.color = Color.green;
             }
+            else if (Settings.levelsUnlocked < 5)
+            {
+                level4.color = Color.red;
+            }
             else
             {
                 level4.color = Color.white;
@@ -402,6 +414,10 @@ public class MainMenu : MonoBehaviour
             if (levelMenuSelectionX == 6)
             {
                 level5.color = Color.green;
+            }
+            else if (Settings.levelsUnlocked < 6)
+            {
+                level5.color = Color.red;
             }
             else
             {
@@ -412,6 +428,10 @@ public class MainMenu : MonoBehaviour
             {
                 level6.color = Color.green;
             }
+            else if (Settings.levelsUnlocked < 7)
+            {
+                level6.color = Color.red;
+            }
             else
             {
                 level6.color = Color.white;
@@ -421,6 +441,10 @@ public class MainMenu : MonoBehaviour
             {
                 level7.color = Color.green;
             }
+            else if (Settings.levelsUnlocked < 8)
+            {
+                level7.color = Color.red;
+            }
             else
             {
                 level7.color = Color.white;
@@ -429,6 +453,10 @@ public class MainMenu : MonoBehaviour
             if (levelMenuSelectionX == 9)
             {
                 level8.color = Color.green;
+            }
+            else if (Settings.levelsUnlocked < 9)
+            {
+                level8.color = Color.red;
             }
             else
             {
