@@ -148,7 +148,7 @@ public class Activator : MonoBehaviour
 
     IEnumerator leverWait()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         delayTimer = false;
     }
 
