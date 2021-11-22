@@ -62,7 +62,10 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && bPressPlate)
         {
-            yesBones++;
+            if(other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)"))
+            {
+                yesBones++;
+            }
             if (!bPressedPlate)
             {
                 transform.GetChild(0).gameObject.SetActive(false);
@@ -91,7 +94,7 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && bPressedPlate)
         {
-            if (yesBones > 0)
+            if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
             {
                 yesBones--;
             }
