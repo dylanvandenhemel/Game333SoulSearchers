@@ -76,8 +76,12 @@ public class Activator : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         //For Lever: Must to be possesed to work
-        if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
+        if (other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel && bLever)
         {
             player = other.gameObject;
             if (!bLeverinRange)
@@ -86,6 +90,12 @@ public class Activator : MonoBehaviour
                 pActions.PlayerActions.Interact.performed += LeverPull;
                 bLeverinRange = true;
             }
+        }
+        if (other.CompareTag("Player") && !other.GetComponent<Player>().bpossessSkel && bLever)
+        {
+            other.GetComponent<Player>().pauseMenu.transform.GetComponent<UIElements>().LeverUIOff();
+            bLeverinRange = false;
+            pActions.PlayerActions.Interact.performed -= LeverPull;
         }
     }
 
