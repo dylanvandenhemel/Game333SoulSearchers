@@ -16,6 +16,8 @@ public class TriggerObjects : MonoBehaviour
     private bool bDoorStart;
     private bool bPlatformActive = false;
 
+    public int NumberofSignalsReqDoor = 1;
+
     private AudioSource trapSound;
     //Detects Object to Trigger
     private void Start()
@@ -114,17 +116,24 @@ public class TriggerObjects : MonoBehaviour
     //Door Only
     private void ActiveDoor()
     {
-        if(!bDoorActive)
+        if(NumberofSignalsReqDoor == 1)
         {
-            transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
-            //gameObject.SetActive(false);
-            bDoorActive = true;
+            if (!bDoorActive)
+            {
+                transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
+                //gameObject.SetActive(false);
+                bDoorActive = true;
+            }
+            else
+            {
+                transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
+                //gameObject.SetActive(true);
+                bDoorActive = false;
+            }
         }
-        else
+        else if(NumberofSignalsReqDoor > 1)
         {
-            transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
-            //gameObject.SetActive(true);
-            bDoorActive = false;
+            NumberofSignalsReqDoor--;
         }
     }
 

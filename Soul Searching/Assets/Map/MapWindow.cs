@@ -42,6 +42,7 @@ public class MapWindow : EditorWindow
         //mapCounter = EditorGUILayout.IntField("mapInteger", mapCounter);
         //mapFlaot = EditorGUILayout.FloatField("mapFloat", mapFlaot);
         //mapWindowText = EditorGUILayout.TextField("mapText", mapWindowText);
+
     }
 }
 #endif

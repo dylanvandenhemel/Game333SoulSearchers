@@ -16,6 +16,8 @@ public class Activator : MonoBehaviour
     private bool bHasBones;
     private bool bFixPress;
 
+    private bool bSinglePressPlate;
+
     private bool bLever = false;
     private bool bActiveLever = false;
     private bool bLeverinRange = false;
@@ -43,6 +45,10 @@ public class Activator : MonoBehaviour
         {
             bPressPlate = true;
         }
+        else if(transform.CompareTag("SinglePressPlate"))
+        {
+            bSinglePressPlate = true;
+        }
         else if(transform.CompareTag("Lever"))
         {
             bLever = true;
@@ -66,6 +72,18 @@ public class Activator : MonoBehaviour
             {
                 yesBones++;
             }
+            if (!bPressedPlate)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+                GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+                GetComponent<AudioSource>().Play();
+                Trigger();
+                bPressedPlate = true;
+            }
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Physical") && bSinglePressPlate)
+        {
             if (!bPressedPlate)
             {
                 transform.GetChild(0).gameObject.SetActive(false);
@@ -102,8 +120,12 @@ public class Activator : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //For PressPlate
-        if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && bPressedPlate)
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && (bPressedPlate && bPressPlate))
         {
+            for (int j = 0; j < TriggerObject.Count; j++)
+            {
+                TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor++;
+            }
             if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
             {
                 yesBones--;
@@ -144,6 +166,10 @@ public class Activator : MonoBehaviour
                 }
                 else
                 {
+                    for (int j = 0; j < TriggerObject.Count; j++)
+                    {
+                        TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
+                    }
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
                     Trigger();
                     transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
