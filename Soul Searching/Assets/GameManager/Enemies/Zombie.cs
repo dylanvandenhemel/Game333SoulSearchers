@@ -117,7 +117,7 @@ public class Zombie : MonoBehaviour
         {
             player = other.transform;
             
-            if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
+            if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 4, Wall))
             {
                 transform.LookAt(player);
             }
