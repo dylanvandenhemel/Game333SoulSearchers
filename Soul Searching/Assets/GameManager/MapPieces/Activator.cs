@@ -124,7 +124,10 @@ public class Activator : MonoBehaviour
         {
             for (int j = 0; j < TriggerObject.Count; j++)
             {
-                TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor++;
+                if(!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
+                {
+                    TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor++;
+                }
             }
             if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
             {

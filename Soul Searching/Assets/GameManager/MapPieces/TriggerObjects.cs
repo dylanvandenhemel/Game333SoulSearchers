@@ -43,6 +43,15 @@ public class TriggerObjects : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //prevents instances where the door becomes locked closed
+        if(NumberofSignalsReqDoor >= 3)
+        {
+            NumberofSignalsReqDoor--;
+        }
+    }
+
     public void Trigger()
     {
         if(bTrap)
@@ -58,7 +67,6 @@ public class TriggerObjects : MonoBehaviour
             ActivePlatform();
         }
     }
-
 
     //Trap Only
     private void ActiveTrap()
@@ -134,6 +142,13 @@ public class TriggerObjects : MonoBehaviour
         else if(NumberofSignalsReqDoor > 1)
         {
             NumberofSignalsReqDoor--;
+        }
+
+        if(bDoorActive && NumberofSignalsReqDoor > 1)
+        {
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
+            //gameObject.SetActive(true);
+            bDoorActive = false;
         }
     }
 
