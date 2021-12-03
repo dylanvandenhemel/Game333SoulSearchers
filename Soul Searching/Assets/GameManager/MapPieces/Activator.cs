@@ -74,11 +74,11 @@ public class Activator : MonoBehaviour
             }
             if (!bPressedPlate)
             {
+                bPressedPlate = true;
                 transform.GetChild(0).gameObject.SetActive(false);
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 GetComponent<AudioSource>().Play();
                 Trigger();
-                bPressedPlate = true;
             }
         }
 
@@ -86,11 +86,11 @@ public class Activator : MonoBehaviour
         {
             if (!bPressedPlate)
             {
+                bPressedPlate = true;
                 transform.GetChild(0).gameObject.SetActive(false);
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 GetComponent<AudioSource>().Play();
                 Trigger();
-                bPressedPlate = true;
             }
         }
 
@@ -122,11 +122,13 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && (bPressedPlate && bPressPlate))
         {
+            Debug.Log("Leave");
             for (int j = 0; j < TriggerObject.Count; j++)
             {
                 if(!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
                 {
-                    TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor++;
+                    //plus 2 to fix amount when exiting
+                    TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
                 }
             }
             if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
