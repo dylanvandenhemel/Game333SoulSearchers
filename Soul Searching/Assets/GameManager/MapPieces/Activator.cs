@@ -122,12 +122,11 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && (bPressedPlate && bPressPlate))
         {
-            Debug.Log("Leave");
             for (int j = 0; j < TriggerObject.Count; j++)
             {
                 if(!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
                 {
-                    //plus 2 to fix amount when exiting
+                    //plus 2 to fix signals when exiting
                     TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
                 }
             }
@@ -173,10 +172,15 @@ public class Activator : MonoBehaviour
                 {
                     for (int j = 0; j < TriggerObject.Count; j++)
                     {
-                        TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
+                        if (!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
+                        {
+                            //plus 2 to fix amount when exiting
+                            TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
+                        }
                     }
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
                     Trigger();
+
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
                     transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                     transform.GetChild(transform.childCount - 2).GetComponent<AudioSource>().Play();
                     bActiveLever = false;

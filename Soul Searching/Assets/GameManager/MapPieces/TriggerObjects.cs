@@ -16,6 +16,7 @@ public class TriggerObjects : MonoBehaviour
     private bool bDoorStart;
     private bool bPlatformActive = false;
 
+    private int startSignals;
     public int NumberofSignalsReqDoor = 1;
 
     private AudioSource trapSound;
@@ -32,6 +33,7 @@ public class TriggerObjects : MonoBehaviour
         else if (transform.CompareTag("Door"))
         {
             bDoorStart = bDoorActive;
+            startSignals = NumberofSignalsReqDoor;
 
             bDoor = true;
             //Trigger();
@@ -46,9 +48,13 @@ public class TriggerObjects : MonoBehaviour
     private void Update()
     {
         //prevents instances where the door becomes locked closed
-        if(NumberofSignalsReqDoor >= 3)
+        if(NumberofSignalsReqDoor > startSignals)
         {
             NumberofSignalsReqDoor--;
+        }
+        else if(NumberofSignalsReqDoor <= 0)
+        {
+            NumberofSignalsReqDoor++;
         }
     }
 
@@ -124,7 +130,7 @@ public class TriggerObjects : MonoBehaviour
     //Door Only
     private void ActiveDoor()
     {
-        if(NumberofSignalsReqDoor == 1)
+        if (NumberofSignalsReqDoor == 1)
         {
             if (!bDoorActive)
             {
@@ -139,12 +145,12 @@ public class TriggerObjects : MonoBehaviour
                 bDoorActive = false;
             }
         }
-        else if(NumberofSignalsReqDoor > 1)
+        if (NumberofSignalsReqDoor > 1)
         {
             NumberofSignalsReqDoor--;
         }
 
-        if(bDoorActive && NumberofSignalsReqDoor > 1)
+        if (bDoorActive && NumberofSignalsReqDoor > 1)
         {
             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
             //gameObject.SetActive(true);
