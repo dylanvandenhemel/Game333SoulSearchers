@@ -49,14 +49,15 @@ public class Chest : MonoBehaviour
     {
         if(!bChestOpen)
         {
-            GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
-            GameObject spawnItem = PrefabUtility.InstantiatePrefab(itemInChest) as GameObject;
-            spawnItem.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
-
             //temporary hide for visual effect
             GetComponent<VisualEffect>().Play();
-            topOpen.rotation = Quaternion.Euler(90, topOpen.rotation.y, topOpen.rotation.z);
+            topOpen.rotation = Quaternion.Euler(topOpen.rotation.eulerAngles.x -90, topOpen.rotation.eulerAngles.y, topOpen.rotation.eulerAngles.z);
+            topOpen.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             bChestOpen = true;
+
+            GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+            GameObject spawnItem = PrefabUtility.InstantiatePrefab(itemInChest) as GameObject;
+            spawnItem.transform.position = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         }
     }
 }
