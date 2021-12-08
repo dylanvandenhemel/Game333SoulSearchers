@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
+using UnityEditor;
 
 public class Chest : MonoBehaviour
 {
     PlayerControls pActions;
+
+    private bool bChestOpen;
+
+    public GameObject itemInChest;
 
     private void OnEnable()
     {
@@ -40,6 +46,16 @@ public class Chest : MonoBehaviour
 
     private void OpenChest(InputAction.CallbackContext c)
     {
-        Debug.Log("Opem");
+        if(!bChestOpen)
+        {
+            GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+            GameObject spawnItem = PrefabUtility.InstantiatePrefab(itemInChest) as GameObject;
+            spawnItem.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+
+            //temporary hide for visual effect
+            GetComponent<VisualEffect>().Play();
+            transform.GetChild(0).gameObject.SetActive(false);
+            bChestOpen = true;
+        }
     }
 }
