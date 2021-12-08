@@ -10,6 +10,7 @@ public class Chest : MonoBehaviour
     PlayerControls pActions;
 
     private bool bChestOpen;
+    public Transform topOpen;
 
     public GameObject itemInChest;
 
@@ -54,7 +55,7 @@ public class Chest : MonoBehaviour
 
             //temporary hide for visual effect
             GetComponent<VisualEffect>().Play();
-            transform.GetChild(0).gameObject.SetActive(false);
+            topOpen.rotation = Quaternion.Euler(90, topOpen.rotation.y, topOpen.rotation.z);
             bChestOpen = true;
         }
     }
