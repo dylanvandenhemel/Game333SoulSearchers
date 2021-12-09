@@ -10,6 +10,9 @@ public class MainMenu : MonoBehaviour
 {
     PlayerControls menuButtons;
 
+    //logo fade
+    public GameObject logoIntro;
+
     //only 4 buttons at the moment
     public GameObject mainMenu;
     private int mainMenuSelection = 5;
