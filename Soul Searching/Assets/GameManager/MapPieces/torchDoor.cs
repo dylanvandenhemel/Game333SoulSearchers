@@ -10,17 +10,24 @@ public class torchDoor : MonoBehaviour
 
     private void Start()
     {
-        fireEffect.SetActive(false);
+        if (transform.parent != null && transform.parent.CompareTag("Door"))
+        {
+            fireEffect.SetActive(false);
+        }
+        else
+        {
+            fireEffect.SetActive(true);
+        }
     }
     private void Update()
     {
-        if(transform.parent != null && transform.parent.CompareTag("Door"))
+        if (transform.parent != null && transform.parent.CompareTag("Door"))
         {
-            if(transform.parent.GetComponent<TriggerObjects>().NumberofSignalsReqDoor == signalTurnOn && !openDoorTorch)
+            if (transform.parent.GetComponent<TriggerObjects>().NumberofSignalsReqDoor == signalTurnOn && !openDoorTorch)
             {
                 fireEffect.SetActive(true);
             }
-            else if(transform.parent.GetComponent<TriggerObjects>().NumberofSignalsReqDoor != signalTurnOn && !openDoorTorch)
+            else if (transform.parent.GetComponent<TriggerObjects>().NumberofSignalsReqDoor != signalTurnOn && !openDoorTorch)
             {
                 fireEffect.SetActive(false);
             }
@@ -29,7 +36,7 @@ public class torchDoor : MonoBehaviour
             {
                 fireEffect.SetActive(true);
             }
-            else if(!transform.parent.GetComponent<TriggerObjects>().bDoorActive && openDoorTorch)
+            else if (!transform.parent.GetComponent<TriggerObjects>().bDoorActive && openDoorTorch)
             {
                 fireEffect.SetActive(false);
             }

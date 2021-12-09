@@ -8,11 +8,11 @@ public class Stairs : MonoBehaviour
     public bool bIsLastLevel;
 
     private Scene currentScene;
-    public Transform fade;
+    public Transform pauseCanvas;
     private void Start()
     {
         //last child
-        fade.GetChild(fade.childCount - 1).GetComponent<Animator>().SetTrigger("fadeIn");
+        pauseCanvas.GetChild(pauseCanvas.childCount - 1).GetComponent<Animator>().SetTrigger("fadeIn");
         currentScene = SceneManager.GetActiveScene();
     }
 
@@ -20,7 +20,7 @@ public class Stairs : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            fade.GetChild(fade.childCount - 1).GetComponent<Animator>().SetTrigger("fadeOut");
+            pauseCanvas.GetChild(pauseCanvas.childCount - 1).GetComponent<Animator>().SetTrigger("fadeOut");
             other.GetComponent<CharacterController>().enabled = false;
 
             StartCoroutine(fadeWait());
