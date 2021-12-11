@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using UnityEditor;
 
 public class Chest : MonoBehaviour
 {
@@ -56,8 +55,8 @@ public class Chest : MonoBehaviour
             bChestOpen = true;
 
             GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
-            GameObject spawnItem = PrefabUtility.InstantiatePrefab(itemInChest) as GameObject;
-            spawnItem.transform.position = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+            Instantiate(itemInChest);
+            topOpen.transform.position = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         }
     }
 }
