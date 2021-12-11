@@ -11,7 +11,8 @@
                     "id": "b10fc041-1ce3-4510-9bcf-8102038bc06a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Interact",
@@ -19,7 +20,8 @@
                     "id": "0b1e800f-bba4-4c53-bf2e-0ec684c501da",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Possess",
@@ -27,7 +29,8 @@
                     "id": "0d49f8ca-97b6-4ba7-a964-3b1496fad2df",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Whistle",
@@ -35,7 +38,8 @@
                     "id": "03fec987-4db3-4182-939e-af41f2fe1d65",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",
@@ -43,7 +47,17 @@
                     "id": "c96a1e44-7acb-40ae-8369-655aa92ad62c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DebugUnlock",
+                    "type": "Button",
+                    "id": "d1a89a6c-6ebe-4150-9a80-185f0083855c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -308,6 +322,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c659a9d3-0ffb-4247-8190-e2754d7002a2",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugUnlock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

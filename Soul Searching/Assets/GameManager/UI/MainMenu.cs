@@ -81,12 +81,20 @@ public class MainMenu : MonoBehaviour
         menuButtons.Enable();
         menuButtons.PlayerActions.Possess.performed += SelectUI;
         menuButtons.PlayerActions.Movement.started += CurrentSelection;
+        menuButtons.PlayerActions.DebugUnlock.started += UnlockLevels;
     }
     private void OnDisable()
     {
         menuButtons.Disable();
         menuButtons.PlayerActions.Possess.performed -= SelectUI;
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
+        menuButtons.PlayerActions.DebugUnlock.started -= UnlockLevels;
+    }
+
+    private void UnlockLevels(InputAction.CallbackContext c)
+    {
+        Debug.Log("All levels Unlocked");
+        Settings.levelsUnlocked = 100;
     }
 
     private void Start()

@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugUnlock"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1a89a6c-6ebe-4150-9a80-185f0083855c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -337,6 +346,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c659a9d3-0ffb-4247-8190-e2754d7002a2"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugUnlock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -373,6 +393,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Possess = m_PlayerActions.FindAction("Possess", throwIfNotFound: true);
         m_PlayerActions_Whistle = m_PlayerActions.FindAction("Whistle", throwIfNotFound: true);
         m_PlayerActions_Pause = m_PlayerActions.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerActions_DebugUnlock = m_PlayerActions.FindAction("DebugUnlock", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -437,6 +458,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Possess;
     private readonly InputAction m_PlayerActions_Whistle;
     private readonly InputAction m_PlayerActions_Pause;
+    private readonly InputAction m_PlayerActions_DebugUnlock;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -446,6 +468,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Possess => m_Wrapper.m_PlayerActions_Possess;
         public InputAction @Whistle => m_Wrapper.m_PlayerActions_Whistle;
         public InputAction @Pause => m_Wrapper.m_PlayerActions_Pause;
+        public InputAction @DebugUnlock => m_Wrapper.m_PlayerActions_DebugUnlock;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -470,6 +493,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPause;
+                @DebugUnlock.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDebugUnlock;
+                @DebugUnlock.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDebugUnlock;
+                @DebugUnlock.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDebugUnlock;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -489,6 +515,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @DebugUnlock.started += instance.OnDebugUnlock;
+                @DebugUnlock.performed += instance.OnDebugUnlock;
+                @DebugUnlock.canceled += instance.OnDebugUnlock;
             }
         }
     }
@@ -518,5 +547,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPossess(InputAction.CallbackContext context);
         void OnWhistle(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnDebugUnlock(InputAction.CallbackContext context);
     }
 }
