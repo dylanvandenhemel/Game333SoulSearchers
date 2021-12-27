@@ -72,7 +72,7 @@ public class TriggerObjects : MonoBehaviour
             }
             else
             {
-                ActivateDoubleDoors();
+                //ActivateDoubleDoors();
             }
         }
         else if(bPlatform)
@@ -140,17 +140,15 @@ public class TriggerObjects : MonoBehaviour
          if (!bDoorActive)
          {
             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
-            //Debug.LogError("Open");
             bDoorActive = true;
          }
          else
          {
              transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
-             //Debug.LogError("Closed");
              bDoorActive = false;
          } 
     }
-
+    /*
     private void ActivateDoubleDoors()
     {
         if (NumberofSignalsReqDoor == 1)
@@ -180,7 +178,7 @@ public class TriggerObjects : MonoBehaviour
             bDoorActive = false;
         }
     }
-
+    */
     //Platform Only
     private void ActivePlatform()
     {

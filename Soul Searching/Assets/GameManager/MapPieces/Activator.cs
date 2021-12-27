@@ -79,7 +79,6 @@ public class Activator : MonoBehaviour
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 GetComponent<AudioSource>().Play();
                 Trigger();
-                Debug.LogError("Open");
             }
         }
 
@@ -134,7 +133,6 @@ public class Activator : MonoBehaviour
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
-                Debug.LogError("Close");
             }
             for (int j = 0; j < TriggerObject.Count; j++)
             {
@@ -173,6 +171,7 @@ public class Activator : MonoBehaviour
                 }
                 else
                 {
+                    /* old double doors stuff
                     for (int j = 0; j < TriggerObject.Count; j++)
                     {
                         if (!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
@@ -181,6 +180,7 @@ public class Activator : MonoBehaviour
                             TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
                         }
                     }
+                    */
                     Trigger();
 
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
