@@ -79,6 +79,7 @@ public class Activator : MonoBehaviour
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
                 GetComponent<AudioSource>().Play();
                 Trigger();
+                Debug.LogError("Open");
             }
         }
 
@@ -122,6 +123,19 @@ public class Activator : MonoBehaviour
         //For PressPlate
         if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && (bPressedPlate && bPressPlate))
         {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
+            {
+                yesBones--;
+            }
+            if (bPressedPlate && yesBones == 0)
+            {
+                bPressedPlate = false;
+                transform.GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
+                Trigger();
+                Debug.LogError("Close");
+            }
             for (int j = 0; j < TriggerObject.Count; j++)
             {
                 if(!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
@@ -130,18 +144,7 @@ public class Activator : MonoBehaviour
                     TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
                 }
             }
-            if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
-            {
-                yesBones--;
-            }
-            if (bPressedPlate && yesBones == 0)
-            {
-                transform.GetChild(0).gameObject.SetActive(true);
-                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
-                transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
-                Trigger();
-                bPressedPlate = false;
-            }
+            
         }       
 
         //For Lever: Must to be possesed to work

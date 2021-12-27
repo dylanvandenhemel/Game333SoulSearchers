@@ -120,16 +120,14 @@ public class EyeTower : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 6, Mask))
             {
                 bTracker = true;
-                if (bTracker == true)
+                if (bTracker == true && !btriggerActivated)
                 {
                     transform.LookAt(target);
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
-                    if(!btriggerActivated)
-                    {
-                        StartCoroutine(triggerWait());
-                        //Trigger();
-                        btriggerActivated = true;
-                    }
+
+                    btriggerActivated = true;
+                    Trigger();
+                    //StartCoroutine(triggerWait());
                 }
             }
 
@@ -141,21 +139,22 @@ public class EyeTower : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && btriggerActivated)
         {
-            bTracker = false;
-            btriggerActivated = false;
+            Trigger();
             StartCoroutine(triggerWait());
-            //Trigger();
         }
             
     }
 
+    
     IEnumerator triggerWait()
     {
-        yield return new WaitForEndOfFrame();
-        Trigger();
+        yield return new WaitForSeconds(0.5f);
+        bTracker = false;
+        btriggerActivated = false;
     }
+    
     public void Trigger()
     {
         if(!beyeSoundPlayed)
