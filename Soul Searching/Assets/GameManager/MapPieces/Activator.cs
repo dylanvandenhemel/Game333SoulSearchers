@@ -125,6 +125,19 @@ public class Activator : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
             {
                 yesBones--;
+                //when removing a single signal from a double door
+                for (int j = 0; j < TriggerObject.Count; j++)
+                {
+                    if (TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor == 1)
+                    {
+                        if (!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
+                        {
+                            //plus 2 to fix amount when exiting
+                            TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
+                        }
+                    }
+                }
+                //
             }
             if (bPressedPlate && yesBones == 0)
             {
@@ -134,16 +147,8 @@ public class Activator : MonoBehaviour
                 transform.GetChild(transform.childCount - 1).GetComponent<AudioSource>().Play();
                 Trigger();
             }
-            for (int j = 0; j < TriggerObject.Count; j++)
-            {
-                if(!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
-                {
-                    //plus 2 to fix signals when exiting
-                    TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
-                }
-            }
-            
-        }       
+
+        }
 
         //For Lever: Must to be possesed to work
         if (other.CompareTag("Player") && bLever)
@@ -171,16 +176,19 @@ public class Activator : MonoBehaviour
                 }
                 else
                 {
-                    /* old double doors stuff
+                    //when removing a single signal from a double door
                     for (int j = 0; j < TriggerObject.Count; j++)
                     {
-                        if (!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
-                        {
-                            //plus 2 to fix amount when exiting
-                            TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
-                        }
+                            if (TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor == 1)
+                            {
+                                if (!TriggerObject[j].GetComponent<TriggerObjects>().bDoorActive)
+                                {
+                                    //plus 2 to fix amount when exiting
+                                    TriggerObject[j].GetComponent<TriggerObjects>().NumberofSignalsReqDoor += 2;
+                                }
+                            }
                     }
-                    */
+                    //
                     Trigger();
 
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);

@@ -49,14 +49,16 @@ public class Chest : MonoBehaviour
         if(!bChestOpen)
         {
             //temporary hide for visual effect
+            topOpen.gameObject.SetActive(false);
             GetComponent<VisualEffect>().Play();
-            topOpen.rotation = Quaternion.Euler(topOpen.rotation.eulerAngles.x -90, topOpen.rotation.eulerAngles.y, topOpen.rotation.eulerAngles.z);
-            topOpen.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            //model has see through effect for some reason
+            //topOpen.rotation = Quaternion.Euler(topOpen.rotation.eulerAngles.x -90, topOpen.rotation.eulerAngles.y, topOpen.rotation.eulerAngles.z);
+            //topOpen.position = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
             bChestOpen = true;
 
             GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
-            Instantiate(itemInChest);
-            topOpen.transform.position = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+            GameObject chestItem = Instantiate(itemInChest);
+            chestItem.transform.position = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         }
     }
 }

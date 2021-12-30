@@ -12,12 +12,15 @@ public class TriggerObjects : MonoBehaviour
 
     //On off system
     public bool bTrapActive = false;
+
     public bool bDoorActive = false;
     private bool bDoorStart;
-    private bool bPlatformActive = false;
+    private bool bDoubleDoors;
 
     private int startSignals;
     public int NumberofSignalsReqDoor = 1;
+
+    private bool bPlatformActive = false;
 
     private AudioSource trapSound;
     //Detects Object to Trigger
@@ -34,8 +37,14 @@ public class TriggerObjects : MonoBehaviour
         {
             bDoorStart = bDoorActive;
             startSignals = NumberofSignalsReqDoor;
-
-            bDoor = true;
+            if(startSignals == 2)
+            {
+                bDoubleDoors = true;
+            }
+            else
+            {
+                bDoor = true;
+            }
             //Trigger();
         }
         else if (transform.CompareTag("Platform"))
@@ -66,19 +75,18 @@ public class TriggerObjects : MonoBehaviour
         }
         else if(bDoor)
         {
-            if(NumberofSignalsReqDoor == 1)
-            {
-                ActiveDoor();
-            }
-            else
-            {
-                //ActivateDoubleDoors();
-            }
+            ActiveDoor();
         }
+        else if(bDoubleDoors)
+        {
+            ActivateDoubleDoors();
+        }
+        /*
         else if(bPlatform)
         {
             ActivePlatform();
         }
+        */
     }
 
     //Trap Only
@@ -148,11 +156,12 @@ public class TriggerObjects : MonoBehaviour
              bDoorActive = false;
          } 
     }
-    /*
+    
     private void ActivateDoubleDoors()
     {
+        Debug.LogError("dodoors");
         if (NumberofSignalsReqDoor == 1)
-        {
+        { 
             if (!bDoorActive)
             {
                 transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
@@ -170,16 +179,18 @@ public class TriggerObjects : MonoBehaviour
         {
             NumberofSignalsReqDoor--;
         }
-
+        /*
         if (bDoorActive && NumberofSignalsReqDoor > 1)
         {
             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
             //gameObject.SetActive(true);
             bDoorActive = false;
         }
+        */
     }
-    */
-    //Platform Only
+
+
+    /*Platform Only
     private void ActivePlatform()
     {
         if(!bPlatformActive)
@@ -193,4 +204,5 @@ public class TriggerObjects : MonoBehaviour
             bPlatformActive = false;
         }
     }
+    */
 }
