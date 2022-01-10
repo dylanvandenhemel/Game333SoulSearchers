@@ -159,7 +159,6 @@ public class TriggerObjects : MonoBehaviour
     
     private void ActivateDoubleDoors()
     {
-        Debug.LogError("dodoors");
         if (NumberofSignalsReqDoor == 1)
         { 
             if (!bDoorActive)
