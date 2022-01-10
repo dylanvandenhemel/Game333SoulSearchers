@@ -12,6 +12,18 @@ public class LostSouls : MonoBehaviour
     private Transform player;
     private bool bFollow;
 
+    private void Start()
+    {
+        //default value is 0.5 so this will randomize near that range
+        float newStopDistance = Random.Range(0.1f, 1f);
+
+        //default value is 6 so this will randomize near that range
+        float newSpeed = Random.Range(4, 8);
+
+        GetComponent<NavMeshAgent>().stoppingDistance = newStopDistance;
+        GetComponent<NavMeshAgent>().speed = newSpeed;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))

@@ -300,7 +300,7 @@ public class Player : MonoBehaviour
     {
         bwhistling = true;
         GetComponent<PlayerSound>().PlayerWistle();
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.8f);
         bwhistling = false;
     }
 
