@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 2158736465309242488}
   - component: {fileID: 4184310424333738162}
   - component: {fileID: 8721431738889859449}
+  - component: {fileID: 2391945999103722510}
   m_Layer: 6
   m_Name: SoloDog
   m_TagString: HellHound
@@ -226,6 +227,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.64715165, y: 1.151218, z: 1.0928327}
   m_Center: {x: 0.000000029802322, y: 0.54449195, z: -0.041736245}
+--- !u!95 &2391945999103722510
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382778420943634791}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a4a674de1f0a0b04db1a49cd7096d146, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4cff03886eb96334e8e42ba6b66afe93, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5657074956226824970
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPosition: {x: 0, y: 0, z: 0}
-  bUponReset: 0
+  bUponReset: 1
 --- !u!1 &6820446136603870083
 GameObject:
   m_ObjectHideFlags: 0
