@@ -59,19 +59,10 @@ public class HellHound : MonoBehaviour
 
     public void ActiveReset()
     {
-        GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
         localMap.ResetPath();
-        StartCoroutine(resetNavMesh());
-    }
-
-    //on reset nav mesh agents prevent the object from reseting its location if there is a wall between it
-    IEnumerator resetNavMesh()
-    {
-        yield return new WaitForEndOfFrame();
-        GetComponent<NavMeshAgent>().enabled = true;
     }
 
 }

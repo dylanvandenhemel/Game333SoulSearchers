@@ -12,8 +12,6 @@ public class LostSouls : MonoBehaviour
     private Transform player;
     private bool bFollow;
 
-    private NavMeshAgent localMap;
-
     private void Start()
     {
         //default value is 0.5 so this will randomize near that range
@@ -86,18 +84,4 @@ public class LostSouls : MonoBehaviour
             }
         }
     }
-    public void ActiveReset()
-    {
-        GetComponent<NavMeshAgent>().enabled = false;
-        localMap.ResetPath();
-        StartCoroutine(resetNavMesh());
-    }
-
-    //on reset nav mesh agents prevent the object from reseting its location if there is a wall between it
-    IEnumerator resetNavMesh()
-    {
-        yield return new WaitForEndOfFrame();
-        GetComponent<NavMeshAgent>().enabled = true;
-    }
 }
-
