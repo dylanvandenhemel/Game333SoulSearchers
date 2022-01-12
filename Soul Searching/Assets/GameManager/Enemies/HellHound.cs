@@ -70,7 +70,7 @@ public class HellHound : MonoBehaviour
     //on reset nav mesh agents prevent the object from reseting its location if there is a wall between it
     IEnumerator resetNavMesh()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.1f);
         GetComponent<NavMeshAgent>().enabled = true;
     }
 
