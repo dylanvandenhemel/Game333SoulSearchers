@@ -30,21 +30,24 @@ public class MainMenu : MonoBehaviour
             Vector3 settingPosition;
 
     //Level menu
-    public GameObject levelMenu;
+    //public GameObject levelMenu;
         public Text levelSelection;
         private bool blevelOn;
         private int levelMenuSelectionX;
         private int levelMenuSelectionY;
     //Levels in menu
+        //Catacomb
         public Text tutorial;
         public Text level1;
         public Text level2;
         public Text level3;
         public Text level4;
         public Text level5;
+        //Dungeon
         public Text level6;
         public Text level7;
         public Text level8;
+        //Basement
       
     //Controller menu
     public GameObject controlMenu;
@@ -138,6 +141,8 @@ public class MainMenu : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, settingRotation, 50 * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, settingPosition, 1 * Time.deltaTime);
         }
+
+        //add level animation for tower
 
         //update slider volume levels into game
 
@@ -334,33 +339,29 @@ public class MainMenu : MonoBehaviour
             {
                 if (levelMenuSelectionX < 9)
                 {
-                    Debug.Log("Right");
                     levelMenuSelectionX++;
                 }
             }
             else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
             {
-                if (levelMenuSelectionX > 0)
+                if (levelMenuSelectionX > 1)
                 {
-                    Debug.Log("Left");
                     levelMenuSelectionX--;
                 }
             }
 
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
             {
-                if (levelMenuSelectionX < 9)
+                if (levelMenuSelectionX > 1)
                 {
-                    Debug.Log("Right");
-                    levelMenuSelectionX++;
+                    levelMenuSelectionX--;
                 }
             }
             else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
             {
-                if (levelMenuSelectionX > 0)
+                if (levelMenuSelectionX < 9)
                 {
-                    Debug.Log("Left");
-                    levelMenuSelectionX--;
+                    levelMenuSelectionX++;
                 }
             }
 
@@ -566,7 +567,6 @@ public class MainMenu : MonoBehaviour
 
         if(blevelOn)
         {
-            levelMenu.SetActive(false);
             levelMenuSelectionX = 0;
             blevelOn = false;
         }
@@ -612,7 +612,7 @@ public class MainMenu : MonoBehaviour
         }
         else if (newMenuVal == 1)
         {
-            levelMenu.SetActive(true);
+            //old level menu would be enabled
         }
         else if (newMenuVal == 2)
         {
