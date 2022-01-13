@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
         private bool blevelOn;
         private int levelMenuSelectionX;
         private int levelMenuSelectionY;
+        private Vector3 levelCameraAnim;
     //Levels in menu
         //Catacomb
         public Text tutorial;
@@ -142,7 +143,11 @@ public class MainMenu : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, settingPosition, 1 * Time.deltaTime);
         }
 
-        //add level animation for tower
+        //level camera for tower
+        if(blevelOn && levelMenuSelectionX != 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, levelCameraAnim, 3 * Time.deltaTime);
+        }
 
         //update slider volume levels into game
 
@@ -354,6 +359,8 @@ public class MainMenu : MonoBehaviour
             {
                 if (levelMenuSelectionX > 1)
                 {
+                    //used for the camera movement
+                    levelCameraAnim = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
                     levelMenuSelectionX--;
                 }
             }
@@ -361,10 +368,15 @@ public class MainMenu : MonoBehaviour
             {
                 if (levelMenuSelectionX < 9)
                 {
+                    if(levelMenuSelectionX > 1)
+                    levelCameraAnim = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+
+                    //make animation
                     levelMenuSelectionX++;
                 }
             }
 
+            Debug.LogError(levelMenuSelectionX);
             //Updates button selections color
             if (levelMenuSelectionX == 1)
             {
