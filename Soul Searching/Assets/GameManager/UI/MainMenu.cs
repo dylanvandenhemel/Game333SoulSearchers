@@ -130,14 +130,13 @@ public class MainMenu : MonoBehaviour
     {
         if(animVal == 0)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, mainRotation, 80 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, mainRotation, 140 * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, mainPosition, 2 * Time.deltaTime);
         }
         else if(animVal == 1)
         {
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, levelRotation, 70 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, levelRotation, 150 * Time.deltaTime);
             //moves tower in front of camera
-            levelTower.position = Vector3.MoveTowards(levelTower.position, levelPosition.position, 3 * Time.deltaTime);
         }
         else if(animVal == 2)
         {
@@ -634,7 +633,7 @@ public class MainMenu : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         if(newMenuVal == 0)
         {
             mainMenu.SetActive(true);
