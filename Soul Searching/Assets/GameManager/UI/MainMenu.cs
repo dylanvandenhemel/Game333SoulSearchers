@@ -25,12 +25,15 @@ public class MainMenu : MonoBehaviour
         Quaternion mainRotation;
             Vector3 mainPosition;
         Quaternion levelRotation;
+        public Transform levelPosition;
+    Vector3 levelTowerStart;
         Vector3 controlsPosition;
         Quaternion settingRotation;
             Vector3 settingPosition;
 
     //Level menu
     //public GameObject levelMenu;
+        public Transform levelTower;
         public Text levelSelection;
         private bool blevelOn;
         private int levelMenuSelectionX;
@@ -106,6 +109,7 @@ public class MainMenu : MonoBehaviour
         mainRotation = transform.rotation;
         mainPosition = transform.position;
         levelRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
+        levelTowerStart = levelTower.position;
         controlsPosition = new Vector3(transform.position.x - 1.8f, transform.position.y, transform.position.z);
         settingRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y -90, 0);
         settingPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.8f);
@@ -126,28 +130,32 @@ public class MainMenu : MonoBehaviour
     {
         if(animVal == 0)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, mainRotation, 50 * Time.deltaTime);
-            transform.position = Vector3.MoveTowards(transform.position, mainPosition, 1 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, mainRotation, 80 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, mainPosition, 2 * Time.deltaTime);
         }
         else if(animVal == 1)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, levelRotation, 50 * Time.deltaTime);
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, levelRotation, 70 * Time.deltaTime);
+            //moves tower in front of camera
+            levelTower.position = Vector3.MoveTowards(levelTower.position, levelPosition.position, 3 * Time.deltaTime);
         }
         else if(animVal == 2)
         {
-            transform.position = Vector3.MoveTowards(transform.position, controlsPosition, 1 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, controlsPosition, 2 * Time.deltaTime);
         }
         else if(animVal == 3)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, settingRotation, 50 * Time.deltaTime);
-            transform.position = Vector3.MoveTowards(transform.position, settingPosition, 1 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, settingRotation, 70 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, settingPosition, 2 * Time.deltaTime);
         }
 
-        //level camera for tower
-        if(blevelOn && levelMenuSelectionX != 0)
+        //moves level tower back into place
+        if(animVal != 1)
         {
-            transform.position = Vector3.MoveTowards(transform.position, levelCameraAnim, 3 * Time.deltaTime);
+            levelTower.position = Vector3.MoveTowards(levelTower.position, levelTowerStart, 3 * Time.deltaTime);
         }
+
+        
 
         //update slider volume levels into game
 
@@ -172,7 +180,7 @@ public class MainMenu : MonoBehaviour
             }
             else if(bDoneTutorial)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(Settings.levelsUnlocked);
             }
         }
         //LevelSelect
@@ -185,6 +193,9 @@ public class MainMenu : MonoBehaviour
             //sends player to level selected
             if(blevelOn)
             {
+
+                //make seperate menu
+
                 //tutorial
                 if (levelMenuSelectionX == 1)
                 {
@@ -289,52 +300,8 @@ public class MainMenu : MonoBehaviour
                     mainMenuSelection--;
                 }
             }
-
-            //Updates button selected to color
-            if (mainMenuSelection == 4)
-            {
-                StartGame.color = Color.green;
-            }
-            else
-            {
-                StartGame.color = Color.cyan;
-            }
-
-            if (mainMenuSelection == 3)
-            {
-                levelSelection.color = Color.green;
-            }
-            else
-            {
-                levelSelection.color = Color.cyan;
-            }
-
-            if (mainMenuSelection == 2)
-            {
-                controlSelection.color = Color.green;
-            }
-            else
-            {
-                controlSelection.color = Color.cyan;
-            }
-
-            if (mainMenuSelection == 1)
-            {
-                settings.color = Color.green;
-            }
-            else
-            {
-                settings.color = Color.cyan;
-            }
-
-            if (mainMenuSelection == 0)
-            {
-                quit.color = Color.red;
-            }
-            else
-            {
-                quit.color = Color.cyan;
-            }
+            //changes text color
+            TextColor();
 
         }
         else if (blevelOn)
@@ -360,7 +327,7 @@ public class MainMenu : MonoBehaviour
                 if (levelMenuSelectionX > 1)
                 {
                     //used for the camera movement
-                    levelCameraAnim = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
+                    //levelCameraAnim = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
                     levelMenuSelectionX--;
                 }
             }
@@ -368,125 +335,15 @@ public class MainMenu : MonoBehaviour
             {
                 if (levelMenuSelectionX < 9)
                 {
-                    if(levelMenuSelectionX > 1)
-                    levelCameraAnim = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+                    Debug.Log("tdrt");
+                    //if(levelMenuSelectionX > 1)
+                    //levelCameraAnim = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
 
-                    //make animation
+                    
                     levelMenuSelectionX++;
                 }
             }
-
-            Debug.LogError(levelMenuSelectionX);
-            //Updates button selections color
-            if (levelMenuSelectionX == 1)
-            {
-                tutorial.color = Color.green;
-            }
-            else
-            {
-                tutorial.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 2)
-            {
-                level1.color = Color.green;
-            }
-            else
-            {
-                level1.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 3)
-            {
-                level2.color = Color.green;
-            }
-            else if (Settings.levelsUnlocked < 3)
-            {
-                level2.color = Color.red;
-            }
-            else
-            {
-                level2.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 4)
-            {
-                level3.color = Color.green;
-            }
-            else if(Settings.levelsUnlocked < 4)
-            {
-                level3.color = Color.red;
-            }
-            else
-            {
-                level3.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 5)
-            {
-                level4.color = Color.green;
-            }
-            else if (Settings.levelsUnlocked < 5)
-            {
-                level4.color = Color.red;
-            }
-            else
-            {
-                level4.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 6)
-            {
-                level5.color = Color.green;
-            }
-            else if (Settings.levelsUnlocked < 6)
-            {
-                level5.color = Color.red;
-            }
-            else
-            {
-                level5.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 7)
-            {
-                level6.color = Color.green;
-            }
-            else if (Settings.levelsUnlocked < 7)
-            {
-                level6.color = Color.red;
-            }
-            else
-            {
-                level6.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 8)
-            {
-                level7.color = Color.green;
-            }
-            else if (Settings.levelsUnlocked < 8)
-            {
-                level7.color = Color.red;
-            }
-            else
-            {
-                level7.color = Color.white;
-            }
-
-            if (levelMenuSelectionX == 9)
-            {
-                level8.color = Color.green;
-            }
-            else if (Settings.levelsUnlocked < 9)
-            {
-                level8.color = Color.red;
-            }
-            else
-            {
-                level8.color = Color.white;
-            }
-
+            TextColor();
 
         }
         else if (bcontrolsOn)
@@ -569,6 +426,166 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    private void TextColor()
+    {
+
+        //Updates menu button selected to color
+        if (mainMenuSelection == 4)
+        {
+            StartGame.color = Color.green;
+        }
+        else
+        {
+            StartGame.color = Color.cyan;
+        }
+
+        if (mainMenuSelection == 3)
+        {
+            levelSelection.color = Color.green;
+        }
+        else
+        {
+            levelSelection.color = Color.cyan;
+        }
+
+        if (mainMenuSelection == 2)
+        {
+            controlSelection.color = Color.green;
+        }
+        else
+        {
+            controlSelection.color = Color.cyan;
+        }
+
+        if (mainMenuSelection == 1)
+        {
+            settings.color = Color.green;
+        }
+        else
+        {
+            settings.color = Color.cyan;
+        }
+
+        if (mainMenuSelection == 0)
+        {
+            quit.color = Color.red;
+        }
+        else
+        {
+            quit.color = Color.cyan;
+        }
+
+        //Updates level button selections color
+        if (levelMenuSelectionX == 1)
+        {
+            tutorial.color = Color.green;
+        }
+        else
+        {
+            tutorial.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 2)
+        {
+            level1.color = Color.green;
+        }
+        else
+        {
+            level1.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 3)
+        {
+            level2.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 3)
+        {
+            level2.color = Color.red;
+        }
+        else
+        {
+            level2.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 4)
+        {
+            level3.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 4)
+        {
+            level3.color = Color.red;
+        }
+        else
+        {
+            level3.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 5)
+        {
+            level4.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 5)
+        {
+            level4.color = Color.red;
+        }
+        else
+        {
+            level4.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 6)
+        {
+            level5.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 6)
+        {
+            level5.color = Color.red;
+        }
+        else
+        {
+            level5.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 7)
+        {
+            level6.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 7)
+        {
+            level6.color = Color.red;
+        }
+        else
+        {
+            level6.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 8)
+        {
+            level7.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 8)
+        {
+            level7.color = Color.red;
+        }
+        else
+        {
+            level7.color = Color.white;
+        }
+
+        if (levelMenuSelectionX == 9)
+        {
+            level8.color = Color.green;
+        }
+        else if (Settings.levelsUnlocked < 9)
+        {
+            level8.color = Color.red;
+        }
+        else
+        {
+            level8.color = Color.white;
+        }
+    }
+
     public void Return(InputAction.CallbackContext c)
     {
         if(bsettingsOn)
@@ -617,7 +634,7 @@ public class MainMenu : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         if(newMenuVal == 0)
         {
             mainMenu.SetActive(true);
