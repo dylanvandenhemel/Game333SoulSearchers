@@ -5081,31 +5081,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7dd9a87c0bef7546b93702775d670fb, type: 3}
---- !u!1 &461935833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1419408093249458972, guid: f7dd9a87c0bef7546b93702775d670fb, type: 3}
-  m_PrefabInstance: {fileID: 461935832}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &461935834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461935833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &465112401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10228,31 +10203,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7dd9a87c0bef7546b93702775d670fb, type: 3}
---- !u!1 &888543736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1419408093249458972, guid: f7dd9a87c0bef7546b93702775d670fb, type: 3}
-  m_PrefabInstance: {fileID: 888543735}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &888543737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888543736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &894515165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24500,6 +24450,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8756837258935306001, guid: da1a9ea491a1cb04c802da55a0b134cc, type: 3}
       propertyPath: fade
+      value: 
+      objectReference: {fileID: 193581688}
+    - target: {fileID: 8756837258935306001, guid: da1a9ea491a1cb04c802da55a0b134cc, type: 3}
+      propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 193581688}
     - target: {fileID: 8756837258935306001, guid: da1a9ea491a1cb04c802da55a0b134cc, type: 3}

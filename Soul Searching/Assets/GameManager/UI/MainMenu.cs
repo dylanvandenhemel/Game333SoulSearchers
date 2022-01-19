@@ -632,7 +632,6 @@ public class MainMenu : MonoBehaviour
             animVal = 3;
         }
 
-
         yield return new WaitForSeconds(0.8f);
         if(newMenuVal == 0)
         {
