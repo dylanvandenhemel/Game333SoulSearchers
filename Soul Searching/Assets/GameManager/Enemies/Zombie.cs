@@ -163,6 +163,7 @@ public class Zombie : MonoBehaviour
 
     public void ActiveReset()
     {
+        zombieRoamSpeed = zombieStartSpeed;
         GetComponent<Animator>().SetBool("isChase", false);
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
