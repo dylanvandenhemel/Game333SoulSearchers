@@ -51,9 +51,8 @@ public class Chest : MonoBehaviour
             //temporary hide for visual effect
             topOpen.gameObject.SetActive(false);
             GetComponent<VisualEffect>().Play();
-            //model has see through effect for some reason
-            //topOpen.rotation = Quaternion.Euler(topOpen.rotation.eulerAngles.x -90, topOpen.rotation.eulerAngles.y, topOpen.rotation.eulerAngles.z);
-            //topOpen.position = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
+
+            
             bChestOpen = true;
 
             GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
