@@ -28,11 +28,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5249000488012122279}
+  - {fileID: 1700202829608617661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5715784118691557196
+--- !u!1001 &1158247583329739094
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -87,10 +87,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: rTable
       objectReference: {fileID: 0}
+    - target: {fileID: 1609660626712235537, guid: 2fb20f56ca1deba4fb97047a40e77d77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d234a761e2ae1eb4d871ba181e985b80, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb20f56ca1deba4fb97047a40e77d77, type: 3}
---- !u!4 &5249000488012122279 stripped
+--- !u!4 &1700202829608617661 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2fb20f56ca1deba4fb97047a40e77d77, type: 3}
-  m_PrefabInstance: {fileID: 5715784118691557196}
+  m_PrefabInstance: {fileID: 1158247583329739094}
   m_PrefabAsset: {fileID: 0}
