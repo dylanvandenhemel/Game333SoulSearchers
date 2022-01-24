@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class StartMenu : MonoBehaviour
+public class MenuStart : MonoBehaviour
 {
     PlayerControls menuButtons;
 
@@ -15,6 +15,8 @@ public class StartMenu : MonoBehaviour
     public Text[] menuItemList;
 
     private int currentSelectionVal;
+
+    private static bool bDoneTutorial;
 
     //keep value in the 0 - 4 range
     private int menuMinVal = 0;
@@ -84,23 +86,38 @@ public class StartMenu : MonoBehaviour
         if(currentSelectionVal == 0)
         {
             Debug.LogError("Start");
+            if (!bDoneTutorial)
+            {
+                bDoneTutorial = true;
+                SceneManager.LoadScene(1);
+            }
+            else if (bDoneTutorial)
+            {
+                SceneManager.LoadScene(Settings.levelsUnlocked);
+            }
         }
         else if(currentSelectionVal == 1)
         {
             Debug.LogError("LevelSelect");
+            GetComponent<MenuAnimation>().cameraAnimCall(1);
         }
         else if (currentSelectionVal == 2)
         {
-            Debug.LogError("settings");
+            Debug.LogError("controls");
+            GetComponent<MenuAnimation>().cameraAnimCall(2);
         }
         else if (currentSelectionVal == 3)
         {
-            Debug.LogError("options");
+            Debug.LogError("settings");
+            GetComponent<MenuAnimation>().cameraAnimCall(3);
         }
         else if (currentSelectionVal == 4)
         {
             Debug.LogError("quit");
+            Application.Quit();
         }
+
+        this.enabled = false;
     }
 
 }

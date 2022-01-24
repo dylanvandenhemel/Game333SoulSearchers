@@ -3874,10 +3874,12 @@ GameObject:
   - component: {fileID: 1073665607}
   - component: {fileID: 1073665606}
   - component: {fileID: 1073665610}
-  - component: {fileID: 1073665612}
+  - component: {fileID: 1073665614}
   - component: {fileID: 1073665613}
+  - component: {fileID: 1073665615}
+  - component: {fileID: 1073665612}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera/GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4111,6 +4113,38 @@ MonoBehaviour:
   - {fileID: 1905790430}
   - {fileID: 1554573646}
   - {fileID: 1441152969}
+--- !u!114 &1073665614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073665605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eaaad8e3e2453649a178d568d56685f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMenu: {fileID: 1808745635}
+  controlMenu: {fileID: 2041431836}
+  settingMenu: {fileID: 970240287}
+--- !u!114 &1073665615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073665605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c09d397b0006654ca31921957eb51b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 970240287}
+  menuItemList: []
+  masterVol: {fileID: 1346991648}
+  musicVol: {fileID: 1897882062}
+  sFXVol: {fileID: 944846933}
 --- !u!1001 &1083799953
 PrefabInstance:
   m_ObjectHideFlags: 0
