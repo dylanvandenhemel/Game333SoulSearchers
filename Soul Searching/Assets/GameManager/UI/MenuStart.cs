@@ -116,8 +116,6 @@ public class MenuStart : MonoBehaviour
             Debug.LogError("quit");
             Application.Quit();
         }
-
-        this.enabled = false;
     }
 
 }

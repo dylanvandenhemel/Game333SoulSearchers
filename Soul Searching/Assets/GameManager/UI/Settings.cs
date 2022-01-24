@@ -24,5 +24,8 @@ public class Settings : MonoBehaviour
     public void Update()
     {
         GetComponent<AudioSource>().volume = masterVolumeSet * musicVolumeSet;
+
+        musicVolumeSet *= masterVolumeSet;
+        sFXVolumeSet *= masterVolumeSet;
     }
 }

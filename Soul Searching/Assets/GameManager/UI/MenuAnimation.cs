@@ -5,6 +5,8 @@ using UnityEngine;
 public class MenuAnimation : MonoBehaviour
 {
     public GameObject startMenu;
+    //public GameObject levelMenu;
+    //public GameObject levelMenuTwo;
     public GameObject controlMenu;
     public GameObject settingMenu;
 
@@ -78,8 +80,13 @@ public class MenuAnimation : MonoBehaviour
         }
 
         startMenu.SetActive(false);
+        GetComponent<MenuStart>().enabled = false;
+
         controlMenu.SetActive(false);
+
         settingMenu.SetActive(false);
+        GetComponent<MenuSettings>().unSubCurrentSel();
+
 
 
         yield return new WaitForSeconds(0.8f);
@@ -92,7 +99,7 @@ public class MenuAnimation : MonoBehaviour
         }
         else if (animVal == 1)
         {
-            //old level menu would be enabled
+            //levelMenu.SetActive(true);
         }
         else if (animVal == 2)
         {
@@ -101,6 +108,7 @@ public class MenuAnimation : MonoBehaviour
         else if (animVal == 3)
         {
             settingMenu.SetActive(true);
+            GetComponent<MenuSettings>().subCurrentSel();
         }
         
 

@@ -19,28 +19,47 @@ public class MenuSettings : MonoBehaviour
     public GameObject masterVol;
     public GameObject musicVol;
     public GameObject sFXVol;
+    public AudioSource soundTest;
 
     //keep value in the 0 - 4 range
     private int menuMinVal = 0;
-    private int menuMaxVal = 2;
+    private int menuMaxVal = 3;
 
     private void OnEnable()
     {
         menuButtons = new PlayerControls();
         menuButtons.Enable();
-        menuButtons.PlayerActions.Movement.started += CurrentSelection;
     }
     private void OnDisable()
     {
         menuButtons.Disable();
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
+        menuButtons.PlayerActions.Interact.performed -= Return;
     }
 
     private void Start()
     {
+        if (Settings.masterVolumeSet != 0 && Settings.musicVolumeSet != 0 && Settings.sFXVolumeSet != 0)
+        {
+            masterVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.masterVolumeSet;
+            sFXVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.sFXVolumeSet;
+            musicVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.musicVolumeSet;
+        }
+
         TextColor(0);
     }
 
+    private void Update()
+    {
+        Settings.masterVolumeSet = masterVol.GetComponent<UnityEngine.UI.Slider>().value;
+        Settings.musicVolumeSet = musicVol.GetComponent<UnityEngine.UI.Slider>().value;
+        Settings.sFXVolumeSet = sFXVol.GetComponent<UnityEngine.UI.Slider>().value;
+
+
+        //for sound test
+        soundTest.volume = Settings.sFXVolumeSet;
+        Settings.sFXVolumeSet *= Settings.masterVolumeSet;
+    }
     private void CurrentSelection(InputAction.CallbackContext c)
     {
         if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
@@ -85,17 +104,31 @@ public class MenuSettings : MonoBehaviour
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
                 sFXVol.GetComponent<UnityEngine.UI.Slider>().value += 0.2f;
-                sFXVol.GetComponent<AudioSource>().Play();
             }
             else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
             {
                 sFXVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
-                sFXVol.GetComponent<AudioSource>().Play();
             }
-            sFXVol.GetComponent<AudioSource>().volume = sFXVol.GetComponent<UnityEngine.UI.Slider>().value;
+            sFXVol.GetComponent<AudioSource>().Play();
         }
 
         TextColor(currentSelectionVal);
+    }
+    //used to deactivate interaction with the menu off screen
+    public void subCurrentSel()
+    {
+        menuButtons.PlayerActions.Movement.started += CurrentSelection;
+        menuButtons.PlayerActions.Interact.performed += Return;
+    }
+    public void unSubCurrentSel()
+    {
+        menuButtons.PlayerActions.Movement.started -= CurrentSelection;
+        menuButtons.PlayerActions.Interact.performed -= Return;
+    }
+
+    public void Return(InputAction.CallbackContext c)
+    {
+        GetComponent<MenuAnimation>().cameraAnimCall(0);
     }
 
     private void TextColor(int menuVal)
@@ -104,11 +137,11 @@ public class MenuSettings : MonoBehaviour
         {
             if (i == menuVal)
             {
-                menuItemList[i].color = Color.magenta;
+                menuItemList[i].color = Color.green;
             }
             else
             {
-                menuItemList[i].color = Color.cyan;
+                menuItemList[i].color = Color.magenta;
             }
         }
     }
