@@ -98,22 +98,18 @@ public class MenuStart : MonoBehaviour
         }
         else if(currentSelectionVal == 1)
         {
-            Debug.LogError("LevelSelect");
             GetComponent<MenuAnimation>().cameraAnimCall(1);
         }
         else if (currentSelectionVal == 2)
         {
-            Debug.LogError("controls");
             GetComponent<MenuAnimation>().cameraAnimCall(2);
         }
         else if (currentSelectionVal == 3)
         {
-            Debug.LogError("settings");
             GetComponent<MenuAnimation>().cameraAnimCall(3);
         }
         else if (currentSelectionVal == 4)
         {
-            Debug.LogError("quit");
             Application.Quit();
         }
     }

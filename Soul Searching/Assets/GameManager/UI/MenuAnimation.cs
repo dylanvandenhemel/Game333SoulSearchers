@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuAnimation : MonoBehaviour
 {
     public GameObject startMenu;
-    //public GameObject levelMenu;
+    public GameObject levelMenu;
     //public GameObject levelMenuTwo;
     public GameObject controlMenu;
     public GameObject settingMenu;
@@ -37,8 +37,8 @@ public class MenuAnimation : MonoBehaviour
     {
         if (cameraAnimationVal == 0)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, startMenuRotation, 140 * Time.deltaTime);
-            transform.position = Vector3.MoveTowards(transform.position, startMenuPosition, 2 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, startMenuRotation, 150 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, startMenuPosition, 3 * Time.deltaTime);
         }
         else if (cameraAnimationVal == 1)
         {
@@ -46,12 +46,12 @@ public class MenuAnimation : MonoBehaviour
         }
         else if (cameraAnimationVal == 2)
         {
-            transform.position = Vector3.MoveTowards(transform.position, controlsMenuPosition, 2 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, controlsMenuPosition, 3 * Time.deltaTime);
         }
         else if (cameraAnimationVal == 3)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, settingMenuRotation, 70 * Time.deltaTime);
-            transform.position = Vector3.MoveTowards(transform.position, settingMenuPosition, 2 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, settingMenuRotation, 150 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, settingMenuPosition, 3 * Time.deltaTime);
         }
     }
 
@@ -82,14 +82,18 @@ public class MenuAnimation : MonoBehaviour
         startMenu.SetActive(false);
         GetComponent<MenuStart>().enabled = false;
 
+        levelMenu.SetActive(false);
+        GetComponent<MenuLevel>().unSubCurrentSel();
+
         controlMenu.SetActive(false);
+        GetComponent<MenuControls>().unSubCurrentSel();
 
         settingMenu.SetActive(false);
         GetComponent<MenuSettings>().unSubCurrentSel();
 
 
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
 
         
         if (animVal == 0)
@@ -99,11 +103,13 @@ public class MenuAnimation : MonoBehaviour
         }
         else if (animVal == 1)
         {
-            //levelMenu.SetActive(true);
+            levelMenu.SetActive(true);
+            GetComponent<MenuLevel>().subCurrentSel();
         }
         else if (animVal == 2)
         {
             controlMenu.SetActive(true);
+            GetComponent<MenuControls>().subCurrentSel();
         }
         else if (animVal == 3)
         {
