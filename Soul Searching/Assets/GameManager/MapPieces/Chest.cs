@@ -10,11 +10,13 @@ public class Chest : MonoBehaviour
 
     private bool bChestOpen;
     public Transform topOpen;
+    private Animator animator;
 
     public GameObject itemInChest;
 
     private void OnEnable()
     {
+        animator = GetComponent<Animator>();
         pActions = new PlayerControls();
         pActions.Enable();
     }
@@ -48,12 +50,11 @@ public class Chest : MonoBehaviour
     {
         if(!bChestOpen)
         {
-            //temporary hide for visual effect
-            topOpen.gameObject.SetActive(false);
             GetComponent<VisualEffect>().Play();
 
             
             bChestOpen = true;
+            animator.SetTrigger("Open");
 
             GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
             GameObject chestItem = Instantiate(itemInChest);
