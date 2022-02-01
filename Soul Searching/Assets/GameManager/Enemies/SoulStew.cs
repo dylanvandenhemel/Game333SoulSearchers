@@ -4,76 +4,74 @@ using UnityEngine;
 
 public class SoulStew : MonoBehaviour
 {
-    //weird bug where if player stands still and unpossesses they will not die until they move
-
-    private Quaternion startRotation;
-    private float viewReternSpeed = 100;
-
-    private bool bTracker = false;
-    private Vector3 orgin;
-
-    RaycastHit hit;
-    public LayerMask Mask;
-    public LayerMask Wall;
-    private Transform target;
+    [Tooltip("Float representing the distance the player needs to be for the stew to emerge.")]
+    public float emergeDistance = 7;
+    [Tooltip("Float representing the distance the player needs to be for the stew to prep.")]
+    public float prepDistance = 3;
+    [Tooltip("Float representing the distance the player needs to be for the stew to attack.")]
+    public float attackDistance = 2;
+    [Tooltip("Transform of the red eyerange area, which will become equal to the attack distance.")]
+    public Transform eyeRange;
+    [Tooltip("AnimatorClip of the hiding animation, so we can get the length.")]
+    public AnimationClip hidingAnimation;
+    private Transform player;
+    private Animator animator;
+    private Vector3 alteredPos;
+    private RaycastHit raycastHit;
+    private bool hidden = true, hiding = false;
 
     private void Start()
     {
-        startRotation = transform.rotation;
-        orgin = transform.position;
+        animator = GetComponentInChildren<Animator>();
+        eyeRange.localScale += new Vector3(attackDistance * 2, .5f, attackDistance * 2);
+        alteredPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
     }
 
-
-    private void FixedUpdate()
+    private void Update()
     {
-        if (!bTracker)
+        player = GameObject.FindWithTag("Player").transform;
+        //Raycast to see if player is in emerge range and in line of sight
+        //Player will probably need to become his own layer
+        if (Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, emergeDistance) && raycastHit.collider.gameObject.CompareTag("Player"))
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, startRotation, viewReternSpeed * Time.deltaTime);
+            hidden = false;
+
+            //If close enough to attack, then attack
+            if (Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, attackDistance) && raycastHit.collider.gameObject.CompareTag("Player"))
+                StewAttack();
         }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-
-        if (other.CompareTag("Player"))
+        //Stay hidden if player is too far away or out of sight
+        else
         {
-            target = other.transform;
-            transform.LookAt(target);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3, Mask))
+            if (!hidden)
             {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3, Wall))
-                {
-                    bTracker = false;
-                }
-                else if(bTracker == true)
-                {
-                    transform.LookAt(target);
-                    Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
-                    StewAttack();
-                }
-                bTracker = true;
+                StopAllCoroutines();
+                StartCoroutine("HidingCoroutine");
             }
-
-
+            if (!hiding)
+                animator.Play("Emerge", 0, 0);
         }
 
+        //Ensure animator follows transitions
+        animator.SetBool("Prepped", Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, prepDistance) && raycastHit.collider.gameObject.CompareTag("Player"));
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            bTracker = false;
-        }
-
-    }
-
 
     private void StewAttack()
     {
-        Debug.Log("Attacked");
-        target.GetComponent<Player>().bresetPlayer = true;
-        target.GetComponent<ResetDelegate>().bcallReset = true;
+        animator.SetTrigger("Attack");
+        player.GetComponent<Player>().bresetPlayer = true;
+        player.GetComponent<ResetDelegate>().bcallReset = true;
+    }
+
+    //Slightly strange, but necessary due to the way the "default" state is just a loop of the 0th frame of emerging
+    private IEnumerator HidingCoroutine()
+    {
+        hidden = true;
+        hiding = true;
+        animator.Play("Hide", 0);
+        yield return new WaitForSeconds(hidingAnimation.length);
+        hiding = false;
     }
 }
 
