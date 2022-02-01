@@ -6,7 +6,7 @@ public class MenuAnimation : MonoBehaviour
 {
     public GameObject startMenu;
     public GameObject levelMenu;
-    //public GameObject levelMenuTwo;
+    //public GameObject levelMenu2;
     public GameObject controlMenu;
     public GameObject settingMenu;
 
@@ -22,6 +22,8 @@ public class MenuAnimation : MonoBehaviour
     Vector3 settingMenuPosition;
     Quaternion settingMenuRotation;
 
+    Vector3 level2MenuPosition;
+
     private int cameraAnimationVal;
 
     private void Start()
@@ -32,6 +34,7 @@ public class MenuAnimation : MonoBehaviour
         controlsMenuPosition = new Vector3(transform.position.x - 1.8f, transform.position.y, transform.position.z);
         settingMenuPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.8f);
         settingMenuRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0);
+        level2MenuPosition = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z + 1);
     }
     void Update()
     {
@@ -40,6 +43,7 @@ public class MenuAnimation : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, startMenuRotation, 150 * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, startMenuPosition, 3 * Time.deltaTime);
         }
+        //prevents camera from getting stuck in level menu 2
         else if (cameraAnimationVal == 1)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, levelMenuRotation, 150 * Time.deltaTime);
@@ -52,6 +56,10 @@ public class MenuAnimation : MonoBehaviour
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, settingMenuRotation, 150 * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, settingMenuPosition, 3 * Time.deltaTime);
+        }
+        else if (cameraAnimationVal == 4)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, level2MenuPosition, 3 * Time.deltaTime);
         }
     }
 
@@ -78,19 +86,25 @@ public class MenuAnimation : MonoBehaviour
         {
             cameraAnimationVal = 3;
         }
+        else if (animVal == 4)
+        {
+            cameraAnimationVal = 4;
+        }
 
         startMenu.SetActive(false);
         GetComponent<MenuStart>().enabled = false;
 
         levelMenu.SetActive(false);
-        GetComponent<MenuLevel>().unSubCurrentSel();
+        GetComponent<MenuLevel>().unSubCurrentMenu();
 
         controlMenu.SetActive(false);
-        GetComponent<MenuControls>().unSubCurrentSel();
+        GetComponent<MenuControls>().unSubCurrentMenu();
 
         settingMenu.SetActive(false);
-        GetComponent<MenuSettings>().unSubCurrentSel();
+        GetComponent<MenuSettings>().unSubCurrentMenu();
 
+        //levelMenu2.SetActive(true);
+        //GetComponent<MenuLevel2>().subCurrentMenu();
 
 
         yield return new WaitForSeconds(0.6f);
@@ -104,17 +118,22 @@ public class MenuAnimation : MonoBehaviour
         else if (animVal == 1)
         {
             levelMenu.SetActive(true);
-            GetComponent<MenuLevel>().subCurrentSel();
+            GetComponent<MenuLevel>().subCurrentMenu();
         }
         else if (animVal == 2)
         {
             controlMenu.SetActive(true);
-            GetComponent<MenuControls>().subCurrentSel();
+            GetComponent<MenuControls>().subCurrentMenu();
         }
         else if (animVal == 3)
         {
             settingMenu.SetActive(true);
-            GetComponent<MenuSettings>().subCurrentSel();
+            GetComponent<MenuSettings>().subCurrentMenu();
+        }
+        else if(animVal == 4)
+        {
+            //levelMenu2.SetActive(true);
+            GetComponent<MenuLevel2>().subCurrentMenu();
         }
         
 

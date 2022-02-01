@@ -22,7 +22,7 @@ public class MenuSettings : MonoBehaviour
     public AudioSource soundTest;
 
     private int menuMinVal = 0;
-    private int menuMaxVal = 3;
+    private int menuMaxVal;
 
     private void OnEnable()
     {
@@ -44,7 +44,7 @@ public class MenuSettings : MonoBehaviour
             sFXVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.sFXVolumeSet;
             musicVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.musicVolumeSet;
         }
-
+        menuMaxVal = menuItemList.Length;
         TextColor(0);
     }
 
@@ -56,8 +56,8 @@ public class MenuSettings : MonoBehaviour
 
 
         //for sound test
-        soundTest.volume = Settings.sFXVolumeSet;
         Settings.sFXVolumeSet *= Settings.masterVolumeSet;
+        soundTest.volume = Settings.sFXVolumeSet;
     }
     private void CurrentSelection(InputAction.CallbackContext c)
     {
@@ -114,12 +114,12 @@ public class MenuSettings : MonoBehaviour
         TextColor(currentSelectionVal);
     }
     //used to deactivate interaction with the menu off screen
-    public void subCurrentSel()
+    public void subCurrentMenu()
     {
         menuButtons.PlayerActions.Movement.started += CurrentSelection;
         menuButtons.PlayerActions.Interact.performed += Return;
     }
-    public void unSubCurrentSel()
+    public void unSubCurrentMenu()
     {
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
         menuButtons.PlayerActions.Interact.performed -= Return;

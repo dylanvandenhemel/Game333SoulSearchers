@@ -6,21 +6,19 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class MenuLevel : MonoBehaviour
+public class MenuLevel2 : MonoBehaviour
 {
     PlayerControls menuButtons;
-    
-    public GameObject menu;
 
-    public Text[] menuItemList;
+    //public GameObject menu;
 
-    public GameObject levelTower;
+    //public Text[] menuItemList;
 
     private int currentSelectionVal;
 
     private int menuMinVal = 0;
     private int menuMaxVal;
-    
+
     private void OnEnable()
     {
         menuButtons = new PlayerControls();
@@ -32,10 +30,10 @@ public class MenuLevel : MonoBehaviour
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
         menuButtons.PlayerActions.Interact.performed -= Return;
     }
-    
+
     private void Start()
     {
-        menuMaxVal = menuItemList.Length;
+        //menuMaxVal = menuItemList.Length;
         TextColor(0);
     }
     private void CurrentSelection(InputAction.CallbackContext c)
@@ -46,7 +44,6 @@ public class MenuLevel : MonoBehaviour
             if (currentSelectionVal < menuMaxVal - 1)
             {
                 currentSelectionVal++;
-                levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y - 1, levelTower.transform.position.z);
             }
         }
         else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
@@ -54,7 +51,6 @@ public class MenuLevel : MonoBehaviour
             if (currentSelectionVal > menuMinVal)
             {
                 currentSelectionVal--;
-                levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y + 1, levelTower.transform.position.z);
             }
         }
 
@@ -65,28 +61,23 @@ public class MenuLevel : MonoBehaviour
     {
         if (currentSelectionVal == 0)
         {
-            Debug.LogError("Turotial");
-            SceneManager.LoadScene(1);
+            
         }
         else if (currentSelectionVal == 1)
         {
-            Debug.LogError("Catacombs");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+            
         }
         else if (currentSelectionVal == 2)
         {
-            Debug.LogError("Dungeons");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+            
         }
         else if (currentSelectionVal == 3)
         {
-            Debug.LogError("Basement");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+         
         }
         else if (currentSelectionVal == 4)
         {
-            Debug.LogError("House");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+
         }
     }
 
@@ -106,7 +97,8 @@ public class MenuLevel : MonoBehaviour
 
     public void Return(InputAction.CallbackContext c)
     {
-        GetComponent<MenuAnimation>().cameraAnimCall(0);
+        Debug.LogError("return");
+        GetComponent<MenuAnimation>().cameraAnimCall(1);
     }
 
     private void TextColor(int menuVal)
@@ -115,12 +107,13 @@ public class MenuLevel : MonoBehaviour
         {
             if (i == menuVal)
             {
-                menuItemList[i].color = Color.blue;
+                //menuItemList[i].color = Color.blue;
             }
             else
             {
-                menuItemList[i].color = Color.white;
+                //menuItemList[i].color = Color.white;
             }
         }
     }
 }
+

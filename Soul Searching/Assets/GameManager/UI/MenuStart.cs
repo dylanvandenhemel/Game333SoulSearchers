@@ -18,9 +18,8 @@ public class MenuStart : MonoBehaviour
 
     private static bool bDoneTutorial;
 
-    //keep value in the 0 - 4 range
     private int menuMinVal = 0;
-    private int menuMaxVal = 5;
+    private int menuMaxVal;
 
     private void Awake()
     {
@@ -44,6 +43,7 @@ public class MenuStart : MonoBehaviour
 
     private void Start()
     {
+        menuMaxVal = menuItemList.Length;
         TextColor(0);
     }
 

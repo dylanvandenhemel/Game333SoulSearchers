@@ -17,7 +17,7 @@ public class MenuControls : MonoBehaviour
     private int currentSelectionVal;
 
     private int menuMinVal = 0;
-    private int menuMaxVal = 3;
+    private int menuMaxVal;
     */
     private void OnEnable()
     {
@@ -33,6 +33,7 @@ public class MenuControls : MonoBehaviour
     /*
     private void Start()
     {
+        menuMaxVal = menuItemList.Length;
         TextColor(0);
     }
 
@@ -103,12 +104,12 @@ public class MenuControls : MonoBehaviour
     }
     */
     //used to deactivate interaction with the menu off screen
-    public void subCurrentSel()
+    public void subCurrentMenu()
     {
         //menuButtons.PlayerActions.Movement.started += CurrentSelection;
         menuButtons.PlayerActions.Interact.performed += Return;
     }
-    public void unSubCurrentSel()
+    public void unSubCurrentMenu()
     {
         //menuButtons.PlayerActions.Movement.started -= CurrentSelection;
         menuButtons.PlayerActions.Interact.performed -= Return;
