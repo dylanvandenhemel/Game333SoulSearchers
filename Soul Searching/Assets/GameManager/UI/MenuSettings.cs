@@ -127,7 +127,7 @@ public class MenuSettings : MonoBehaviour
 
     public void Return(InputAction.CallbackContext c)
     {
-        GetComponent<MenuAnimation>().cameraAnimCall(0);
+        GetComponent<MenuAnimation>().cameraAnimCall(0, 0);
     }
 
     private void TextColor(int menuVal)

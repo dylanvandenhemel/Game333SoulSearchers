@@ -10,6 +10,7 @@ public class Settings : MonoBehaviour
     public static float sFXVolumeSet;
 
     //for locked levels
+    public static int levelMenuUnlocked;
     public static int levelsUnlocked;
 
     public void Start()
@@ -17,6 +18,12 @@ public class Settings : MonoBehaviour
         if (levelsUnlocked < SceneManager.GetActiveScene().buildIndex)
         {
             levelsUnlocked = SceneManager.GetActiveScene().buildIndex;
+        }
+
+        //after 10 catacombs levels unlocks dungeon levels
+        if (levelsUnlocked == 11)
+        {
+            levelMenuUnlocked++;
         }
     }
 

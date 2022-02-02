@@ -33,12 +33,21 @@ public class MenuStart : MonoBehaviour
         menuButtons.Enable();
         menuButtons.PlayerActions.Possess.performed += SelectUI;
         menuButtons.PlayerActions.Movement.started += CurrentSelection;
+        menuButtons.PlayerActions.DebugUnlock.started += UnlockLevels;
     }
     private void OnDisable()
     {
         menuButtons.Disable();
         menuButtons.PlayerActions.Possess.performed -= SelectUI;
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
+        menuButtons.PlayerActions.DebugUnlock.started -= UnlockLevels;
+    }
+
+    private void UnlockLevels(InputAction.CallbackContext c)
+    {
+        Debug.Log("All levels Unlocked");
+        Settings.levelsUnlocked = 100;
+        Settings.levelMenuUnlocked = 100;
     }
 
     private void Start()
@@ -98,15 +107,15 @@ public class MenuStart : MonoBehaviour
         }
         else if(currentSelectionVal == 1)
         {
-            GetComponent<MenuAnimation>().cameraAnimCall(1);
+            GetComponent<MenuAnimation>().cameraAnimCall(1, 0);
         }
         else if (currentSelectionVal == 2)
         {
-            GetComponent<MenuAnimation>().cameraAnimCall(2);
+            GetComponent<MenuAnimation>().cameraAnimCall(2, 0);
         }
         else if (currentSelectionVal == 3)
         {
-            GetComponent<MenuAnimation>().cameraAnimCall(3);
+            GetComponent<MenuAnimation>().cameraAnimCall(3, 0);
         }
         else if (currentSelectionVal == 4)
         {

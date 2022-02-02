@@ -117,7 +117,7 @@ public class MenuControls : MonoBehaviour
     
     public void Return(InputAction.CallbackContext c)
     {
-        GetComponent<MenuAnimation>().cameraAnimCall(0);
+        GetComponent<MenuAnimation>().cameraAnimCall(0, 0);
     }
 
     /*

@@ -10,14 +10,24 @@ public class MenuLevel2 : MonoBehaviour
 {
     PlayerControls menuButtons;
 
-    //public GameObject menu;
+    public GameObject menuCatacombs;
+    public GameObject menuDungeons;
+    public GameObject menuBasement;
 
-    //public Text[] menuItemList;
+    private bool bisCatacombsMenu;
+    private bool bisDungeonsMenu;
+    private bool bisBasementMenu;
+
+    public Text[] levelCaticombsList;
+    public Text[] levelDungeonsList;
+    public Text[] levelBasementList;
 
     private int currentSelectionVal;
 
     private int menuMinVal = 0;
-    private int menuMaxVal;
+    private int menuCatacombsMaxVal;
+    private int menuDungeonsMaxVal;
+    private int menuBasementMaxVal;
 
     private void OnEnable()
     {
@@ -33,24 +43,61 @@ public class MenuLevel2 : MonoBehaviour
 
     private void Start()
     {
-        //menuMaxVal = menuItemList.Length;
-        TextColor(0);
+        menuCatacombsMaxVal = levelCaticombsList.Length;
+        menuDungeonsMaxVal = levelDungeonsList.Length;
+        menuBasementMaxVal = levelBasementList.Length;
     }
     private void CurrentSelection(InputAction.CallbackContext c)
     {
-        //NOTE is reversed because level menu starts at the bottom
-        if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
+        if (bisCatacombsMenu)
         {
-            if (currentSelectionVal < menuMaxVal - 1)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
-                currentSelectionVal++;
+                if (currentSelectionVal < menuCatacombsMaxVal - 1)
+                {
+                    currentSelectionVal++;
+                }
+            }
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
+            {
+                if (currentSelectionVal > menuMinVal)
+                {
+                    currentSelectionVal--;
+                }
             }
         }
-        else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
+        else if (bisDungeonsMenu)
         {
-            if (currentSelectionVal > menuMinVal)
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
-                currentSelectionVal--;
+                if (currentSelectionVal < menuDungeonsMaxVal - 1)
+                {
+                    currentSelectionVal++;
+                }
+            }
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
+            {
+                if (currentSelectionVal > menuMinVal)
+                {
+                    currentSelectionVal--;
+                }
+            }
+        }
+        else if (bisBasementMenu)
+        {
+            if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
+            {
+                if (currentSelectionVal < menuBasementMaxVal - 1)
+                {
+                    currentSelectionVal++;
+                }
+            }
+            else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x < 0)
+            {
+                if (currentSelectionVal > menuMinVal)
+                {
+                    currentSelectionVal--;
+                }
             }
         }
 
@@ -59,37 +106,178 @@ public class MenuLevel2 : MonoBehaviour
 
     private void SelectUI(InputAction.CallbackContext c)
     {
-        if (currentSelectionVal == 0)
+        if(bisCatacombsMenu)
         {
-            
-        }
-        else if (currentSelectionVal == 1)
-        {
-            
-        }
-        else if (currentSelectionVal == 2)
-        {
-            
-        }
-        else if (currentSelectionVal == 3)
-        {
-         
-        }
-        else if (currentSelectionVal == 4)
-        {
+            if (currentSelectionVal == 0)
+            {
 
+            }
+            else if (currentSelectionVal == 1)
+            {
+
+            }
+            else if (currentSelectionVal == 2)
+            {
+
+            }
+            else if (currentSelectionVal == 3)
+            {
+
+            }
+            else if (currentSelectionVal == 4)
+            {
+
+            }
+            else if (currentSelectionVal == 5)
+            {
+
+            }
+            else if (currentSelectionVal == 6)
+            {
+
+            }
+            else if (currentSelectionVal == 7)
+            {
+
+            }
+            else if (currentSelectionVal == 8)
+            {
+
+            }
+            else if (currentSelectionVal == 9)
+            {
+
+            }
         }
+        else if (bisDungeonsMenu)
+        {
+            if (currentSelectionVal == 0)
+            {
+
+            }
+            else if (currentSelectionVal == 1)
+            {
+
+            }
+            else if (currentSelectionVal == 2)
+            {
+
+            }
+            else if (currentSelectionVal == 3)
+            {
+
+            }
+            else if (currentSelectionVal == 4)
+            {
+
+            }
+            else if (currentSelectionVal == 5)
+            {
+
+            }
+            else if (currentSelectionVal == 6)
+            {
+
+            }
+            else if (currentSelectionVal == 7)
+            {
+
+            }
+            else if (currentSelectionVal == 8)
+            {
+
+            }
+            else if (currentSelectionVal == 9)
+            {
+
+            }
+        }
+        else if (bisBasementMenu)
+        {
+            if (currentSelectionVal == 0)
+            {
+
+            }
+            else if (currentSelectionVal == 1)
+            {
+
+            }
+            else if (currentSelectionVal == 2)
+            {
+
+            }
+            else if (currentSelectionVal == 3)
+            {
+
+            }
+            else if (currentSelectionVal == 4)
+            {
+
+            }
+            else if (currentSelectionVal == 5)
+            {
+
+            }
+            else if (currentSelectionVal == 6)
+            {
+
+            }
+            else if (currentSelectionVal == 7)
+            {
+
+            }
+            else if (currentSelectionVal == 8)
+            {
+
+            }
+            else if (currentSelectionVal == 9)
+            {
+
+            }
+        }
+
     }
 
     //used to deactivate interaction with the menu off screen
-    public void subCurrentMenu()
+    public void subCurrentMenu(int levelMenuIndex)
     {
+        //calles here from Menu Animations to determine wich menu is selected
+        if(levelMenuIndex == 1)
+        {
+            menuCatacombs.SetActive(true);
+            bisCatacombsMenu = true;
+        }
+        else if (levelMenuIndex == 2)
+        {
+            menuDungeons.SetActive(true);
+            bisDungeonsMenu = true;
+        }
+        else if (levelMenuIndex == 3)
+        {
+            menuBasement.SetActive(true);
+            bisBasementMenu = true;
+        }
         menuButtons.PlayerActions.Possess.performed += SelectUI;
         menuButtons.PlayerActions.Movement.started += CurrentSelection;
         menuButtons.PlayerActions.Interact.performed += Return;
+
+        TextColor(0);
     }
-    public void unSubCurrentMenu()
+    public void unSubCurrentMenu(int levelMenuIndex)
     {
+        //calles here from Menu Animations to determine witch menu is selected
+        if (levelMenuIndex == 1)
+        {
+            menuCatacombs.SetActive(false);
+        }
+        else if (levelMenuIndex == 2)
+        {
+            menuDungeons.SetActive(false);
+        }
+        else if (levelMenuIndex == 3)
+        {
+            menuBasement.SetActive(false);
+        }
         menuButtons.PlayerActions.Possess.performed -= SelectUI;
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
         menuButtons.PlayerActions.Interact.performed -= Return;
@@ -98,20 +286,51 @@ public class MenuLevel2 : MonoBehaviour
     public void Return(InputAction.CallbackContext c)
     {
         Debug.LogError("return");
-        GetComponent<MenuAnimation>().cameraAnimCall(1);
+        GetComponent<MenuAnimation>().cameraAnimCall(1, 0);
     }
 
     private void TextColor(int menuVal)
     {
-        for (int i = 0; i < menuMaxVal; i++)
+        if (bisCatacombsMenu)
         {
-            if (i == menuVal)
+            for (int i = 0; i < menuCatacombsMaxVal; i++)
             {
-                //menuItemList[i].color = Color.blue;
+                if (i == menuVal)
+                {
+                    levelCaticombsList[i].color = Color.blue;
+                }
+                else
+                {
+                    levelCaticombsList[i].color = Color.white;
+                }
             }
-            else
+        }
+        else if (bisDungeonsMenu)
+        {
+            for (int i = 0; i < menuDungeonsMaxVal; i++)
             {
-                //menuItemList[i].color = Color.white;
+                if (i == menuVal)
+                {
+                    levelDungeonsList[i].color = Color.blue;
+                }
+                else
+                {
+                    levelDungeonsList[i].color = Color.white;
+                }
+            }
+        }
+        else if (bisBasementMenu)
+        {
+            for (int i = 0; i < menuBasementMaxVal; i++)
+            {
+                if (i == menuVal)
+                {
+                    levelBasementList[i].color = Color.blue;
+                }
+                else
+                {
+                    levelBasementList[i].color = Color.white;
+                }
             }
         }
     }

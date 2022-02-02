@@ -16,7 +16,7 @@ public class MenuLevel : MonoBehaviour
 
     public GameObject levelTower;
 
-    private int currentSelectionVal;
+    public int currentSelectionVal;
 
     private int menuMinVal = 0;
     private int menuMaxVal;
@@ -43,7 +43,7 @@ public class MenuLevel : MonoBehaviour
         //NOTE is reversed because level menu starts at the bottom
         if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
         {
-            if (currentSelectionVal < menuMaxVal - 1)
+            if ((currentSelectionVal < Settings.levelMenuUnlocked + 1) && currentSelectionVal < menuMaxVal - 1)
             {
                 currentSelectionVal++;
                 levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y - 1, levelTower.transform.position.z);
@@ -65,28 +65,23 @@ public class MenuLevel : MonoBehaviour
     {
         if (currentSelectionVal == 0)
         {
-            Debug.LogError("Turotial");
             SceneManager.LoadScene(1);
         }
         else if (currentSelectionVal == 1)
         {
-            Debug.LogError("Catacombs");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+            GetComponent<MenuAnimation>().cameraAnimCall(4, 1);
         }
         else if (currentSelectionVal == 2)
         {
-            Debug.LogError("Dungeons");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+            GetComponent<MenuAnimation>().cameraAnimCall(4, 2);
         }
         else if (currentSelectionVal == 3)
         {
-            Debug.LogError("Basement");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+            GetComponent<MenuAnimation>().cameraAnimCall(4, 3);
         }
         else if (currentSelectionVal == 4)
         {
-            Debug.LogError("House");
-            GetComponent<MenuAnimation>().cameraAnimCall(4);
+            //SceneManager.LoadScene();
         }
     }
 
@@ -106,7 +101,7 @@ public class MenuLevel : MonoBehaviour
 
     public void Return(InputAction.CallbackContext c)
     {
-        GetComponent<MenuAnimation>().cameraAnimCall(0);
+        GetComponent<MenuAnimation>().cameraAnimCall(0, 0);
     }
 
     private void TextColor(int menuVal)
@@ -121,6 +116,11 @@ public class MenuLevel : MonoBehaviour
             {
                 menuItemList[i].color = Color.white;
             }
+        }
+
+        for(int i = Settings.levelMenuUnlocked + 2; i < menuMaxVal; i++)
+        {
+            menuItemList[i].color = Color.red;
         }
     }
 }
