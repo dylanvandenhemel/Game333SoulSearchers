@@ -7,13 +7,20 @@ public class ResetDelegate : MonoBehaviour
 {
     public bool bcallReset;
     public static Action Reset = delegate { };
+    private const float RESET_WAIT = 1;
 
     public void Update()
     {
         if(bcallReset)
         {
-            Reset();
+            StartCoroutine("ResetCoroutine");
             bcallReset = false;
         }
+    }
+
+    private IEnumerator ResetCoroutine()
+    {
+        yield return new WaitForSeconds(RESET_WAIT);
+        Reset();
     }
 }

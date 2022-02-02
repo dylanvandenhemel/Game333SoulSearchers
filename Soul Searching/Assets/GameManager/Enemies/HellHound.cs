@@ -8,6 +8,7 @@ public class HellHound : MonoBehaviour
     private Transform player;
     private bool bHeard;
     private NavMeshAgent localMap;
+    public GameObject enemyDeath;
     private void OnEnable()
     {
         ResetDelegate.Reset += ActiveReset;
@@ -54,6 +55,7 @@ public class HellHound : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
+        Instantiate(enemyDeath, transform.position, transform.rotation);
         localMap.ResetPath();
     }
 

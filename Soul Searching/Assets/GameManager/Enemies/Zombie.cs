@@ -22,6 +22,8 @@ public class Zombie : MonoBehaviour
     public LayerMask Wall;
     private Transform target;
 
+    public GameObject enemyDeath;
+
     private void OnEnable()
     {
         ResetDelegate.Reset += ActiveReset;
@@ -157,7 +159,7 @@ public class Zombie : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
         bTracker = false;
-
+        Instantiate(enemyDeath, transform.position, transform.rotation);
         GetComponent<ZombieSound>().ZombieDiesSound();
     }
 

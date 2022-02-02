@@ -9,8 +9,6 @@ public class SoulStew : MonoBehaviour
     public float prepDistance = 3;
     [Tooltip("Float representing the distance the player needs to be for the stew to attack.")]
     public float attackDistance = 2;
-    [Tooltip("Float representing the time between the attack animation and the player being reset.")]
-    public float attackTime = .4f;
     [Tooltip("Transform of the red eyerange area, which will become equal to the attack distance.")]
     public Transform eyeRange;
     [Tooltip("Transform of the hand, which will move to watch the player.")]
@@ -22,12 +20,13 @@ public class SoulStew : MonoBehaviour
     private Vector3 alteredPos;
     private RaycastHit raycastHit;
     private bool hidden = true, hiding = false, attacking = false;
+    private const float EYE_RANGE_MULTIPLIER = 2.1f, EYE_RANGE_HEIGHT = .5f, RAYCAST_ADJUSTMENT = 1, HAND_ADJUSTMENT = .185f;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        eyeRange.localScale += new Vector3(attackDistance * 2, .5f, attackDistance * 2);
-        alteredPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        eyeRange.localScale += new Vector3(attackDistance * EYE_RANGE_MULTIPLIER, EYE_RANGE_HEIGHT, attackDistance * EYE_RANGE_MULTIPLIER);
+        alteredPos = new Vector3(transform.position.x, transform.position.y + RAYCAST_ADJUSTMENT, transform.position.z);
     }
 
     private void Update()
@@ -36,25 +35,25 @@ public class SoulStew : MonoBehaviour
 
         //Looks strange without moving the hand, it clips and pivots oddly otherwise
         hand.LookAt(player);
-        hand.localPosition = new Vector3(0, 0, 0) + Vector3.back * .185f;
+        hand.localPosition = Vector3.zero + Vector3.back * HAND_ADJUSTMENT;
 
         //Raycast to see if player is in emerge range and in line of sight
-        //Player will probably need to become his own layer
         if (Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, emergeDistance) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
         {
             hidden = false;
 
             //If close enough to attack, then attack
             if (!attacking && Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, attackDistance) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
-                StartCoroutine("StewAttack");
+                StewAttack();
         }
 
         //Stay hidden if player is too far away or out of sight
-        else
+        else if (!attacking)
         {
+            Debug.Log(attacking);
             if (!hidden)
             {
-                StopAllCoroutines();
+                StopCoroutine("HidingCoroutine");
                 StartCoroutine("HidingCoroutine");
             }
             if (!hiding)
@@ -65,11 +64,10 @@ public class SoulStew : MonoBehaviour
         animator.SetBool("Prepped", Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, prepDistance) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel);
     }
 
-    private IEnumerator StewAttack()
+    private void StewAttack()
     {
         animator.SetTrigger("Attack");
         attacking = true;
-        yield return new WaitForSeconds(attackTime);
         player.GetComponent<Player>().bresetPlayer = true;
         player.GetComponent<ResetDelegate>().bcallReset = true;
         attacking = false;
@@ -80,7 +78,7 @@ public class SoulStew : MonoBehaviour
     {
         hidden = true;
         hiding = true;
-        animator.Play("Hide", 0);
+        animator.SetTrigger("Hidden");
         yield return new WaitForSeconds(hidingAnimation.length);
         hiding = false;
     }

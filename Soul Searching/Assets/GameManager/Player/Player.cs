@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     private Vector3 desiredDirection;
     public float speed = 5f;
     public float faceRotationSpeed = 5f;
+    //death particles
+    public GameObject deathParticles;
+    private bool bresetting = false;
+    public GameObject particleTrail;
 
     //Skeleton Possession
     private Transform currentSkeletonPile;
@@ -31,6 +35,8 @@ public class Player : MonoBehaviour
 
     public int collectablesCount;
     public static int savedCollection;
+
+    private const float RESET_WAIT = 1, RESET_WAIT_FOR_ANIM = .1f;
 
     private void OnEnable()
     {
@@ -62,25 +68,28 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.y > resetLocation.y)
+        if (!bresetting)
         {
-            cController.Move(new Vector3(0, -0.1f, 0));
-            //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
-        }
+            if (transform.position.y > resetLocation.y)
+            {
+                cController.Move(new Vector3(0, -0.1f, 0));
+                //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
+            }
 
-        if (transform.position.y < resetLocation.y)
-        {
-            cController.Move(new Vector3(0, 0.1f, 0));
-            //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
-        }
+            if (transform.position.y < resetLocation.y)
+            {
+                cController.Move(new Vector3(0, 0.1f, 0));
+                //transform.position = new Vector3(transform.position.x, resetLocation.y, transform.position.z);
+            }
 
-        if ((bSkelPileCollider && currentSkeletonPile.parent == transform) && (currentSkeletonPile.position.x != transform.position.x && currentSkeletonPile.position.z != transform.position.z))
-        {
-            //currentSkeletonPile.GetComponent<SphereCollider>().center = Vector3.MoveTowards(Vector3.zero, new Vector3(0, 10, 0), 1 * Time.deltaTime);
-            currentSkeletonPile.position = Vector3.MoveTowards(currentSkeletonPile.position, new Vector3(transform.position.x, currentSkeletonPile.position.y, transform.position.z), 10 * Time.deltaTime);
+            if ((bSkelPileCollider && currentSkeletonPile.parent == transform) && (currentSkeletonPile.position.x != transform.position.x && currentSkeletonPile.position.z != transform.position.z))
+            {
+                //currentSkeletonPile.GetComponent<SphereCollider>().center = Vector3.MoveTowards(Vector3.zero, new Vector3(0, 10, 0), 1 * Time.deltaTime);
+                currentSkeletonPile.position = Vector3.MoveTowards(currentSkeletonPile.position, new Vector3(transform.position.x, currentSkeletonPile.position.y, transform.position.z), 10 * Time.deltaTime);
+            }
+            Movement();
+            ResetPlayer();
         }
-        Movement();
-        ResetPlayer();
     }
     
     private void Movement()
@@ -306,20 +315,30 @@ public class Player : MonoBehaviour
 
     private void ResetPlayer()
     {
-        if(bresetPlayer)
-        {
-            pActions.PlayerActions.Possess.performed -= Possess;
-
-            //CController is strict
-            cController.enabled = false;
-            cController.transform.position = resetLocation;
-            if(cController.transform.position == resetLocation)
-            {
-                cController.enabled = true;
-                bresetPlayer = false;
-            }
-            
-        }
+        if(bresetPlayer && !bresetting)
+            StartCoroutine("ResetWait");
     }
 
+    private IEnumerator ResetWait()
+    {
+        bresetPlayer = false;
+        bresetting = true;
+        cController.enabled = false;
+        yield return new WaitForSeconds(RESET_WAIT_FOR_ANIM);
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        particleTrail.SetActive(false);
+        Instantiate(deathParticles, transform.position, transform.rotation);
+        yield return new WaitForSeconds(RESET_WAIT);
+        pActions.PlayerActions.Possess.performed -= Possess;
+
+        //CController is strict
+        cController.transform.position = resetLocation;
+        if (cController.transform.position == resetLocation)
+        {
+            cController.enabled = true;
+            bresetting = false;
+            particleTrail.SetActive(true);
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+        }
+    }
 }

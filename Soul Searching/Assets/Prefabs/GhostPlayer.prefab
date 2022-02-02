@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 2
@@ -154,6 +155,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 1
@@ -282,6 +284,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4097288194404647531}
   m_Father: {fileID: 585772744317122940}
@@ -306,6 +309,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -363,6 +367,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 3
@@ -496,6 +501,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2570802402889022729}
   - {fileID: 987325461873531425}
@@ -530,6 +536,8 @@ MonoBehaviour:
   bresetPlayer: 0
   speed: 5
   faceRotationSpeed: 5
+  deathParticles: {fileID: 315580216156209067, guid: 5028e2912c93a2e48b2c65e13e563f2b, type: 3}
+  particleTrail: {fileID: 7243823343367875355}
   bpossessSkel: 0
   skelSpeed: 4
   skelfaceRotationSpeed: 5
@@ -646,6 +654,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 4
@@ -773,6 +782,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 7
@@ -900,6 +910,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 5
@@ -1027,6 +1038,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 0
@@ -1153,6 +1165,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.031189322, y: 0.35000968, z: -0.057807446}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2385535731045966183}
   - {fileID: 7124369787535627541}
@@ -1192,6 +1205,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0016085505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987325461873531425}
   m_RootOrder: 6
@@ -1352,5 +1366,10 @@ PrefabInstance:
 --- !u!4 &4097288194404647531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2737630694526446908, guid: 5e6f772e627af404ca8d84d28d0335b9, type: 3}
+  m_PrefabInstance: {fileID: 2099373946445000535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7243823343367875355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8765486504187233356, guid: 5e6f772e627af404ca8d84d28d0335b9, type: 3}
   m_PrefabInstance: {fileID: 2099373946445000535}
   m_PrefabAsset: {fileID: 0}
