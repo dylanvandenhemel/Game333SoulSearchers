@@ -146,8 +146,10 @@ MonoBehaviour:
   emergeDistance: 7
   prepDistance: 3
   attackDistance: 2
+  attackTime: 0.4
   eyeRange: {fileID: 3003328420395441794}
-  hidingAnimation: {fileID: 4781951162920444690, guid: e1bce44b81fed1c4ba87b89bf10e53cb, type: 3}
+  hand: {fileID: 1601799096562999982}
+  hidingAnimation: {fileID: 4781951162920444690, guid: cccd78ae257dcd34891f1ff71850368f, type: 3}
 --- !u!95 &6433838696195764384
 Animator:
   serializedVersion: 4
@@ -233,5 +235,10 @@ GameObject:
 --- !u!4 &7677070115506369072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37d3766f938c8c044a3ddde2ae49bb7a, type: 3}
+  m_PrefabInstance: {fileID: 7854515129222387163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1601799096562999982 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8879528566716807029, guid: 37d3766f938c8c044a3ddde2ae49bb7a, type: 3}
   m_PrefabInstance: {fileID: 7854515129222387163}
   m_PrefabAsset: {fileID: 0}
