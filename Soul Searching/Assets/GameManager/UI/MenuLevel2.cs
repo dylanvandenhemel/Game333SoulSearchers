@@ -269,14 +269,17 @@ public class MenuLevel2 : MonoBehaviour
         if (levelMenuIndex == 1)
         {
             menuCatacombs.SetActive(false);
+            bisCatacombsMenu = false;
         }
         else if (levelMenuIndex == 2)
         {
             menuDungeons.SetActive(false);
+            bisDungeonsMenu = false;
         }
         else if (levelMenuIndex == 3)
         {
             menuBasement.SetActive(false);
+            bisBasementMenu = false;
         }
         menuButtons.PlayerActions.Possess.performed -= SelectUI;
         menuButtons.PlayerActions.Movement.started -= CurrentSelection;
@@ -285,7 +288,6 @@ public class MenuLevel2 : MonoBehaviour
 
     public void Return(InputAction.CallbackContext c)
     {
-        Debug.LogError("return");
         GetComponent<MenuAnimation>().cameraAnimCall(1, 0);
     }
 
