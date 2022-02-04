@@ -146,7 +146,6 @@ MonoBehaviour:
   emergeDistance: 7
   prepDistance: 3
   attackDistance: 2
-  attackTime: 0.4
   eyeRange: {fileID: 3003328420395441794}
   hand: {fileID: 1601799096562999982}
   hidingAnimation: {fileID: 4781951162920444690, guid: cccd78ae257dcd34891f1ff71850368f, type: 3}
@@ -221,10 +220,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2427874143186176861, guid: 37d3766f938c8c044a3ddde2ae49bb7a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19bf3ee3565766141beda38464b71268, type: 2}
     - target: {fileID: 919132149155446097, guid: 37d3766f938c8c044a3ddde2ae49bb7a, type: 3}
       propertyPath: m_Name
       value: SoulStew
       objectReference: {fileID: 0}
+    - target: {fileID: 8521902485874960664, guid: 37d3766f938c8c044a3ddde2ae49bb7a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa13dbde31106774d9ad883e59f832b0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d3766f938c8c044a3ddde2ae49bb7a, type: 3}
 --- !u!1 &7044120426023643274 stripped

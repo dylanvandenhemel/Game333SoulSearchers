@@ -9991,31 +9991,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8955352187616081912, guid: 40070b607430d9c4b83e0f8af6e89cdd, type: 3}
   m_PrefabInstance: {fileID: 770461180}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &777218070 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6951540906603990800, guid: 5560ff97eed017549b1f8d03ff074030, type: 3}
-  m_PrefabInstance: {fileID: 1711929219}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &777218072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 777218070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &778168299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11727,7 +11702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5918807705022628233, guid: 3b3ec1c38e6bbb144bf24f474cb0a5ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.58
+      value: 11.89
       objectReference: {fileID: 0}
     - target: {fileID: 5918807705022628233, guid: 3b3ec1c38e6bbb144bf24f474cb0a5ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11735,7 +11710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5918807705022628233, guid: 3b3ec1c38e6bbb144bf24f474cb0a5ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.8
+      value: 6.6400003
       objectReference: {fileID: 0}
     - target: {fileID: 5918807705022628233, guid: 3b3ec1c38e6bbb144bf24f474cb0a5ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11797,6 +11772,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3639744707655444855, guid: 50e1e1022912f6142ace4efceb0c5158, type: 3}
       propertyPath: fade
+      value: 
+      objectReference: {fileID: 1842401570}
+    - target: {fileID: 3639744707655444855, guid: 50e1e1022912f6142ace4efceb0c5158, type: 3}
+      propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 1842401570}
     - target: {fileID: 8343238556493209857, guid: 50e1e1022912f6142ace4efceb0c5158, type: 3}
@@ -18966,7 +18945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585772744317122940, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.58
+      value: 11.89
       objectReference: {fileID: 0}
     - target: {fileID: 585772744317122940, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18974,7 +18953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585772744317122940, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.55
+      value: 12.39
       objectReference: {fileID: 0}
     - target: {fileID: 585772744317122940, guid: be8413469e31b9740b9ad82f6f8eed6e, type: 3}
       propertyPath: m_LocalRotation.w
