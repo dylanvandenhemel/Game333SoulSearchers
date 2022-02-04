@@ -151,8 +151,12 @@ public class EyeTower : MonoBehaviour
     IEnumerator triggerWait()
     {
         yield return new WaitForSeconds(0.5f);
-        bTracker = false;
-        btriggerActivated = false;
+        if(bTracker)
+        {
+            bTracker = false;
+            btriggerActivated = false;
+
+        }
     }
     
     public void Trigger()

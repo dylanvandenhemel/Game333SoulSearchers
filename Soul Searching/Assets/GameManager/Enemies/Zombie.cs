@@ -170,8 +170,8 @@ public class Zombie : MonoBehaviour
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
-        transform.position = startingPosition.position;
         transform.rotation = startRotation;
+        transform.position = startingPosition.position;
         bTracker = false;
     }
 
