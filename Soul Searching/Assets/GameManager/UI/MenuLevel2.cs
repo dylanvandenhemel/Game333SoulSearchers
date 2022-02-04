@@ -110,31 +110,31 @@ public class MenuLevel2 : MonoBehaviour
         {
             if (currentSelectionVal == 0)
             {
-
+                SceneManager.LoadScene(2);
             }
             else if (currentSelectionVal == 1)
             {
-
+                SceneManager.LoadScene(3);
             }
             else if (currentSelectionVal == 2)
             {
-
+                SceneManager.LoadScene(4);
             }
             else if (currentSelectionVal == 3)
             {
-
+                SceneManager.LoadScene(5);
             }
             else if (currentSelectionVal == 4)
             {
-
+                SceneManager.LoadScene(6);
             }
             else if (currentSelectionVal == 5)
             {
-
+                SceneManager.LoadScene(7);
             }
             else if (currentSelectionVal == 6)
             {
-
+                //change dungeon values
             }
             else if (currentSelectionVal == 7)
             {
@@ -153,27 +153,27 @@ public class MenuLevel2 : MonoBehaviour
         {
             if (currentSelectionVal == 0)
             {
-
+                SceneManager.LoadScene(8);
             }
             else if (currentSelectionVal == 1)
             {
-
+                SceneManager.LoadScene(9);
             }
             else if (currentSelectionVal == 2)
             {
-
+                SceneManager.LoadScene(10);
             }
             else if (currentSelectionVal == 3)
             {
-
+                SceneManager.LoadScene(11);
             }
             else if (currentSelectionVal == 4)
             {
-
+                SceneManager.LoadScene(12);
             }
             else if (currentSelectionVal == 5)
             {
-
+                SceneManager.LoadScene(13);
             }
             else if (currentSelectionVal == 6)
             {
