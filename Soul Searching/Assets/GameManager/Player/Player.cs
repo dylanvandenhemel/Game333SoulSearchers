@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
     public float skelfaceRotationSpeed = 4f;
     private bool bSkelPileCollider;
 
+    //Whistling
     public LayerMask doggyLayer;
+    public GameObject whistleObject;
     RaycastHit hit;
     public bool bwhistling;
 
@@ -323,6 +325,7 @@ public class Player : MonoBehaviour
     {
         bwhistling = true;
         GetComponent<PlayerSound>().PlayerWistle();
+        Instantiate(whistleObject, transform);
         yield return new WaitForSeconds(1.2f);
         bwhistling = false;
     }

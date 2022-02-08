@@ -6,9 +6,13 @@ using UnityEngine.AI;
 public class HellHound : MonoBehaviour
 {
     private Transform player;
-    private bool bHeard;
+    private bool bHeard, bWaiting = false, bPulse = false;
+    private float distance, timer = 0;
     private NavMeshAgent localMap;
     public GameObject enemyDeath;
+    public GameObject whistleObject;
+    //These values are derived from experimentation, should be refined
+    private const float WHISTLE_DISTANCE = 11.2f/1.2f;
     private void OnEnable()
     {
         ResetDelegate.Reset += ActiveReset;
@@ -20,10 +24,22 @@ public class HellHound : MonoBehaviour
     }
     private void Start()
     {
+        //Just so there's no errors
+        player = transform;
         localMap = GetComponent<NavMeshAgent>();
     }
     private void Update()
     {
+        if (bWaiting)
+            timer += Time.deltaTime;
+        if (bWaiting && timer >= distance/WHISTLE_DISTANCE)
+        {
+            if (!bPulse)
+                StartCoroutine("Pulse");
+            timer = 0;
+            bHeard = true;
+            bWaiting = false;
+        }
         if (bHeard)
         {
             GetComponent<HellHoundSounds>().DogGrowl();
@@ -39,8 +55,12 @@ public class HellHound : MonoBehaviour
     {
         if(other.CompareTag("Player") && other.GetComponent<Player>().bwhistling)
         {
+            //If you want to change the dog so he immediatly rushes upon hearing whistle instead of when touched by effects, do this
+            //Toggle bHeard here, store the player's position, and then dynamically calculate distance every frame (because the hound is now moving)
+            //Then it would still have the dog effect at the correct time
             player = other.transform;
-            bHeard = true;
+            distance = Vector3.Distance(transform.position, player.position);
+            bWaiting = true;
         }
         else if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
         {
@@ -76,5 +96,11 @@ public class HellHound : MonoBehaviour
         GetComponent<NavMeshAgent>().enabled = true;
     }
 
-
+    private IEnumerator Pulse()
+    {
+        Instantiate(whistleObject, transform);
+        bPulse = true;
+        yield return new WaitForSeconds(1.2f);
+        bPulse = false;
+    }
 }
