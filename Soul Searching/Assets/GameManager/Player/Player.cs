@@ -153,6 +153,11 @@ public class Player : MonoBehaviour
 
         }
 
+        if (other.CompareTag("SkeletonPile"))
+        {
+            pauseMenu.GetComponent<UIElements>().PossessUIOn();
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -177,9 +182,7 @@ public class Player : MonoBehaviour
         if (!bpossessSkel && bEnablePossess)
         {
             if (other.CompareTag("SkeletonPile"))
-            {
-                pauseMenu.GetComponent<UIElements>().PossessUIOn();
-
+            { 
                 currentSkeletonPile = other.transform;
                 pActions.PlayerActions.Possess.performed += Possess;
             }

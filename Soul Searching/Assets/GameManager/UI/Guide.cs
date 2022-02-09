@@ -36,7 +36,17 @@ public class Guide : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player") && guideInfoNumber == 0)
+        //hides other UI to show guide
+        if (other.CompareTag("Player"))
+        {
+            // - 2 to leave the pause menu able to pause
+            for (int i = 0; i < other.GetComponent<Player>().pauseMenu.transform.childCount - 2; i++)
+            {
+                other.GetComponent<Player>().pauseMenu.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+
+        if (other.CompareTag("Player") && guideInfoNumber == 0)
         {
             transform.LookAt(other.transform);
             canvas.GetChild(0).gameObject.SetActive(true);
@@ -63,6 +73,7 @@ public class Guide : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+
         if (other.CompareTag("Player") && guideInfoNumber == 0)
         {
             canvas.GetChild(0).gameObject.SetActive(false);
