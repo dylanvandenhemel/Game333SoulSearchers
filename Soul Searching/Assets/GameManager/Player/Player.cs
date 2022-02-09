@@ -25,11 +25,14 @@ public class Player : MonoBehaviour
     private Transform currentSkeletonPile;
     private int playerChildCount;
     public bool bpossessSkel = false;
+    private bool bEnablePossess = true;
     public float skelSpeed = 3f;
     public float skelfaceRotationSpeed = 4f;
     private bool bSkelPileCollider;
 
+    //Whistling
     public LayerMask doggyLayer;
+    public GameObject whistleObject;
     RaycastHit hit;
     public bool bwhistling;
 
@@ -128,7 +131,7 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //Get Skeleton Parts
+        /*Get Skeleton Parts
         if(!bpossessSkel)
         {
             if (other.CompareTag("SkeletonPile"))
@@ -139,7 +142,7 @@ public class Player : MonoBehaviour
                 pActions.PlayerActions.Possess.performed += Possess;
             }
         }
-
+        */
         //kill Player
         if(other.CompareTag("DeathBox") && !bpossessSkel)
         {
@@ -170,6 +173,18 @@ public class Player : MonoBehaviour
             ResetPlayer();
             GetComponent<ResetDelegate>().bcallReset = true;
         }
+
+        if (!bpossessSkel && bEnablePossess)
+        {
+            if (other.CompareTag("SkeletonPile"))
+            {
+                pauseMenu.GetComponent<UIElements>().PossessUIOn();
+
+                currentSkeletonPile = other.transform;
+                pActions.PlayerActions.Possess.performed += Possess;
+            }
+        }
+
         /*
         if (bpossessSkel)
         {
@@ -263,19 +278,20 @@ public class Player : MonoBehaviour
             StartCoroutine(possessCoolDown());
             GetComponent<PlayerSound>().DropBonesSound();
             bpossessSkel = false;
-
         }
         
     }
 
     IEnumerator possessCoolDown()
     {
+        bEnablePossess = false;
         pActions.PlayerActions.Possess.performed -= Possess;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         if(bpossessSkel)
         {
             pActions.PlayerActions.Possess.performed += Possess;
         }
+        bEnablePossess = true;
     }
 
     public void KillSkeleton()
@@ -309,7 +325,8 @@ public class Player : MonoBehaviour
     {
         bwhistling = true;
         GetComponent<PlayerSound>().PlayerWistle();
-        yield return new WaitForSeconds(0.8f);
+        Instantiate(whistleObject, transform);
+        yield return new WaitForSeconds(1.2f);
         bwhistling = false;
     }
 

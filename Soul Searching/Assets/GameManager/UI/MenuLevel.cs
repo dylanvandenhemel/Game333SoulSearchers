@@ -43,10 +43,10 @@ public class MenuLevel : MonoBehaviour
         //NOTE is reversed because level menu starts at the bottom
         if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
         {
-            if ((currentSelectionVal < Settings.levelMenuUnlocked + 1) && currentSelectionVal < menuMaxVal - 1)
+            if (/*(currentSelectionVal < Settings.levelMenuUnlocked + 1) &&*/ currentSelectionVal < menuMaxVal - 1)
             {
                 currentSelectionVal++;
-                levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y - 1, levelTower.transform.position.z);
+                levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y - 1.1f, levelTower.transform.position.z);
             }
         }
         else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
@@ -54,7 +54,7 @@ public class MenuLevel : MonoBehaviour
             if (currentSelectionVal > menuMinVal)
             {
                 currentSelectionVal--;
-                levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y + 1, levelTower.transform.position.z);
+                levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y + 1.1f, levelTower.transform.position.z);
             }
         }
 
@@ -117,10 +117,11 @@ public class MenuLevel : MonoBehaviour
                 menuItemList[i].color = Color.white;
             }
         }
-
+        /*
         for(int i = Settings.levelMenuUnlocked + 2; i < menuMaxVal; i++)
         {
             menuItemList[i].color = Color.red;
         }
+        */
     }
 }

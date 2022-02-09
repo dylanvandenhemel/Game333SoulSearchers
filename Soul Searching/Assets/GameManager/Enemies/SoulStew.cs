@@ -38,19 +38,18 @@ public class SoulStew : MonoBehaviour
         hand.localPosition = Vector3.zero + Vector3.back * HAND_ADJUSTMENT;
 
         //Raycast to see if player is in emerge range and in line of sight
-        if (Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, emergeDistance) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
+        if (Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, emergeDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
         {
             hidden = false;
 
             //If close enough to attack, then attack
-            if (!attacking && Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, attackDistance) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
+            if (!attacking && Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, attackDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
                 StewAttack();
         }
 
         //Stay hidden if player is too far away or out of sight
         else if (!attacking)
         {
-            Debug.Log(attacking);
             if (!hidden)
             {
                 StopCoroutine("HidingCoroutine");
@@ -60,8 +59,10 @@ public class SoulStew : MonoBehaviour
                 animator.Play("Emerge", 0, 0);
         }
 
+        Debug.Log(raycastHit.collider);
+
         //Ensure animator follows transitions
-        animator.SetBool("Prepped", Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, prepDistance) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel);
+        animator.SetBool("Prepped", Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, prepDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel);
     }
 
     private void StewAttack()

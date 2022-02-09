@@ -23,6 +23,8 @@ public class TriggerObjects : MonoBehaviour
     private bool bPlatformActive = false;
 
     private AudioSource trapSound;
+    private const float TURN_OFF_TIME = 1.2f;
+
     //Detects Object to Trigger
     private void Start()
     {
@@ -110,7 +112,7 @@ public class TriggerObjects : MonoBehaviour
 
     IEnumerator TrapTimer()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(TURN_OFF_TIME);
         ActiveTrap();
     }
     public void OnTriggerEnter(Collider other)
@@ -148,12 +150,22 @@ public class TriggerObjects : MonoBehaviour
          if (!bDoorActive)
          {
             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
+            //disables collider that prevents player from possessing through gates
+            if(gameObject.layer == LayerMask.NameToLayer("Gate"))
+            {
+                GetComponent<Collider>().enabled = false;
+            }
             bDoorActive = true;
+            Debug.LogError("open");
          }
          else
          {
-             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
-             bDoorActive = false;
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
+            if (gameObject.layer == LayerMask.NameToLayer("Gate"))
+            {
+                GetComponent<Collider>().enabled = true;
+            }
+            bDoorActive = false;
          } 
     }
     
