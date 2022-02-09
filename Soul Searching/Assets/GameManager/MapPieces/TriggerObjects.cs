@@ -151,22 +151,23 @@ public class TriggerObjects : MonoBehaviour
          {
             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
             //disables collider that prevents player from possessing through gates
-            if(gameObject.layer == LayerMask.NameToLayer("Gate"))
+            if(transform.GetChild(0).gameObject.layer == LayerMask.NameToLayer("Gate"))
             {
                 GetComponent<Collider>().enabled = false;
+                Debug.LogError("open");
             }
             bDoorActive = true;
-            Debug.LogError("open");
          }
          else
          {
             transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
-            if (gameObject.layer == LayerMask.NameToLayer("Gate"))
+            if (transform.GetChild(0).gameObject.layer == LayerMask.NameToLayer("Gate"))
             {
                 GetComponent<Collider>().enabled = true;
+                Debug.LogError("close");
             }
             bDoorActive = false;
-         } 
+        } 
     }
     
     private void ActivateDoubleDoors()
