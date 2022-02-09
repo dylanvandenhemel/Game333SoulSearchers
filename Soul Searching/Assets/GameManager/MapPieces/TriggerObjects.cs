@@ -154,7 +154,6 @@ public class TriggerObjects : MonoBehaviour
             if(transform.GetChild(0).gameObject.layer == LayerMask.NameToLayer("Gate"))
             {
                 GetComponent<Collider>().enabled = false;
-                Debug.LogError("open");
             }
             bDoorActive = true;
          }
@@ -164,7 +163,6 @@ public class TriggerObjects : MonoBehaviour
             if (transform.GetChild(0).gameObject.layer == LayerMask.NameToLayer("Gate"))
             {
                 GetComponent<Collider>().enabled = true;
-                Debug.LogError("close");
             }
             bDoorActive = false;
         } 

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class MenuStart : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MenuStart : MonoBehaviour
 
     public GameObject menu;
 
-    public Text[] menuItemList;
+    public TextMeshProUGUI[] menuItemList;
 
     private int currentSelectionVal;
 
@@ -54,6 +55,11 @@ public class MenuStart : MonoBehaviour
     {
         menuMaxVal = menuItemList.Length;
         TextColor(0);
+        if(Settings.levelsUnlocked > 1)
+        {
+            //Start Game Text
+            menuItemList[0].text = "Continue";
+        }
     }
 
     private void CurrentSelection(InputAction.CallbackContext c)
@@ -94,7 +100,6 @@ public class MenuStart : MonoBehaviour
     {
         if(currentSelectionVal == 0)
         {
-            Debug.LogError("Start");
             if (!bDoneTutorial)
             {
                 bDoneTutorial = true;
