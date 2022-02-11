@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.79663235, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2413689115242272701}
   m_RootOrder: 2
@@ -155,6 +156,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.033056267, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2413689115242272701}
   m_RootOrder: 0
@@ -178,6 +180,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -238,6 +241,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3115084515392129514}
   - {fileID: 7187324757759988418}
@@ -288,6 +292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerObject:
   - {fileID: 0}
+  powerParticle: {fileID: 9036852773207732136, guid: 3294f3747be37004ab5be3abef2a8630, type: 3}
+  bDoesNotReset: 0
 --- !u!82 &1583750578840993413
 AudioSource:
   m_ObjectHideFlags: 0

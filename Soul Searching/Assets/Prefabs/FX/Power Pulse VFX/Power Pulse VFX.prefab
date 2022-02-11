@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9036852773207732137}
   - component: {fileID: 9036852773207732143}
   - component: {fileID: 9036852773207732142}
+  - component: {fileID: -208457784927212663}
   m_Layer: 0
   m_Name: Power Pulse VFX
   m_TagString: Untagged
@@ -4813,3 +4814,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-208457784927212663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036852773207732136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d90c0bb64f0d34d88d1e79422d472e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1

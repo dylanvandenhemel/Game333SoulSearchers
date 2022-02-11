@@ -8,6 +8,7 @@ public class Activator : MonoBehaviour
 {
     private GameObject player;
     public List<GameObject> TriggerObject;
+    public GameObject powerParticle;
 
     private bool bPressPlate = false;
     private bool bPressedPlate;
@@ -57,8 +58,14 @@ public class Activator : MonoBehaviour
 
     public void Trigger()
     {
+        float height = transform.CompareTag("Lever") ? 1.5f : 1;
         for (int i = 0; i < TriggerObject.Count; i++)
         {
+            if (GameObject.Find("Power Pulse(Clone)") != null && GameObject.Find("Power Pulse(Clone)").GetComponent<ParticleMovement>().destination == TriggerObject[i])
+            {
+                GameObject particle = Instantiate(powerParticle, new Vector3(transform.position.x, transform.position.y + height, transform.position.z), transform.rotation);
+                particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+            }
             TriggerObject[i].GetComponent<TriggerObjects>().Trigger();
         }
     }
