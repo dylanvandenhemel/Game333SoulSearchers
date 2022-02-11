@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 973824412273211618}
   - component: {fileID: 4191834969081575239}
   - component: {fileID: 2146129015771628429}
+  - component: {fileID: 5982896473915094760}
   m_Layer: 0
   m_Name: DungeonPillar
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5982896473915094760
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488755493659320920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48.356956, y: 192.96124, z: 48.35692}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8531694597219973382
 GameObject:
   m_ObjectHideFlags: 0

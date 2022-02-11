@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 3629593238575097167}
   - component: {fileID: 8631759467644998502}
   - component: {fileID: 5515456608613096415}
+  - component: {fileID: 7211209314542257868}
+  - component: {fileID: 5927047134399056245}
   m_Layer: 0
   m_Name: DungeonClear
   m_TagString: Untagged
@@ -115,3 +117,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7211209314542257868
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759663284738897541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 99.55842, y: 239.24387, z: 53.35672}
+  m_Center: {x: 125.11252, y: 0, z: -148.31512}
+--- !u!65 &5927047134399056245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759663284738897541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 75.90976, y: 239.24387, z: 53.35672}
+  m_Center: {x: -112.73861, y: 0, z: -148.31512}
