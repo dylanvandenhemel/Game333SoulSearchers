@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ResetObject : MonoBehaviour
 {
-    public Vector3 resetPosition;
-    public bool bUponReset;
+    [HideInInspector]public Vector3 resetPosition;
+    [HideInInspector]public bool bUponReset;
 
     private void Start()
     {

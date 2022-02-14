@@ -49,6 +49,14 @@ public class HellHound : MonoBehaviour
                 bHeard = false;
             }
         }
+        if(GetComponent<NavMeshAgent>().hasPath)
+        {
+            GetComponentInChildren<Animator>().SetBool("isChase", true);
+        }
+        else if(!GetComponent<NavMeshAgent>().hasPath)
+        {
+            GetComponentInChildren<Animator>().SetBool("isChase", false);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -81,7 +89,6 @@ public class HellHound : MonoBehaviour
 
     public void ActiveReset()
     {
-        GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);

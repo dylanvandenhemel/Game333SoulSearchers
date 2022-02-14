@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleMovement : MonoBehaviour
 {
-    public float speed = .1f;
+    public float speed = .2f;
     [HideInInspector] public Transform destination;
     [HideInInspector] public List<GameObject> particleList;
 
