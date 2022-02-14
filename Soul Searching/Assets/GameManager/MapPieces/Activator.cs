@@ -195,7 +195,6 @@ public class Activator : MonoBehaviour
                                 }
                             }
                     }
-                    //
                     Trigger();
 
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
