@@ -5,32 +5,53 @@ using UnityEngine;
 public class AnimCurve : MonoBehaviour
 {
     public AnimationCurve curve;
+    private Vector3 startPos;
+    private Vector3 targetPos;
+    public float speed;
+    private float rate;
+    private bool bActive;
 
-    //tower starts here currently, this value is subject to change
-    private float currentTowerPos = 2.5f;
-    private float ascendTower = 1;
-    private float descendTower = 1;
-    void Start()
-    {
-        curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
-        curve.preWrapMode = WrapMode.PingPong;
-        curve.postWrapMode = WrapMode.PingPong;
-    }
-
-    void Update()
-    {
-        transform.position = new Vector3(transform.position.x, curve.Evaluate(Time.time)/* + currentTowerPos*/, transform.position.z);
-    }
+    [HideInInspector] public bool bIsMoving;
     /*
-    public void AscendTower()
+    private void Start()
     {
-        Debug.LogError("up");
-        currentTowerPos += ascendTower;
+        startPos = transform.position;
+        //so the tower does not move anywhere until imput is added
+        targetPos = startPos;
     }
-    public void DescendTower()
+
+    private void Update()
     {
-        Debug.LogError("Down");
-        currentTowerPos -= descendTower;
+        if(transform.position != targetPos)
+        {
+            bIsMoving = true;
+        }
+        else
+        {
+            bIsMoving = false;
+        }
+        rate = Mathf.Clamp(curve.Evaluate(Time.deltaTime * speed), 0, 1);
+        transform.position = Vector3.Lerp(transform.position, targetPos, rate);
     }
     */
+    IEnumerator TowerMove()
+    {
+        rate = 0;
+        while (rate < 1)
+        {
+            rate += Time.deltaTime * speed;
+            transform.position = Vector3.Lerp(startPos, targetPos, curve.Evaluate(rate));
+            yield return new WaitForEndOfFrame();
+        }
+        bActive = false;
+    }
+
+    public void MoveTower(float direction)
+    {
+        if (bActive) return;
+        bActive = true;
+        targetPos = new Vector3(transform.position.x, transform.position.y + direction, transform.position.z);
+        startPos = transform.position;
+        StartCoroutine(nameof(TowerMove));
+    }
 }

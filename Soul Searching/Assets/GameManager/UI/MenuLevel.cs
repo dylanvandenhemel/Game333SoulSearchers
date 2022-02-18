@@ -20,6 +20,10 @@ public class MenuLevel : MonoBehaviour
 
     private int menuMinVal = 0;
     private int menuMaxVal;
+
+    //change to match view to fit each level of the tower
+    private float upTower = 1f;
+    private float downTower = -1f;
     
     private void OnEnable()
     {
@@ -43,20 +47,18 @@ public class MenuLevel : MonoBehaviour
         //NOTE is reversed because level menu starts at the bottom
         if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
         {
-            if (/*(currentSelectionVal < Settings.levelMenuUnlocked + 1) &&*/ currentSelectionVal < menuMaxVal - 1)
+            if (/*(currentSelectionVal < Settings.levelMenuUnlocked + 1) &&*/ currentSelectionVal < menuMaxVal - 1 && !levelTower.GetComponent<AnimCurve>().bIsMoving)
             {
                 currentSelectionVal++;
-                //levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y - 1.1f, levelTower.transform.position.z);
-                //levelTower.GetComponent<AnimCurve>().DescendTower();
+                levelTower.GetComponent<AnimCurve>().MoveTower(downTower);
             }
         }
         else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
         {
-            if (currentSelectionVal > menuMinVal)
+            if (currentSelectionVal > menuMinVal && !levelTower.GetComponent<AnimCurve>().bIsMoving)
             {
                 currentSelectionVal--;
-                //levelTower.transform.position = new Vector3(levelTower.transform.position.x, levelTower.transform.position.y + 1.1f, levelTower.transform.position.z);
-                //levelTower.GetComponent<AnimCurve>().AscendTower();
+                levelTower.GetComponent<AnimCurve>().MoveTower(upTower);
             }
         }
 
