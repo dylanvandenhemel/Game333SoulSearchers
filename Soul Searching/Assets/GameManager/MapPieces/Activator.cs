@@ -60,16 +60,8 @@ public class Activator : MonoBehaviour
 
     public void Trigger()
     {
-        float height = transform.CompareTag("Lever") ? 1.5f : 1;
         for (int i = 0; i < TriggerObject.Count; i++)
         {
-            if (particleList.Count == 0)
-            {
-                GameObject particle = Instantiate(powerParticle, new Vector3(transform.position.x, transform.position.y + height, transform.position.z), transform.rotation);
-                particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
-                particle.GetComponent<ParticleMovement>().particleList = particleList;
-                particleList.Add(particle);
-            }
             TriggerObject[i].GetComponent<TriggerObjects>().Trigger();
         }
     }
@@ -85,6 +77,19 @@ public class Activator : MonoBehaviour
             }
             if (!bPressedPlate)
             {
+                //Partical effect
+                float height = transform.CompareTag("Lever") ? 1.5f : 1;
+                for (int i = 0; i < TriggerObject.Count; i++)
+                {
+                    if (particleList.Count == 0)
+                    {
+                        GameObject particle = Instantiate(powerParticle, new Vector3(transform.position.x, transform.position.y + height, transform.position.z), transform.rotation);
+                        particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+                        particle.GetComponent<ParticleMovement>().particleList = particleList;
+                        particleList.Add(particle);
+                    }
+                }
+
                 bPressedPlate = true;
                 transform.GetChild(0).gameObject.SetActive(false);
                 GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
@@ -178,6 +183,19 @@ public class Activator : MonoBehaviour
             {
                 if (!bActiveLever)
                 {
+                    //Partical effect
+                    float height = transform.CompareTag("Lever") ? 1.5f : 1;
+                    for (int i = 0; i < TriggerObject.Count; i++)
+                    {
+                        if (particleList.Count == 0)
+                        {
+                            GameObject particle = Instantiate(powerParticle, new Vector3(transform.position.x, transform.position.y + height, transform.position.z), transform.rotation);
+                            particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+                            particle.GetComponent<ParticleMovement>().particleList = particleList;
+                            particleList.Add(particle);
+                        }
+                    }
+
                     transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y - 90, transform.rotation.z);
                     Trigger();
                     GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;

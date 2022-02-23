@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ParticleMovement : MonoBehaviour
 {
-    public float speed = .2f;
+    private float endDistance = 0.8f;
+    private NavMeshAgent localMap;
     [HideInInspector] public Transform destination;
     [HideInInspector] public List<GameObject> particleList;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        localMap = GetComponent<NavMeshAgent>();
+        localMap.SetDestination(destination.position);
+    }
     void Update()
     {
-        if (Vector3.Distance(transform.position, destination.position) >= speed)
-            transform.position = Vector3.MoveTowards(transform.position, destination.position, speed);
-        else
+        if (localMap.remainingDistance <= endDistance)
         {
             foreach (GameObject particle in particleList)
             {
@@ -21,6 +25,7 @@ public class ParticleMovement : MonoBehaviour
                     particleList.Remove(particle);
             }
             Destroy(gameObject);
+
         }
     }
 }
