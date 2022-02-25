@@ -308,7 +308,6 @@ public class Player : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         //moves pile back a bit after a trap
         //currentSkeletonPile.localPosition = new Vector3(currentSkeletonPile.localPosition.x, currentSkeletonPile.localPosition.y, currentSkeletonPile.localPosition.z - 1f);
-
         currentSkeletonPile.parent = null;
         pActions.PlayerActions.Possess.performed -= Possess;
 
@@ -350,6 +349,28 @@ public class Player : MonoBehaviour
         Instantiate(deathParticles, transform.position, transform.rotation);
         yield return new WaitForSeconds(RESET_WAIT);
         pActions.PlayerActions.Possess.performed -= Possess;
+
+        if (bpossessSkel)
+        {
+            bSkelPileCollider = false;
+            currentSkeletonPile.parent = null;
+            //currentSkeletonPile.GetChild(1).GetComponent<Collider>().enabled = true;
+            currentSkeletonPile.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
+            //Make sure it is the actual skeleton for gameobject child index
+            currentSkeletonPile.GetChild(0).gameObject.SetActive(false);
+
+            //Player control back
+            transform.GetChild(0).gameObject.SetActive(true);
+            //resets position and rotation
+            currentSkeletonPile.rotation = Quaternion.Euler(0, 180, 0);
+            //allows player to pass trough walls again
+            gameObject.layer = LayerMask.NameToLayer("Phase");
+            pauseMenu.GetComponent<UIElements>().PossessUIOff();
+
+            StartCoroutine(possessCoolDown());
+            GetComponent<PlayerSound>().DropBonesSound();
+            bpossessSkel = false;
+        }
 
         //CController is strict
         cController.transform.position = resetLocation;

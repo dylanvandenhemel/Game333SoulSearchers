@@ -40,7 +40,7 @@ public class Zombie : MonoBehaviour
         startRotation = transform.rotation;
         if(bpatrol)
         {
-            GetComponent<Animator>().SetBool("isPatrol", true);
+            transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isPatrol", true);//GetComponent<Animator>().SetBool("isPatrol", true);
         }
 
         //Hides debug cubes
@@ -72,7 +72,7 @@ public class Zombie : MonoBehaviour
             {
                 targetReached = true;
             }
-            GetComponent<Animator>().SetBool("isChase", false);
+            transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
         }
         else if (!bTracker && targetReached && bpatrol)
         {
@@ -86,7 +86,7 @@ public class Zombie : MonoBehaviour
             {
                 targetReached = false;
             }
-            GetComponent<Animator>().SetBool("isChase", false);
+            transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
         }
 
         //Zombie sees ghost player
@@ -95,19 +95,19 @@ public class Zombie : MonoBehaviour
             if (player.GetComponent<Player>().bpossessSkel == true)
             {
                 bTracker = false;
-                GetComponent<Animator>().SetBool("isChase", false);
+                transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
             }
 
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
             zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 8f);
             zombieRoamSpeed += 0.1f;
-            GetComponent<Animator>().SetBool("isChase", true);
+            transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", true);
         }
 
         if(!bTracker && !bpatrol)
         {
-            GetComponent<Animator>().SetBool("isChase", false);
+            transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
         }
         
     }
@@ -119,7 +119,7 @@ public class Zombie : MonoBehaviour
         {
             player = other.transform;
             
-            if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 4, Wall))
+            if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 2, Wall))
             {
                 transform.LookAt(player);
             }
@@ -130,7 +130,7 @@ public class Zombie : MonoBehaviour
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, playerDistance, Wall))
                 {
                     bTracker = false;
-                    GetComponent<Animator>().SetBool("isChase", false);
+                    transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
                 }
                 else
                 {
@@ -138,7 +138,12 @@ public class Zombie : MonoBehaviour
                     bTracker = true;
                     GetComponent<ZombieSound>().ZombieSeesSound();
                 }
-            
+                if (playerDistance <= 3)
+                {
+                    transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetTrigger("zombieAttack");
+                }
+
+
             }
             
         }
@@ -166,7 +171,7 @@ public class Zombie : MonoBehaviour
     public void ActiveReset()
     {
         zombieRoamSpeed = zombieStartSpeed;
-        GetComponent<Animator>().SetBool("isChase", false);
+        transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);

@@ -22,8 +22,8 @@ public class MenuLevel : MonoBehaviour
     private int menuMaxVal;
 
     //change to match view to fit each level of the tower
-    private float upTower = 1f;
-    private float downTower = -1f;
+    private float upTower = 1.25f;
+    private float downTower = -1.25f;
     
     private void OnEnable()
     {
