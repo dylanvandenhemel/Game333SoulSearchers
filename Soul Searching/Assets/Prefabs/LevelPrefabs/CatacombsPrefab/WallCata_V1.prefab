@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &488755493659320920
+--- !u!1 &2091855419070284932
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 973824412273211618}
-  - component: {fileID: 4191834969081575239}
-  - component: {fileID: 2146129015771628429}
-  - component: {fileID: 5982896473915094760}
+  - component: {fileID: 1606680913517305406}
+  - component: {fileID: 2442015679551263131}
+  - component: {fileID: 434385276702729553}
+  - component: {fileID: 6942193022930678854}
   m_Layer: 0
-  m_Name: DungeonPillar
+  m_Name: Wall_V1_Cata
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &973824412273211618
+--- !u!4 &1606680913517305406
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488755493659320920}
+  m_GameObject: {fileID: 2091855419070284932}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.0898061, z: 0}
+  m_LocalPosition: {x: -1.4210854e-16, y: 1.3150693, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3155392395125705911}
+  m_Father: {fileID: 7469816699264657279}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4191834969081575239
+--- !u!33 &2442015679551263131
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488755493659320920}
-  m_Mesh: {fileID: 2089124832967395528, guid: c88d9a9a4304a4642a8def12372f1b58, type: 3}
---- !u!23 &2146129015771628429
+  m_GameObject: {fileID: 2091855419070284932}
+  m_Mesh: {fileID: 3613050186881432094, guid: 09b35e894ee5a98478c9f06bdeb787d4, type: 3}
+--- !u!23 &434385276702729553
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488755493659320920}
+  m_GameObject: {fileID: 2091855419070284932}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c9c679caf8cb2d4892938800740aee3, type: 2}
+  - {fileID: 5561349426305759274, guid: 09b35e894ee5a98478c9f06bdeb787d4, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,20 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5982896473915094760
+--- !u!65 &6942193022930678854
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488755493659320920}
+  m_GameObject: {fileID: 2091855419070284932}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 48.356956, y: 192.96124, z: 48.35692}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8531694597219973382
+  m_Size: {x: 343.9542, y: 240.9986, z: 37.109768}
+  m_Center: {x: 13.598537, y: 0, z: -150.62637}
+--- !u!1 &4752706138775166346
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,27 +105,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3155392395125705911}
+  - component: {fileID: 7469816699264657279}
   m_Layer: 0
-  m_Name: DungeonPillar
+  m_Name: WallCata_V1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3155392395125705911
+--- !u!4 &7469816699264657279
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531694597219973382}
+  m_GameObject: {fileID: 4752706138775166346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 973824412273211618}
+  - {fileID: 1606680913517305406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
