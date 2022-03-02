@@ -329,8 +329,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5890216158977864808}
   m_LocalRotation: {x: -0, y: 0.9938771, z: -0.110491686, w: 0}
-  m_LocalPosition: {x: -0.27269, y: -0.073, z: -0.19892453}
-  m_LocalScale: {x: 39.978268, y: 39.978268, z: 39.978268}
+  m_LocalPosition: {x: -0.27269, y: -0.072999954, z: -0.19892453}
+  m_LocalScale: {x: 39.978268, y: 39.97827, z: 39.978268}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7576047995310240302}
@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 742939584421604710}
   - component: {fileID: 6714887068754947595}
   - component: {fileID: 6090664114373250029}
+  - component: {fileID: 313283858938102566}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -469,6 +470,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &313283858938102566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737809884048123970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5734348, y: 6.85421, z: 3.5734348}
+  m_Center: {x: -0.000000834465, y: 0.00000047683716, z: 0.00000017881393}
 --- !u!1 &9061564103711473253
 GameObject:
   m_ObjectHideFlags: 0
