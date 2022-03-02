@@ -7,6 +7,9 @@ using UnityEngine.VFX;
 public class Activator : MonoBehaviour
 {
     private GameObject player;
+    public bool bParticalOn = true;
+    public Transform[] particalPath;
+    public Transform particalPathEndGoal;
     public List<GameObject> TriggerObject;
     public GameObject powerParticle;
     [HideInInspector] public List<GameObject> particleList;
@@ -81,10 +84,11 @@ public class Activator : MonoBehaviour
                 float height = transform.CompareTag("Lever") ? 1.5f : 1;
                 for (int i = 0; i < TriggerObject.Count; i++)
                 {
-                    if (particleList.Count == 0)
+                    if (particleList.Count == 0 && bParticalOn)
                     {
                         GameObject particle = Instantiate(powerParticle, new Vector3(transform.position.x, transform.position.y + height, transform.position.z), transform.rotation);
-                        particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+                        //particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+                        particle.GetComponent<ParticleMovement>().Path(particalPath, particalPathEndGoal);
                         particle.GetComponent<ParticleMovement>().particleList = particleList;
                         particleList.Add(particle);
                     }
@@ -187,10 +191,11 @@ public class Activator : MonoBehaviour
                     float height = transform.CompareTag("Lever") ? 1.5f : 1;
                     for (int i = 0; i < TriggerObject.Count; i++)
                     {
-                        if (particleList.Count == 0)
+                        if (particleList.Count == 0 && bParticalOn)
                         {
                             GameObject particle = Instantiate(powerParticle, new Vector3(transform.position.x, transform.position.y + height, transform.position.z), transform.rotation);
-                            particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+                            //particle.GetComponent<ParticleMovement>().destination = TriggerObject[i].transform;
+                            particle.GetComponent<ParticleMovement>().Path(particalPath, particalPathEndGoal);
                             particle.GetComponent<ParticleMovement>().particleList = particleList;
                             particleList.Add(particle);
                         }
