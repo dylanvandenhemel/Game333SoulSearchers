@@ -2517,6 +2517,22 @@ PrefabInstance:
       value: Lever
       objectReference: {fileID: 0}
     - target: {fileID: 3830964012917497911, guid: 735bc71d70d57034bb88882a72e3ed83, type: 3}
+      propertyPath: bParticalOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830964012917497911, guid: 735bc71d70d57034bb88882a72e3ed83, type: 3}
+      propertyPath: particalPathEndGoal
+      value: 
+      objectReference: {fileID: 1371843774}
+    - target: {fileID: 3830964012917497911, guid: 735bc71d70d57034bb88882a72e3ed83, type: 3}
+      propertyPath: particalPath.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830964012917497911, guid: 735bc71d70d57034bb88882a72e3ed83, type: 3}
+      propertyPath: particalPath.Array.data[0]
+      value: 
+      objectReference: {fileID: 1371843774}
+    - target: {fileID: 3830964012917497911, guid: 735bc71d70d57034bb88882a72e3ed83, type: 3}
       propertyPath: TriggerObject.Array.data[0]
       value: 
       objectReference: {fileID: 1371843773}
@@ -6147,6 +6163,11 @@ Transform:
 --- !u!1 &1371843773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4875274654703135911, guid: 8668377cba5efcf4195d9c746509f601, type: 3}
+  m_PrefabInstance: {fileID: 1319487951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1371843774 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 594467042552351681, guid: 8668377cba5efcf4195d9c746509f601, type: 3}
   m_PrefabInstance: {fileID: 1319487951}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1388821391 stripped

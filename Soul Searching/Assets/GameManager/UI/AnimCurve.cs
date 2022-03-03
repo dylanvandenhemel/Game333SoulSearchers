@@ -9,9 +9,9 @@ public class AnimCurve : MonoBehaviour
     private Vector3 targetPos;
     public float speed;
     private float rate;
-    private bool bActive;
+    [HideInInspector]public bool bActive;
 
-    [HideInInspector] public bool bIsMoving;
+    //[HideInInspector] public bool bIsMoving;
     /*
     private void Start()
     {
