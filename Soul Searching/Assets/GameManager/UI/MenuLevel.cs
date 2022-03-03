@@ -47,7 +47,7 @@ public class MenuLevel : MonoBehaviour
         //NOTE is reversed because level menu starts at the bottom
         if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
         {
-            if (/*(currentSelectionVal < Settings.levelMenuUnlocked + 1) &&*/ currentSelectionVal < menuMaxVal - 1 && !levelTower.GetComponent<AnimCurve>().bActive)
+            if (/*(currentSelectionVal < Settings.levelMenuUnlocked + 1) &&*/ currentSelectionVal < menuMaxVal - 1 && !levelTower.GetComponent<AnimCurve>().bIsMoving)
             {
                 currentSelectionVal++;
                 levelTower.GetComponent<AnimCurve>().MoveTower(downTower);
@@ -55,7 +55,7 @@ public class MenuLevel : MonoBehaviour
         }
         else if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
         {
-            if (currentSelectionVal > menuMinVal && !levelTower.GetComponent<AnimCurve>().bActive)
+            if (currentSelectionVal > menuMinVal && !levelTower.GetComponent<AnimCurve>().bIsMoving)
             {
                 currentSelectionVal--;
                 levelTower.GetComponent<AnimCurve>().MoveTower(upTower);
