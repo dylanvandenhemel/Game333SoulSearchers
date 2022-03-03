@@ -22,6 +22,8 @@ public class SoulStew : MonoBehaviour
     private bool hidden = true, hiding = false, attacking = false;
     private const float EYE_RANGE_MULTIPLIER = 2.1f, EYE_RANGE_HEIGHT = .5f, RAYCAST_ADJUSTMENT = 1, HAND_ADJUSTMENT = .185f;
 
+    private int previousStateNum = 0;
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -37,6 +39,43 @@ public class SoulStew : MonoBehaviour
         hand.LookAt(player);
         hand.localPosition = Vector3.zero + Vector3.back * HAND_ADJUSTMENT;
 
+
+
+        
+    //Set state based on distance
+        int stateNum = 0;
+        float dist = Vector3.Distance(player.transform.position, transform.position);
+        if(!attacking)
+        {
+            if(dist <= attackDistance)
+            {
+                stateNum = 3;
+            }
+            else if(dist <= prepDistance)
+            {
+                stateNum = 2;
+            }
+            else if(dist <= emergeDistance)
+            {
+                stateNum = 1;
+            }
+            else
+            {
+                stateNum = 0;
+            }
+            animator.SetInteger("StateNum", stateNum);
+        }
+        
+
+        
+        //Bool to prevent transition repeating to Emerge from Idle
+        animator.SetBool("Idling", previousStateNum >= 1);
+
+        previousStateNum = stateNum;
+
+
+        
+        
         //Raycast to see if player is in emerge range and in line of sight
         if (Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, emergeDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
         {
@@ -56,21 +95,31 @@ public class SoulStew : MonoBehaviour
                 StartCoroutine("HidingCoroutine");
             }
             if (!hiding)
-                animator.Play("Emerge", 0, 0);
+            {
+                //animator.Play("Emerge", 0, 0);
+            }
         }
 
         Debug.Log(raycastHit.collider);
 
         //Ensure animator follows transitions
-        animator.SetBool("Prepped", Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, prepDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel);
+        //animator.SetBool("Prepped", Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, prepDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel);
     }
 
     private void StewAttack()
     {
-        animator.SetTrigger("Attack");
+        //animator.SetTrigger("Attack");
+        animator.SetInteger("StateNum", 3);
+        previousStateNum = 3;
         attacking = true;
         player.GetComponent<Player>().bresetPlayer = true;
         player.GetComponent<ResetDelegate>().bcallReset = true;
+        StartCoroutine(StopAttack());
+    }
+    IEnumerator StopAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
         attacking = false;
     }
 
@@ -79,7 +128,7 @@ public class SoulStew : MonoBehaviour
     {
         hidden = true;
         hiding = true;
-        animator.SetTrigger("Hidden");
+        //animator.SetTrigger("Hidden");
         yield return new WaitForSeconds(hidingAnimation.length);
         hiding = false;
     }
