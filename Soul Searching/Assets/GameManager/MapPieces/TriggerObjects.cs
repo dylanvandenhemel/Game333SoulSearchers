@@ -8,7 +8,7 @@ public class TriggerObjects : MonoBehaviour
 {
     private bool bTrap = false;
     private bool bDoor = false;
-    private bool bPlatform = false;
+    //private bool bPlatform = false;
 
     //On off system
     public bool bTrapActive = false;
@@ -20,7 +20,7 @@ public class TriggerObjects : MonoBehaviour
     private int startSignals;
     public int NumberofSignalsReqDoor = 1;
 
-    private bool bPlatformActive = false;
+    //private bool bPlatformActive = false;
 
     private AudioSource trapSound;
     private const float TURN_OFF_TIME = 1.2f;
@@ -49,11 +49,13 @@ public class TriggerObjects : MonoBehaviour
             }
             //Trigger();
         }
+        /*
         else if (transform.CompareTag("Platform"))
         {
             bPlatform = true;
             Trigger();
         }
+        */
     }
 
     private void Update()
@@ -170,8 +172,9 @@ public class TriggerObjects : MonoBehaviour
     
     private void ActivateDoubleDoors()
     {
-        if (NumberofSignalsReqDoor == 1)
-        { 
+        if (NumberofSignalsReqDoor == 1 && !transform.GetComponent<DoubleDoorReset>().bWasActive)
+        {
+            Debug.LogError("oof");
             if (!bDoorActive)
             {
                 transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");
@@ -180,12 +183,15 @@ public class TriggerObjects : MonoBehaviour
             }
             else
             {
-                transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
+                if(bDoorActive)
+                {
+                    transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorClose");
+                }
                 //Debug.LogError("Closed");
                 bDoorActive = false;
             }
         }
-        if (NumberofSignalsReqDoor > 1)
+        if (NumberofSignalsReqDoor > 1 && !transform.GetComponent<DoubleDoorReset>().bWasActive)
         {
             NumberofSignalsReqDoor--;
         }

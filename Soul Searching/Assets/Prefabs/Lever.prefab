@@ -518,9 +518,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a55d354a4bcad040a75b03297618806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bParticalOn: 0
+  particalPath: []
+  particalPathEndGoal: {fileID: 0}
   TriggerObject:
   - {fileID: 0}
   powerParticle: {fileID: 9036852773207732136, guid: 3294f3747be37004ab5be3abef2a8630, type: 3}
+  particleList: []
   bDoesNotReset: 0
 --- !u!54 &8627871727713138397
 Rigidbody:

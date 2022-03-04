@@ -135,21 +135,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -76.691, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &8497487470697044269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5210222285195205126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ccee900627ae5b499eddf442bd54ae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireEffect: {fileID: 2672688983940162061}
-  signalTurnOn: 1
-  openDoorTorch: 1
 --- !u!1 &3282836987123765440
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +146,7 @@ GameObject:
   - component: {fileID: 8033407012047603103}
   - component: {fileID: 5772097285395191491}
   - component: {fileID: 2973591661806206141}
+  - component: {fileID: 2806126976309200706}
   m_Layer: 0
   m_Name: DoubleDoor
   m_TagString: Door
@@ -217,6 +203,18 @@ MonoBehaviour:
   bTrapActive: 0
   bDoorActive: 0
   NumberofSignalsReqDoor: 2
+--- !u!114 &2806126976309200706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282836987123765440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04163722e1b709e4599ca1ce8264e1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7373392363314512394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +230,21 @@ MonoBehaviour:
   fireEffect: {fileID: 6568796368396684833}
   signalTurnOn: 1
   openDoorTorch: 0
+--- !u!114 &8497487470697044269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210222285195205126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccee900627ae5b499eddf442bd54ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireEffect: {fileID: 2672688983940162061}
+  signalTurnOn: 1
+  openDoorTorch: 1
 --- !u!1001 &2691935284491507029
 PrefabInstance:
   m_ObjectHideFlags: 0

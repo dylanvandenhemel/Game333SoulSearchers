@@ -250,10 +250,12 @@ public class Activator : MonoBehaviour
             {
                 Trigger();
                 bPressedPlate = bstartPPState;
+                yesBones = 0;
             }
 
             if (bActiveLever)
             {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z);
                 Trigger();
                 bActiveLever = false;
             }
