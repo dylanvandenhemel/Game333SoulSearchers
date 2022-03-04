@@ -31,7 +31,7 @@ public class ParticleMovement : MonoBehaviour
     {
         if (bTraveling)
         {
-            transform.position = Vector3.MoveTowards(transform.position, currentTarget, 4 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, currentTarget, 5 * Time.deltaTime);
             if (transform.position == currentTarget)
             {
                 if(savedPath.Length - 1 > currentTargetVal)
