@@ -260,8 +260,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2305365, y: 1.6630453, z: 2.010081}
-  m_Center: {x: -0.032294273, y: 0.8042745, z: -0.007720709}
+  m_Size: {x: 2.1639886, y: 1.6630453, z: 1.9610676}
+  m_Center: {x: -0.021802664, y: 0.8042745, z: 0.016786039}
 --- !u!54 &3089868092287264286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -290,9 +290,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a55d354a4bcad040a75b03297618806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bParticalOn: 1
+  particalPath: []
+  particalPathEndGoal: {fileID: 0}
   TriggerObject:
   - {fileID: 0}
   powerParticle: {fileID: 9036852773207732136, guid: 3294f3747be37004ab5be3abef2a8630, type: 3}
+  particleList: []
   bDoesNotReset: 0
 --- !u!82 &1583750578840993413
 AudioSource:
