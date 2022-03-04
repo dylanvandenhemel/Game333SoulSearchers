@@ -58,7 +58,7 @@ public class Chest : MonoBehaviour
 
             GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
             GameObject chestItem = Instantiate(itemInChest);
-            chestItem.transform.position = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+            chestItem.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         }
     }
 }
