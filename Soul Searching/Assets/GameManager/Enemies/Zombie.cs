@@ -56,6 +56,7 @@ public class Zombie : MonoBehaviour
     {
         //fixes the forces of the zombie to 0;
         transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         //keeps center at center of zombie
         orgin = transform.position;
 
@@ -170,14 +171,14 @@ public class Zombie : MonoBehaviour
 
     public void ActiveReset()
     {
+        bTracker = false;
         zombieRoamSpeed = zombieStartSpeed;
         transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
-        transform.rotation = startRotation;
         transform.position = startingPosition.position;
-        bTracker = false;
+        transform.rotation = startRotation;
     }
 
 }
