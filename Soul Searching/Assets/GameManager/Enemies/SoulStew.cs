@@ -63,6 +63,10 @@ public class SoulStew : MonoBehaviour
             {
                 stateNum = 0;
             }
+
+            if (player.GetComponent<Player>().bpossessSkel)
+                stateNum = 0;
+
             animator.SetInteger("StateNum", stateNum);
         }
         
@@ -82,7 +86,7 @@ public class SoulStew : MonoBehaviour
             hidden = false;
 
             //If close enough to attack, then attack
-            if (!attacking && Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, attackDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
+            if (!player.GetComponent<Player>().bpossessSkel && !attacking && Physics.Raycast(alteredPos, player.position - alteredPos, out raycastHit, attackDistance, LayerMask.GetMask("Phase", "Wall")) && raycastHit.collider.gameObject.CompareTag("Player") && !player.GetComponent<Player>().bpossessSkel)
                 StewAttack();
         }
 
