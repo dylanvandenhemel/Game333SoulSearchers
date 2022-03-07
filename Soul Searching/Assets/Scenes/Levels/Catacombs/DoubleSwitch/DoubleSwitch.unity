@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.3773585, g: 0.23398249, b: 0.18654324, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1.2
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 1be5bf4c86b24994a994ecc5a39b326b, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5bddf9ab2a89e1844a738ba24c29d707, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 615742475}
-  m_IndirectSpecularColor: {r: 0.30334842, g: 0.17792499, b: 0.22991672, a: 1}
+  m_IndirectSpecularColor: {r: 0.16120154, g: 0.095289655, b: 0.07093493, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: fa9de34c73995404194919b30a64d2ab, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: e73321835f47ec740b95344c71c6b75b, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: dd3d613809c10bb4e9a3cd6cfe3e931a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -2006,7 +2006,7 @@ Transform:
   - {fileID: 1896948253}
   - {fileID: 1756728031}
   m_Father: {fileID: 1252942446}
-  m_RootOrder: 34
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &467864715
 PrefabInstance:
@@ -6040,6 +6040,7 @@ Transform:
   - {fileID: 82554533}
   - {fileID: 1057327732}
   - {fileID: 82380885}
+  - {fileID: 457600207}
   - {fileID: 1930183859}
   - {fileID: 1446081718}
   - {fileID: 1558968624}
@@ -6053,7 +6054,6 @@ Transform:
   - {fileID: 1945806497}
   - {fileID: 304921570}
   - {fileID: 1136153555}
-  - {fileID: 457600207}
   - {fileID: 148700613}
   - {fileID: 353693281}
   m_Father: {fileID: 0}
