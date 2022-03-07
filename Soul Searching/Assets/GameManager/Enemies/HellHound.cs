@@ -49,11 +49,11 @@ public class HellHound : MonoBehaviour
                 bHeard = false;
             }
         }
-        if(GetComponent<NavMeshAgent>().hasPath)
+        if(GetComponent<NavMeshAgent>().velocity.magnitude > 0.1)
         {
             GetComponentInChildren<Animator>().SetBool("isChase", true);
         }
-        else if(!GetComponent<NavMeshAgent>().hasPath)
+        else if(GetComponent<NavMeshAgent>().velocity.magnitude < 1)
         {
             GetComponentInChildren<Animator>().SetBool("isChase", false);
         }
