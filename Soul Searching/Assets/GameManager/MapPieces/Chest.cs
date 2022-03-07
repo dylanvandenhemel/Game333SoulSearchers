@@ -52,13 +52,13 @@ public class Chest : MonoBehaviour
         {
             GetComponent<VisualEffect>().Play();
 
-            
-            bChestOpen = true;
             animator.SetTrigger("Open");
 
             GetComponent<AudioSource>().volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
-            GameObject chestItem = Instantiate(itemInChest);
-            chestItem.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            GameObject chestItem = Instantiate(itemInChest,transform);
+            //chestItem.transform.position = transform.position;
+
+            bChestOpen = true;
         }
     }
 }
