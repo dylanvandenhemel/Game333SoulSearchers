@@ -24,6 +24,9 @@ public class MenuSettings : MonoBehaviour
     private int menuMinVal = 0;
     private int menuMaxVal;
 
+    private static float savedMusicSlider;
+    private static float savedSFXSlider;
+
     private void OnEnable()
     {
         menuButtons = new PlayerControls();
@@ -37,15 +40,14 @@ public class MenuSettings : MonoBehaviour
     }
 
     private void Start()
-    {
-        if (Settings.masterVolumeSet != 0 && Settings.musicVolumeSet != 0 && Settings.sFXVolumeSet != 0)
-        {
-            masterVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.masterVolumeSet;
-            sFXVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.sFXVolumeSet;
-            musicVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.musicVolumeSet;
-        }
+    {        
+        masterVol.GetComponent<UnityEngine.UI.Slider>().value = Settings.masterVolumeSet;
+        musicVol.GetComponent<UnityEngine.UI.Slider>().value = savedMusicSlider;
+        sFXVol.GetComponent<UnityEngine.UI.Slider>().value = savedSFXSlider;
+
         menuMaxVal = menuItemList.Length;
         TextColor(0);
+
     }
 
     private void Update()
@@ -54,6 +56,8 @@ public class MenuSettings : MonoBehaviour
         Settings.musicVolumeSet = musicVol.GetComponent<UnityEngine.UI.Slider>().value;
         Settings.sFXVolumeSet = sFXVol.GetComponent<UnityEngine.UI.Slider>().value;
 
+        savedMusicSlider = musicVol.GetComponent<UnityEngine.UI.Slider>().value;
+        savedSFXSlider = sFXVol.GetComponent<UnityEngine.UI.Slider>().value;
 
         //for sound test
         Settings.sFXVolumeSet *= Settings.masterVolumeSet;
@@ -143,5 +147,17 @@ public class MenuSettings : MonoBehaviour
                 menuItemList[i].color = Color.magenta;
             }
         }
+    }
+
+    //Starts volume at full once on load
+    [RuntimeInitializeOnLoadMethod]
+    static private void setSettings()
+    {
+        Settings.masterVolumeSet = 1;
+        Settings.musicVolumeSet = 1;
+        Settings.sFXVolumeSet = 1;
+
+        savedMusicSlider = 1;
+        savedSFXSlider = 1;
     }
 }
