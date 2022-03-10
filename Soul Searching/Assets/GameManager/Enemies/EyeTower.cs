@@ -28,6 +28,8 @@ public class EyeTower : MonoBehaviour
     private bool btriggerActivated;
     private bool bTracker = false;
     private Vector3 orgin;
+    private Vector3 rotationOrgin;
+    private Vector3 direction;
 
     private bool beyeSoundPlayed;
     private void OnEnable()
@@ -46,7 +48,7 @@ public class EyeTower : MonoBehaviour
         startRotation = transform.rotation;
         orgin = transform.position;
 
-        if(bPanningOn)
+        if (bPanningOn)
         { 
             panLeft = Quaternion.Euler(0, transform.rotation.eulerAngles.y + panRotationDegrees, 0);
             panRight = Quaternion.Euler(0, transform.rotation.eulerAngles.y - panRotationDegrees, 0);
@@ -115,7 +117,9 @@ public class EyeTower : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             target = other.transform;
-            transform.LookAt(target);
+            direction = new Vector3(target.position.x, transform.position.y, target.position.z) - transform.position;
+            //transform.LookAt(target);
+            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             playerDistance = hit.distance;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 6, Mask))
             {
