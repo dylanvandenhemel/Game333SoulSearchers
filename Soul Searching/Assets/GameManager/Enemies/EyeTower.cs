@@ -31,6 +31,8 @@ public class EyeTower : MonoBehaviour
     private Vector3 rotationOrgin;
     private Vector3 direction;
 
+    private bool bTriggerWait;
+
     private bool beyeSoundPlayed;
     private void OnEnable()
     {
@@ -58,7 +60,7 @@ public class EyeTower : MonoBehaviour
     }
 
     
-    private void FixedUpdate()
+    private void Update()
     {
         if(bselect180)
         {
@@ -118,10 +120,11 @@ public class EyeTower : MonoBehaviour
         {
             target = other.transform;
             direction = new Vector3(target.position.x, transform.position.y, target.position.z) - transform.position;
-            transform.LookAt(target);
-            //transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            //transform.LookAt(target);
+            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             playerDistance = hit.distance;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 6, Mask))
+            Debug.DrawRay(transform.position, target.position - orgin, Color.green, 1);
+            if (Physics.Raycast(transform.position, target.position - orgin, out hit, 6, Mask))
             {
                 bTracker = true;
                 if (bTracker == true && !btriggerActivated)
@@ -145,7 +148,12 @@ public class EyeTower : MonoBehaviour
         if (other.CompareTag("Player") && btriggerActivated)
         {
             Trigger();
-            StartCoroutine(triggerWait());
+            //transform.rotation = startRotation;
+            if(!bTriggerWait)
+            {
+                StartCoroutine(triggerWait());
+                bTriggerWait = true;
+            }
         }
             
     }
@@ -154,6 +162,7 @@ public class EyeTower : MonoBehaviour
     IEnumerator triggerWait()
     {
         yield return new WaitForSeconds(0.5f);
+        bTriggerWait = false;
         if(bTracker)
         {
             bTracker = false;
