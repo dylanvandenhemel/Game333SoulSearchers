@@ -117,10 +117,9 @@ public class EyeTower : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             target = other.transform;
-            Debug.DrawLine(transform.position, target.position, Color.green);
             direction = new Vector3(target.position.x, transform.position.y, target.position.z) - transform.position;
-            //transform.LookAt(target);
-            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.LookAt(target);
+            //transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             playerDistance = hit.distance;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 6, Mask))
             {
@@ -135,7 +134,6 @@ public class EyeTower : MonoBehaviour
                     //StartCoroutine(triggerWait());
                 }
             }
-
         }
 
 
