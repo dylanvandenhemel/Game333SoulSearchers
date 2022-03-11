@@ -32,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1.02508, y: 0.82815, z: 1.01755}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6554304051785526994}
   - {fileID: 6999188876506551893}
   - {fileID: 235786939563537141}
   m_Father: {fileID: 7576047995310240302}
@@ -220,7 +221,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5629801575555276042}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4441001263427144009
 MeshFilter:
@@ -301,7 +302,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5629801575555276042}
-  - {fileID: 6554304051785526994}
   - {fileID: 742939584421604710}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -331,13 +331,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5890216158977864808}
-  m_LocalRotation: {x: -0, y: 0.9938771, z: -0.110491686, w: 0}
-  m_LocalPosition: {x: -0.27269, y: -0.072999954, z: -0.19892453}
-  m_LocalScale: {x: 39.978268, y: 39.97827, z: 39.978268}
+  m_LocalRotation: {x: 0.110491686, y: -0, z: -0, w: 0.9938771}
+  m_LocalPosition: {x: 0.26601827, y: 4.0536137, z: 0.19549361}
+  m_LocalScale: {x: 39.000153, y: 47.747444, z: 39.644714}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7576047995310240302}
-  m_RootOrder: 1
+  m_Father: {fileID: 5629801575555276042}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 12.687, y: 180, z: 0}
 --- !u!33 &7879693349343158647
 MeshFilter:
@@ -421,7 +421,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7576047995310240302}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6714887068754947595
 MeshFilter:
@@ -639,7 +639,7 @@ Transform:
   m_Children:
   - {fileID: 2400156168084356147}
   m_Father: {fileID: 5629801575555276042}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 31.816, y: 0, z: 180}
 --- !u!108 &1427077996327940074
 Light:
