@@ -80,7 +80,7 @@ public class MenuSettings : MonoBehaviour
             }
         }
 
-        if(currentSelectionVal == 0)
+        if (currentSelectionVal == 0)
         {
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
@@ -91,7 +91,7 @@ public class MenuSettings : MonoBehaviour
                 masterVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
             }
         }
-        else if(currentSelectionVal == 1)
+        else if (currentSelectionVal == 1)
         {
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
@@ -102,7 +102,7 @@ public class MenuSettings : MonoBehaviour
                 musicVol.GetComponent<UnityEngine.UI.Slider>().value -= 0.2f;
             }
         }
-        else if(currentSelectionVal == 2)
+        else if (currentSelectionVal == 2)
         {
             if (menuButtons.PlayerActions.Movement.ReadValue<Vector2>().x > 0)
             {
@@ -114,7 +114,6 @@ public class MenuSettings : MonoBehaviour
             }
             sFXVol.GetComponent<AudioSource>().Play();
         }
-
         TextColor(currentSelectionVal);
     }
     //used to deactivate interaction with the menu off screen

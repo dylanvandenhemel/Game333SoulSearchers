@@ -30,9 +30,12 @@ public class Settings : MonoBehaviour
     //just for level music volume in camera
     public void Update()
     {
-        GetComponent<AudioSource>().volume = masterVolumeSet * musicVolumeSet;
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            musicVolumeSet *= masterVolumeSet;
+            sFXVolumeSet *= masterVolumeSet;
 
-        musicVolumeSet *= masterVolumeSet;
-        sFXVolumeSet *= masterVolumeSet;
+            GetComponent<AudioSource>().volume = musicVolumeSet;
+        }
     }
 }
