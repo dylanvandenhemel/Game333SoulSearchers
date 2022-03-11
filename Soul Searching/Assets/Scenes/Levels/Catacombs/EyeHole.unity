@@ -4111,7 +4111,7 @@ PrefabInstance:
     - target: {fileID: 1276632576275064087, guid: 0958ce367ab4f6a4a81c8491e8319901, type: 3}
       propertyPath: powerParticle
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 785355687}
     - target: {fileID: 1276632576275064087, guid: 0958ce367ab4f6a4a81c8491e8319901, type: 3}
       propertyPath: particalPathEndGoal
       value: 
@@ -7688,6 +7688,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7060476734680037512, guid: d7d1d1e26fae9a34cbf9f6b0a17c04bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060476734680037512, guid: d7d1d1e26fae9a34cbf9f6b0a17c04bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060476734680037512, guid: d7d1d1e26fae9a34cbf9f6b0a17c04bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060476734680037512, guid: d7d1d1e26fae9a34cbf9f6b0a17c04bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 8341426840843952085, guid: d7d1d1e26fae9a34cbf9f6b0a17c04bb, type: 3}
       propertyPath: m_RootOrder
       value: 82
@@ -7746,6 +7762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 558594879}
     m_Modifications:
+    - target: {fileID: 1276632576275064087, guid: 0958ce367ab4f6a4a81c8491e8319901, type: 3}
+      propertyPath: powerParticle
+      value: 
+      objectReference: {fileID: 980583072}
     - target: {fileID: 2270229297794590515, guid: 0958ce367ab4f6a4a81c8491e8319901, type: 3}
       propertyPath: panSpeed
       value: 150
