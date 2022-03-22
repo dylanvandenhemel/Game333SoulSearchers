@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 6384750900928777195}
   - component: {fileID: 5828663237113131837}
   - component: {fileID: 2455444252685390451}
-  - component: {fileID: 6265403239543051331}
-  - component: {fileID: 429970198549002001}
+  - component: {fileID: 5670368033537196599}
+  - component: {fileID: 5432170684327826154}
   m_Layer: 0
   m_Name: Doorway_Cata
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &6384750900928777195
 Transform:
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4127411389369371214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.3033702, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3896505038799661034}
   m_RootOrder: 0
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6265403239543051331
+--- !u!65 &5670368033537196599
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,9 +96,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 86.28266, y: 248.87993, z: 54.01695}
-  m_Center: {x: -107.551834, y: 0, z: -149.45079}
---- !u!65 &429970198549002001
+  m_Size: {x: 1.1106013, y: 2.4887993, z: 0.36026955}
+  m_Center: {x: 1.3004556, y: 0, z: -1.4945078}
+--- !u!65 &5432170684327826154
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,8 +109,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 119.15383, y: 248.87993, z: 56.09633}
-  m_Center: {x: 125.998474, y: 0, z: -149.45079}
+  m_Size: {x: 0.75938225, y: 2.4887993, z: 0.26600325}
+  m_Center: {x: -1.1272454, y: 0, z: -1.4945078}
 --- !u!1 &6739237599849383235
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3896505038799661034
 Transform:

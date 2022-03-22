@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 3026627342723920369}
   - component: {fileID: 2139040622907244116}
   - component: {fileID: 4200610871217801886}
-  - component: {fileID: 6015775562272786759}
+  - component: {fileID: 1129118834809018312}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3026627342723920369
 Transform:
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 2399131231451835211}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8941479686708812195}
   m_RootOrder: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6015775562272786759
+--- !u!65 &1129118834809018312
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 301.3873, y: 25, z: 301.3873}
+  m_Size: {x: 3.0138729, y: 0.25, z: 3.0138729}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6147688897540971818
 GameObject:
@@ -113,7 +113,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8941479686708812195
 Transform:
