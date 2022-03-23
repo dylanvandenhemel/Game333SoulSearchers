@@ -52,11 +52,8 @@ public class Zombie : MonoBehaviour
         targetLocation.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        //fixes the forces of the zombie to 0;
-        transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         //keeps center at center of zombie
         orgin = transform.position;
 
@@ -101,7 +98,7 @@ public class Zombie : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, player.position, zombieRoamSpeed * Time.deltaTime);
             //increases zombie speed in increments
-            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 8f);
+            zombieRoamSpeed = Mathf.Clamp(zombieRoamSpeed, 0, 6f);
             zombieRoamSpeed += 0.1f;
             transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", true);
         }
@@ -110,7 +107,10 @@ public class Zombie : MonoBehaviour
         {
             transform.GetChild(transform.childCount - 1).GetComponent<Animator>().SetBool("isChase", false);
         }
-        
+        //fixes the forces of the zombie to 0;
+        //transform.GetComponent<Rigidbody>().
+        transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 
     public void OnTriggerStay(Collider other)
