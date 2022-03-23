@@ -174,7 +174,6 @@ public class TriggerObjects : MonoBehaviour
     {
         if (NumberofSignalsReqDoor == 1 && !transform.GetComponent<DoubleDoorReset>().bWasActive)
         {
-            Debug.LogError("oof");
             if (!bDoorActive)
             {
                 transform.GetChild(0).GetComponent<Animator>().SetTrigger("doorOpen");

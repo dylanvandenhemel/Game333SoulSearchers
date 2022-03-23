@@ -72,9 +72,9 @@ public class Activator : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //For PressPlate
-        if((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && bPressPlate)
+        if((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("PressPlateHolder")) && bPressPlate)
         {
-            if(other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)"))
+            if(other.gameObject.layer == LayerMask.NameToLayer("PressPlateHolder"))
             {
                 yesBones++;
             }
@@ -140,9 +140,9 @@ public class Activator : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //For PressPlate
-        if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)")) && (bPressedPlate && bPressPlate))
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Physical") || other.gameObject.layer == LayerMask.NameToLayer("PressPlateHolder")) && (bPressedPlate && bPressPlate))
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Bones(Exclusive)") && yesBones > 0)
+            if (other.gameObject.layer == LayerMask.NameToLayer("PressPlateHolder") && yesBones > 0)
             {
                 yesBones--;
                 //when removing a single signal from a double door
