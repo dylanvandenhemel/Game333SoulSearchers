@@ -119,7 +119,7 @@ public class EyeTower : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             target = other.transform;
-            direction = new Vector3(target.position.x, transform.position.y, target.position.z) - transform.position;
+            direction = new Vector3(target.position.x, orgin.y, target.position.z) - orgin;
             //transform.LookAt(target);
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             playerDistance = hit.distance;
@@ -129,7 +129,7 @@ public class EyeTower : MonoBehaviour
                 bTracker = true;
                 if (bTracker == true && !btriggerActivated)
                 {
-                    transform.LookAt(target);
+                    //transform.LookAt(target);
                     Debug.DrawRay(orgin, transform.TransformDirection(Vector3.forward) * 10, Color.green, 1);
 
                     btriggerActivated = true;
