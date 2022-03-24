@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4159624426103506283}
   m_Father: {fileID: 0}
@@ -95,6 +96,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 09fb6ac04dfcb4941af98bd6269fa8d5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1038c2057a6263c42b669b285f3e0738, type: 2}
     - target: {fileID: 919132149155446097, guid: 09fb6ac04dfcb4941af98bd6269fa8d5, type: 3}
       propertyPath: m_Name
       value: TortureChair
