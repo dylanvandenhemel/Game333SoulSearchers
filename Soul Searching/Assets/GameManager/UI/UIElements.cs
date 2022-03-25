@@ -152,7 +152,7 @@ public class UIElements : MonoBehaviour
         //Updates button selected to color
         if (pauseSelection == 2)
         {
-            start.color = Color.blue;
+            start.color = Color.cyan;
         }
         else
         {
@@ -161,7 +161,7 @@ public class UIElements : MonoBehaviour
 
         if (pauseSelection == 1)
         {
-            mainMenu.color = Color.blue;
+            mainMenu.color = Color.cyan;
         }
         else
         {
@@ -170,7 +170,7 @@ public class UIElements : MonoBehaviour
 
         if (pauseSelection == 0)
         {
-            quit.color = Color.blue;
+            quit.color = Color.cyan;
         }
         else
         {
