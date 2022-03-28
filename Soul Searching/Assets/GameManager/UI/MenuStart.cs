@@ -22,6 +22,8 @@ public class MenuStart : MonoBehaviour
     private int menuMinVal = 0;
     private int menuMaxVal;
 
+    [HideInInspector]public bool bLogoFadeDone;
+
     private void Awake()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
@@ -64,14 +66,14 @@ public class MenuStart : MonoBehaviour
 
     private void CurrentSelection(InputAction.CallbackContext c)
     {
-        if(menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0)
+        if(menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y < 0 && bLogoFadeDone)
         {
             if(currentSelectionVal < menuMaxVal - 1)
             {
                 currentSelectionVal++;
             }
         }
-        else if(menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0)
+        else if(menuButtons.PlayerActions.Movement.ReadValue<Vector2>().y > 0 && bLogoFadeDone)
         {
             if (currentSelectionVal > menuMinVal)
             {
@@ -98,7 +100,7 @@ public class MenuStart : MonoBehaviour
 
     private void SelectUI(InputAction.CallbackContext c)
     {
-        if(currentSelectionVal == 0)
+        if(currentSelectionVal == 0 && bLogoFadeDone)
         {
             if (!bDoneTutorial)
             {
