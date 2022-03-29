@@ -1511,6 +1511,11 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &165541605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8081951127272878956, guid: 81884c86d79fc004e94cfe9cd98886c1, type: 3}
+  m_PrefabInstance: {fileID: 57341781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &184665625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9179582297138492476, guid: c4f5d46a87ec69c40a08e6f4fe21417f, type: 3}
@@ -5417,7 +5422,7 @@ PrefabInstance:
     - target: {fileID: -5725011508301912035, guid: f305271341a49a94c942e22c6deb2078, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 13cfdc399a1f3cb46a06606beda0f6b8, type: 2}
+      objectReference: {fileID: 2100000, guid: 466436809732cfa458a619ffc727914e, type: 2}
     - target: {fileID: 919132149155446097, guid: f305271341a49a94c942e22c6deb2078, type: 3}
       propertyPath: m_Name
       value: Skeleton@T-Pose
@@ -10137,6 +10142,26 @@ Light:
   m_CorrespondingSourceObject: {fileID: 8081951127272878957, guid: 81884c86d79fc004e94cfe9cd98886c1, type: 3}
   m_PrefabInstance: {fileID: 57341781}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1598835050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165541605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &1598909879
 PrefabInstance:
   m_ObjectHideFlags: 0
