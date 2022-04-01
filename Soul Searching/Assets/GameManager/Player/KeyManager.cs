@@ -13,7 +13,10 @@ public class KeyManager : MonoBehaviour
 
     public bool collectedGhostKey = false;
 
-    public AudioSource keySound;
+    public AudioSource bronzeKeySound;
+    public AudioSource silverKeySound;
+    public AudioSource GoldKeySound;
+    public AudioSource GhostKeySound;
 
     private void OnEnable()
     {
@@ -26,7 +29,10 @@ public class KeyManager : MonoBehaviour
 
     public void Start()
     {
-        keySound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        bronzeKeySound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        silverKeySound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        GoldKeySound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        GhostKeySound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
     }
 
 
@@ -36,7 +42,7 @@ public class KeyManager : MonoBehaviour
         {
             GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().BronzeKeyUIOn();
 
-            keySound.Play();
+            bronzeKeySound.Play();
             collectedBronzeKey = true;
             currentKey.gameObject.SetActive(false);
 
@@ -45,7 +51,7 @@ public class KeyManager : MonoBehaviour
         {
             GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().SilverKeyUIOn();
 
-            keySound.Play();
+            silverKeySound.Play();
             collectedSilverKey = true;
             currentKey.gameObject.SetActive(false);
         }
@@ -53,14 +59,14 @@ public class KeyManager : MonoBehaviour
         {
             GetComponent<Player>().pauseMenu.gameObject.GetComponent<UIElements>().GoldKeyUIOn();
 
-            keySound.Play();
+            GoldKeySound.Play();
             collectedGoldKey = true;
             currentKey.gameObject.SetActive(false);
         }
         else if (currentKey.CompareTag("KeyGhost") && !transform.GetComponent<Player>().bpossessSkel)
         {
             ghostKey = currentKey;
-            keySound.Play();
+            GhostKeySound.Play();
             ghostKeyDrop = ghostKey.position.y;
             collectedGhostKey = true;
         }
