@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebf5d678-163a-4ca8-b389-a9ad9af88494"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -423,6 +432,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""DebugUnlock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e4312bd-404b-4103-ad82-a71b3ba98b95"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c486abe-a650-4308-bcd8-788786f0b259"",
+                    ""path"": ""<XInputController>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -460,6 +491,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Whistle = m_PlayerActions.FindAction("Whistle", throwIfNotFound: true);
         m_PlayerActions_Pause = m_PlayerActions.FindAction("Pause", throwIfNotFound: true);
         m_PlayerActions_DebugUnlock = m_PlayerActions.FindAction("DebugUnlock", throwIfNotFound: true);
+        m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -525,6 +557,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Whistle;
     private readonly InputAction m_PlayerActions_Pause;
     private readonly InputAction m_PlayerActions_DebugUnlock;
+    private readonly InputAction m_PlayerActions_Sprint;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -535,6 +568,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Whistle => m_Wrapper.m_PlayerActions_Whistle;
         public InputAction @Pause => m_Wrapper.m_PlayerActions_Pause;
         public InputAction @DebugUnlock => m_Wrapper.m_PlayerActions_DebugUnlock;
+        public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -562,6 +596,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @DebugUnlock.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDebugUnlock;
                 @DebugUnlock.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDebugUnlock;
                 @DebugUnlock.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDebugUnlock;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -584,6 +621,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @DebugUnlock.started += instance.OnDebugUnlock;
                 @DebugUnlock.performed += instance.OnDebugUnlock;
                 @DebugUnlock.canceled += instance.OnDebugUnlock;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -614,5 +654,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnWhistle(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnDebugUnlock(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

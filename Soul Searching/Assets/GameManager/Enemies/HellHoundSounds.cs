@@ -4,24 +4,11 @@ using UnityEngine;
 
 public class HellHoundSounds : MonoBehaviour
 {
-    private bool bgrowling;
-
     public AudioSource growlSound;
 
     public void DogGrowl()
     {
-        if(!bgrowling)
-        {
-            growlSound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
-            growlSound.Play();
-            bgrowling = true;
-
-        }
-    }
-
-    IEnumerator growlWait()
-    {
-        yield return new WaitForSeconds(1);
-        bgrowling = false;
+        growlSound.volume = Settings.masterVolumeSet * Settings.sFXVolumeSet;
+        growlSound.Play();
     }
 }

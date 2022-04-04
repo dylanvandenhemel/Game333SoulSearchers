@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private CharacterController cController;
     private Vector3 desiredDirection;
     public float speed = 5f;
+    private float savedSpeed;
     public float faceRotationSpeed = 5f;
     //death particles
     public GameObject deathParticles;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     public bool bpossessSkel = false;
     private bool bEnablePossess = true;
     public float skelSpeed = 3f;
+    private float savedSkelSpeed;
     public float skelfaceRotationSpeed = 4f;
     private bool bSkelPileCollider;
 
@@ -67,6 +69,9 @@ public class Player : MonoBehaviour
         resetLocation = transform.position;
         cController = GetComponent<CharacterController>();
         playerChildCount = transform.childCount;
+
+        savedSpeed = speed;
+        savedSkelSpeed = skelSpeed;
     }
 
     void Update()
@@ -99,8 +104,19 @@ public class Player : MonoBehaviour
     {
         desiredDirection.x = pActions.PlayerActions.Movement.ReadValue<Vector2>().x;
         desiredDirection.z = pActions.PlayerActions.Movement.ReadValue<Vector2>().y;
-        if(!bpossessSkel)
+
+        if (!bpossessSkel)
         {
+            if (pActions.PlayerActions.Sprint.ReadValue<float>() == 1)
+            {
+                speed = savedSpeed + 1.3f;
+                skelSpeed = savedSkelSpeed + 1.3f;
+            }
+            if (pActions.PlayerActions.Sprint.ReadValue<float>() == 0)
+            {
+                speed = savedSpeed;
+                skelSpeed = savedSkelSpeed;
+            }
             cController.Move(desiredDirection * Time.deltaTime * speed);
 
             if (desiredDirection.x != 0 || desiredDirection.z != 0)
@@ -110,8 +126,18 @@ public class Player : MonoBehaviour
         }
         else if(bpossessSkel)
         {
+            if (pActions.PlayerActions.Sprint.ReadValue<float>() == 1)
+            {
+                skelSpeed = savedSkelSpeed + 1.3f;
+                currentSkeletonPile.GetComponentInChildren<Animator>().speed = 2;
+            }
+            if (pActions.PlayerActions.Sprint.ReadValue<float>() == 0)
+            {
+                skelSpeed = savedSkelSpeed;
+                currentSkeletonPile.GetComponentInChildren<Animator>().speed = 1;
+            }
             //skeliton animation
-            if(currentSkeletonPile != null && (pActions.PlayerActions.Movement.ReadValue<Vector2>().x != 0 || pActions.PlayerActions.Movement.ReadValue<Vector2>().y != 0))
+            if (currentSkeletonPile != null && (pActions.PlayerActions.Movement.ReadValue<Vector2>().x != 0 || pActions.PlayerActions.Movement.ReadValue<Vector2>().y != 0))
             {
                 currentSkeletonPile.GetChild(0).GetComponent<Animator>().SetBool("bSkelWalk", true);
             }
