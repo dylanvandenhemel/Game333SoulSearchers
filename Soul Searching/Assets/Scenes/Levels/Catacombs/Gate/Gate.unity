@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1306229112}
-  m_IndirectSpecularColor: {r: 0.16125396, g: 0.09528542, b: 0.07085114, a: 1}
+  m_IndirectSpecularColor: {r: 0.16120154, g: 0.095289655, b: 0.07093493, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,6 +189,38 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 25879.535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.7249887e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.05e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.0286167e-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: NaN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -519,7 +551,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_LocalScale.x
@@ -664,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6095239475286125775, guid: 154db3fbdc8a51446919f9b8022c6a4a, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 6095239475286125775, guid: 154db3fbdc8a51446919f9b8022c6a4a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1305,6 +1337,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchWall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 88.799995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.700279e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 51.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 12.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
 --- !u!4 &338268448 stripped
@@ -1595,6 +1647,18 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.700279e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -1907,6 +1971,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchWall
       objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.700279e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
 --- !u!1001 &545351124
@@ -2210,6 +2286,26 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -1.3046096e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.25e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -2793,6 +2889,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 187245015}
     m_Modifications:
+    - target: {fileID: 2226804352595448404, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2226804352595448405, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2852,6 +2952,26 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.0326775e+35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -1.3046096e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.25e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -3337,7 +3457,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_LocalScale.x
@@ -3479,7 +3599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
       propertyPath: m_LocalScale.x
@@ -4701,6 +4821,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchWall (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.3490646e+33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
 --- !u!1001 &1129207515
@@ -5888,75 +6024,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7911484760008357425, guid: 97dea30c71964cc49920b64fbece49d7, type: 3}
   m_PrefabInstance: {fileID: 944611245}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1346877565
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1957850529}
-    m_Modifications:
-    - target: {fileID: 2575805160750681957, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_Name
-      value: Rock3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6179508
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.6179508
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6179513
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.152309
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.076492
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.47509348
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7045936
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.22868268
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.029651701
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.67109835
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -49.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
 --- !u!1 &1350074004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8978221694182808251, guid: b6b4c032d12b4544cab115404cf3a99c, type: 3}
@@ -6020,6 +6087,14 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -6282,7 +6357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7138639620558819093, guid: c323a2f5c1a33a949b7fb16bfcd4b56f, type: 3}
       propertyPath: m_LocalScale.x
@@ -6404,6 +6479,14 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -7189,6 +7272,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchWall (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
 --- !u!4 &1761245740 stripped
@@ -7535,7 +7626,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 322fadcb9c4492d4e8aae184f4ab205b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 322fadcb9c4492d4e8aae184f4ab205b, type: 3}
       propertyPath: m_LocalScale.x
@@ -7736,6 +7827,14 @@ PrefabInstance:
     - target: {fileID: 6131683899279787050, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
       propertyPath: m_Name
       value: TorchWall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
@@ -8007,7 +8106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6095239475286125775, guid: 154db3fbdc8a51446919f9b8022c6a4a, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6095239475286125775, guid: 154db3fbdc8a51446919f9b8022c6a4a, type: 3}
       propertyPath: m_LocalScale.x
@@ -8369,7 +8468,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_LocalScale.x
@@ -8606,6 +8705,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchWall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7511993037262282832, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.3791916e+35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.0654764e+34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950021758973290024, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.26e-43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79945d32b7e931a4c803491e933e53cd, type: 3}
 --- !u!4 &2080422218 stripped
@@ -8811,7 +8930,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1707152101495915508, guid: 02123cd240c6fc044804ce35c21c2f06, type: 3}
       propertyPath: m_LocalScale.x
