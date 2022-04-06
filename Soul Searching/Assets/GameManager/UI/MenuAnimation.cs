@@ -9,8 +9,6 @@ public class MenuAnimation : MonoBehaviour
     public GameObject controlMenu;
     public GameObject settingMenu;
 
-
-
     Vector3 startMenuPosition;
     Quaternion startMenuRotation;
 
