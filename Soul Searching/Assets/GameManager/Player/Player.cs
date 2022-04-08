@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject whistleObject;
     RaycastHit hit;
     public bool bwhistling;
+    [HideInInspector] public bool bDogHere;
 
     public int collectablesCount;
     public static int savedCollection;
@@ -346,6 +347,8 @@ public class Player : MonoBehaviour
         if(!bwhistling)
         {
             StartCoroutine(WhistleCoolDown(Random.Range(1, 6)));
+            bDogHere = true;
+            StartCoroutine(DogSpotActive());
         }
     }
 
@@ -356,6 +359,11 @@ public class Player : MonoBehaviour
         Instantiate(whistleObject, transform);
         yield return new WaitForSeconds(1.2f);
         bwhistling = false;
+    }
+    IEnumerator DogSpotActive()
+    {
+        yield return new WaitForSeconds(0.3f);
+        bDogHere = false;
     }
 
     private void ResetPlayer()

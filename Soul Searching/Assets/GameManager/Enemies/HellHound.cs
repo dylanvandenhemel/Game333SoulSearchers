@@ -61,7 +61,7 @@ public class HellHound : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player") && other.GetComponent<Player>().bwhistling)
+        if(other.CompareTag("Player") && other.GetComponent<Player>().bDogHere)
         {
             //If you want to change the dog so he immediatly rushes upon hearing whistle instead of when touched by effects, do this
             //Toggle bHeard here, store the player's position, and then dynamically calculate distance every frame (because the hound is now moving)
