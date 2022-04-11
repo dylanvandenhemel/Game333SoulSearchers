@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 790.4
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 93
+  controlID: 21
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 94
+  controlID: 22
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 95
+  controlID: 23
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 398
     height: 740
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -353,9 +353,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 30530200
-      m_LastClickedID: 152368
-      m_ExpandedIDs: f43afdffd4bafdff78bbfdfff4c5fdff2e2ffeffe852feffbcb5feff3040ffff76e9ffffc8f9ffffd47d0100f08c0100
+      m_SelectedIDs: 2cca0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: b8d1ffff08fbffffb0670000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -466,7 +466,7 @@ MonoBehaviour:
       containerId: overlay-toolbar__top
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -659,9 +659,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.8971992, y: 2.720554, z: -9.349677}
+    m_Target: {x: 9.899641, y: -0.4734658, z: -11.744608}
     speed: 2
-    m_Value: {x: -2.8971992, y: 2.720554, z: -9.349677}
+    m_Value: {x: 9.899641, y: -0.4734658, z: -11.744608}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -708,13 +708,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.50780624, y: 0.036496494, z: -0.021447938, w: 0.8605272}
+    m_Target: {x: 0.49003357, y: 0.009486367, z: -0.005250106, w: 0.8717335}
     speed: 2
-    m_Value: {x: 0.5077313, y: 0.037784103, z: -0.022207778, w: 0.8604}
+    m_Value: {x: 0.489992, y: 0.009485562, z: -0.0052496605, w: 0.8716595}
   m_Size:
-    m_Target: 7.8169513
+    m_Target: 7.3302326
     speed: 2
-    m_Value: 7.8169513
+    m_Value: 7.3302326
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -936,23 +936,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Enemy Prefabs
+    - Assets/GameManager/Player
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Enemy Prefabs
+  - Assets/GameManager/Player
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\DSU Student\Desktop\Game 333\SoulSearcherProject\Game333SoulSearchers\Soul
     Searching
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 176}
-    m_SelectedIDs: 3a900000
-    m_LastClickedID: 36922
-    m_ExpandedIDs: 00000000ac890000668b0000688b0000748b0000a68d000038900000
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: 1ca10000
+    m_LastClickedID: 41244
+    m_ExpandedIDs: 00000000aa9700005a9a0000669a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -980,7 +980,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ac890000
+    m_ExpandedIDs: 00000000aa970000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1024,7 +1024,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 9}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
