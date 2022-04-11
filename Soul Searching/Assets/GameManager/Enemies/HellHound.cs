@@ -56,9 +56,13 @@ public class HellHound : MonoBehaviour
         else
         {
             GetComponentInChildren<Animator>().SetBool("isChase", false);
+
+
+            //ADD DOG VFX FOR FOLLOW OFF
+
+
         }
     }
-
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player") && other.GetComponent<Player>().bDogHere)
@@ -69,12 +73,22 @@ public class HellHound : MonoBehaviour
             player = other.transform;
             distance = Vector3.Distance(transform.position, player.position);
             bWaiting = true;
+
+
+            //ADD DOG VFX FOR FOLLOW ON
+
+
         }
         else if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
         {
             GetComponent<HellHoundSounds>().DogGrowl();
             player = other.transform;
             bHeard = true;
+
+
+            //ADD DOG VFX FOR ANGRY ON
+
+
         }
 
     }
