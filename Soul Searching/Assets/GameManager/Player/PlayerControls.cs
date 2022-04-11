@@ -413,7 +413,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Arrows"",
                     ""id"": ""b3669195-9aef-4ad4-a21c-76a94584a6e7"",
                     ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CameraMovement"",
