@@ -21,14 +21,12 @@ public class CameraControl : MonoBehaviour
         pActions = new PlayerControls();
         pActions.Enable();
 
-        //pActions.PlayerActions.CameraMovement.performed += CameraOperation;
         pActions.PlayerActions.CameraMovement.canceled += CameraReturn;
     }
 
     private void OnDisable()
     {
         pActions.Disable();
-        //pActions.PlayerActions.CameraMovement.performed -= CameraOperation;
         pActions.PlayerActions.CameraMovement.canceled -= CameraReturn;
     }
 
@@ -43,39 +41,44 @@ public class CameraControl : MonoBehaviour
         cameraPan.y = pActions.PlayerActions.CameraMovement.ReadValue<Vector2>().y;
 
         currentVCam = thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
-        
-        if(!bReturn)
+
+        if (!bReturn)
         {
-            if (cameraPan.x >= 0.5f)
+            if (cameraPan.x >= 0.2f)
             {
-                //currentVCam.x += Mathf.Clamp(currentVCam.x, 0, startVCOffset.x + 2) * 4 * Time.deltaTime;
+                currentVCam.x += 6 * Time.deltaTime;
             }
-            if (cameraPan.x <= -0.5f)
+            if (cameraPan.x <= -0.2f)
             {
-                //currentVCam.x -= 4 * Time.deltaTime;
+                currentVCam.x -= 6 * Time.deltaTime;
             }
-            if (cameraPan.y >= 0.5f)
+            if (cameraPan.y >= 0.2f)
             {
-                //currentVCam.z += 4 * Time.deltaTime;
+                currentVCam.z += 6 * Time.deltaTime;
             }
-            if (cameraPan.y <= -0.5f)
+            if (cameraPan.y <= -0.2f)
             {
-               //currentVCam.z -= 4 * Time.deltaTime;
+                currentVCam.z -= 6 * Time.deltaTime;
             }
-            thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = currentVCam;
+            thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x = Mathf.Clamp(currentVCam.x, startVCOffset.x - 2, startVCOffset.x + 2);
+            thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z = Mathf.Clamp(currentVCam.z, startVCOffset.z - 2, startVCOffset.z + 2);
         }
         else
         {
-            //thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.MoveTowards
+            //Moves camera back to neutral position
+            thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.MoveTowards(currentVCam, startVCOffset, 7 * Time.deltaTime);
+            if (thisCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset == startVCOffset)
+            {
+                bReturn = false;
+            }
         }
-       
 
-        
+
     }
 
+    //this is called when the buttons are let go
     private void CameraReturn(InputAction.CallbackContext c)
     {
-        //Debug.LogError("stop");
-        //bReturn = true;
+        bReturn = true;
     }
 }
