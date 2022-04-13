@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class HellHound : MonoBehaviour
 {
-    private Transform player;
-    private bool bHeard, bWaiting = false, bPulse = false;
+    [HideInInspector] public Transform player;
+    [HideInInspector]public bool bHeard;
+    private bool bWaiting = false, bPulse = false;
     private float distance, timer = 0;
     private NavMeshAgent localMap;
     public GameObject enemyDeath;
@@ -42,7 +43,7 @@ public class HellHound : MonoBehaviour
         }
         if (bHeard)
         {
-            GetComponent<HellHoundSounds>().DogGrowl();
+            GetComponent<HellHEffectsSounds>().DogGrowl();
             localMap.SetDestination(player.position);
             if (!player.GetComponent<Player>().bpossessSkel)
             {
@@ -56,11 +57,12 @@ public class HellHound : MonoBehaviour
         else
         {
             GetComponentInChildren<Animator>().SetBool("isChase", false);
+        }
 
-
-            //ADD DOG VFX FOR FOLLOW OFF
-
-
+        //turns off dog effect once dog reaches its locaton, != is to prevent it from calling every frame
+        if(localMap.remainingDistance < 0.1f && localMap.remainingDistance != 0)
+        {
+            GetComponent<HellHEffectsSounds>().DogEffectOff();
         }
     }
     private void OnTriggerStay(Collider other)
@@ -73,22 +75,14 @@ public class HellHound : MonoBehaviour
             player = other.transform;
             distance = Vector3.Distance(transform.position, player.position);
             bWaiting = true;
-
-
-            //ADD DOG VFX FOR FOLLOW ON
-
-
+            GetComponent<HellHEffectsSounds>().DogEffectOn();
         }
         else if(other.CompareTag("Player") && other.GetComponent<Player>().bpossessSkel)
         {
-            GetComponent<HellHoundSounds>().DogGrowl();
             player = other.transform;
+            GetComponent<HellHEffectsSounds>().DogGrowl();
+            GetComponent<HellHEffectsSounds>().DogEffectOn();
             bHeard = true;
-
-
-            //ADD DOG VFX FOR ANGRY ON
-
-
         }
 
     }
@@ -106,6 +100,7 @@ public class HellHound : MonoBehaviour
         GetComponent<Collider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
+        GetComponent<HellHEffectsSounds>().DogEffectOff();
         localMap.ResetPath();
         StartCoroutine(resetNavMesh());
     }
