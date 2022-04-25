@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Stairs : MonoBehaviour
 {
-    public bool bIsLastLevel;
+    //public bool bIsLastLevel;
 
     private Scene currentScene;
     public Transform pauseCanvas;
@@ -31,13 +31,8 @@ public class Stairs : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Debug.Log("Next Scene");
-        if (bIsLastLevel)
-        {
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
-            SceneManager.LoadScene(currentScene.buildIndex + 1);
-        }
+        
+        SceneManager.LoadScene(currentScene.buildIndex + 1);
+        
     }
 }
