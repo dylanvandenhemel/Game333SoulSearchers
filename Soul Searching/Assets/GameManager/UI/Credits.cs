@@ -9,7 +9,7 @@ public class Credits : MonoBehaviour
     private bool bDone;
     void Start()
     {
-        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -1100);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -1300);
         textPosition = GetComponent<RectTransform>().anchoredPosition;
     }
 
@@ -17,12 +17,11 @@ public class Credits : MonoBehaviour
     {
         if(!bDone)
         {
-            textPosition = Vector3.MoveTowards(textPosition, new Vector2(0, 1100), 2);
+            textPosition = Vector3.MoveTowards(textPosition, new Vector2(0, 1300), 2);
             GetComponent<RectTransform>().anchoredPosition = textPosition;
-
         }
 
-        if(textPosition == new Vector2(0, 1100))
+        if(textPosition == new Vector2(0, 1300))
         {
             bDone = true;
             SceneManager.LoadScene(0);
